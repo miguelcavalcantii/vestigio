@@ -13,6 +13,10 @@
       pontos por onde ele passa acendem de leve.
    5. MOUSE (só no computador): pontos perto do cursor ficam um
       pouco mais visíveis.
+   6. CLIQUE: ao clicar (ou tocar) numa área vazia do fundo, sai uma
+      onda do ponto do clique; os pontos que ela atravessa acendem,
+      vão um pouco para fora e voltam. Não dispara em botões, links,
+      campos ou textos, e nunca bloqueia o clique.
    O brilho lento e o granulado são CSS (css/textura-fundo.css).
 
    CORES: vêm das variáveis --textura-* de css/textura-fundo.css,
@@ -74,6 +78,13 @@
     mouse: {
       ligado: mouseFino && !celular,
       raio: 120
+    },
+
+    clique: {
+      raio: celular ? 130 : 220,     // até onde a onda chega
+      duracao: 1000,                 // ms
+      deslocamento: celular ? 2 : 3.5, // quanto os pontos "pulam" para fora
+      max: 3                         // ondas ao mesmo tempo
     }
   };
 
@@ -340,6 +351,98 @@
     return true;
   }
 
+  /* ---------- 6. ONDA DO CLIQUE ---------- */
+  var ondas = [];
+
+  // Só vale clique em "fundo vazio": nada clicável, nada de texto
+  var CLICAVEIS = 'a, button, input, textarea, select, label, summary, details, video, audio, iframe, ' +
+    '[role="button"], [role="link"], [role="tab"], [role="checkbox"], [role="radio"], [role="menuitem"], ' +
+    '[contenteditable=""], [contenteditable="true"], [tabindex]:not([tabindex="-1"]), dialog, ' +
+    '.site-header, .mobile-menu, .mega, .sheet, .wa-float, .wa-dial, .topo';
+  var TEXTUAIS = /^(P|H[1-6]|LI|DT|DD|TD|TH|SPAN|STRONG|EM|B|I|SMALL|CODE|PRE|BLOCKQUOTE|FIGCAPTION|TIME|KBD|MARK|Q|CITE|LABEL)$/;
+
+  function temTextoProprio(el) {
+    for (var n = el.firstChild; n; n = n.nextSibling) {
+      if (n.nodeType === 3 && n.textContent.trim()) return true;
+    }
+    return false;
+  }
+
+  function cliqueNoFundo(alvo) {
+    if (!(alvo instanceof Element)) return false;
+    if (alvo.closest(CLICAVEIS)) return false;
+    if (TEXTUAIS.test(alvo.tagName) || temTextoProprio(alvo)) return false;
+    var selecao = window.getSelection && window.getSelection();
+    if (selecao && String(selecao).length) return false;     // pessoa selecionando texto
+    return true;
+  }
+
+  // pointerdown + pointerup: funciona com mouse e com toque (e ignora
+  // arrastar/rolar). Ouvintes "passivos": nunca atrasam nem bloqueiam o clique.
+  var inicioToque = null;
+  function ligarClique() {
+    document.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0 || !e.isPrimary) { inicioToque = null; return; }
+      inicioToque = { x: e.clientX, y: e.clientY, t: performance.now(), alvo: e.target };
+    }, { passive: true });
+    document.addEventListener('pointerup', function (e) {
+      var ini = inicioToque;
+      inicioToque = null;
+      if (!ini || !e.isPrimary) return;
+      if (Math.hypot(e.clientX - ini.x, e.clientY - ini.y) > 10 || performance.now() - ini.t > 600) return;
+      if (!cliqueNoFundo(ini.alvo)) return;
+      ondas.push({ x: e.clientX, y: e.clientY, inicio: performance.now() });
+      if (ondas.length > AJUSTES.clique.max) ondas.shift();
+    }, { passive: true });
+    document.addEventListener('pointercancel', function () { inicioToque = null; }, { passive: true });
+  }
+
+  function desenharOnda(o, agora) {
+    var C = AJUSTES.clique;
+    var t = (agora - o.inicio) / C.duracao;
+    if (t < 0 || t > 1) return;
+    var raio = suave(t) * C.raio;
+    var f = 1 - t;
+
+    // a onda: um anel fino e um halo largo bem fraco
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = rgba(cor.acento, cor.sinalA * 0.18 * f);
+    ctx.beginPath();
+    ctx.arc(o.x, o.y, raio, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = rgba(cor.acento, cor.sinalA * 0.9 * f);
+    ctx.beginPath();
+    ctx.arc(o.x, o.y, raio, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // pontos que a onda atravessa: acendem e vão um pouco para fora
+    // (o ponto parado some do lugar e é redesenhado deslocado)
+    var faixa = ESP * 1.6;
+    var c0 = Math.max(0, Math.floor((o.x - raio - faixa) / ESP)), c1 = Math.min(colunas - 1, Math.ceil((o.x + raio + faixa) / ESP));
+    var l0 = Math.max(0, Math.floor((o.y - raio - faixa) / ESP)), l1 = Math.min(linhas - 1, Math.ceil((o.y + raio + faixa) / ESP));
+    for (var c = c0; c <= c1; c++) {
+      for (var l = l0; l <= l1; l++) {
+        var dx = px(c) - o.x, dy = px(l) - o.y;
+        var dist = Math.hypot(dx, dy) || 1;
+        var perto = 1 - Math.abs(dist - raio) / faixa;
+        if (perto <= 0) continue;
+        var empurrao = Math.sin(perto * Math.PI / 2) * C.deslocamento * f;
+        var x = px(c) + dx / dist * empurrao;
+        var y = px(l) + dy / dist * empurrao;
+        ctx.clearRect(px(c) - 2, px(l) - 2, 4, 4);
+        ctx.fillStyle = rgba(cor.ponto, cor.pontoA);
+        ctx.beginPath();
+        ctx.arc(x, y, AJUSTES.raio, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = rgba(cor.acento, perto * f * cor.acentoA * 0.6);
+        ctx.beginPath();
+        ctx.arc(x, y, AJUSTES.raio + 0.7 * perto, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
   /* ---------- DESENHO DE UM QUADRO ---------- */
   var rastros = [], redes = [], sinais = [];
   var proximo = { rastro: 0, rede: 0, sinal: 0 };
@@ -357,6 +460,7 @@
     sinais.forEach(function (s) { desenharSinal(s, agora); });
     redes.forEach(function (r) { desenharRede(r, agora); });
     rastros.forEach(function (r) { desenharRastro(r, agora); });
+    ondas.forEach(function (o) { desenharOnda(o, agora); });
     return AJUSTES.mouse.ligado && !calmo ? desenharMouse() : false;
   }
 
@@ -377,6 +481,7 @@
     rastros = rastros.filter(vivo);
     redes = redes.filter(vivo);
     sinais = sinais.filter(vivo);
+    ondas = ondas.filter(function (o) { return agora - o.inicio < AJUSTES.clique.duracao; });
   }
 
   /* ---------- LAÇO DE ANIMAÇÃO ---------- */
@@ -390,7 +495,7 @@
     ultimoQuadro = agora;
 
     criarSePrecisar(agora);
-    var temEfeito = rastros.length || redes.length || sinais.length || mouse.forca > 0.01 || mouse.dentro;
+    var temEfeito = rastros.length || redes.length || sinais.length || ondas.length || mouse.forca > 0.01 || mouse.dentro;
     if (temEfeito) {
       desenharTudo(agora);
       sujo = true;
@@ -440,6 +545,7 @@
     var t0 = performance.now();
     proximo = { rastro: t0 + 400, rede: t0 + 1600, sinal: t0 + 3000 };
     ligar();
+    ligarClique();
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) desligar(); else ligar();
     });

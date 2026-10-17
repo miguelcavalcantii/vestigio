@@ -369,3 +369,14 @@ Cópia completa do site antes destas mudanças: pasta `vestigio-site-backup-2026
   de tema, o canvas relê as cores na hora.
 - **Instagram oficial:** @vestigio.br (`js/config.js`, rodapé e dados para o Google).
 - **Horário:** é o definitivo; a etiqueta "a confirmar" saiu.
+
+## Versão 3.4 (17/10/2026: textura "mesa de análise" e onda do clique)
+
+Cópia completa do site antes destas mudanças: pasta `vestigio-site-backup-2026-10-17-v3` (ao lado desta).
+
+- **Textura "mesa de análise"** (substitui as linhas de contorno; `assets/textura-contorno.svg` foi apagado):
+  grade fina com marcas "+", que some nas bordas, em "Como o golpe acontece", "Sobre", bloco final de
+  contato e alerta em destaque. Parte parada: `css/textura-mesa.css` (cores por tema). Parte animada
+  (varredura, rastros curtos e conexões): `js/textura-mesa.js`, objeto `TEMPOS`.
+- **Onda do clique** (`js/textura-fundo.js`, parte 6): clicar ou tocar numa área vazia do fundo solta
+  uma onda; ajustes em `AJUSTES.clique`. Não dispara em botões, links, campos ou textos.

@@ -1,0 +1,114 @@
+/* =========================================================
+   TEXTURA "MESA DE ANÁLISE"
+   ---------------------------------------------------------
+   Substitui as antigas linhas de contorno (textura-contorno.svg).
+   Aparece em 4 lugares:
+     - atrás dos celulares de "Como o golpe acontece" (.demo__stage)
+     - no fundo do "Sobre" (.about)
+     - no bloco final de contato (.cta__core)
+     - no alerta em destaque da página de alertas (.alerta-destaque__core)
+
+   PARTE PARADA (só CSS, funciona sem JavaScript):
+     grade fina de linhas, com uma marca "+" nos cruzamentos
+     principais, como papel milimetrado técnico. As bordas somem
+     num degradê (--mesa-fade, definido em cada lugar).
+   PARTE ANIMADA (js/textura-mesa.js, com a Motion):
+     linha de varredura lenta, rastros curtos de pontos em
+     diagonal (como o símbolo) e, às vezes, uma linha ligando
+     dois pontos. Só anda com a área na tela.
+
+   CORES: a cor de destaque de cada tema. Os valores do claro
+   foram ajustados para a mesma presença visual do escuro.
+   ========================================================= */
+
+/* ---------- TEMA ESCURO ---------- */
+:root {
+  --mesa-rgb: 102, 252, 241;          /* ciano (destaque) */
+  --mesa-alfa: 0.2;                   /* FORÇA da grade parada */
+  --mesa-vivo-alfa: 0.8;              /* FORÇA dos pontos e linhas animados */
+  --mesa-varredura-alfa: 0.07;        /* FORÇA da faixa de varredura */
+
+  /* Um "ladrilho" de 96px: linhas finas a cada 24px, uma linha
+     principal no meio e um "+" no cruzamento principal.
+     Só a forma: a cor vem de --mesa-rgb. */
+  --mesa-ladrilho: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cg fill='none' stroke='%23fff'%3E%3Cpath stroke-opacity='.38' d='M.5 0v96M24.5 0v96M72.5 0v96M0 .5h96M0 24.5h96M0 72.5h96'/%3E%3Cpath stroke-opacity='.7' d='M48.5 0v96M0 48.5h96'/%3E%3Cpath stroke-width='1.6' d='M42.5 48.5h12M48.5 42.5v12'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- TEMA CLARO ---------- */
+[data-theme='light'] {
+  --mesa-rgb: 26, 112, 108;           /* verde-água fechado (o ciano some no claro) */
+  --mesa-alfa: 0.24;
+  --mesa-vivo-alfa: 0.75;
+  --mesa-varredura-alfa: 0.08;
+}
+
+/* ---------- ONDE A TEXTURA SOME (degradê das bordas) ---------- */
+.demo__stage { --mesa-fade: radial-gradient(closest-side, #000 35%, transparent 100%); }
+.about { --mesa-fade: linear-gradient(180deg, #000 0%, transparent 85%); }
+.cta__core,
+.alerta-destaque__core { --mesa-fade: radial-gradient(80% 90% at 100% 0%, #000 30%, transparent 75%); }
+
+/* ---------- GRADE PARADA (pseudo-elemento de cada lugar) ---------- */
+.demo__stage::before,
+.about::after,
+.cta__core::before,
+.alerta-destaque__core::before {
+  background: rgba(var(--mesa-rgb), var(--mesa-alfa));
+  /* duas máscaras somadas: o desenho da grade E o degradê das bordas */
+  -webkit-mask-image: var(--mesa-ladrilho), var(--mesa-fade);
+  mask-image: var(--mesa-ladrilho), var(--mesa-fade);
+  -webkit-mask-size: 96px 96px, 100% 100%;
+  mask-size: 96px 96px, 100% 100%;
+  -webkit-mask-repeat: repeat, no-repeat;
+  mask-repeat: repeat, no-repeat;
+  -webkit-mask-position: 0 0, 0 0;
+  mask-position: 0 0, 0 0;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  opacity: 1;
+}
+
+/* No "Sobre" a grade cobre uma área grande atrás do título: mais suave */
+.about::after,
+.about > .mesa-vivo { opacity: 0.65; }
+
+/* ---------- CAMADA ANIMADA (criada por js/textura-mesa.js) ---------- */
+.mesa-vivo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: var(--mesa-fade);
+  mask-image: var(--mesa-fade);
+}
+
+/* Atrás dos celulares, a grade passa um pouco das bordas (igual à parada) */
+.demo__stage > .mesa-vivo { inset: -8% -10%; }
+
+/* Faixa de varredura: um degradê com uma linha fina na frente */
+.mesa-vivo__varredura {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 160px;
+  opacity: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(var(--mesa-rgb), var(--mesa-varredura-alfa)) 88%,
+    rgba(var(--mesa-rgb), calc(var(--mesa-varredura-alfa) * 4)) 100%);
+  will-change: transform, opacity;
+}
+
+.mesa-vivo__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mesa-vivo__svg circle { fill: rgb(var(--mesa-rgb)); opacity: 0; }
+.mesa-vivo__svg .mesa-vivo__aro { fill: none; stroke: rgb(var(--mesa-rgb)); stroke-width: 1; }
+.mesa-vivo__svg line { stroke: rgb(var(--mesa-rgb)); stroke-width: 1; stroke-linecap: round; opacity: 0; }

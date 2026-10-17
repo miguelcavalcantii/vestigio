@@ -316,16 +316,12 @@ a.service-card__button {
     var(--navy);
 }
 
-/* Linhas de contorno no canto (a mesma textura do bloco final) */
+/* Textura "mesa de análise" no canto (a mesma do bloco final; css/textura-mesa.css) */
 .alerta-destaque__core::before {
   content: '';
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: url('../assets/textura-contorno.svg') right top / cover no-repeat;
-  opacity: calc(0.5 * var(--contour-k));
-  -webkit-mask-image: radial-gradient(80% 90% at 100% 0%, #000 30%, transparent 75%);
-  mask-image: radial-gradient(80% 90% at 100% 0%, #000 30%, transparent 75%);
   pointer-events: none;
 }
 
