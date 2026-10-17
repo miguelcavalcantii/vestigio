@@ -584,18 +584,280 @@ a.service-card__button {
 
 /* =========================================================
    POLÍTICA DE PRIVACIDADE (privacidade.html)
+   ---------------------------------------------------------
+   Texto em ferramentas/modelos/privacidade.html. Leitura
+   confortável: coluna de ~70 caracteres, seções separadas
+   por uma linha fina, índice no topo e tabela que rola na
+   horizontal no celular.
    ========================================================= */
 .legal-page { padding-block: calc(var(--header-h) + var(--space-7)) var(--space-9); }
-.legal-page__body { max-width: 44rem; display: grid; gap: var(--space-5); }
-.legal-page h1 { font-size: var(--fs-xl); }
-.legal-page h2 { font-size: var(--fs-lg); margin-top: var(--space-5); }
-.legal-page .placeholder-note {
-  padding: var(--space-4) var(--space-5);
-  border: 1px dashed var(--hairline-strong);
-  border-radius: 22px;
-  color: var(--text-muted);
-  font-style: italic;
+
+.legal-page__body {
+  max-width: 46rem;
+  display: grid;
+  gap: var(--space-6);
 }
-.legal-page ul { padding-left: 1.25rem; display: grid; gap: var(--space-2); }
-.legal-page .back { display: inline-flex; align-items: center; gap: var(--space-2); }
+
+.legal-page .back { display: inline-flex; align-items: center; gap: var(--space-2); justify-self: start; }
 .legal-page .back .icon { transform: rotate(180deg); }
+
+.legal-page p,
+.legal-page li,
+.legal-page td { line-height: 1.7; }
+
+/* ---------- Topo: data, título e introdução ---------- */
+.legal-topo {
+  display: grid;
+  gap: var(--space-4);
+  padding-bottom: var(--space-6);
+}
+
+.legal-topo h1 { font-size: var(--fs-xl); }
+
+/* "Última atualização" em pílula discreta */
+.legal-topo__data {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  justify-self: start;
+  padding: 0.35rem 0.85rem 0.35rem 0.7rem;
+  border: 1px solid var(--hairline-accent);
+  border-radius: var(--radius-pill);
+  background: rgba(var(--teal-rgb), 0.08);
+}
+
+.legal-topo__data .mono { color: var(--text-muted); letter-spacing: 0.08em; }
+
+/* Celular: a data cabe numa linha só */
+@media (max-width: 479.98px) {
+  .legal-topo__data .mono { letter-spacing: 0.01em; font-size: 0.65rem; }
+}
+
+/* Página de leitura longa: a textura do fundo fica mais suave
+   (continua visível, mas não disputa atenção com o texto) */
+.pagina--privacidade .textura-fundo__pontos { opacity: 0.5; }
+
+.legal-topo__ponto {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-line);
+}
+
+.legal-topo__empresa { color: var(--text-muted); }
+.legal-topo__lead { font-size: var(--fs-md); color: var(--text-body); }
+
+/* ---------- Índice ---------- */
+.legal-indice {
+  padding: var(--space-5);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 20px;
+  background: rgba(var(--surface-rgb), 0.82);
+  box-shadow: var(--highlight);
+}
+
+.legal-indice__titulo {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+.legal-indice__lista {
+  display: grid;
+  gap: 0.15rem var(--space-5);
+}
+
+.legal-indice__lista a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  color: var(--text-body);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color var(--dur-fast) ease;
+}
+
+.legal-indice__lista .mono { color: var(--accent-ink); flex: none; }
+
+@media (hover: hover) and (pointer: fine) {
+  .legal-indice__lista a:hover { color: var(--text); text-decoration: underline; text-decoration-color: var(--hairline-accent); }
+}
+
+@media (min-width: 768px) {
+  .legal-indice { padding: var(--space-5) var(--space-6); }
+  .legal-indice__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Seções ---------- */
+.legal-secao {
+  display: grid;
+  gap: var(--space-4);
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--hairline);
+}
+
+.legal-secao h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2);
+}
+
+.legal-num {
+  flex: none;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--hairline-accent);
+  border-radius: var(--radius-pill);
+  color: var(--accent-ink);
+  font-size: var(--fs-xs);
+  transform: translateY(-0.2em);
+}
+
+.legal-secao h3 {
+  margin-top: var(--space-4);
+  font-size: var(--fs-md);
+  font-stretch: 105%;
+  letter-spacing: -0.01em;
+}
+
+/* Listas com um tracinho verde-água no lugar da bolinha */
+.legal-lista {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.legal-lista > li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.legal-lista > li::before {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  top: 0.85em;
+  width: 0.6rem;
+  height: 1px;
+  background: var(--accent-line);
+}
+
+/* Lista numerada (direitos): números em fonte mono */
+.legal-lista--numerada { counter-reset: direito; }
+.legal-lista--numerada > li { counter-increment: direito; padding-left: 2.2rem; }
+.legal-lista--numerada > li::before {
+  content: counter(direito, decimal-leading-zero);
+  top: 0.2em;
+  width: auto;
+  height: auto;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-ink);
+}
+
+/* ---------- Tabela (rola na horizontal no celular) ---------- */
+.legal-tabela {
+  overflow-x: auto;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 16px;
+  background: rgba(var(--surface-rgb), 0.88);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.legal-tabela:focus-visible { outline-offset: 2px; }
+
+.legal-tabela table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.legal-tabela th {
+  padding: 0.85rem 1.1rem;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  background: rgba(var(--teal-rgb), 0.08);
+}
+
+.legal-tabela td {
+  padding: 0.9rem 1.1rem;
+  vertical-align: top;
+  border-top: 1px solid var(--hairline);
+  color: var(--text-body);
+}
+
+.legal-tabela td:first-child { width: 44%; color: var(--text); font-weight: 500; }
+
+.legal-tabela__dica {
+  margin-top: calc(var(--space-2) * -1);
+  color: var(--text-faint);
+}
+
+@media (min-width: 640px) {
+  .legal-tabela__dica { display: none; }
+}
+
+/* ---------- "Voltar ao topo" (discreto, no fim de cada seção) ---------- */
+.legal-subir {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: var(--space-2);
+  color: var(--text-faint);
+  font-size: 0.8125rem;
+  text-decoration: none;
+  transition: color var(--dur-fast) ease;
+}
+
+.legal-subir .icon { width: 0.95em; height: 0.95em; }
+
+@media (hover: hover) and (pointer: fine) {
+  .legal-subir:hover { color: var(--accent-ink); }
+}
+
+/* ---------- Contato (seção 17) ---------- */
+.legal-contato {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.legal-contato > div {
+  display: grid;
+  gap: 0.15rem;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: rgba(var(--surface-rgb), 0.35);
+}
+
+.legal-contato dt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.legal-contato dt .icon { color: var(--accent-2); }
+.legal-contato dd { color: var(--text-body); overflow-wrap: break-word; }
+
+@media (min-width: 640px) {
+  .legal-contato { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
