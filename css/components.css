@@ -1,0 +1,1494 @@
+/* =========================================================
+   COMPONENTES
+   ---------------------------------------------------------
+   Peças reutilizáveis: ícones, botões, menu flutuante,
+   menu do celular, atalhos (chips), selos, abas, cards de
+   serviço, painel de detalhe, acordeão e botão flutuante.
+   ========================================================= */
+
+/* ---------- ÍCONES ---------- */
+/* Inseridos pelo JavaScript em todo elemento com data-icon="nome" */
+[data-icon] {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 1.15em;
+  height: 1.15em;
+  stroke: currentColor;
+  stroke-width: 1.5;            /* traço fino e preciso */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* O ícone do WhatsApp é preenchido e é o único lugar com verde */
+.wa-icon .icon {
+  fill: var(--whatsapp);
+  stroke: none;
+  width: 1.3em;
+  height: 1.3em;
+}
+
+/* Dentro do botão ciano o verde some no fundo: o ícone fica escuro */
+.btn--primary .wa-icon .icon {
+  fill: currentColor;
+}
+
+/* ---------- BOTÕES (pílulas) ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3rem;
+  padding: 0 1.375rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  font-stretch: 106%;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  /* isolation + overflow: a "tinta" do hover fica presa dentro do botão
+     e passa por baixo do texto */
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform var(--dur-press) var(--ease-out),
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-base) var(--ease-out),
+    color var(--dur-fast) ease;
+}
+
+/* Sensação de clique: o botão "afunda" um pouco */
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* EFEITO DE HOVER QUE NASCE ONDE O MOUSE ENTRA
+   Um círculo cresce a partir do ponto exato em que o cursor tocou o
+   botão (--bx e --by vêm do JS) e "pinta" o botão por dentro.
+   Ao sair, ele encolhe de volta para o ponto de saída. */
+.btn::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: var(--bx, 50%);
+  top: var(--by, 50%);
+  width: 260%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--btn-ink, rgba(var(--cyan-rgb), 0.12));
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 520ms var(--ease-out);
+  pointer-events: none;
+}
+
+/* Brilho fino que atravessa o botão no hover (só no botão principal) */
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+/* Bolinha com ícone dentro do botão ("botão dentro do botão") */
+.btn__orb {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin-right: -0.75rem;       /* encosta na borda direita */
+  border-radius: 50%;
+  background: rgba(11, 12, 16, 0.12);
+  transition: transform var(--dur-base) var(--ease-fluid), background-color var(--dur-fast) ease;
+}
+
+.btn__orb .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: rgba(var(--cyan-rgb), 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 24px -12px rgba(var(--shadow-rgb), calc(0.7 * var(--shadow-k)));
+  --btn-ink: #B8FEF9;            /* "tinta" do hover: ciano mais claro */
+}
+
+/* O único botão com brilho: a ação principal do hero */
+.hero .btn--primary {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 12px 32px -12px var(--glow-accent);
+}
+
+.btn--ghost {
+  color: var(--text);
+  border-color: var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.03);
+  --btn-ink: rgba(var(--teal-rgb), 0.22);
+}
+
+.btn--ghost .btn__orb {
+  background: rgba(var(--ink-rgb), 0.08);
+}
+
+/* Botão claro, usado sobre o bloco azul do final */
+.btn--light {
+  background: var(--text);
+  color: var(--navy);
+  box-shadow: 0 16px 40px -14px rgba(var(--shadow-rgb), calc(0.8 * var(--shadow-k)));
+}
+
+.btn--light .btn__orb {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .btn--primary:hover {
+    color: var(--on-accent);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 14px 34px -12px var(--glow-accent);
+  }
+
+  .btn--primary:hover::after {
+    transform: translateX(120%);
+    transition: transform 700ms var(--ease-out);
+  }
+
+  .btn--ghost:hover {
+    color: var(--text);
+    border-color: rgba(var(--teal-rgb), 0.6);
+  }
+
+  /* A bolinha "escapa" na diagonal: tensão dentro do botão */
+  .btn:hover .btn__orb {
+    transform: translate(2px, -1px) scale(1.06);
+  }
+}
+
+.btn--sm { min-height: 2.5rem; padding: 0 1.125rem; }
+.btn--sm .btn__orb { width: 1.75rem; height: 1.75rem; margin-right: -0.625rem; }
+.btn--lg { min-height: 3.5rem; padding: 0 1.625rem; font-size: var(--fs-base); }
+.btn--lg .btn__orb { width: 2.375rem; height: 2.375rem; margin-right: -1rem; }
+.btn--block { width: 100%; }
+
+/* ---------- MENU FLUTUANTE ("ilha") ---------- */
+.scroll-sentinel {
+  position: absolute;
+  top: 0;
+  height: 40px;
+  width: 1px;
+}
+
+.site-header {
+  position: fixed;
+  top: 0.75rem;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  padding-inline: 0.75rem;
+  pointer-events: none;         /* só a ilha recebe cliques */
+}
+
+.island {
+  position: relative;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  /* mesma largura do conteúdo: o menu alinha com o resto da página */
+  max-width: var(--container);
+  height: 3.75rem;
+  margin-inline: auto;
+  padding: 0 0.5rem 0 1.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--header-bg);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--highlight);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  transition:
+    background-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease,
+    border-color var(--dur-base) ease;
+}
+
+/* Barra fina de progresso da leitura, na borda de baixo da ilha.
+   O JS estica (scaleX) de 0 a 1 conforme a página rola. */
+.island__progress {
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-line) 20%, var(--accent-line) 80%, transparent);
+  transform: scaleX(var(--leitura, 0));
+  transform-origin: left;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Depois de rolar: a ilha fica mais sólida e ganha sombra */
+.site-header.is-scrolled .island {
+  background: var(--header-bg-solid);
+  border-color: var(--hairline-strong);
+  box-shadow: var(--highlight), var(--shadow-soft);
+}
+
+.brand {
+  display: inline-flex;
+  margin-right: auto;
+  border-radius: 8px;
+}
+
+.brand .logo {
+  height: 1.75rem;
+  width: auto;
+  color: var(--logo-color);     /* o logo usa currentColor: muda com o tema */
+}
+
+.main-nav {
+  display: none;
+}
+
+.main-nav__list {
+  position: relative;
+  display: flex;
+  gap: 0.125rem;
+}
+
+/* Pílula que DESLIZA até o link em que o mouse está (o JS posiciona).
+   Em vez de cada link acender sozinho, uma única forma viaja entre eles. */
+.nav-glide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--glide-w, 0);
+  transform: translateX(var(--glide-x, 0));
+  border-radius: var(--radius-pill);
+  background: rgba(var(--teal-rgb), 0.14);
+  border: 1px solid rgba(var(--teal-rgb), 0.3);
+  opacity: 0;
+  /* curva com "passada" (vai um pouco além e volta): efeito líquido */
+  transition:
+    transform 520ms var(--ease-elastic),
+    width 520ms var(--ease-elastic),
+    opacity var(--dur-fast) ease;
+  pointer-events: none;
+}
+
+.nav-glide-item {
+  display: contents;
+}
+
+.main-nav__list.is-gliding .nav-glide {
+  opacity: 1;
+}
+
+.main-nav a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 0.875rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+}
+
+/* Link da seção que está na tela agora: texto claro + ponto ciano embaixo */
+.main-nav a[aria-current='true'] {
+  color: var(--text);
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.3rem;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--accent-line);
+  transform: scale(0);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.main-nav a[aria-current='true']::after {
+  transform: scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .main-nav a:hover { color: var(--text); }
+}
+
+.island__cta {
+  display: none;
+}
+
+/* Botão do menu (celular): duas linhas que viram um X */
+.menu-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle__bars {
+  position: relative;
+  width: 18px;
+  height: 9px;
+}
+
+.menu-toggle__bars span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform var(--dur-base) var(--ease-fluid);
+}
+
+.menu-toggle__bars span:first-child { top: 0; }
+.menu-toggle__bars span:last-child { bottom: 0; }
+
+.menu-toggle[aria-expanded='true'] .menu-toggle__bars span:first-child {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded='true'] .menu-toggle__bars span:last-child {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* ---------- BOTÃO DE TEMA (lua no escuro, sol no claro) ----------
+   Mesmo tamanho do botão do menu. Os dois ícones ficam um em cima
+   do outro: o que não vale some girando 90 graus. */
+.theme-toggle {
+  display: none;               /* no celular ele fica no rodapé do menu */
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.theme-toggle__icon {
+  grid-area: 1 / 1;
+  display: grid;
+  transition:
+    opacity 450ms var(--ease-out),
+    transform 450ms var(--ease-out);
+}
+
+.theme-toggle .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.theme-toggle__sun,
+[data-theme='light'] .theme-toggle__moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+[data-theme='light'] .theme-toggle__sun {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover { background: rgba(var(--ink-rgb), 0.12); }
+}
+
+@media (min-width: 640px) {
+  .island__cta { display: inline-flex; }
+}
+
+@media (min-width: 1024px) {
+  .site-header { top: 1rem; }
+}
+
+/* Menu completo (links, tema e urgência na ilha) a partir de 1280px.
+   Abaixo disso vale o menu de tela cheia (botão de duas linhas).
+   Versão 3.0: o menu ganhou "Isso é golpe?", "Alertas" e o botão
+   "Caí em um golpe", que não cabem na ilha com menos de 1280px. */
+@media (min-width: 1280px) {
+  .main-nav { display: block; }
+  .menu-toggle { display: none; }
+  .island .theme-toggle { display: inline-grid; }
+  .brand { margin-right: 0; }
+  .main-nav { margin-inline: auto; }
+}
+
+/* ---------- MENU DO CELULAR (tela cheia, vidro navy) ---------- */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  padding: calc(var(--header-h) + var(--space-6)) var(--gutter) var(--space-6);
+  background: var(--mobile-menu-bg);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu__list li {
+  overflow: hidden;            /* "máscara": os links sobem de dentro dela */
+}
+
+.mobile-menu__list a {
+  display: block;
+  padding: var(--space-3) 0;
+  color: var(--text);
+  font-size: clamp(2rem, 1.4rem + 4vw, 3rem);
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+.mobile-menu__footer {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+}
+
+.mobile-menu__note {
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--muted-on-menu);
+}
+
+/* Linha "Aparência" com o botão de tema, no rodapé do menu do celular */
+.mobile-menu__theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--hairline);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mobile-menu__theme .theme-toggle {
+  display: inline-grid;
+}
+
+@media (min-width: 1280px) {
+  .mobile-menu { display: none !important; }
+}
+
+/* ---------- ATALHOS (chips) ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0 0.95rem 0 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  background: var(--chip-bg);
+  color: var(--text-body);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-press) var(--ease-out);
+}
+
+.chip .icon {
+  color: var(--accent-2);
+  width: 1rem;
+  height: 1rem;
+}
+
+.chip:active {
+  transform: scale(0.96);
+}
+
+.chip--more {
+  padding: 0 0.75rem 0 0.95rem;
+  background: transparent;
+  color: var(--accent-ink);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover {
+    background: var(--surface);
+    border-color: rgba(var(--cyan-rgb), 0.36);
+    color: var(--text);
+  }
+}
+
+/* ---------- SELOS DE CONFIANÇA ---------- */
+.seals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.seals li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.seals .icon {
+  color: var(--accent-2);
+}
+
+/* ---------- STATUS (pílula pequena) ---------- */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--pill-bg);
+  border: 1px solid rgba(var(--cyan-rgb), 0.28);
+  color: var(--accent-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- ABAS (controle segmentado) ---------- */
+.tabs {
+  margin-bottom: var(--space-6);
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  overflow: hidden;
+}
+
+.tabs__list {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+  gap: 0.125rem;
+  padding: 0.375rem;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--ink-rgb), 0.035);
+  border: 1px solid var(--hairline);
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-padding-inline: 0.5rem;
+}
+
+.tabs__list::-webkit-scrollbar {
+  display: none;
+}
+
+/* No celular, as bordas somem em degradê: mostra que dá para arrastar */
+@media (max-width: 1023px) {
+  .tabs__list {
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 85%, transparent 100%);
+  }
+}
+
+.tab {
+  position: relative;
+  z-index: 1;                  /* fica acima da pílula azul que desliza */
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: 0 1.125rem;
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color var(--dur-fast) ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab[aria-selected='true'] {
+  color: var(--on-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover { color: var(--text); }
+  .tab[aria-selected='true']:hover { color: var(--on-accent); }
+}
+
+/* Quantidade de serviços na aba */
+.tab__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.5rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--ink-rgb), 0.08);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pílula azul que desliza até a aba escolhida */
+.tabs__indicator {
+  position: absolute;
+  top: 0.375rem;
+  left: 0;
+  height: calc(100% - 0.75rem);
+  width: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition:
+    transform 560ms var(--ease-elastic),
+    width 560ms var(--ease-elastic);
+  pointer-events: none;
+}
+
+/* ---------- CARD DE SERVIÇO ---------- */
+.service-card {
+  position: relative;
+  border-radius: var(--radius-shell);
+  transition: transform var(--dur-base) var(--ease-fluid);
+}
+
+.service-card .bezel__core {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.service-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Ícone dentro de um círculo navy */
+.service-card__icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.176);
+  color: var(--accent-ink);
+}
+
+.service-card__icon .icon {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.service-card h3 {
+  font-size: 1.1875rem;
+  line-height: 1.22;
+  margin-top: var(--space-3);
+}
+
+/* O botão cobre o card inteiro (área de clique maior),
+   mas o título continua sendo um título de verdade */
+.service-card__button {
+  text-align: left;
+  font-weight: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  font-stretch: inherit;
+  line-height: inherit;
+}
+
+.service-card__button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-shell);
+  z-index: 2;
+}
+
+.service-card__button:focus-visible {
+  outline: none;
+}
+
+.service-card__button:focus-visible::after {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+.service-card p {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.service-card__more {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.service-card__more .btn__orb {
+  margin-right: 0;
+  background: rgba(var(--ink-rgb), 0.07);
+  color: var(--accent-ink);
+}
+
+.service-card:active {
+  transform: scale(0.985);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .service-card:hover .service-card__more .btn__orb {
+    background: var(--accent);
+    color: var(--on-accent);
+    transform: translate(2px, -1px) scale(1.06);
+  }
+}
+
+/* ---------- PAINEL DE DETALHE (dialog) ---------- */
+.sheet {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-body);
+  overflow: hidden;
+}
+
+/* Fundo escurecido atrás do painel */
+.sheet::backdrop {
+  background: var(--backdrop);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity var(--dur-base) ease;
+}
+
+.sheet.is-open::backdrop {
+  opacity: 1;
+}
+
+/* Celular: folha que sobe de baixo */
+.sheet__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 92dvh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 70%);
+  border: 1px solid var(--hairline-strong);
+  border-bottom: 0;
+  border-radius: var(--radius-shell) var(--radius-shell) 0 0;
+  box-shadow: var(--highlight), 0 -30px 60px -20px rgba(var(--shadow-rgb), calc(0.8 * var(--shadow-k)));
+  overflow: hidden;
+}
+
+/* "Alça" no topo da folha (padrão de celular) */
+.sheet__panel::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 40px;
+  height: 4px;
+  margin-left: -20px;
+  border-radius: 4px;
+  background: var(--hairline-strong);
+}
+
+/* Telas maiores: painel lateral flutuante à direita */
+@media (min-width: 768px) {
+  .sheet__panel {
+    top: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: auto;
+    width: min(36rem, calc(100% - 1.5rem));
+    max-height: none;
+    border-bottom: 1px solid var(--hairline-strong);
+    border-radius: var(--radius-shell);
+    box-shadow: var(--highlight), -30px 0 80px -20px rgba(var(--shadow-rgb), calc(0.85 * var(--shadow-k)));
+  }
+
+  .sheet__panel::before {
+    display: none;
+  }
+}
+
+.sheet__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.sheet__icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  color: var(--accent-ink);
+}
+
+.sheet__icon .icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.sheet__heading {
+  flex: 1;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.sheet__heading h2 {
+  font-size: var(--fs-lg);
+  line-height: 1.2;
+}
+
+.sheet__heading h2:focus {
+  outline: none;
+}
+
+.sheet__meta {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.sheet__close {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  align-self: flex-start;
+  border-radius: 50%;
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--text-muted);
+  transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease, transform var(--dur-press) var(--ease-out);
+}
+
+.sheet__close .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.sheet__close:active {
+  transform: scale(0.92);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sheet__close:hover {
+    color: var(--text);
+    background: rgba(var(--ink-rgb), 0.12);
+  }
+}
+
+.sheet__body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-5);
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+}
+
+.sheet__section h3 {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  font-stretch: 106%;
+  letter-spacing: 0;
+  color: var(--text);
+  margin-bottom: var(--space-3);
+}
+
+.sheet__section > p {
+  color: var(--text-body);
+}
+
+/* Passos numerados do "Como funciona" */
+.sheet__steps {
+  display: grid;
+  gap: var(--space-3);
+  counter-reset: passo;
+}
+
+.sheet__steps li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: var(--space-3);
+  counter-increment: passo;
+}
+
+.sheet__steps li::before {
+  content: counter(passo);
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-ink);
+}
+
+/* Lista do que precisamos (dentro de um cartão) */
+.sheet__needs {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: 18px;
+  background: rgba(var(--ink-rgb), 0.035);
+  border: 1px solid var(--hairline);
+}
+
+.sheet__needs li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+.sheet__needs .icon {
+  margin-top: 0.15rem;
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent-2);
+}
+
+/* Aviso fixo: nunca pedimos senhas */
+.sheet__warning {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4);
+  border-radius: 18px;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.24);
+  color: var(--warning-text);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.sheet__warning .icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--accent-2);
+}
+
+/* Observação extra de alguns serviços */
+.sheet__note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.sheet__note .icon {
+  margin-top: 0.15rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.sheet__footer {
+  padding: var(--space-4) var(--space-5) calc(var(--space-4) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--hairline);
+  background: var(--sheet-footer-bg);
+}
+
+.sheet__footer .btn {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+  min-height: 3.5rem;
+}
+
+/* ---------- ACORDEÃO (dúvidas) ---------- */
+/* Lista com divisórias finas (sem caixas): cada pergunta é uma linha */
+.accordion {
+  border-top: 1px solid var(--surface);
+}
+
+.accordion__item {
+  border-bottom: 1px solid var(--surface);
+}
+
+.accordion h3 {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 0;
+  font-stretch: 100%;
+}
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) 0;
+  text-align: left;
+  font-size: var(--fs-md);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.accordion__icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--text-muted);
+  transition:
+    transform var(--dur-base) var(--ease-fluid),
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.accordion__trigger[aria-expanded='true'] .accordion__icon {
+  transform: rotate(180deg);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .accordion__trigger:hover .accordion__icon { color: var(--text); }
+}
+
+/* Animar a altura com grid-template-rows (0fr → 1fr) */
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-base) var(--ease-fluid);
+}
+
+.accordion__panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.accordion__content {
+  overflow: hidden;
+  min-height: 0;
+  opacity: 0;
+  transition: opacity var(--dur-fast) ease;
+}
+
+.accordion__panel.is-open .accordion__content {
+  opacity: 1;
+  transition-delay: 80ms;
+}
+
+.accordion__content p {
+  padding: 0 3.5rem var(--space-5) 0;
+  max-width: 62ch;
+  color: var(--text-muted);
+}
+
+/* ---------- BOTÃO FLUTUANTE DO WHATSAPP ---------- */
+.wa-float {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: var(--z-float);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 3.5rem;
+  padding: 0 1.05rem;
+  border-radius: var(--radius-pill);
+  background: var(--wa-float-bg);
+  border: 1px solid var(--hairline-strong);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--highlight), var(--shadow-float);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  /* escondido até rolar a página */
+  opacity: 0;
+  transform: translateY(16px) scale(0.94);
+  pointer-events: none;
+  transition:
+    opacity var(--dur-fast) ease,
+    transform var(--dur-base) var(--ease-fluid),
+    background-color var(--dur-fast) ease;
+}
+
+.wa-float .wa-icon .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* No celular só o ícone; no desktop aparece o texto */
+.wa-float__label {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wa-float__label { display: inline; }
+}
+
+.wa-float.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.wa-float:active {
+  transform: scale(0.95);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wa-float:hover { background: var(--surface-hover); color: var(--text); }
+}
+
+/* Com o painel de serviço aberto, o botão flutuante sai de cena */
+.sheet-open .wa-float {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- MOVIMENTO REDUZIDO NOS COMPONENTES ---------- */
+/* Antes era @media (prefers-reduced-motion: reduce). Agora só vale com a
+   classe "respeitar-movimento" no <html>, que o script do <head> coloca
+   APENAS se CONFIG.animacoesSempre for false E o sistema pedir para
+   reduzir movimento. Com animacoesSempre = true, estas regras dormem. */
+html.respeitar-movimento .btn:active,
+html.respeitar-movimento .chip:active,
+html.respeitar-movimento .service-card:active,
+html.respeitar-movimento .wa-float:active,
+html.respeitar-movimento .sheet__close:active { transform: none; }
+
+html.respeitar-movimento .service-card:hover { transform: none; }
+html.respeitar-movimento .btn:hover .btn__orb,
+html.respeitar-movimento .service-card:hover .service-card__more .btn__orb { transform: none; }
+html.respeitar-movimento .wa-float { transform: none; }
+html.respeitar-movimento .accordion__panel { transition: none; }
+html.respeitar-movimento .tabs__indicator { transition: none; }
+html.respeitar-movimento .theme-toggle .icon { transition: none; }
+
+/* =========================================================
+   BORDA QUE ACENDE ONDE O MOUSE PASSA ("lanterna" nas bordas)
+   ---------------------------------------------------------
+   Em vez de uma bola seguindo o cursor, as BORDAS dos quadros
+   próximos ao mouse acendem em ciano/verde-água, como se uma
+   lanterna passasse por cima. Funciona em grupo: ao passar
+   entre dois cards, a borda dos dois vizinhos acende um pouco.
+
+   Como funciona:
+   - O JS marca os quadros com data-spot e os grupos com
+     data-spot-group, e guarda a posição do mouse em --mx/--my
+     de cada quadro.
+   - O ::after desenha um círculo de luz nessa posição, mas a
+     "máscara" deixa aparecer só a faixa de 1px da borda.
+   ========================================================= */
+[data-spot] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spot]::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: 3;
+  padding: 1px;                       /* espessura da borda acesa */
+  border-radius: inherit;
+  background: radial-gradient(
+    300px circle at var(--mx, -500px) var(--my, -500px),
+    var(--spot-edge),
+    var(--spot-edge-2) 40%,
+    transparent 70%
+  );
+  /* deixa visível só a borda: "conteúdo" menos "caixa inteira" */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
+
+/* Brilho interno bem fraco, também na posição do mouse */
+[data-spot]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, -500px) var(--my, -500px),
+    var(--spot-glow),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-spot-group]:hover [data-spot]::after,
+  [data-spot-group]:hover [data-spot]::before {
+    opacity: 1;
+  }
+}
+
+/* Quem pediu "reduzir movimento" não ganha o efeito
+   (só vale com a classe respeitar-movimento: veja base.css) */
+html.respeitar-movimento [data-spot]::after,
+html.respeitar-movimento [data-spot]::before { display: none; }
+
+/* =========================================================
+   GELATINA: quando o efeito está ligado (classe .gelatina no
+   <html>, colocada pelo js/interacoes.js), o "afundar" do clique
+   feito por CSS sai de cena, porque a gelatina já achata o botão.
+   ========================================================= */
+.gelatina .btn:active,
+.gelatina .chip:active,
+.gelatina .service-card:active,
+.gelatina .wa-float:active,
+.gelatina .sheet__close:active {
+  transform: none;
+}
+
+/* O card visível do botão flutuante usa transform para aparecer;
+   mantemos isso quando ele está visível */
+.gelatina .wa-float.is-visible:active {
+  transform: none;
+}
+
+/* Cards de serviço: dão profundidade para a inclinação 3D do miolo */
+.service-card {
+  perspective: 900px;
+}
+
+.service-card .bezel__core {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* =========================================================
+   AVISO DE URGÊNCIA ("Casos urgentes: atendimento fora do horário")
+   ---------------------------------------------------------
+   Fica junto do horário: no contato (.urgencia) e no rodapé
+   (.urgencia--compacta). Sinal verde-água com dois anéis que
+   pulsam devagar (js/destaques.js, parte 2). Sóbrio, sem vermelho.
+   ========================================================= */
+.urgencia {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, rgba(var(--teal-rgb), calc(0.12 * var(--glow-k))), transparent 70%),
+    rgba(var(--surface-rgb), 0.45);
+  box-shadow: var(--highlight);
+}
+
+/* Sinal: núcleo fixo + 2 anéis que crescem e somem */
+.urgencia__sinal {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(var(--teal-rgb), 0.14);
+}
+
+.urgencia__nucleo {
+  position: relative;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent-line);
+  box-shadow: 0 0 12px rgba(var(--cyan-rgb), calc(0.6 * var(--glow-k)));
+}
+
+.urgencia__anel {
+  position: absolute;
+  inset: 0.35rem;
+  border-radius: 50%;
+  border: 1px solid var(--accent-line);
+  opacity: 0;                     /* sem animação, os anéis não aparecem */
+}
+
+.urgencia__texto {
+  display: grid;
+  gap: 0.15rem;
+  line-height: 1.4;
+}
+
+.urgencia__texto strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.urgencia__texto span {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.urgencia__link {
+  grid-column: 1 / -1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(var(--cyan-rgb), 0.32);
+  border-radius: var(--radius-pill);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  background: rgba(var(--teal-rgb), 0.1);
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease, transform var(--dur-press) var(--ease-out);
+}
+
+.urgencia__link:active { transform: scale(0.97); }
+
+.urgencia__seta .icon {
+  width: 1em;
+  height: 1em;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .urgencia__link:hover {
+    color: var(--text);
+    background: rgba(var(--teal-rgb), 0.2);
+    border-color: var(--accent-line);
+  }
+  .urgencia__link:hover .urgencia__seta .icon,
+  .urgencia--compacta:hover .urgencia__seta .icon { transform: translate(2px, -2px); }
+}
+
+@media (min-width: 640px) {
+  .urgencia { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .urgencia__link { grid-column: auto; }
+}
+
+/* Versão compacta (rodapé): o cartão inteiro é o link */
+.urgencia--compacta {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--space-3);
+  margin-top: 0;
+  padding: 0.7rem 0.9rem 0.7rem 0.7rem;
+  border-radius: 16px;
+  max-width: 22rem;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color var(--dur-fast) ease;
+}
+
+.urgencia--compacta .urgencia__sinal { width: 2.25rem; height: 2.25rem; }
+.urgencia--compacta .urgencia__texto span { font-size: 0.8125rem; }
+.urgencia--compacta .urgencia__seta { color: var(--accent-ink); }
+
+@media (hover: hover) and (pointer: fine) {
+  .urgencia--compacta:hover { border-color: var(--accent-line); color: inherit; }
+}

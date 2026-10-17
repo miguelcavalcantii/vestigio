@@ -1,0 +1,2419 @@
+/* =========================================================
+   FERRAMENTAS (versão 3.0)
+   ---------------------------------------------------------
+   Peças novas, todas com as MESMAS variáveis de cor do site
+   (css/variables.css), então funcionam nos dois temas:
+   1. Menu: botão "Serviços", painel de serviços, urgência
+   2. Menu do celular: urgência no topo e sanfona de serviços
+   3. Busca de serviços ("Digite o que aconteceu")
+   4. Painéis: detalhes extras e "Primeiros 30 minutos"
+   5. Botão "voltar ao topo" e opções do botão flutuante
+   6. Aviso rápido ("Link copiado")
+   (as partes do verificador e do montador ficam mais abaixo)
+   ========================================================= */
+
+/* =========================================================
+   1. MENU DO COMPUTADOR
+   ========================================================= */
+
+/* Botão "Serviços" (mesmo visual dos links do menu + setinha) */
+.main-nav__trigger {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 2.5rem;
+  padding: 0 0.7rem 0 0.875rem;
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition: color var(--dur-fast) ease;
+}
+
+.main-nav__chevron .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  transition: transform var(--dur-base) var(--ease-fluid);
+}
+
+.main-nav__trigger[aria-expanded='true'] .main-nav__chevron .icon {
+  transform: rotate(180deg);
+}
+
+.main-nav__trigger[aria-expanded='true'],
+.main-nav__trigger.is-atual {
+  color: var(--text);
+}
+
+/* Ponto ciano da seção atual (igual ao dos links) */
+.main-nav__trigger::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.3rem;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--accent-line);
+  transform: scale(0);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.main-nav__trigger.is-atual::after {
+  transform: scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .main-nav__trigger:hover { color: var(--text); }
+}
+
+/* Link de reserva "Serviços" (só aparece sem JavaScript; veja o <noscript>) */
+.main-nav .main-nav__semjs {
+  display: none;
+}
+
+/* "Sobre" e "Contato" só aparecem no menu das telas bem largas
+   (continuam no menu do celular, no rodapé e no botão de contato) */
+.main-nav__extra {
+  display: none;
+}
+
+@media (min-width: 1600px) {
+  .main-nav__extra { display: list-item; }
+}
+
+/* ---------- Botão de urgência "Caí em um golpe" ---------- */
+.urgente {
+  display: none;              /* no celular ele fica no topo do menu de tela cheia */
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  min-height: 2.5rem;
+  padding: 0 1rem 0 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(var(--teal-rgb), 0.45);
+  background: rgba(var(--teal-rgb), 0.1);
+  color: var(--text);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-stretch: 106%;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
+}
+
+/* A palavra "agora" só cabe nas telas bem largas */
+.urgente__extra {
+  display: none;
+}
+
+@media (min-width: 1600px) {
+  .urgente__extra { display: inline; }
+}
+
+/* Ponto verde-água com o mesmo "radar" do rótulo do hero (sem vermelho) */
+.urgente__dot {
+  position: relative;
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-line);
+}
+
+.motion-ok .urgente__dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-line);
+  animation: radar 2.6s var(--ease-out) infinite;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .urgente:hover {
+    background: rgba(var(--teal-rgb), 0.18);
+    border-color: var(--accent-line);
+  }
+}
+
+@media (min-width: 1280px) {
+  .island .urgente { display: inline-flex; }
+}
+
+/* ---------- Painel de serviços ("mega menu") ----------
+   Fica logo abaixo da ilha, com a mesma largura do conteúdo
+   e o mesmo vidro da ilha. */
+.mega {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0.75rem;
+  right: 0.75rem;
+  max-width: var(--container);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17rem;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-shell);
+  background: var(--header-bg-solid);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: var(--highlight), var(--shadow-soft);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  pointer-events: auto;
+  max-height: calc(100dvh - var(--header-h) - 1.5rem);
+  overflow-y: auto;
+}
+
+.mega[hidden] {
+  display: none;
+}
+
+/* "Ponte" invisível entre o botão e o painel: o mouse não "cai" no vão */
+.mega::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -0.75rem;
+  height: 0.75rem;
+}
+
+.mega__cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-4) var(--space-5) var(--space-5);
+}
+
+.mega__grupo + .mega__grupo {
+  margin-top: var(--space-5);
+}
+
+/* Rótulo da categoria (mono) + quantidade */
+.mega__cat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0 0.5rem 0.6rem;
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.mega__cat .mono {
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+.mega__cat .mega__qtd {
+  color: var(--accent-ink);
+}
+
+.mega__lista {
+  display: grid;
+  gap: 2px;
+}
+
+.mega__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 12px;
+  color: var(--text-body);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+/* Ícone do serviço num disco navy (como nos cards) */
+.mega__item-icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.176);
+  color: var(--accent-ink);
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+
+.mega__item-icone .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.mega__item:focus-visible {
+  outline-offset: 0;
+  background: rgba(var(--ink-rgb), 0.05);
+  color: var(--text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mega__item:hover {
+    background: rgba(var(--ink-rgb), 0.05);
+    color: var(--text);
+  }
+
+  .mega__item:hover .mega__item-icone {
+    background: var(--accent);
+    border-color: transparent;
+    color: var(--on-accent);
+  }
+}
+
+/* Coluna de destaque à direita */
+.mega__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mega__urgente {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-radius: calc(var(--radius-shell) - var(--space-2));
+  background:
+    radial-gradient(120% 70% at 0% 0%, rgba(var(--teal-rgb), calc(0.3 * var(--glow-k))), transparent 60%),
+    linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--hairline-accent);
+  box-shadow: var(--highlight);
+}
+
+.mega__urgente-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mega__urgente-tag .mono {
+  color: var(--accent-ink);
+  letter-spacing: 0.12em;
+}
+
+.mega__urgente-titulo {
+  color: var(--text);
+  font-size: 1.3125rem;
+  font-weight: 600;
+  font-stretch: 112%;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.mega__urgente-texto {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.mega__urgente .btn {
+  margin-top: auto;
+  justify-content: space-between;
+}
+
+.mega__todos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 3.25rem;
+  padding: 0 0.6rem 0 1.1rem;
+  border-radius: calc(var(--radius-shell) - var(--space-2));
+  background: rgba(var(--ink-rgb), 0.035);
+  border: 1px solid var(--hairline);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+
+.mega__todos .btn__orb {
+  margin-right: 0;
+  background: rgba(var(--ink-rgb), 0.07);
+  color: var(--accent-ink);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mega__todos:hover {
+    color: var(--text);
+    background: rgba(var(--ink-rgb), 0.06);
+    border-color: rgba(var(--teal-rgb), 0.45);
+  }
+
+  .mega__todos:hover .btn__orb {
+    background: var(--accent);
+    color: var(--on-accent);
+    transform: translate(2px, -1px) scale(1.06);
+  }
+}
+
+/* =========================================================
+   2. MENU DO CELULAR
+   ========================================================= */
+.mobile-menu__top {
+  margin-bottom: var(--space-5);
+}
+
+/* Urgência no topo do menu: uma faixa larga, fácil de tocar */
+.urgente--menu {
+  display: flex;
+  width: 100%;
+  min-height: 3.5rem;
+  gap: 0.75rem;
+  padding: 0 1rem 0 1.15rem;
+  border-radius: 18px;
+  font-size: var(--fs-base);
+}
+
+.urgente--menu .urgente__seta {
+  margin-left: auto;
+  color: var(--accent-ink);
+}
+
+/* Itens principais um pouco menores (o menu ganhou dois itens) */
+.mobile-menu__list > li > a,
+.mobile-menu__acc {
+  font-size: clamp(1.75rem, 1.3rem + 3vw, 2.75rem);
+}
+
+/* "Serviços": botão da sanfona, com o mesmo visual dos links grandes */
+.mobile-menu__acc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-3) 0;
+  color: var(--text);
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu__acc-icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--text-muted);
+  letter-spacing: 0;
+  transition:
+    transform var(--dur-base) var(--ease-fluid),
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.mobile-menu__acc-icon .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.mobile-menu__acc[aria-expanded='true'] .mobile-menu__acc-icon {
+  transform: rotate(180deg);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* A lista abre "esticando" (0fr → 1fr), como as dúvidas */
+.mobile-menu__sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-base) var(--ease-fluid);
+}
+
+.mobile-menu__sub.is-open {
+  grid-template-rows: 1fr;
+}
+
+.mobile-menu__sub-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mobile-menu__list .mobile-menu__sub li {
+  overflow: visible;
+}
+
+.mobile-menu__cat {
+  padding: var(--space-3) 0 var(--space-2);
+}
+
+.mobile-menu__cat .mono {
+  margin-bottom: var(--space-2);
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+.mobile-menu__list .mobile-menu__servico {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0.5rem 0;
+  color: var(--text-body);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  font-stretch: 100%;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+.mobile-menu__servico-icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.176);
+  color: var(--accent-ink);
+}
+
+.mobile-menu__servico-icone .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.mobile-menu__list .mobile-menu__todos {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 var(--space-4);
+  padding: 0.5rem 0;
+  color: var(--accent-ink);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  font-stretch: 100%;
+  letter-spacing: 0;
+}
+
+/* =========================================================
+   3. BUSCA DE SERVIÇOS
+   ========================================================= */
+.busca {
+  max-width: 46rem;
+  margin-bottom: var(--space-5);
+}
+
+.busca__label {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* O campo: uma pílula grande de vidro, como os cards */
+.busca__campo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--hairline-strong);
+  box-shadow:
+    var(--highlight),
+    0 20px 40px -28px rgba(var(--shadow-rgb), calc(0.8 * var(--shadow-k)));
+  transition:
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Com o cursor dentro: borda verde-água e um anel suave em volta */
+.busca__campo:focus-within {
+  border-color: rgba(var(--cyan-rgb), 0.5);
+  box-shadow:
+    var(--highlight),
+    0 0 0 4px rgba(var(--teal-rgb), 0.16),
+    0 20px 40px -28px rgba(var(--shadow-rgb), calc(0.8 * var(--shadow-k)));
+}
+
+/* Foco pelo teclado: o mesmo contorno do resto do site */
+.busca__campo:has(.busca__input:focus-visible) {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+}
+
+.busca__lupa {
+  position: absolute;
+  left: 1.4rem;
+  color: var(--accent-2);
+  pointer-events: none;
+}
+
+.busca__lupa .icon {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.busca__input {
+  width: 100%;
+  height: 100%;
+  padding: 0 3.75rem 0 3.6rem;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: var(--text);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  caret-color: var(--accent-ink);
+}
+
+.busca__input:focus,
+.busca__input:focus-visible {
+  outline: none;
+}
+
+/* Tira o "x" padrão do navegador (temos o nosso botão) */
+.busca__input::-webkit-search-cancel-button,
+.busca__input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Exemplo que troca sozinho (no lugar do placeholder comum) */
+.busca__exemplo {
+  position: absolute;
+  left: 3.6rem;
+  right: 4rem;
+  overflow: hidden;
+  color: var(--text-faint);
+  font-size: var(--fs-md);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) ease;
+}
+
+.busca__exemplo [data-busca-exemplo] {
+  display: inline-block;
+  color: var(--text-muted);
+}
+
+.busca.tem-texto .busca__exemplo {
+  opacity: 0;
+}
+
+/* Dica do atalho "/" (só no computador, com o campo vazio e fora de foco) */
+.busca__atalho {
+  position: absolute;
+  right: 1.15rem;
+  display: none;
+  place-items: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.04);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .busca__atalho { display: grid; }
+}
+
+.busca.tem-texto .busca__atalho,
+.busca__campo:focus-within .busca__atalho {
+  display: none;
+}
+
+.busca__limpar {
+  position: absolute;
+  right: 0.625rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--text-muted);
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+.busca__limpar[hidden] {
+  display: none;
+}
+
+.busca__limpar .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .busca__limpar:hover {
+    background: rgba(var(--ink-rgb), 0.12);
+    color: var(--text);
+  }
+}
+
+/* Trecho encontrado, destacado no nome do card */
+.busca-marca {
+  padding: 0 0.08em;
+  margin: 0 -0.08em;
+  border-radius: 4px;
+  background: rgba(var(--teal-rgb), 0.26);
+  color: inherit;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Sem resultado */
+.busca-vazia {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  padding: var(--space-5);
+  border-radius: var(--radius-shell);
+  border: 1px dashed var(--hairline-strong);
+  background: rgba(var(--surface-rgb), 0.45);
+}
+
+.busca-vazia[hidden] {
+  display: none;
+}
+
+.busca-vazia__icone {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  color: var(--accent-ink);
+}
+
+.busca-vazia__icone .icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.busca-vazia__texto {
+  display: grid;
+  gap: var(--space-1);
+  color: var(--text-muted);
+}
+
+.busca-vazia__titulo {
+  color: var(--text);
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .busca-vazia {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+  }
+}
+
+/* =========================================================
+   4. PAINÉIS
+   ========================================================= */
+
+/* Rótulo mono acima do título do painel ("Primeiros 30 minutos") */
+.sheet__kicker {
+  color: var(--accent-ink);
+  letter-spacing: 0.12em;
+}
+
+/* Link discreto "Abrir página do serviço" no fim do detalhe */
+.sheet__page-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: start;
+  min-height: 2.75rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--hairline-strong);
+}
+
+.sheet__page-link .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sheet__page-link .icon:first-child {
+  color: var(--accent-2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sheet__page-link:hover {
+    color: var(--text);
+    text-decoration-color: currentColor;
+  }
+}
+
+/* ---------- "Primeiros 30 minutos" ---------- */
+.urg__intro {
+  color: var(--text-muted);
+}
+
+.urg__progresso {
+  display: grid;
+  gap: 0.65rem;
+  padding: var(--space-4);
+  border-radius: 18px;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+}
+
+.urg__progresso-topo {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.urg__progresso-topo .mono {
+  color: var(--text-muted);
+}
+
+.urg__progresso-topo [data-urg-contagem] {
+  color: var(--accent-ink);
+}
+
+.urg__barra {
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(var(--ink-rgb), 0.08);
+  overflow: hidden;
+}
+
+.urg__barra span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent-line), var(--accent-ink));
+  transform: scaleX(var(--progresso, 0));
+  transform-origin: left;
+  transition: transform 600ms var(--ease-fluid), background-color var(--dur-base) ease;
+}
+
+.urg__barra.is-completa span {
+  background: var(--accent);
+}
+
+.urg__pronto {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.urg__pronto[hidden] {
+  display: none;
+}
+
+.urg__pronto .icon {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--accent-2);
+}
+
+/* Lista de passos para marcar */
+.checklist {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.check {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: 18px;
+  background: rgba(var(--ink-rgb), 0.035);
+  border: 1px solid var(--hairline);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease;
+}
+
+/* A caixinha de verdade fica invisível (mas continua no teclado) */
+.check__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.check:has(.check__input:focus-visible) {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+/* A caixinha desenhada */
+.check__caixa {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-top: 0.1rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.03);
+  transition:
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    transform var(--dur-press) var(--ease-out);
+}
+
+.check__caixa svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: var(--on-accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* O traço do "check" se desenha (dashoffset de 1 até 0) */
+.check__caixa path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 320ms var(--ease-out) 60ms;
+}
+
+.check__input:checked + .check__caixa {
+  background: var(--accent);
+  border-color: transparent;
+}
+
+.check__input:checked + .check__caixa path {
+  stroke-dashoffset: 0;
+}
+
+.check:active .check__caixa {
+  transform: scale(0.9);
+}
+
+.check__texto {
+  display: grid;
+  gap: 0.2rem;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.check__num {
+  color: var(--text-faint);
+}
+
+.check__texto strong {
+  font-size: var(--fs-base);
+  line-height: 1.35;
+}
+
+/* Etiqueta "Feito" no canto de cima, na linha do "Passo 01" */
+.check__feito {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  color: var(--accent-ink);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--dur-fast) ease, transform var(--dur-base) var(--ease-out);
+}
+
+.check:has(.check__input:checked) {
+  background: rgba(var(--teal-rgb), 0.08);
+  border-color: rgba(var(--cyan-rgb), 0.22);
+}
+
+.check:has(.check__input:checked) .check__feito {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .check:hover {
+    background: rgba(var(--ink-rgb), 0.06);
+  }
+
+  .check:hover .check__caixa {
+    border-color: rgba(var(--teal-rgb), 0.6);
+  }
+}
+
+/* "Não faça" resumido */
+.urg__naofaca {
+  padding: var(--space-4) var(--space-4) var(--space-5);
+  border-radius: 18px;
+  background: var(--dont-bg);
+  border: 1px solid var(--hairline);
+}
+
+.urg__naofaca h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  font-stretch: 106%;
+  letter-spacing: 0;
+}
+
+.urg__naofaca h3 .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--text-muted);
+}
+
+.urg__naofaca ul {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.urg__naofaca li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+/* Tracinho no lugar da bolinha da lista */
+.urg__naofaca li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--text-faint);
+}
+
+.urg__limpar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: start;
+  min-height: 2.75rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--hairline-strong);
+  text-underline-offset: 0.2em;
+}
+
+.urg__limpar[hidden] {
+  display: none;
+}
+
+.urg__limpar .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .urg__limpar:hover { color: var(--text); }
+}
+
+/* =========================================================
+   5. BOTÕES FLUTUANTES
+   ========================================================= */
+
+/* ---------- Voltar ao topo ----------
+   Empilhado acima do botão do WhatsApp (que tem 3,5rem de altura).
+   O anel em volta mostra quanto da página já foi lido, e ele mesmo
+   É a borda do botão: um único círculo, sem "border" por baixo. */
+.topo {
+  position: fixed;
+  /* Mesmo eixo vertical do botão do WhatsApp. No celular ele é só o
+     ícone: 2 × 1,05rem de respiro + 1,5rem do ícone + 2px de borda.
+     O centro dele fica a (3,6rem + 2px) / 2 da borda; tiramos metade
+     do .topo (1,375rem) para os dois centros baterem. */
+  right: calc(max(1rem, env(safe-area-inset-right)) + 0.425rem + 1px);
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 3.5rem + 0.75rem);
+  z-index: var(--z-float);
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;                     /* a borda é o trilho do anel */
+  border-radius: 50%;
+  background: var(--wa-float-bg);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--highlight), var(--shadow-soft);
+  color: var(--text);
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+  /* escondido até rolar ~2 telas */
+  opacity: 0;
+  transform: translateY(12px) scale(0.9);
+  pointer-events: none;
+  transition:
+    opacity var(--dur-fast) ease,
+    transform var(--dur-base) var(--ease-fluid),
+    background-color var(--dur-fast) ease;
+}
+
+.topo.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* Painel aberto ou opções do WhatsApp abertas: o botão sai de cena */
+.sheet-open .topo,
+.wa-dial-aberto .topo {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Foco do teclado: anel em volta, redondo como o botão */
+.topo:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+/* O anel ocupa exatamente o botão. viewBox 48 × 48, centro em 24
+   e raio 23: com traço 2, a linha vai de 22 a 24, encostada na borda.
+   (O raio também está em js/navegacao.js → RAIO_DO_ANEL.) */
+.topo__anel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: rotate(-90deg);     /* o anel começa a encher pelo topo */
+  pointer-events: none;
+}
+
+.topo__anel circle {
+  fill: none;
+  stroke-width: 2;
+}
+
+.topo__trilho {
+  stroke: var(--hairline-strong);
+}
+
+.topo__progresso {
+  stroke: var(--accent-line);
+  stroke-linecap: round;
+  /* transição curta para o anel não "pular" entre um quadro e outro */
+  transition:
+    stroke-dashoffset 120ms linear,
+    opacity var(--dur-fast) ease;
+}
+
+/* Sem leitura ainda: some o traço, senão a ponta redonda vira um pontinho */
+.topo__progresso.is-vazio {
+  opacity: 0;
+}
+
+.topo__seta {
+  position: relative;            /* fica por cima do anel */
+  display: grid;
+  place-items: center;
+  line-height: 0;
+  transition: transform var(--dur-fast) var(--ease-fluid);
+}
+
+.topo__seta .icon {
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .topo:hover { background: var(--surface-hover); }
+  .topo:hover .topo__seta { transform: translateY(-2px); }
+}
+
+/* ---------- Opções do botão flutuante do WhatsApp ---------- */
+.wa-dial {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 3.5rem + 0.75rem);
+  z-index: var(--z-float);
+  display: grid;
+  justify-items: end;
+  gap: var(--space-2);
+}
+
+.wa-dial[hidden] {
+  display: none;
+}
+
+.wa-dial__opcao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 3rem;
+  padding: 0 1.15rem 0 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--wa-float-bg);
+  border: 1px solid var(--hairline-strong);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--highlight), var(--shadow-soft);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transform-origin: right bottom;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.wa-dial__opcao .wa-icon .icon {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wa-dial__opcao:hover {
+    color: var(--text);
+    background: var(--surface-hover);
+  }
+}
+
+.sheet-open .wa-dial {
+  display: none;
+}
+
+/* =========================================================
+   6. AVISO RÁPIDO ("Link copiado")
+   ========================================================= */
+.aviso {
+  position: fixed;
+  left: 50%;
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 5rem);
+  z-index: 60;
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.7rem 1.15rem 0.7rem 0.95rem;
+  border-radius: var(--radius-pill);
+  background: var(--text);
+  color: var(--bg);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-float);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.aviso.is-visible {
+  display: inline-flex;
+}
+
+.aviso .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* =========================================================
+   GELATINA: o "afundar" do clique feito por CSS sai de cena
+   (a gelatina de js/interacoes.js já achata o elemento)
+   ========================================================= */
+.gelatina .topo.is-visible:active,
+.gelatina .urgente:active {
+  transform: none;
+}
+
+/* =========================================================
+   7. VERIFICADOR "ISSO É GOLPE?"
+   Um "terminal de análise" no estilo do dossiê do topo.
+   ========================================================= */
+.verif__inner {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.verif__aside {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+  align-content: start;
+}
+
+/* Selo "Verificação rápida · Interativa": maior que o .eyebrow comum,
+   em pílula verde-água, com ícone e o ponto pulsando. Mostra que aqui
+   a pessoa responde e recebe um resultado. Cores só por variáveis:
+   funciona no claro e no escuro (--pill-bg + --accent-ink passa AA). */
+.eyebrow--interativo {
+  gap: 0.6rem;
+  padding: 0.6rem 1.1rem 0.6rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border-color: var(--hairline-accent);
+  background: var(--pill-bg);
+}
+
+.eyebrow--interativo .mono {
+  font-size: 0.8125rem;
+  color: var(--accent-ink);
+  letter-spacing: 0.1em;
+}
+
+.eyebrow__icone {
+  display: inline-flex;
+  color: var(--accent-ink);
+}
+
+.eyebrow__icone svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.eyebrow--interativo .eyebrow__dot {
+  width: 7px;
+  height: 7px;
+  margin-left: 0.15rem;
+  background: var(--accent-ink);
+}
+
+/* Além do "radar" de sempre, o ponto "respira" devagar */
+.motion-ok .eyebrow--interativo .eyebrow__dot {
+  animation: ponto-respira 2.6s var(--ease-out) infinite;
+}
+
+@keyframes ponto-respira {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.verif__lead {
+  max-width: 30rem;
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+}
+
+.verif__garantias {
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.verif__garantias li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.verif__garantias .icon {
+  color: var(--accent-2);
+}
+
+@media (min-width: 1024px) {
+  .verif__inner {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-9);
+    align-items: start;
+  }
+
+  .verif__aside {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-7));
+  }
+}
+
+/* O cartão: mesma "moldura dupla" de vidro do card "Análise do caso" */
+.verif__terminal {
+  background: rgba(var(--ink-rgb), 0.05);
+  border-color: var(--hairline-strong);
+  box-shadow: var(--shadow-float);
+}
+
+.verif__core {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.25rem, 0.9rem + 1.6vw, 2.25rem);
+  background: var(--analysis-bg);
+}
+
+.verif__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.verif__contador {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+}
+
+.verif__ponto {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-line);
+}
+
+.motion-ok .verif__ponto::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-line);
+  animation: radar 2.6s var(--ease-out) infinite;
+}
+
+/* Barra fina de progresso das perguntas */
+.verif__barra {
+  height: 2px;
+  margin: var(--space-4) 0 var(--space-6);
+  border-radius: 2px;
+  background: rgba(var(--ink-rgb), 0.08);
+  overflow: hidden;
+}
+
+.verif__barra span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-line), var(--accent-ink));
+  transform: scaleX(var(--progresso, 0));
+  transform-origin: left;
+  transition: transform 500ms var(--ease-fluid);
+}
+
+/* ---------- Pergunta ---------- */
+.verif__pergunta {
+  min-height: 19rem;          /* as perguntas têm alturas parecidas: a caixa não "pula" */
+  display: flex;
+  flex-direction: column;
+}
+
+.verif__num {
+  color: var(--text-faint);
+}
+
+.verif__texto {
+  max-width: 32ch;
+  margin: var(--space-3) 0;
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+  line-height: 1.18;
+}
+
+.verif__texto:focus,
+.verif__resultado-titulo:focus {
+  outline: none;
+}
+
+.verif__dica {
+  max-width: 52ch;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.verif__respostas {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 480px) {
+  .verif__respostas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Botões grandes de resposta (bons para o dedo) */
+.verif__resposta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 4rem;
+  padding: 0 0.9rem 0 0.75rem;
+  border-radius: 18px;
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.035);
+  color: var(--text);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  font-stretch: 106%;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-press) var(--ease-out);
+}
+
+.verif__resposta-icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  color: var(--accent-ink);
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+.verif__resposta-icone .icon {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* Tecla de atalho (só no computador) */
+.verif__tecla,
+.verif__atalhos kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.3rem;
+  border-radius: 6px;
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.04);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+}
+
+.verif__tecla {
+  margin-left: auto;
+}
+
+@media (hover: none) {
+  .verif__tecla { display: none; }
+}
+
+.verif__resposta.is-apertado,
+.verif__resposta:active {
+  transform: scale(0.97);
+}
+
+/* Resposta escolhida (ao voltar, a escolha anterior aparece marcada) */
+.verif__resposta[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+
+.verif__resposta[aria-pressed='true'] .verif__resposta-icone {
+  background: rgba(11, 12, 16, 0.12);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+
+.verif__resposta[aria-pressed='true'] .verif__tecla {
+  border-color: rgba(11, 12, 16, 0.25);
+  background: transparent;
+  color: var(--on-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .verif__resposta:hover {
+    background: rgba(var(--ink-rgb), 0.07);
+    border-color: rgba(var(--teal-rgb), 0.55);
+  }
+
+  .verif__resposta[aria-pressed='true']:hover {
+    background: var(--accent-hover);
+  }
+}
+
+.verif__rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-5);
+}
+
+.verif__voltar,
+.verif__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0 0.95rem 0 0.75rem;
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+.verif__voltar .icon,
+.verif__link .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.verif__voltar:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .verif__voltar:not(:disabled):hover,
+  .verif__link:hover {
+    background: rgba(var(--ink-rgb), 0.06);
+    color: var(--text);
+  }
+}
+
+.verif__atalhos {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--text-faint);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .verif__atalhos { display: inline-flex; }
+}
+
+/* Aviso fixo no pé do cartão */
+.verif__aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--hairline-strong);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-faint);
+}
+
+.verif__aviso .icon {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent-2);
+}
+
+.verif__semjs {
+  color: var(--text-muted);
+}
+
+/* ---------- Resultado ---------- */
+.verif__resumo {
+  display: grid;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .verif__resumo { grid-template-columns: 13rem minmax(0, 1fr); gap: var(--space-6); }
+}
+
+/* Medidor: arco de três faixas (baixo, médio, alto) */
+.medidor {
+  position: relative;
+  width: 13rem;
+  max-width: 100%;
+}
+
+.medidor__svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.medidor__trilho,
+.medidor__nivel {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.medidor__trilho {
+  stroke: rgba(var(--ink-rgb), 0.08);
+}
+
+.medidor__nivel {
+  stroke: var(--accent-2);
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* Nível alto: o ciano/verde-água mais forte (nunca vermelho) */
+.verif__resultado--alto .medidor__nivel {
+  stroke: var(--accent-line);
+}
+
+.verif__resultado--baixo .medidor__nivel {
+  stroke: rgba(var(--teal-rgb), 0.6);
+}
+
+.medidor__marca {
+  stroke: var(--surface);
+  stroke-width: 3;
+}
+
+.medidor__centro {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 46%;
+  display: grid;
+  justify-items: center;
+}
+
+.medidor__centro .mono {
+  color: var(--text-faint);
+}
+
+.medidor__centro strong {
+  font-size: 1.75rem;
+  font-stretch: 112%;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.medidor__faixas {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  color: var(--text-faint);
+}
+
+.verif__nivel-pilula {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--pill-bg);
+  border: 1px solid rgba(var(--cyan-rgb), 0.28);
+  color: var(--accent-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.verif__resultado--alto .verif__nivel-pilula {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+
+.verif__resultado--baixo .verif__nivel-pilula {
+  background: rgba(var(--ink-rgb), 0.06);
+  border-color: var(--hairline-strong);
+  color: var(--text-muted);
+}
+
+.verif__resultado-titulo {
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+}
+
+.verif__resultado-texto {
+  color: var(--text-body);
+  max-width: 46ch;
+}
+
+/* Fichas: um "cartão de evidência" para cada sinal encontrado */
+.verif__fichas {
+  margin-top: var(--space-6);
+}
+
+.verif__fichas-titulo {
+  color: var(--text-faint);
+}
+
+.verif__fichas-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.ficha {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.85rem 0.45rem 0.45rem;
+  border-radius: 12px;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.ficha__id {
+  flex-shrink: 0;
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  background: var(--surface);          /* superfície do cartão: contraste AA nos dois temas */
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  color: var(--accent-ink);
+}
+
+.ficha--duvida {
+  background: rgba(var(--ink-rgb), 0.03);
+  border-style: dashed;
+  border-color: var(--hairline-strong);
+  color: var(--text-body);
+}
+
+.ficha--duvida .ficha__id {
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--text-muted);
+}
+
+.verif__passos {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border-radius: 18px;
+  background: rgba(var(--ink-rgb), 0.03);
+  border: 1px solid var(--hairline);
+}
+
+.verif__passos h4 {
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-sm);
+  font-stretch: 106%;
+  letter-spacing: 0;
+}
+
+.verif__passos ol {
+  display: grid;
+  gap: var(--space-3);
+  counter-reset: passo;
+}
+
+.verif__passos li {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-body);
+  counter-increment: passo;
+}
+
+.verif__passos li::before {
+  content: counter(passo);
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-ink);
+}
+
+.verif__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.verif__acoes-menores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-left: auto;
+}
+
+@media (max-width: 639px) {
+  .verif__acoes > .btn {
+    flex: 1 1 100%;
+  }
+
+  .verif__acoes-menores {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   8. MONTADOR DE MENSAGEM DO WHATSAPP
+   ========================================================= */
+@media (min-width: 1024px) {
+  .sheet--montador .sheet__panel {
+    width: min(62rem, calc(100% - 1.5rem));
+  }
+
+  /* Formulário à esquerda, prévia à direita (parada enquanto rola) */
+  .mont {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  .mont__previa {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.mont__form {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.mont__intro {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+/* Caixinha escondida (rádio/checkbox): continua no teclado */
+.mont__radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* "É urgente": interruptor liga/desliga */
+.mont__urgente {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
+  padding: var(--space-4);
+  border-radius: 18px;
+  border: 1px solid var(--hairline);
+  background: rgba(var(--ink-rgb), 0.03);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+
+.mont__urgente:has(.mont__radio:checked) {
+  background: rgba(var(--teal-rgb), 0.1);
+  border-color: rgba(var(--cyan-rgb), 0.3);
+}
+
+.mont__urgente-chave {
+  position: relative;
+  width: 2.75rem;
+  height: 1.625rem;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--ink-rgb), 0.14);
+  transition: background-color var(--dur-fast) ease;
+}
+
+.mont__urgente-chave::after {
+  content: '';
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--text);
+  box-shadow: 0 2px 6px -2px rgba(var(--shadow-rgb), 0.5);
+  transition: transform var(--dur-base) var(--ease-elastic), background-color var(--dur-fast) ease;
+}
+
+.mont__radio:checked + .mont__urgente-chave {
+  background: var(--accent);
+}
+
+.mont__radio:checked + .mont__urgente-chave::after {
+  transform: translateX(1.125rem);
+  background: var(--on-accent);
+}
+
+.mont__urgente-texto {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.mont__urgente-texto strong {
+  font-size: var(--fs-sm);
+}
+
+.mont__urgente-texto span {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.mont__urgente:has(.mont__radio:focus-visible),
+.mont__chip:has(.mont__radio:focus-visible) {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+.mont__campo {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.mont__pergunta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--space-3);
+  padding: 0;
+  color: var(--text);
+  font-size: var(--fs-base);
+  font-weight: 600;
+}
+
+.mont__pergunta .mono {
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  background: rgba(var(--teal-rgb), 0.14);
+  color: var(--accent-ink);
+}
+
+.mont__opcional {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.mont__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.mont__chip {
+  position: relative;
+  padding: 0 0.95rem;
+  cursor: pointer;
+}
+
+.mont__chip-check {
+  display: none;
+  color: var(--accent-ink);
+}
+
+.mont__chip-check .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* Chip escolhido: fundo verde-água e um "check" */
+.mont__chip:has(.mont__radio:checked) {
+  padding-left: 0.7rem;
+  background: rgba(var(--teal-rgb), 0.2);
+  border-color: var(--accent-line);
+  color: var(--text);
+}
+
+.mont__chip:has(.mont__radio:checked) .mont__chip-check {
+  display: inline-flex;
+}
+
+/* Serviço que veio marcado do painel de detalhe */
+.mont__servico {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--space-3);
+  padding: 0.4rem 0.4rem 0.4rem 0.85rem;
+  border-radius: 14px;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.24);
+  font-size: var(--fs-sm);
+}
+
+.mont__servico[hidden] {
+  display: none;
+}
+
+.mont__servico .mono {
+  color: var(--text-faint);
+}
+
+.mont__servico-tirar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-left: auto;
+  border-radius: 50%;
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--text-muted);
+}
+
+.mont__servico-tirar .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mont__servico-tirar:hover {
+    background: rgba(var(--ink-rgb), 0.12);
+    color: var(--text);
+  }
+}
+
+.mont__frase {
+  display: block;
+  width: 100%;
+  min-height: 5.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.03);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  resize: vertical;
+  caret-color: var(--accent-ink);
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-base) var(--ease-out);
+}
+
+.mont__frase::placeholder {
+  color: var(--text-faint);
+}
+
+.mont__frase:focus {
+  border-color: rgba(var(--cyan-rgb), 0.5);
+  box-shadow: 0 0 0 4px rgba(var(--teal-rgb), 0.16);
+}
+
+.mont__contador {
+  margin-top: 0.35rem;
+  text-align: right;
+  color: var(--text-faint);
+}
+
+/* ---------- Prévia ---------- */
+.mont__previa {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+.mont__previa-titulo {
+  color: var(--text-faint);
+  letter-spacing: 0.12em;
+}
+
+/* Uma "tela de conversa" com a grade de pontos do site */
+.mont__conversa {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  min-height: 15rem;
+  padding: var(--space-4);
+  border-radius: 22px;
+  background:
+    radial-gradient(var(--dot-color) 1px, transparent 1.2px) 0 0 / 18px 18px,
+    var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.16);
+}
+
+.mont__para {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--hairline);
+  font-size: var(--fs-sm);
+}
+
+.mont__para > span:last-child {
+  display: grid;
+}
+
+.mont__para .mono {
+  color: var(--text-faint);
+}
+
+.mont__para-avatar {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--hairline-strong);
+}
+
+/* O balão da mensagem (como a mensagem enviada do dossiê) */
+.mont__balao {
+  justify-self: end;
+  max-width: 94%;
+  padding: 0.75rem 0.9rem 0.45rem;
+  border-radius: 18px 18px 6px 18px;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 12px 24px -16px rgba(var(--shadow-rgb), calc(0.7 * var(--shadow-k)));
+}
+
+.mont__balao-texto {
+  display: grid;
+  gap: 0.15rem;
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.mont__linha {
+  margin: 0 -0.2em;
+  padding: 0 0.2em;
+  border-radius: 4px;
+}
+
+/* Linha nova ou alterada: acende e apaga devagar */
+.motion-ok .mont__linha.is-nova {
+  animation: linha-nova 1.1s var(--ease-out);
+}
+
+@keyframes linha-nova {
+  from { background-color: rgba(11, 12, 16, 0.16); }
+  to { background-color: transparent; }
+}
+
+.mont__balao-hora {
+  display: block;
+  margin-top: 0.3rem;
+  text-align: right;
+  font-size: 0.625rem;
+  color: rgba(11, 12, 16, 0.62);
+}
+
+.mont__aviso {
+  font-size: var(--fs-sm);
+}
+
+.mont__rodape {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
+}
+
+.mont__rapido {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  text-decoration-color: var(--hairline-strong);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mont__rapido:hover {
+    color: var(--text);
+    text-decoration-color: currentColor;
+  }
+}
+
+/* =========================================================
+   9. ALERTAS: card em visual de "boletim" e faixa
+      "Últimos alertas" da página inicial
+   ========================================================= */
+
+/* Link da página atual no menu (ex.: "Alertas" nas páginas de alerta) */
+.main-nav a[aria-current='page'] {
+  color: var(--text);
+}
+
+.main-nav a[aria-current='page']::after {
+  transform: scale(1);
+}
+
+.ultimos {
+  padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+}
+
+.ultimos__topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.ultimos__topo h2 {
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+}
+
+/* Celular e tablet: os cards deslizam para o lado */
+.ultimos__lista {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(16.5rem, 82%);
+  gap: var(--space-3);
+  margin-inline: calc(var(--gutter) * -1);
+  padding: var(--space-1) var(--gutter) var(--space-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+
+.ultimos__lista::-webkit-scrollbar {
+  display: none;
+}
+
+.ultimos__lista > li {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 900px) {
+  .ultimos__lista {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+    margin-inline: 0;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+/* O card: cabeçalho mono com número e data, separado por um tracejado */
+.alerta-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-radius: 22px;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--highlight);
+  transition: transform var(--dur-base) var(--ease-fluid), border-color var(--dur-fast) ease;
+}
+
+.alerta-card[hidden] {
+  display: none;
+}
+
+.alerta-card__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px dashed var(--hairline-strong);
+}
+
+.alerta-card__topo .mono:first-child {
+  color: var(--accent-ink);
+}
+
+.alerta-card__titulo {
+  font-size: 1.1875rem;
+  line-height: 1.25;
+}
+
+.alerta-card__link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* O link cobre o card inteiro */
+.alerta-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.alerta-card__link:focus-visible {
+  outline: none;
+}
+
+.alerta-card__link:focus-visible::after {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+  border-radius: 22px;
+}
+
+.alerta-card__resumo {
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.alerta-card__pe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-2);
+}
+
+.alerta-card__cat {
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--teal-rgb), 0.12);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  color: var(--accent-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.alerta-card .btn__orb {
+  margin-right: 0;
+  background: rgba(var(--ink-rgb), 0.07);
+  color: var(--accent-ink);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .alerta-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--teal-rgb), 0.4);
+  }
+
+  .alerta-card:hover .btn__orb {
+    background: var(--accent);
+    color: var(--on-accent);
+    transform: translate(2px, -1px) scale(1.06);
+  }
+}
