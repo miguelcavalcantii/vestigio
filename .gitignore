@@ -1,0 +1,14 @@
+# Cópias antigas guardadas dentro da pasta (não vão para o GitHub)
+_backup-*/
+
+# Cache da ferramenta de design
+.impeccable/
+
+# Pasta montada na hora de publicar (Cloudflare cria a dela)
+publicar/
+
+# Lixo do sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+node_modules/

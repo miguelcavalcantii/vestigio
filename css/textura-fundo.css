@@ -1,0 +1,161 @@
+/* =========================================================
+   TEXTURA ANIMADA DO FUNDO
+   ---------------------------------------------------------
+   Camadas fixas atrás do conteúdo (não pegam cliques):
+   1. Brilho: duas luzes bem fracas que andam muito devagar.
+   2. Canvas (js/textura-fundo.js), um só, com:
+      - grade de pontos;
+      - "rastros": pontos que acendem em sequência, crescendo,
+        como o símbolo da marca, e somem devagar;
+      - "rede": linhas finas que ligam pontos próximos por um
+        instante, como conexões sendo investigadas;
+      - "sinal": anel suave que se expande a partir de um ponto;
+      - no computador, os pontos perto do mouse acendem um pouco.
+   3. Granulado leve (noise).
+
+   PARA DESLIGAR: em js/config.js, mude texturaFundo para false.
+   O JavaScript nem cria as camadas e o fundo volta a ser o de antes.
+
+   CORES POR TEMA: blocos "TEMA ESCURO" e "TEMA CLARO" logo abaixo.
+   O canvas lê estas variáveis e se atualiza na hora quando o tema
+   troca. Os valores do claro foram ajustados para a textura ter a
+   MESMA presença nos dois temas (no fundo claro, os pontos são
+   escuros e o destaque é um verde-água mais fechado).
+
+   Segue o interruptor animacoesSempre (js/config.js): só fica parado
+   com ele em false E o sistema pedindo "reduzir movimento".
+   ========================================================= */
+
+/* ---------- TEMA ESCURO ---------- */
+:root {
+  --textura-ponto-rgb: 197, 198, 199;    /* pontos da grade */
+  --textura-ponto-alfa: 0.18;            /* FORÇA dos pontos parados */
+  --textura-acento-rgb: 102, 252, 241;   /* pontos acesos, linhas e anéis (ciano) */
+  --textura-acento-alfa: 0.8;            /* FORÇA máxima de um ponto aceso */
+  --textura-linha-alfa: 0.28;            /* FORÇA das linhas da "rede" */
+  --textura-sinal-alfa: 0.3;             /* FORÇA do anel do "sinal" */
+  --textura-mouse-alfa: 0.5;             /* FORÇA dos pontos perto do mouse */
+  --textura-brilho-1: rgba(102, 252, 241, 0.085);
+  --textura-brilho-2: rgba(69, 162, 158, 0.11);
+  --textura-grao-alfa: 0.075;
+}
+
+/* ---------- TEMA CLARO ---------- */
+[data-theme='light'] {
+  --textura-ponto-rgb: 15, 28, 34;       /* quase-preto azulado */
+  --textura-ponto-alfa: 0.2;
+  --textura-acento-rgb: 26, 112, 108;    /* verde-água fechado (o ciano some no branco) */
+  --textura-acento-alfa: 0.78;
+  --textura-linha-alfa: 0.32;
+  --textura-sinal-alfa: 0.34;
+  --textura-mouse-alfa: 0.5;
+  --textura-brilho-1: rgba(69, 162, 158, 0.16);
+  --textura-brilho-2: rgba(102, 200, 192, 0.18);
+  --textura-grao-alfa: 0.07;
+}
+
+.textura-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-ambient);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Com a textura ligada, a grade de pontos antiga (hero e serviços)
+   e o grão parado do fundo saem: as camadas novas fazem esse papel. */
+html.textura-ligada .dot-grid::after,
+html.textura-ligada .ambient::after {
+  display: none;
+}
+
+/* ---------- 1. BRILHO QUE ANDA DEVAGAR ---------- */
+.textura-fundo__brilho {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--textura-brilho-1), transparent);
+  will-change: transform;
+}
+
+.textura-fundo__brilho--1 {
+  left: -25vmax;
+  top: -30vmax;
+  animation: textura-brilho-1 70s ease-in-out infinite alternate;
+}
+
+.textura-fundo__brilho--2 {
+  right: -30vmax;
+  bottom: -35vmax;
+  width: 60vmax;
+  height: 60vmax;
+  background: radial-gradient(closest-side, var(--textura-brilho-2), transparent);
+  animation: textura-brilho-2 90s ease-in-out infinite alternate;
+}
+
+@keyframes textura-brilho-1 {
+  0%   { transform: translate3d(0, 0, 0); }
+  50%  { transform: translate3d(45vw, 30vh, 0); }
+  100% { transform: translate3d(75vw, 10vh, 0); }
+}
+
+@keyframes textura-brilho-2 {
+  0%   { transform: translate3d(0, 0, 0); }
+  50%  { transform: translate3d(-40vw, -35vh, 0); }
+  100% { transform: translate3d(-70vw, -10vh, 0); }
+}
+
+/* ---------- 2. CANVAS (pontos, rastros, rede, sinal) ---------- */
+.textura-fundo__pontos {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Os pontos ficam um pouco mais fracos nas bordas da tela */
+  -webkit-mask-image: radial-gradient(ellipse 120% 90% at 50% 35%, #000 45%, rgba(0, 0, 0, 0.45) 100%);
+  mask-image: radial-gradient(ellipse 120% 90% at 50% 35%, #000 45%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+/* ---------- 3. GRANULADO ---------- */
+.textura-fundo__grao {
+  position: absolute;
+  inset: -60px;
+  opacity: var(--textura-grao-alfa);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+[data-theme='light'] .textura-fundo__grao {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* O grão "tremula" (como filme) só no computador; no celular fica parado,
+   para poupar bateria */
+@media (min-width: 1024px) and (pointer: fine) {
+  .textura-fundo__grao {
+    animation: textura-grao 1.4s steps(1) infinite;
+  }
+}
+
+@keyframes textura-grao {
+  0%   { transform: translate3d(0, 0, 0); }
+  20%  { transform: translate3d(-24px, 14px, 0); }
+  40%  { transform: translate3d(18px, -30px, 0); }
+  60%  { transform: translate3d(-34px, -8px, 0); }
+  80%  { transform: translate3d(12px, 32px, 0); }
+}
+
+/* Celular: brilhos menores */
+@media (max-width: 767.98px) {
+  .textura-fundo__brilho--1 { width: 110vw; height: 110vw; left: -40vw; top: -25vw; }
+  .textura-fundo__brilho--2 { width: 100vw; height: 100vw; right: -45vw; bottom: -30vw; }
+}
+
+/* Aba escondida (classe colocada pelo JS): tudo para */
+.textura-fundo.is-pausada * { animation-play-state: paused; }
+
+/* "Reduzir movimento": tudo parado. Como no resto do site, a classe
+   respeitar-movimento só aparece com animacoesSempre = false E o
+   sistema pedindo menos movimento (script do <head> do index.html). */
+html.respeitar-movimento .textura-fundo__brilho,
+html.respeitar-movimento .textura-fundo__grao { animation: none !important; }

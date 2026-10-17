@@ -1,0 +1,70 @@
+  <!-- Barra de progresso da leitura (enche conforme o texto passa) -->
+  <div class="leitura" aria-hidden="true"><span data-leitura></span></div>
+
+  <main id="conteudo">
+    <article class="alerta" aria-labelledby="pg-titulo">
+
+      <!-- ===== TOPO ===== -->
+      <header class="pg-topo dot-grid" data-topo>
+        <div class="container">
+{{MIGALHAS}}
+          <div class="pg-topo__texto alerta__cabeca" data-reveal>
+            <p class="pg-topo__meta">
+              <span class="status-pill">Alerta {{NUMERO}}</span>
+              <span class="mono"><time datetime="{{DATA}}">{{DATA_CURTA}}</time> · {{CATEGORIA}}</span>
+            </p>
+            <h1 id="pg-titulo">{{TITULO}}</h1>
+            <p class="pg-topo__lead">{{RESUMO}}</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===== TEXTO ===== -->
+      <div class="container">
+        <div class="alerta__corpo" data-artigo>
+          <div class="alerta__texto" data-reveal>
+{{PARAGRAFOS}}
+          </div>
+
+          <!-- "Como se proteger" em destaque (mesmo visual do guia "Faça agora") -->
+          <section class="alerta__protecao bezel guide__card guide__card--do" aria-labelledby="protecao-titulo" data-reveal>
+            <div class="bezel__core guide__core">
+              <h2 class="guide__title" id="protecao-titulo"><span class="guide__badge" data-icon="shield-check"></span>Como se proteger</h2>
+              <ol role="list" class="guide__list">
+{{PROTECAO}}
+              </ol>
+            </div>
+          </section>
+
+          <div class="alerta__acoes">
+            <button class="btn btn--ghost" type="button" data-compartilhar="{{RESUMO}}">
+              <span data-icon="share-2" aria-hidden="true"></span>
+              Compartilhar este alerta
+            </button>
+            <a class="verif__link" href="{{RAIZ}}index.html#verificador">
+              <span data-icon="circle-help" aria-hidden="true"></span>
+              Isso é golpe? Faça a verificação
+            </a>
+          </div>
+
+{{SERVICO}}
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== CHAMADA FINAL ===== -->
+    <section class="section pg-cta" aria-labelledby="cta-titulo">
+      <div class="container">
+        <div class="cta bezel" data-reveal>
+          <div class="bezel__core cta__core">
+            <h2 id="cta-titulo">Caiu em um golpe parecido? Conte o que aconteceu.</h2>
+            <a class="btn btn--primary btn--lg" href="{{LINK_WHATSAPP}}" target="_blank" rel="noopener" data-montador="{{SERVICO_ID}}">
+              <span class="wa-icon" data-icon="whatsapp"></span>
+              Falar no WhatsApp
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

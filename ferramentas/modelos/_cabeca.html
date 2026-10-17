@@ -1,0 +1,47 @@
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ===== SEO (cada página tem título, descrição e endereço próprios) ===== -->
+  <title>{{TITULO}}</title>
+  <meta name="description" content="{{DESCRICAO}}">
+  <meta name="theme-color" content="#0B0C10">
+  <link rel="canonical" href="{{URL}}">
+
+  <!-- ===== OPEN GRAPH (prévia ao compartilhar o link) ===== -->
+  <meta property="og:type" content="{{OG_TIPO}}">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Vestígio Investigação Digital">
+  <meta property="og:title" content="{{TITULO}}">
+  <meta property="og:description" content="{{DESCRICAO}}">
+  <meta property="og:url" content="{{URL}}">
+  <meta property="og:image" content="{{DOMINIO}}/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="{{RAIZ}}assets/logo-simbolo.svg" type="image/svg+xml">
+
+{{MOLDE_TEMA}}
+
+  <!-- ===== ESTILOS (os mesmos do site + os das páginas) ===== -->
+  <link rel="stylesheet" href="{{RAIZ}}css/fonts.css">
+  <link rel="stylesheet" href="{{RAIZ}}css/variables.css">
+  <link rel="stylesheet" href="{{RAIZ}}css/base.css">
+  <link rel="stylesheet" href="{{RAIZ}}css/components.css">
+  <link rel="stylesheet" href="{{RAIZ}}css/sections.css">
+  <link rel="stylesheet" href="{{RAIZ}}css/ferramentas.css">
+  <link rel="stylesheet" href="{{RAIZ}}css/paginas.css">
+  <link rel="stylesheet" href="{{RAIZ}}css/textura-fundo.css">
+
+  <!-- Sem JavaScript: o que depende dele some; "Serviços" vira link comum -->
+  <noscript>
+    <style>
+      .main-nav__trigger, .urgente, .mega, .menu-toggle { display: none !important; }
+      .main-nav__semjs { display: inline-flex !important; }
+    </style>
+  </noscript>
+
+  <!-- ===== DADOS ESTRUTURADOS (ajudam o Google a entender a página) ===== -->
+  <script type="application/ld+json">
+{{JSON_LD}}
+  </script>

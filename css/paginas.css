@@ -1,0 +1,583 @@
+/* =========================================================
+   PÁGINAS DOS SERVIÇOS E DOS ALERTAS (versão 3.0)
+   ---------------------------------------------------------
+   Usado pelas páginas criadas por ferramentas/gerar-paginas.js
+   (pasta servicos/, alertas.html e pasta alertas/).
+   Usa só as variáveis de cor do site: funciona nos dois temas.
+   1. Topo das páginas (caminho, título, ações)
+   2. Página de serviço
+   3. Lista de alertas
+   4. Página de um alerta
+   (o card de alerta fica em css/ferramentas.css, porque a
+   página inicial também usa)
+   ========================================================= */
+
+/* =========================================================
+   1. TOPO DAS PÁGINAS
+   ========================================================= */
+.pg-topo {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;           /* só corta dos lados: o brilho desce suave, sem "corte" reto */
+  padding-top: calc(var(--header-h) + clamp(1.75rem, 1rem + 3vw, 3.5rem));
+  padding-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+}
+
+/* Brilho verde-água fraco atrás do título (como no topo da página inicial) */
+.pg-topo::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(900px, 130vw);
+  aspect-ratio: 1;
+  right: -20%;
+  top: -45%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(var(--teal-rgb), calc(0.2 * var(--glow-k))) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, var(--navy) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Caminho: INÍCIO / SERVIÇOS / GOLPE DO PIX FALSO */
+.migalhas ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.migalhas li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.migalhas li + li::before {
+  content: '/';
+  color: var(--text-faint);
+  opacity: 0.6;
+}
+
+.migalhas a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.migalhas [aria-current='page'] {
+  color: var(--accent-ink);
+}
+
+/* Título comprido (alertas): fica numa linha só, com "…" no fim */
+.migalhas li:last-child {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.migalhas li:last-child span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .migalhas a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+}
+
+.pg-topo__texto {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 54rem;
+  margin-top: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+
+.pg-topo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.pg-topo__meta .mono {
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+}
+
+/* Ícone do serviço num disco navy (como nos cards) */
+.pg-topo__icone {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(var(--cyan-rgb), 0.2);
+  color: var(--accent-ink);
+}
+
+.pg-topo__icone .icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.pg-topo h1 {
+  max-width: 20ch;
+  font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4.25rem);
+  line-height: 1.02;
+}
+
+.pg-topo__lead {
+  max-width: 40rem;
+  font-size: var(--fs-md);
+  color: var(--text-body);
+}
+
+.pg-topo__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 479px) {
+  .pg-topo__acoes .btn {
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Seções com título + botão à direita ("Serviços relacionados") */
+.pg-secao-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.pg-secao-topo h2 {
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+}
+
+/* Chamada final: menos espaço em cima (a seção anterior já respira) */
+.pg-cta {
+  padding-top: var(--space-6);
+}
+
+/* =========================================================
+   2. PÁGINA DE SERVIÇO
+   ========================================================= */
+.pg-corpo {
+  display: grid;
+  gap: var(--space-7);
+  padding-top: clamp(1rem, 0.5rem + 2vw, 2.5rem);
+}
+
+@media (min-width: 1024px) {
+  .pg-corpo {
+    grid-template-columns: minmax(0, 1fr) 21rem;
+    gap: var(--space-9);
+    align-items: start;
+  }
+}
+
+.pg-artigo {
+  display: grid;
+  gap: var(--space-7);
+  max-width: 46rem;
+}
+
+.pg-bloco h2 {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-lg);
+}
+
+.pg-bloco > p {
+  max-width: 34em;            /* ~68 letras por linha (68ch fica largo demais nesta fonte) */
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--text-body);
+}
+
+/* Passos e lista "o que vamos precisar": o mesmo visual do painel,
+   um pouco maiores para leitura na página */
+.pg-passos li {
+  font-size: var(--fs-base);
+}
+
+.pg-bloco .sheet__needs {
+  padding: var(--space-5);
+}
+
+.pg-bloco .sheet__needs li {
+  font-size: var(--fs-base);
+}
+
+/* Coluna lateral com a chamada para o WhatsApp */
+.pg-lateral {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 1024px) {
+  .pg-lateral {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-5));
+  }
+}
+
+.pg-lateral__core {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background:
+    radial-gradient(120% 70% at 0% 0%, rgba(var(--teal-rgb), calc(0.3 * var(--glow-k))), transparent 60%),
+    linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+}
+
+.pg-lateral .pg-lateral__rotulo {
+  font-size: var(--fs-xs);
+  color: var(--accent-ink);
+  letter-spacing: 0.12em;
+}
+
+.pg-lateral h2 {
+  font-size: var(--fs-lg);
+}
+
+.pg-lateral p {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.urgente--lateral {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 3rem;
+  font-size: var(--fs-sm);
+}
+
+.pg-lateral__selos {
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-inline: var(--space-2);
+}
+
+/* Serviços relacionados: os cards são links para as outras páginas */
+.pg-relacionados {
+  padding-block: clamp(3.5rem, 2.5rem + 4vw, 6.5rem);
+}
+
+a.service-card__button {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   3. LISTA DE ALERTAS (alertas.html)
+   ========================================================= */
+.alertas {
+  padding-bottom: clamp(3rem, 2rem + 3vw, 5rem);
+}
+
+/* Destaque: o alerta mais recente, grande, no topo */
+.alerta-destaque {
+  position: relative;
+  margin-bottom: var(--space-7);
+  border-radius: var(--radius-shell);
+  transition: transform var(--dur-base) var(--ease-fluid);
+}
+
+.alerta-destaque__core {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  padding: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+  background:
+    radial-gradient(70% 90% at 100% 0%, rgba(var(--teal-rgb), calc(0.28 * var(--glow-k))), transparent 60%),
+    var(--navy);
+}
+
+/* Linhas de contorno no canto (a mesma textura do bloco final) */
+.alerta-destaque__core::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: url('../assets/textura-contorno.svg') right top / cover no-repeat;
+  opacity: calc(0.5 * var(--contour-k));
+  -webkit-mask-image: radial-gradient(80% 90% at 100% 0%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(80% 90% at 100% 0%, #000 30%, transparent 75%);
+  pointer-events: none;
+}
+
+.alerta-destaque__topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Sobre o fundo profundo, a pílula usa a superfície (contraste AA no claro) */
+.alerta-destaque .status-pill {
+  background: var(--surface);
+}
+
+.alerta-destaque__topo .mono {
+  color: var(--on-navy-muted);
+  letter-spacing: 0.1em;
+}
+
+.alerta-destaque__titulo {
+  max-width: 22ch;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+}
+
+.alerta-destaque__link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* O link cobre o card inteiro (área de clique maior) */
+.alerta-destaque__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: var(--radius-core);
+}
+
+.alerta-destaque__link:focus-visible {
+  outline: none;
+}
+
+.alerta-destaque__link:focus-visible::after {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+.alerta-destaque__resumo {
+  max-width: 56ch;
+  font-size: var(--fs-md);
+  color: var(--on-navy-body);
+}
+
+.alerta-destaque__ler {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: var(--space-2);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.alerta-destaque__ler .btn__orb {
+  margin-right: 0;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .alerta-destaque:hover {
+    transform: translateY(-3px);
+  }
+
+  .alerta-destaque:hover .btn__orb {
+    transform: translate(2px, -1px) scale(1.06);
+  }
+}
+
+/* Barra do filtro */
+.alertas__barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.alertas__barra-titulo {
+  color: var(--text-faint);
+}
+
+.alertas__filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.alertas__chip {
+  gap: 0.55rem;
+  padding: 0 0.6rem 0 1rem;
+}
+
+.alertas__chip[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+
+.alertas__chip[aria-pressed='true'] .tab__count {
+  background: rgba(11, 12, 16, 0.12);
+}
+
+.alertas__grade {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .alertas__grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .alertas__grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+}
+
+.alertas__vazio {
+  padding: var(--space-5);
+  border: 1px dashed var(--hairline-strong);
+  border-radius: 22px;
+  color: var(--text-muted);
+}
+
+.alertas__vazio[hidden] {
+  display: none;
+}
+
+/* =========================================================
+   4. PÁGINA DE UM ALERTA
+   ========================================================= */
+
+/* Barra de progresso da leitura, colada no topo da tela */
+.leitura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: calc(var(--z-header) + 1);
+  height: 3px;
+  pointer-events: none;
+}
+
+.leitura span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-line), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Coluna de leitura confortável (~68 letras por linha) */
+.alerta__corpo {
+  display: grid;
+  gap: var(--space-7);
+  max-width: 42rem;
+  padding-top: clamp(0.5rem, 0.2rem + 1.5vw, 1.5rem);
+}
+
+.alerta__texto {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.alerta__texto p {
+  max-width: 34em;            /* ~68 letras por linha */
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.75;
+  color: var(--text-body);
+}
+
+/* Primeiro parágrafo um pouco mais forte (entrada do texto) */
+.alerta__texto p:first-child {
+  color: var(--text);
+}
+
+.alerta__protecao .guide__title {
+  margin-bottom: var(--space-5);
+}
+
+.alerta__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.alerta__acoes .btn .icon {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* Serviço relacionado ao alerta */
+.alerta__servico {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.alerta__servico-rotulo {
+  color: var(--text-faint);
+}
+
+.alerta__servico-link {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5) var(--space-4) var(--space-4);
+  border-radius: 22px;
+  background: rgba(var(--surface-rgb), 0.5);
+  border: 1px solid var(--hairline);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease, transform var(--dur-base) var(--ease-fluid);
+}
+
+.alerta__servico-texto {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.alerta__servico-texto span {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.alerta__servico-link .btn__orb {
+  margin-right: 0;
+  background: rgba(var(--ink-rgb), 0.07);
+  color: var(--accent-ink);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .alerta__servico-link:hover {
+    color: var(--text);
+    border-color: rgba(var(--teal-rgb), 0.45);
+    background: var(--surface);
+    transform: translateY(-2px);
+  }
+
+  .alerta__servico-link:hover .btn__orb {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}

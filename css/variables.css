@@ -1,0 +1,322 @@
+/* =========================================================
+   VARIÁVEIS (DESIGN TOKENS)
+   ---------------------------------------------------------
+   Cores, fontes, espaçamentos, cantos e animações usados em
+   todo o site. Para mudar a cara do site, comece por aqui.
+   As fontes (@font-face) ficam em css/fonts.css.
+
+   ONDE FICAM AS CORES DE CADA TEMA:
+   - Bloco "TEMA ESCURO" (o padrão): logo abaixo.
+   - Bloco "TEMA CLARO": no fim deste arquivo, dentro de
+     [data-theme="light"]. O site troca o tema mudando o
+     atributo data-theme no <html> (veja o script no <head>
+     do index.html e a função trocarTema em js/components.js).
+   Todo o resto do CSS usa só as variáveis (var(--nome)),
+   então basta mudar os valores aqui.
+   ========================================================= */
+
+:root {
+  /* ---------- TIPOGRAFIA ---------- */
+  --font-sans: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Martian Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  /* Tamanhos fluidos: crescem com a largura da tela. clamp(mínimo, ideal, máximo) */
+  --fs-xs: 0.6875rem;                                   /* 11px: rótulos mono */
+  --fs-sm: 0.875rem;                                    /* 14px */
+  --fs-base: 1rem;                                      /* 16px */
+  --fs-md: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);    /* texto de destaque */
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);    /* títulos pequenos */
+  --fs-xl: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);         /* títulos de seção */
+  --fs-2xl: clamp(2.625rem, 1.5rem + 4.6vw, 5.5rem);    /* título principal */
+
+  /* ---------- ESPAÇAMENTO ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section-y: clamp(5.5rem, 3.5rem + 7vw, 10rem);  /* respiro entre seções */
+  --gutter: 1rem;                                    /* margem lateral no celular */
+  --container: 76rem;                                /* largura máxima do conteúdo */
+
+  /* ---------- CANTOS ---------- */
+  /* Cards usam "moldura dupla": uma casca externa (--radius-shell)
+     com o conteúdo dentro (--radius-core), cantos concêntricos. */
+  --bezel: 6px;                                         /* espessura da casca */
+  --radius-shell: 28px;
+  --radius-core: calc(var(--radius-shell) - var(--bezel));
+  --radius-sm: 12px;                                    /* elementos pequenos */
+  --radius-pill: 999px;                                 /* botões e chips */
+
+  /* ---------- ANIMAÇÃO ---------- */
+  /* Curvas fortes: começam rápido e terminam macias. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-elastic: cubic-bezier(0.34, 1.2, 0.64, 1);   /* passa do ponto e volta (gelatina) */
+  --dur-press: 160ms;
+  --dur-fast: 220ms;
+  --dur-base: 380ms;
+  --dur-slow: 700ms;
+
+  /* Camadas (z-index) organizadas em um lugar só */
+  --z-ambient: -1;
+  --z-float: 40;
+  --z-menu: 45;
+  --z-header: 50;
+
+  --header-h: 5.5rem;   /* espaço reservado para o menu flutuante */
+}
+
+/* =========================================================
+   TEMA ESCURO (padrão)
+   ---------------------------------------------------------
+   ".phone" também recebe estas cores: os celulares da seção
+   "Como o golpe acontece" ficam sempre escuros, como um
+   aparelho de verdade, nos dois temas.
+   ========================================================= */
+:root,
+.phone {
+  /* ---------- PALETA DA MARCA (as 5 cores) ----------
+     #0B0C10 fundo · #1F2833 superfícies · #C5C6C7 texto
+     #66FCF1 ciano (destaque, usar POUCO) · #45A29E verde-água */
+  --bg: #0B0C10;          /* fundo principal */
+  --surface: #1F2833;     /* cards e superfícies elevadas */
+  --accent: #66FCF1;      /* ciano: botão principal, palavra-chave, foco */
+  --accent-2: #45A29E;    /* verde-água: ícones, bordas ativas, hover */
+  --text-body: #C5C6C7;   /* parágrafos */
+
+  /* ---------- TONS DERIVADOS DA PALETA ---------- */
+  --navy: #0F1C22;            /* "fundo profundo": blocos institucionais (mistura de fundo + verde-água) */
+  --navy-2: #16262E;          /* o mesmo, um pouco mais claro */
+  --bg-deep: #07080B;         /* um pouco mais escuro que o fundo */
+  --surface-2: #171E26;       /* entre o fundo e a superfície (degradê dos cards) */
+  --surface-hover: #2A3644;   /* superfície com mouse em cima */
+  --accent-hover: #9AFDF6;    /* ciano mais claro: botão com mouse em cima */
+  --accent-ink: #66FCF1;      /* ciano para textos curtos, links e foco */
+  --text: #EDEEEF;            /* títulos (um pouco mais claro que o texto) */
+  --text-muted: #A4ABB1;      /* texto secundário (6,4:1 sobre cards) */
+  --text-faint: #8E979F;      /* rótulos pequenos (5:1 sobre cards) */
+  --on-accent: #0B0C10;       /* texto escuro sobre o ciano */
+  --accent-line: #66FCF1;     /* ciano em linhas finas, pontinhos e ícones (no claro vira verde-água escuro) */
+
+  /* Bordas finas e brilhos internos */
+  --hairline: rgba(197, 198, 199, 0.08);
+  --hairline-strong: rgba(197, 198, 199, 0.15);
+  --hairline-accent: rgba(102, 252, 241, 0.28);
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --glow-accent: rgba(102, 252, 241, 0.35);
+
+  /* Sombras macias e difusas (nunca pretas e duras) */
+  --shadow-soft: 0 30px 60px -30px rgba(2, 4, 6, 0.75);
+  --shadow-float: 0 40px 80px -24px rgba(2, 4, 6, 0.8), 0 12px 24px -12px rgba(0, 0, 0, 0.4);
+
+  /* ---------- "TINTAS" PARA TRANSPARÊNCIAS ----------
+     Guardam só os números R, G, B de uma cor. O CSS usa assim:
+       rgba(var(--ink-rgb), 0.06)
+     No escuro, --ink-rgb é branco (véu claro sobre o fundo escuro);
+     no claro, vira o quase-preto da marca (véu escuro sobre o claro). */
+  --ink-rgb: 255, 255, 255;      /* véus e fundos de botões redondos */
+  --line-rgb: 197, 198, 199;     /* linhas e contornos finos */
+  --bg-rgb: 11, 12, 16;          /* fundo com transparência (menu "de vidro") */
+  --surface-rgb: 31, 40, 51;     /* superfície com transparência */
+  --navy-rgb: 15, 28, 34;        /* fundo profundo com transparência */
+  --cyan-rgb: 102, 252, 241;     /* bordas finas ciano */
+  --teal-rgb: 69, 162, 158;      /* fundos verde-água (pílulas, item ativo) */
+  --shadow-rgb: 2, 4, 6;         /* cor das sombras */
+
+  /* Força dos brilhos e das sombras (1 = como foi desenhado).
+     No claro diminuem, porque luz e sombra pesam mais no fundo claro. */
+  --glow-k: 1;
+  --shadow-k: 1;
+
+  /* ---------- CORES DE PARTES ESPECÍFICAS ---------- */
+  --header-bg: rgba(11, 12, 16, 0.55);          /* menu "ilha" no topo */
+  --header-bg-solid: rgba(11, 12, 16, 0.82);    /* menu depois de rolar */
+  --mobile-menu-bg: rgba(15, 28, 34, 0.88);     /* menu do celular (tela cheia) */
+  --backdrop: rgba(2, 4, 6, 0.7);               /* fundo escurecido atrás do painel */
+  --chip-bg: rgba(31, 40, 51, 0.55);            /* atalhos "O que aconteceu" */
+  --paper-bg: linear-gradient(180deg, rgba(31, 40, 51, 0.6) 0%, rgba(23, 30, 38, 0.85) 100%);
+  --analysis-bg: linear-gradient(160deg, rgba(31, 40, 51, 0.96) 0%, rgba(11, 12, 16, 0.96) 100%);
+  --sheet-footer-bg: rgba(11, 12, 16, 0.9);
+  --wa-float-bg: rgba(31, 40, 51, 0.85);
+  --muted-on-menu: #A4ABB1;                     /* nota no rodapé do menu do celular */
+  --warning-text: #EDEEEF;                      /* aviso "nunca pedimos senhas" */
+  --team-bg: rgba(2, 4, 6, 0.6);                /* espaço reservado da equipe */
+  --dont-bg: rgba(11, 12, 16, 0.75);            /* cartão "Não faça" */
+  --dot-color: rgba(197, 198, 199, 0.16);       /* grade de pontos */
+  --grain-opacity: 0.06;                        /* grão de filme */
+  --grain-tone: 1;                              /* 1 = grão claro, 0 = grão escuro */
+  --contour-k: 1;                               /* força da textura de contorno */
+  --logo-color: #E7E8EE;
+
+  /* Texto dentro dos blocos "fundo profundo" (O problema, Sobre, destaque) */
+  --on-navy-body: #C5C6C7;
+  --on-navy-muted: #A4ABB1;
+  --on-navy-faint: #8E979F;
+  --on-feature-muted: #C5C6C7;
+  --redact-bar-navy: #1F3036;                   /* tarja que esconde as frases-chave */
+  --redact-bar-cta: #2A3B44;
+
+  /* Borda que acende perto do mouse */
+  --spot-edge: rgba(102, 252, 241, 0.85);
+  --spot-edge-2: rgba(69, 162, 158, 0.35);
+  --spot-glow: rgba(69, 162, 158, 0.07);
+
+  /* Fundo das pílulas de status ("Concluído", "Em análise") */
+  --pill-bg: rgba(69, 162, 158, 0.25);
+
+  /* Verde do WhatsApp: usado SOMENTE no ícone */
+  --whatsapp: #25D366;
+}
+
+@media (min-width: 640px) {
+  :root { --gutter: 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  :root { --gutter: 2.5rem; }
+}
+
+/* Telas largas (monitores grandes): o conteúdo usa mais da largura,
+   em vez de ficar espremido no meio */
+@media (min-width: 1600px) {
+  :root {
+    --container: 92rem;   /* ~1470px */
+    --gutter: 4rem;
+  }
+}
+
+@media (min-width: 2200px) {
+  :root { --container: 104rem; }
+}
+
+/* ---------- NOTEBOOKS (1280px a 1919px de largura) ----------
+   Em notebook comum (1366×768, ou 1920×1080 com escala de 125%,
+   que o navegador vê como 1536px) o site ficava grande demais.
+   1. A fonte da página (html) vai de 14,5px em 1280px até 16px
+      em 1600px. Quase tudo usa rem, então tudo encolhe junto.
+      Usamos rem (e não px) para respeitar quem aumentou a fonte
+      do navegador.
+   2. Títulos, respiro entre seções e margens laterais crescem
+      mais devagar nessa faixa. As fórmulas foram feitas para
+      chegar ao MESMO valor de antes em 1920px: a partir de 1920
+      o visual não muda.
+   Abaixo de 1280px (celular e tablet) nada disso vale. */
+@media (min-width: 1280px) {
+  html {
+    font-size: clamp(0.90625rem, 0.53125rem + 0.46875vw, 1rem);
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1919.98px) {
+  :root {
+    --fs-xl: clamp(2rem, 1rem + 2.1vw, 3.5rem);           /* 1366: ~44px · 1920: 56px */
+    --fs-2xl: clamp(2.625rem, -1.5rem + 5.8vw, 5.5rem);
+    --section-y: clamp(5.5rem, -2rem + 10vw, 10rem);      /* 1366: ~107px · 1920: 160px */
+    --gutter: clamp(2.5rem, -2rem + 5vw, 4rem);           /* 1366: ~38px · 1920: 64px */
+  }
+}
+
+/* ---------- TELAS BAIXAS (até 820px de altura) ----------
+   Notebooks têm pouca altura útil (a barra do navegador come
+   ~100px). Menos respiro entre seções e um menu um pouco mais baixo.
+   Só no computador (1024px ou mais): o celular deitado não muda. */
+@media (min-width: 1024px) and (max-height: 820px) {
+  :root {
+    --section-y: clamp(4.5rem, 1.5rem + 5vw, 7.5rem);
+    --header-h: 5rem;
+  }
+}
+
+/* =========================================================
+   TEMA CLARO
+   ---------------------------------------------------------
+   Vale quando o <html> tem data-theme="light".
+   Contrastes conferidos (AA). Regra do ciano no claro:
+   #66FCF1 só como FUNDO de botões e pílulas (texto escuro
+   por cima). Texto e ícones finos usam --accent-ink/--accent-2.
+   ========================================================= */
+[data-theme='light'] {
+  color-scheme: light;
+
+  /* Fundo e superfícies */
+  --bg: #F3F5F6;
+  --bg-deep: #E9EDEF;
+  --surface: #FFFFFF;
+  --surface-2: #F6F8F9;
+  --surface-hover: #EEF2F3;
+  --navy: #E6ECEE;
+  --navy-2: #DCE5E8;
+
+  /* Texto */
+  --text: #0B0C10;          /* títulos, 19:1 sobre branco */
+  --text-body: #2A323B;     /* parágrafos, 13:1 */
+  --text-muted: #4F5A64;    /* secundário, 7:1 */
+  --text-faint: #5E6872;    /* rótulos pequenos, 5,7:1 */
+
+  /* Destaques */
+  --accent: #66FCF1;        /* SÓ fundo de botões/pílulas */
+  --accent-hover: #8DFDF6;
+  --accent-ink: #26706C;    /* "rastro.", links, foco, link ativo (5,3:1) */
+  --accent-2: #2C7A76;      /* ícones e bordas ativas (4,6:1) */
+  --on-accent: #0B0C10;
+  --accent-line: #2C7A76;   /* linhas finas, pontinhos e ícones: o ciano não aparece no claro */
+
+  /* Linhas, sombras e brilhos */
+  --hairline: rgba(11, 12, 16, 0.08);
+  --hairline-strong: rgba(11, 12, 16, 0.14);
+  --hairline-accent: rgba(38, 112, 108, 0.35);
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --glow-accent: rgba(69, 162, 158, 0.25);
+  --shadow-soft: 0 24px 48px -28px rgba(15, 28, 34, 0.25);
+  --shadow-float: 0 32px 64px -28px rgba(15, 28, 34, 0.28), 0 8px 16px -10px rgba(15, 28, 34, 0.12);
+
+  /* Tintas */
+  --ink-rgb: 11, 12, 16;
+  --line-rgb: 11, 12, 16;
+  --bg-rgb: 243, 245, 246;
+  --surface-rgb: 255, 255, 255;
+  --navy-rgb: 230, 236, 238;
+  --cyan-rgb: 38, 112, 108;
+  --teal-rgb: 69, 162, 158;
+  --shadow-rgb: 15, 28, 34;
+  --glow-k: 0.42;
+  --shadow-k: 0.3;
+
+  /* Partes específicas */
+  --header-bg: rgba(255, 255, 255, 0.62);
+  --header-bg-solid: rgba(255, 255, 255, 0.86);
+  --mobile-menu-bg: rgba(243, 245, 246, 0.94);
+  --backdrop: rgba(15, 28, 34, 0.35);
+  --chip-bg: rgba(255, 255, 255, 0.75);
+  --paper-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(246, 248, 249, 0.95) 100%);
+  --analysis-bg: linear-gradient(160deg, rgba(255, 255, 255, 0.97) 0%, rgba(240, 244, 245, 0.97) 100%);
+  --sheet-footer-bg: rgba(255, 255, 255, 0.92);
+  --wa-float-bg: rgba(255, 255, 255, 0.9);
+  --muted-on-menu: #4F5A64;
+  --warning-text: #0B0C10;
+  --team-bg: rgba(255, 255, 255, 0.6);
+  --dont-bg: rgba(255, 255, 255, 0.7);
+  --dot-color: rgba(11, 12, 16, 0.10);
+  --grain-opacity: 0.04;
+  --grain-tone: 0;
+  --contour-k: 0.7;
+  --logo-color: #0B0C10;
+
+  --on-navy-body: #2A323B;
+  --on-navy-muted: #4F5A64;
+  --on-navy-faint: #5E6872;
+  --on-feature-muted: #2A323B;
+  --redact-bar-navy: #CCD8DC;
+  --redact-bar-cta: #CCD8DC;
+
+  --spot-edge: #26706C;
+  --spot-edge-2: rgba(69, 162, 158, 0.55);
+  --spot-glow: rgba(69, 162, 158, 0.06);
+  --pill-bg: rgba(69, 162, 158, 0.12);   /* mais claro: texto #26706C passa de 4,5:1 */
+}
