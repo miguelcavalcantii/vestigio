@@ -505,19 +505,19 @@ ALERTAS.forEach(function (alerta) {
   enderecos.push({ url: DOMINIO + '/alertas/' + alerta.id + '.html', data: alerta.data });
 });
 
-// Política de privacidade: recebe o MESMO rodapé do index.html, entre os
-// comentários INICIO:RODAPE-COPIA e FIM:RODAPE-COPIA de privacidade.html
-// (só o <footer>, sem o botão flutuante)
-(function () {
-  var privacidade = ler('privacidade.html');
-  var inicio = privacidade.indexOf('<!-- INICIO:RODAPE-COPIA');
-  var fim = privacidade.indexOf('<!-- FIM:RODAPE-COPIA -->');
-  if (inicio < 0 || fim < 0) return;
-  var rodapeHtml = ajustarLinks(MOLDE_RODAPE, '');
-  rodapeHtml = rodapeHtml.slice(rodapeHtml.indexOf('  <footer'), rodapeHtml.indexOf('</footer>') + 9);
-  var abre = privacidade.indexOf('\n', inicio) + 1;
-  gravar('privacidade.html', privacidade.slice(0, abre) + rodapeHtml + '\n  ' + privacidade.slice(fim));
-})();
+// Política de privacidade: montada como as outras páginas (mesmo
+// cabeçalho, rodapé, tema e scripts). O texto fica em
+// ferramentas/modelos/privacidade.html. Não entra no sitemap (noindex).
+gravar('privacidade.html', montarPagina({
+  raiz: '',
+  titulo: 'Política de privacidade | Vestígio Investigação Digital',
+  descricao: 'Como a Vestígio Investigação Digital trata os seus dados pessoais, conforme a LGPD.',
+  url: DOMINIO + '/privacidade.html',
+  classe: 'pagina--privacidade',
+  paginaAtual: 'privacidade.html',
+  jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Política de privacidade', url: DOMINIO + '/privacidade.html', publisher: ORGANIZACAO },
+  conteudo: lerModelo('privacidade.html').replace(/\s+$/, '')
+}).replace('  <meta name="description"', '  <meta name="robots" content="noindex">\n  <meta name="description"'));
 
 gravar('sitemap.xml', sitemap(enderecos));
 gravar('robots.txt', 'User-agent: *\nAllow: /\n\nSitemap: ' + DOMINIO + '/sitemap.xml\n');
