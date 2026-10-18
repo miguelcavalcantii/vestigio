@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página não encontrada | Vestígio Investigação Digital</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F5F6">
+  <!-- Página que o Cloudflare mostra quando um endereço não existe.
+       Os caminhos começam com "/" porque ela pode aparecer em qualquer pasta. -->
+  <link rel="icon" href="/assets/logo-simbolo.svg" type="image/svg+xml">
+  <script>
+    (function () {
+      var tema = null;
+      try { tema = localStorage.getItem('vestigio-tema'); } catch (e) {}
+      if (tema !== 'light' && tema !== 'dark') tema = 'light';   // padrão: claro
+      document.documentElement.setAttribute('data-theme', tema);
+    })();
+  </script>
+  <link rel="stylesheet" href="/css/fonts.css">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/textura-fundo.css">
+  <style>
+    .nao-encontrada {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: var(--space-7) var(--gutter);
+      text-align: center;
+    }
+    .nao-encontrada__caixa { display: grid; justify-items: center; gap: var(--space-5); max-width: 34rem; }
+    .nao-encontrada__codigo { color: var(--accent-ink); letter-spacing: 0.2em; }
+    .nao-encontrada h1 { font-size: var(--fs-xl); }
+    .nao-encontrada p { color: var(--text-muted); font-size: var(--fs-md); }
+    .nao-encontrada__logo { width: 3rem; height: 3rem; color: var(--logo-color); }
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <main class="nao-encontrada">
+    <div class="nao-encontrada__caixa">
+      <svg class="nao-encontrada__logo" viewBox="0 0 26 26" aria-hidden="true" focusable="false">
+        <path d="M4 13V4h9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/>
+        <circle cx="10.9" cy="10.9" r="1.3" fill="currentColor"/>
+        <circle cx="14.9" cy="14.9" r="1.6" fill="currentColor"/>
+        <circle cx="19.7" cy="19.7" r="3.5" fill="currentColor"/>
+      </svg>
+      <p class="mono nao-encontrada__codigo">Erro 404</p>
+      <h1>Esta página não deixou rastro.</h1>
+      <p>O endereço pode ter mudado ou não existe. Volte ao início ou fale com a gente pelo WhatsApp.</p>
+      <a class="btn btn--primary btn--lg" href="/">Voltar ao início</a>
+    </div>
+  </main>
+  <script src="/js/config.js"></script>
+  <script src="/js/textura-fundo.js"></script>
+</body>
+</html>
