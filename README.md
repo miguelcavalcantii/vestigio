@@ -194,7 +194,7 @@ linha. Em `services.js`, o problema quase sempre é uma vírgula ou aspas faltan
 - **Botão:** no menu (entre os links e "Falar com especialista") no computador e,
   no celular, no rodapé do menu ("Aparência"). Lua = tema escuro, sol = tema claro.
 - **Como funciona:** o atributo `data-theme` no `<html>` vale `"dark"` ou `"light"`.
-  - Primeira visita: segue o sistema (claro ou escuro).
+  - Primeira visita: sempre no tema claro (padrão do site), seja qual for o tema do sistema.
   - Depois de escolher, a escolha fica salva no navegador (chave `vestigio-tema`).
   - O script do `<head>` aplica o tema antes dos estilos, então a página não pisca.
   - `privacidade.html` segue o mesmo tema salvo.

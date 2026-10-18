@@ -7,7 +7,7 @@
   <!-- ===== SEO ===== -->
   <title>Vestígio | Investigação Digital de golpes e crimes cibernéticos</title>
   <meta name="description" content="Investigação de golpes digitais, localização de pessoas e bens e apoio na recuperação de valores. Atendimento sigiloso pelo WhatsApp, dentro da LGPD. Atendimento em todo o Brasil.">
-  <meta name="theme-color" content="#0B0C10">
+  <meta name="theme-color" content="#F3F5F6">
   <!-- TODO: trocar pelo domínio definitivo -->
   <link rel="canonical" href="https://www.vestigio.com.br/">
 
@@ -41,7 +41,7 @@
 
   <!-- ===== TEMA E ANIMAÇÕES (roda ANTES dos estilos, para não "piscar") =====
        1. TEMA: usa a escolha salva ("vestigio-tema"); se a pessoa nunca
-          escolheu, segue o sistema (claro ou escuro). Sem transição aqui.
+          escolheu, abre no CLARO (padrão do site). Sem transição aqui.
        2. ANIMAÇÕES: liga a classe motion-ok (animações de entrada).
           ATENÇÃO: ANIMACOES_SEMPRE precisa ser igual a
           CONFIG.animacoesSempre em js/config.js (este script roda antes dele).
@@ -56,9 +56,8 @@
       // 1. Tema
       var tema = null;
       try { tema = localStorage.getItem('vestigio-tema'); } catch (e) {}
-      if (tema !== 'light' && tema !== 'dark') {
-        tema = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      }
+      // Padrão: claro. Só fica escuro se a pessoa escolheu no botão.
+      if (tema !== 'light' && tema !== 'dark') tema = 'light';
       html.setAttribute('data-theme', tema);
       var meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', tema === 'light' ? '#F3F5F6' : '#0B0C10');

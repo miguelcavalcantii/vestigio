@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Página não encontrada | Vestígio Investigação Digital</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#0B0C10">
+  <meta name="theme-color" content="#F3F5F6">
   <!-- Página que o Cloudflare mostra quando um endereço não existe.
        Os caminhos começam com "/" porque ela pode aparecer em qualquer pasta. -->
   <link rel="icon" href="/assets/logo-simbolo.svg" type="image/svg+xml">
@@ -13,9 +13,7 @@
     (function () {
       var tema = null;
       try { tema = localStorage.getItem('vestigio-tema'); } catch (e) {}
-      if (tema !== 'light' && tema !== 'dark') {
-        tema = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      }
+      if (tema !== 'light' && tema !== 'dark') tema = 'light';   // padrão: claro
       document.documentElement.setAttribute('data-theme', tema);
     })();
   </script>

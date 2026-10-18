@@ -10,7 +10,7 @@
   <!-- ===== SEO (cada página tem título, descrição e endereço próprios) ===== -->
   <title>Golpes e perfis falsos no WhatsApp: o que fazer | Vestígio</title>
   <meta name="description" content="Clonagem, falso parente com número novo, extorsão e ameaças. Veja como funciona e o que vamos precisar de você.">
-  <meta name="theme-color" content="#0B0C10">
+  <meta name="theme-color" content="#F3F5F6">
   <link rel="canonical" href="https://www.vestigio.com.br/servicos/golpes-no-whatsapp.html">
 
   <!-- ===== OPEN GRAPH (prévia ao compartilhar o link) ===== -->
@@ -34,9 +34,8 @@
       // 1. Tema
       var tema = null;
       try { tema = localStorage.getItem('vestigio-tema'); } catch (e) {}
-      if (tema !== 'light' && tema !== 'dark') {
-        tema = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      }
+      // Padrão: claro. Só fica escuro se a pessoa escolheu no botão.
+      if (tema !== 'light' && tema !== 'dark') tema = 'light';
       html.setAttribute('data-theme', tema);
       var meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', tema === 'light' ? '#F3F5F6' : '#0B0C10');
