@@ -151,7 +151,6 @@
   --dot-color: rgba(197, 198, 199, 0.16);       /* grade de pontos */
   --grain-opacity: 0.06;                        /* grão de filme */
   --grain-tone: 1;                              /* 1 = grão claro, 0 = grão escuro */
-  --contour-k: 1;                               /* força da textura de contorno */
   --logo-color: #E7E8EE;
 
   /* Texto dentro dos blocos "fundo profundo" (O problema, Sobre, destaque) */
@@ -305,7 +304,6 @@
   --dot-color: rgba(11, 12, 16, 0.10);
   --grain-opacity: 0.04;
   --grain-tone: 0;
-  --contour-k: 0.7;
   --logo-color: #0B0C10;
 
   --on-navy-body: #2A323B;
