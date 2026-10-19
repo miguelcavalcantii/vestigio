@@ -1422,9 +1422,22 @@
   min-height: 0;
   overflow: hidden;
   padding: 0 0.8em;
-  /* as mensagens que sobem somem suavemente no topo */
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 1.2em);
-  mask-image: linear-gradient(180deg, transparent 0, #000 1.2em);
+}
+
+/* As mensagens que sobem somem suavemente no topo: um degradê na cor
+   da tela por cima delas. (Antes era mask-image, mas no Safari do
+   iPhone a máscara fazia o resto do aparelho sumir atrás da textura:
+   só os balões apareciam.) */
+.chat__body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 1.2em;
+  background: linear-gradient(180deg, #0E1217, rgba(14, 18, 23, 0));
+  pointer-events: none;
 }
 
 .chat__list {
