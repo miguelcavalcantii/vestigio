@@ -43,6 +43,10 @@ var ROTEIRO_INVESTIGACAO = [
   { icone: 'clock', item: 'Horário das mensagens', achado: 'Padrão de outras vítimas' }
 ];
 
+// Páginas em inglês (js/config.js)
+traduzirTudo(ROTEIRO_GOLPE, ['de', 'tipo', 'pausa', 'nome']);
+traduzirTudo(ROTEIRO_INVESTIGACAO, ['icone']);
+
 /* ---------- TEMPOS (milissegundos) ---------- */
 var TEMPOS_DEMO = {
   digitando: 950,        // quanto tempo o "digitando…" fica na tela
@@ -79,7 +83,7 @@ var TEMPOS_DEMO = {
 
   var umAparelhoSo = window.matchMedia('(max-width: 1023px)');
   var mouseFino = window.matchMedia('(hover: hover) and (pointer: fine)');
-  var EASE_OUT = [0.23, 1, 0.32, 1];
+  var EASE_OUT = RITMO.suave;
 
   function $$(seletor, raiz) {
     return Array.prototype.slice.call((raiz || document).querySelectorAll(seletor));
@@ -105,7 +109,7 @@ var TEMPOS_DEMO = {
         '<span class="case-row__check"><svg viewBox="0 0 16 16"><path pathLength="1" d="M3.5 8.5l3 3 6-7"/></svg></span>' +
         '<span class="case-row__text">' +
           '<span class="case-row__name">' + passo.item + '</span>' +
-          '<span class="case-tag" data-achado="' + passo.achado + '">Na fila</span>' +
+          '<span class="case-tag" data-achado="' + passo.achado + '">' + T('Na fila') + '</span>' +
         '</span>' +
       '</li>';
     }).join('');
@@ -177,7 +181,7 @@ var TEMPOS_DEMO = {
     if (mensagem.tipo === 'pix') {
       balao.classList.add('msg--pix');
       balao.innerHTML =
-        '<span class="pix__label">' + iconeSvg('receipt-text') + 'Chave Pix</span>' +
+        '<span class="pix__label">' + iconeSvg('receipt-text') + T('Chave Pix') + '</span>' +
         '<strong>' + mensagem.nome + '</strong>' +
         '<span class="pix__key">' + mensagem.chave + '</span>';
     } else {
@@ -232,7 +236,7 @@ var TEMPOS_DEMO = {
   function analisarItem(i) {
     var linha = linhaDoItem(i);
     linha.classList.add('is-active');
-    linha.querySelector('.case-tag').textContent = 'Analisando…';
+    linha.querySelector('.case-tag').textContent = T('Analisando…');
   }
 
   function concluirItem(i) {
@@ -249,7 +253,7 @@ var TEMPOS_DEMO = {
 
   function mostrarRelatorio() {
     mapa.querySelector('.case-map__center').classList.add('is-on');
-    status.textContent = 'Concluído';
+    status.textContent = T('Concluído');
     status.classList.add('is-done');
     relatorio.classList.add('is-ready');
   }
@@ -260,7 +264,7 @@ var TEMPOS_DEMO = {
      aparece do outro lado.
      ========================================================= */
   var telaAtual = 1;
-  var NOMES_TELA = { 1: 'O golpe', 2: 'A investigação' };
+  var NOMES_TELA = { 1: T('O golpe'), 2: T('A investigação') };
 
   function atualizarIndicador(tela) {
     indicadorNum.textContent = tela + '/2';
@@ -283,7 +287,7 @@ var TEMPOS_DEMO = {
     // Troca em 2D (desliza e esmaece). A antiga "virada" em 3D (rotateY)
     // fazia o Safari do iPhone sumir com a moldura do aparelho.
     animar(sai, { transform: ['translateX(0px) scale(1)', 'translateX(-28px) scale(0.96)'], opacity: [1, 0] },
-      { duration: 0.3, ease: [0.5, 0, 0.75, 0] }).finished.then(function () {
+      { duration: 0.3, ease: RITMO.acelera }).finished.then(function () {
       palco.setAttribute('data-tela', tela);
       atualizarIndicador(tela);
       // Volta ao normal sem tirar o transform (tirar desfazia a camada
@@ -305,11 +309,11 @@ var TEMPOS_DEMO = {
     notificacao.classList.remove('is-on');
     $$('.case-row', listaItens).forEach(function (linha) {
       linha.classList.remove('is-active', 'is-done');
-      linha.querySelector('.case-tag').textContent = 'Na fila';
+      linha.querySelector('.case-tag').textContent = T('Na fila');
     });
     $$('.is-on', mapa).forEach(function (el) { el.classList.remove('is-on'); });
     barra.style.setProperty('--progresso', 0);
-    status.textContent = 'Aguardando';
+    status.textContent = T('Aguardando');
     status.classList.remove('is-active', 'is-done');
     relatorio.classList.remove('is-ready');
   }
@@ -355,7 +359,7 @@ var TEMPOS_DEMO = {
     // Começa a investigação
     passos.push({ espera: TEMPOS_DEMO.antesDaAnalise, fazer: function () {
       irParaTela(2);
-      status.textContent = 'Em análise';
+      status.textContent = T('Em análise');
       status.classList.add('is-active');
     } });
 
@@ -448,7 +452,7 @@ var TEMPOS_DEMO = {
       else chat.appendChild(criarBalao(mensagem));
     });
     rolarConversa();
-    status.textContent = 'Em análise';
+    status.textContent = T('Em análise');
     ROTEIRO_INVESTIGACAO.forEach(function (passo, i) { concluirItem(i); });
     mostrarRelatorio();
   }

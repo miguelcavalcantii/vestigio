@@ -1,28 +1,353 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://vestigio.app.br/</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/privacidade.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/alertas.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/e-mail-falso.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/linhas-telefonicas-e-mails-e-enderecos.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/localizacao-de-pessoas.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/busca-de-bens-de-devedor-judicial.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/investigacao-em-sites-falsos.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/investigacao-no-instagram.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/golpes-no-whatsapp.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/investigacao-no-facebook.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/golpe-do-amor.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/golpe-da-olx.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/golpe-da-entrega-falsa.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/golpe-do-falso-leilao.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/golpe-do-boleto.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/golpe-do-pix-falso.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/indenizacao-por-danos-morais.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-judicial.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/acompanhamento-em-delegacias.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/servicos/possivel-exclusao-de-dados-pessoais-da-internet.html</loc><lastmod>2026-10-19</lastmod></url>
-  <url><loc>https://vestigio.app.br/alertas/golpe-do-falso-parente-numero-novo.html</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://vestigio.app.br/alertas/falso-leilao-de-veiculos.html</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html</loc><lastmod>2026-09-28</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://vestigio.app.br/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/privacidade.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/privacidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/privacidade.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/privacy.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/privacidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/privacidade.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/alertas.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/alertas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/alerts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/alerts.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/alertas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/alerts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/e-mail-falso.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/e-mail-falso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-email.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/e-mail-falso.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/fake-email.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/e-mail-falso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-email.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/e-mail-falso.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/linhas-telefonicas-e-mails-e-enderecos.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/linhas-telefonicas-e-mails-e-enderecos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/phone-numbers-emails-and-addresses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/linhas-telefonicas-e-mails-e-enderecos.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/phone-numbers-emails-and-addresses.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/linhas-telefonicas-e-mails-e-enderecos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/phone-numbers-emails-and-addresses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/linhas-telefonicas-e-mails-e-enderecos.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/localizacao-de-pessoas.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/localizacao-de-pessoas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/locating-people.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/localizacao-de-pessoas.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/locating-people.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/localizacao-de-pessoas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/locating-people.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/localizacao-de-pessoas.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/busca-de-bens-de-devedor-judicial.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/busca-de-bens-de-devedor-judicial.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/judgment-debtor-asset-search.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/busca-de-bens-de-devedor-judicial.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/judgment-debtor-asset-search.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/busca-de-bens-de-devedor-judicial.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/judgment-debtor-asset-search.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/busca-de-bens-de-devedor-judicial.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/investigacao-em-sites-falsos.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/investigacao-em-sites-falsos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-website-investigation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/investigacao-em-sites-falsos.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/fake-website-investigation.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/investigacao-em-sites-falsos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-website-investigation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/investigacao-em-sites-falsos.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/investigacao-no-instagram.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/investigacao-no-instagram.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/instagram-investigation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/investigacao-no-instagram.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/instagram-investigation.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/investigacao-no-instagram.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/instagram-investigation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/investigacao-no-instagram.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/golpes-no-whatsapp.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpes-no-whatsapp.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/whatsapp-scams.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpes-no-whatsapp.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/whatsapp-scams.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpes-no-whatsapp.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/whatsapp-scams.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpes-no-whatsapp.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/investigacao-no-facebook.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/investigacao-no-facebook.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/facebook-investigation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/investigacao-no-facebook.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/facebook-investigation.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/investigacao-no-facebook.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/facebook-investigation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/investigacao-no-facebook.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/golpe-do-amor.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-do-amor.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/romance-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-do-amor.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/romance-scam.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-do-amor.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/romance-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-do-amor.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/golpe-da-olx.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-da-olx.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/olx-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-da-olx.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/olx-scam.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-da-olx.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/olx-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-da-olx.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/golpe-da-entrega-falsa.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-da-entrega-falsa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-delivery-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-da-entrega-falsa.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/fake-delivery-scam.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-da-entrega-falsa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-delivery-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-da-entrega-falsa.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/golpe-do-falso-leilao.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-do-falso-leilao.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-auction-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-do-falso-leilao.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/fake-auction-scam.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-do-falso-leilao.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-auction-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-do-falso-leilao.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/golpe-do-boleto.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-do-boleto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/boleto-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-do-boleto.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/boleto-scam.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-do-boleto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/boleto-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-do-boleto.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/golpe-do-pix-falso.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-do-pix-falso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-pix-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-do-pix-falso.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/fake-pix-scam.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/golpe-do-pix-falso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/fake-pix-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/golpe-do-pix-falso.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/indenizacao-por-danos-morais.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/indenizacao-por-danos-morais.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/moral-damages-compensation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/indenizacao-por-danos-morais.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/moral-damages-compensation.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/indenizacao-por-danos-morais.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/moral-damages-compensation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/indenizacao-por-danos-morais.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/administrative-fund-recovery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/administrative-fund-recovery.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/administrative-fund-recovery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-judicial.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-judicial.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/court-fund-recovery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-judicial.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/court-fund-recovery.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-judicial.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/court-fund-recovery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-judicial.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/acompanhamento-em-delegacias.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/acompanhamento-em-delegacias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/police-station-support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/acompanhamento-em-delegacias.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/police-station-support.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/acompanhamento-em-delegacias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/police-station-support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/acompanhamento-em-delegacias.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/servicos/possivel-exclusao-de-dados-pessoais-da-internet.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/possivel-exclusao-de-dados-pessoais-da-internet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/personal-data-removal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/possivel-exclusao-de-dados-pessoais-da-internet.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/services/personal-data-removal.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/possivel-exclusao-de-dados-pessoais-da-internet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/personal-data-removal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/possivel-exclusao-de-dados-pessoais-da-internet.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/alertas/golpe-do-falso-parente-numero-novo.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/alertas/golpe-do-falso-parente-numero-novo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/alerts/fake-relative-new-number-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas/golpe-do-falso-parente-numero-novo.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/alerts/fake-relative-new-number-scam.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/alertas/golpe-do-falso-parente-numero-novo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/alerts/fake-relative-new-number-scam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas/golpe-do-falso-parente-numero-novo.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/alertas/falso-leilao-de-veiculos.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/alertas/falso-leilao-de-veiculos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/alerts/fake-vehicle-auction.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas/falso-leilao-de-veiculos.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/alerts/fake-vehicle-auction.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/alertas/falso-leilao-de-veiculos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/alerts/fake-vehicle-auction.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas/falso-leilao-de-veiculos.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/alerts/scheduled-and-cancelled-pix.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/en/alerts/scheduled-and-cancelled-pix.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/alerts/scheduled-and-cancelled-pix.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html"/>
+  </url>
 </urlset>

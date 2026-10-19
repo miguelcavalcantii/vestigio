@@ -394,7 +394,7 @@ a.service-card__button {
 
 @media (hover: hover) and (pointer: fine) {
   .alerta-destaque:hover {
-    transform: translateY(-3px);
+    transform: translateY(var(--card-lift));
   }
 
   .alerta-destaque:hover .btn__orb {

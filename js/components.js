@@ -28,8 +28,8 @@
   /* ---------- Ajudantes ---------- */
 
   // Curvas de animação (as mesmas do variables.css)
-  var EASE_OUT = [0.23, 1, 0.32, 1];
-  var EASE_DRAWER = [0.32, 0.72, 0, 1];
+  var EASE_OUT = RITMO.suave;
+  var EASE_DRAWER = RITMO.fluida;
 
   var telaGrande = window.matchMedia('(min-width: 768px)');
 
@@ -72,10 +72,13 @@
   // páginas das pastas servicos/ e alertas/ é "../" (vem do atributo
   // data-raiz no <html>). Serve para montar links que funcionam em todas.
   var RAIZ = document.documentElement.getAttribute('data-raiz') || '';
+  // Raiz da pasta do site (assets, css, js). Nas páginas em inglês
+  // (pasta en/) ela fica um nível acima da raiz do idioma.
+  var RAIZ_SITE = document.documentElement.getAttribute('data-raiz-site') || RAIZ;
 
   // Endereço da página de um serviço (a função paginaDoServico fica em services.js)
   function linkDaPagina(servico) {
-    return RAIZ + 'servicos/' + paginaDoServico(servico);
+    return RAIZ + PASTAS.servicos + paginaDoServico(servico);
   }
 
   // Tira acentos e deixa tudo minúsculo: "Número" vira "numero".
@@ -210,7 +213,7 @@
       aberto = true;
       menu.hidden = false;
       botao.setAttribute('aria-expanded', 'true');
-      rotulo.textContent = 'Fechar menu';
+      rotulo.textContent = T('Fechar menu');
       document.documentElement.classList.add('is-locked');
       // "inert" impede o Tab de ir para o conteúdo escondido atrás do menu
       fundo().forEach(function (el) { if (el) el.inert = true; });
@@ -239,7 +242,7 @@
       if (!aberto) return;
       aberto = false;
       botao.setAttribute('aria-expanded', 'false');
-      rotulo.textContent = 'Abrir menu';
+      rotulo.textContent = T('Abrir menu');
       document.documentElement.classList.remove('is-locked');
       fundo().forEach(function (el) { if (el) el.inert = false; });
 
@@ -348,13 +351,13 @@
         '<div class="bezel__core">' +
           '<div class="service-card__top">' +
             '<span class="service-card__icon">' + icone(servico.icone) + '</span>' +
-            '<span class="mono">Caso ' + numero + '</span>' +
+            '<span class="mono">' + T('Caso') + ' ' + numero + '</span>' +
           '</div>' +
           '<h3><button class="service-card__button" type="button" data-service="' + escapar(servico.id) + '" aria-haspopup="dialog">' +
             destacar(servico.nome, termo) +
           '</button></h3>' +
           '<p>' + escapar(servico.resumo) + '</p>' +
-          '<span class="service-card__more" aria-hidden="true">Ver detalhes' +
+          '<span class="service-card__more" aria-hidden="true">' + T('Ver detalhes') +
             '<span class="btn__orb">' + icone('arrow-up-right') + '</span>' +
           '</span>' +
         '</div>' +
@@ -417,7 +420,7 @@
     if (!gradeServicos || !listaAbas) return;
 
     // Monta as abas: "Todos" + uma por categoria, com a quantidade
-    var abas = [{ id: 'todos', nome: 'Todos' }].concat(CATEGORIAS);
+    var abas = [{ id: 'todos', nome: T('Todos') }].concat(CATEGORIAS);
     listaAbas.innerHTML = abas.map(function (aba, i) {
       var quantidade = servicosDaCategoria(aba.id).length;
       return (
@@ -644,7 +647,7 @@
       ? '<p class="sheet__note">' + icone('triangle-alert') + '<span>' + escapar(servico.aviso) + '</span></p>'
       : '';
 
-    return (
+    return TH(
       '<section class="sheet__section" aria-labelledby="sheet-oque">' +
         '<h3 id="sheet-oque">O que é</h3>' +
         '<p>' + escapar(servico.oQueE) + '</p>' +
@@ -673,7 +676,7 @@
     if (!servico || !painel) return false;
 
     // Preenche o painel
-    $('[data-sheet-category]', painel).textContent = 'Categoria: ' + nomeDaCategoria(servico.categoria);
+    $('[data-sheet-category]', painel).textContent = T('Categoria:') + ' ' + nomeDaCategoria(servico.categoria);
     $('[data-sheet-icon]', painel).innerHTML = icone(servico.icone);
     $('[data-sheet-title]', painel).textContent = servico.nome;
     var corpo = $('[data-sheet-body]', painel);
@@ -779,7 +782,7 @@
     if (meta) meta.setAttribute('content', COR_DO_FUNDO[tema]);
     $$('[data-theme-toggle]').forEach(function (botao) {
       botao.setAttribute('aria-pressed', tema === 'light' ? 'true' : 'false');
-      botao.setAttribute('aria-label', tema === 'light' ? 'Usar tema escuro' : 'Usar tema claro');
+      botao.setAttribute('aria-label', tema === 'light' ? T('Usar tema escuro') : T('Usar tema claro'));
     });
   }
 
@@ -905,7 +908,7 @@
       });
       return;
     }
-    copiarTexto(url).then(function () { avisar('Link copiado'); });
+    copiarTexto(url).then(function () { avisar(T('Link copiado')); });
   }
 
   /* =========================================================
@@ -916,6 +919,7 @@
      ========================================================= */
   window.Vestigio = {
     raiz: RAIZ,
+    raizSite: RAIZ_SITE,
     EASE_OUT: EASE_OUT,
     EASE_DRAWER: EASE_DRAWER,
     $: $,

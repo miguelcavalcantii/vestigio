@@ -301,7 +301,7 @@
         '</div>'
       );
     }).join('') +
-    '<a class="mobile-menu__todos" href="' + (V.raiz ? V.raiz + 'index.html' : '') + '#servicos">Ver todos os serviços' + V.icone('arrow-right') + '</a>';
+    '<a class="mobile-menu__todos" href="' + (V.raiz ? V.raiz + 'index.html' : '') + '#servicos">' + T('Ver todos os serviços') + V.icone('arrow-right') + '</a>';
 
     // Fechada, a lista fica fora do Tab e do leitor de tela
     gaveta.inert = true;
@@ -347,7 +347,7 @@
     var botao = document.createElement('button');
     botao.type = 'button';
     botao.className = 'topo';
-    botao.setAttribute('aria-label', 'Voltar ao topo da página');
+    botao.setAttribute('aria-label', T('Voltar ao topo da página'));
     botao.tabIndex = -1;
     botao.innerHTML =
       '<svg class="topo__anel" viewBox="0 0 48 48" aria-hidden="true" focusable="false">' +
@@ -426,10 +426,10 @@
     menu.hidden = true;
     menu.innerHTML =
       '<a class="wa-dial__opcao" href="' + linkWhatsApp() + '" target="_blank" rel="noopener" data-montador>' +
-        '<span class="wa-icon">' + V.icone('whatsapp') + '</span>Falar no WhatsApp' +
+        '<span class="wa-icon">' + V.icone('whatsapp') + '</span>' + T('Falar no WhatsApp') +
       '</a>' +
       '<button class="wa-dial__opcao" type="button" aria-haspopup="dialog" data-urgente>' +
-        '<span class="urgente__dot" aria-hidden="true"></span>Caí em um golpe agora' +
+        '<span class="urgente__icone" aria-hidden="true">' + V.icone('triangle-alert') + '</span>' + T('Caí em um golpe agora') +
       '</button>';
     document.body.appendChild(menu);
 

@@ -109,6 +109,10 @@ var NIVEIS_VERIFICADOR = [
   }
 ];
 
+// Páginas em inglês (js/config.js)
+traduzirTudo(PERGUNTAS_VERIFICADOR, ['peso', 'critica']);
+traduzirTudo(NIVEIS_VERIFICADOR, ['id', 'minimo']);
+
 (function () {
   'use strict';
 
@@ -129,10 +133,12 @@ var NIVEIS_VERIFICADOR = [
   var mostrandoResultado = false;
   var trocando = false; // evita cliques duplos durante a animação
 
+  // Tecla do "Sim": S no português, Y ("Yes") no inglês
+  var TECLA_SIM = IDIOMA === 'en' ? 'Y' : 'S';
   var RESPOSTAS = [
-    { valor: 'sim', rotulo: 'Sim', tecla: 'S', icone: 'check' },
-    { valor: 'nao', rotulo: 'Não', tecla: 'N', icone: 'x' },
-    { valor: 'naosei', rotulo: 'Não sei', tecla: '?', icone: 'circle-help' }
+    { valor: 'sim', rotulo: T('Sim'), tecla: TECLA_SIM, icone: 'check' },
+    { valor: 'nao', rotulo: T('Não'), tecla: 'N', icone: 'x' },
+    { valor: 'naosei', rotulo: T('Não sei'), tecla: '?', icone: 'circle-help' }
   ];
 
   /* ---------- Contador "00/06" e barra ---------- */
@@ -144,7 +150,7 @@ var NIVEIS_VERIFICADOR = [
       if (V.decodificar) V.decodificar(contador);   // as letras se "decodificam"
     }
     barra.style.setProperty('--progresso', ((mostrandoResultado ? total : respondidas) / total).toFixed(3));
-    status.textContent = mostrandoResultado ? 'Concluída' : (respondidas ? 'Em andamento' : 'Pronta');
+    status.textContent = T(mostrandoResultado ? 'Concluída' : (respondidas ? 'Em andamento' : 'Pronta'));
     caixa.classList.toggle('is-concluida', mostrandoResultado);
   }
 
@@ -154,7 +160,7 @@ var NIVEIS_VERIFICADOR = [
     var escolhida = respostas[i];
     return (
       '<div class="verif__tela verif__pergunta">' +
-        '<p class="verif__num mono">Pergunta ' + V.doisDigitos(i + 1) + ' de ' + V.doisDigitos(total) + '</p>' +
+        '<p class="verif__num mono">' + T('Pergunta') + ' ' + V.doisDigitos(i + 1) + ' ' + T('de') + ' ' + V.doisDigitos(total) + '</p>' +
         '<h3 class="verif__texto" id="verif-pergunta" tabindex="-1">' + V.escapar(p.texto) + '</h3>' +
         '<p class="verif__dica" id="verif-dica">' + V.escapar(p.dica) + '</p>' +
         '<div class="verif__respostas" role="group" aria-labelledby="verif-pergunta" aria-describedby="verif-dica">' +
@@ -171,9 +177,9 @@ var NIVEIS_VERIFICADOR = [
         '</div>' +
         '<div class="verif__rodape">' +
           '<button class="verif__voltar" type="button" data-verif-voltar' + (i === 0 ? ' disabled' : '') + '>' +
-            V.icone('arrow-left') + 'Voltar' +
+            V.icone('arrow-left') + T('Voltar') +
           '</button>' +
-          '<p class="verif__atalhos" aria-hidden="true">Atalhos: <kbd>S</kbd> <kbd>N</kbd> <kbd>?</kbd></p>' +
+          '<p class="verif__atalhos" aria-hidden="true">' + T('Atalhos:') + ' <kbd>' + TECLA_SIM + '</kbd> <kbd>N</kbd> <kbd>?</kbd></p>' +
         '</div>' +
       '</div>'
     );
@@ -221,23 +227,25 @@ var NIVEIS_VERIFICADOR = [
     });
 
     var fichas = sins.map(function (p, i) {
-      return '<li class="ficha"><span class="ficha__id mono">Sinal ' + V.doisDigitos(i + 1) + '</span>' + V.escapar(p.sinal) + '</li>';
+      return '<li class="ficha"><span class="ficha__id mono">' + T('Sinal') + ' ' + V.doisDigitos(i + 1) + '</span>' + V.escapar(p.sinal) + '</li>';
     }).concat(duvidas.map(function (p) {
-      return '<li class="ficha ficha--duvida"><span class="ficha__id mono">Em dúvida</span>' + V.escapar(p.sinal) + '</li>';
+      return '<li class="ficha ficha--duvida"><span class="ficha__id mono">' + T('Em dúvida') + '</span>' + V.escapar(p.sinal) + '</li>';
     })).join('');
 
     var quantos = sins.length;
-    var tituloFichas = quantos === 0 ? 'Nenhum sinal confirmado' :
-      (quantos === 1 ? '1 sinal encontrado' : quantos + ' sinais encontrados');
+    var tituloFichas = quantos === 0 ? T('Nenhum sinal confirmado') :
+      (quantos === 1 ? T('1 sinal encontrado') : quantos + ' ' + T('sinais encontrados'));
 
     // Mensagem do WhatsApp que resume a verificação
-    var contexto = 'Fiz a verificação no site: ' + r.nivel.titulo.toLowerCase() + '.';
+    var contexto = T('Fiz a verificação no site:') + ' ' + r.nivel.titulo.toLowerCase() + '.';
     if (sins.length) contexto += ' ' + primeiraMaiuscula(sins.map(function (p) { return p.resumo; }).join('; ')) + '.';
-    if (duvidas.length) contexto += ' Fiquei em dúvida sobre: ' + duvidas.map(function (p) { return p.resumo; }).join('; ') + '.';
+    if (duvidas.length) contexto += ' ' + T('Fiquei em dúvida sobre:') + ' ' + duvidas.map(function (p) { return p.resumo; }).join('; ') + '.';
 
     var urgente = r.nivel.id === 'alto';
 
-    return (
+    var pilula = T({ alto: 'Risco alto', medio: 'Risco médio', baixo: 'Risco baixo' }[r.nivel.id]);
+
+    return TH(
       '<div class="verif__tela verif__resultado verif__resultado--' + r.nivel.id + '">' +
         '<div class="verif__resumo">' +
           // Medidor: arco que se desenha até o nível
@@ -256,7 +264,7 @@ var NIVEIS_VERIFICADOR = [
             '<div class="medidor__faixas mono"><span>Baixo</span><span>Médio</span><span>Alto</span></div>' +
           '</div>' +
           '<div class="verif__resumo-texto">' +
-            '<p class="verif__nivel"><span class="verif__nivel-pilula">Risco ' + r.nivel.rotulo.toLowerCase() + '</span></p>' +
+            '<p class="verif__nivel"><span class="verif__nivel-pilula">' + pilula + '</span></p>' +
             '<h3 class="verif__resultado-titulo" id="verif-resultado" tabindex="-1">' + V.escapar(r.nivel.titulo) + '</h3>' +
             '<p class="verif__resultado-texto">' + V.escapar(r.nivel.texto) + '</p>' +
           '</div>' +
@@ -277,7 +285,7 @@ var NIVEIS_VERIFICADOR = [
             ? '<button class="btn btn--primary" type="button" aria-haspopup="dialog" data-urgente>' +
                 'Ver os primeiros 30 minutos<span class="btn__orb" aria-hidden="true">' + V.icone('arrow-right') + '</span></button>'
             : '') +
-          '<a class="btn ' + (urgente ? 'btn--ghost' : 'btn--primary') + '" href="' + linkWhatsApp('Olá! Vim pelo site da Vestígio.\n' + contexto) + '"' +
+          '<a class="btn ' + (urgente ? 'btn--ghost' : 'btn--primary') + '" href="' + linkWhatsApp(T('Olá! Vim pelo site da Vestígio.') + '\n' + contexto) + '"' +
             ' target="_blank" rel="noopener" data-montador data-montador-contexto="' + V.escapar(contexto) + '"' + (urgente ? ' data-montador-urgente' : '') + '>' +
             '<span class="wa-icon">' + V.icone('whatsapp') + '</span>Falar com especialista</a>' +
           '<div class="verif__acoes-menores">' +
@@ -333,7 +341,7 @@ var NIVEIS_VERIFICADOR = [
       var fim = 1 - fracaoDoMedidor(r);
       if (V.podeMover()) {
         // O arco se desenha até o nível; as fichas entram uma a uma
-        V.animar(arco, { strokeDashoffset: [1, fim] }, { duration: 1.1, ease: [0.32, 0.72, 0, 1], delay: 0.15 });
+        V.animar(arco, { strokeDashoffset: [1, fim] }, { duration: 1.1, ease: RITMO.fluida, delay: 0.15 });
         V.animar($$('.ficha', tela), { opacity: [0, 1], transform: ['translateY(8px) scale(0.97)', 'translateY(0) scale(1)'] },
           { duration: 0.35, ease: V.EASE_OUT, delay: Motion.stagger(0.07, { startDelay: 0.35 }) });
       } else {
@@ -371,8 +379,8 @@ var NIVEIS_VERIFICADOR = [
     if (evento.target.closest('[data-verif-refazer]')) return refazer();
     if (evento.target.closest('[data-verif-compartilhar]')) {
       V.compartilhar({
-        titulo: 'Isso é golpe? Verificação rápida | Vestígio',
-        texto: 'Seis perguntas rápidas para ver se uma conversa ou oferta tem sinais de golpe.',
+        titulo: T('Isso é golpe? Verificação rápida | Vestígio'),
+        texto: T('Seis perguntas rápidas para ver se uma conversa ou oferta tem sinais de golpe.'),
         url: window.location.href.split('#')[0] + '#verificador'
       });
     }
@@ -392,7 +400,7 @@ var NIVEIS_VERIFICADOR = [
     if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;
     if (document.querySelector('dialog[open]')) return;
     var tecla = evento.key.toLowerCase();
-    var valor = tecla === 's' ? 'sim' : tecla === 'n' ? 'nao' : tecla === '?' ? 'naosei' : null;
+    var valor = tecla === TECLA_SIM.toLowerCase() ? 'sim' : tecla === 'n' ? 'nao' : tecla === '?' ? 'naosei' : null;
     if (!valor) return;
     evento.preventDefault();
     var botao = $('[data-resposta="' + valor + '"]', palco);

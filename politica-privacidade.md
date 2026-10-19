@@ -37,7 +37,7 @@ Esta política se aplica a:
 O site **não possui formulários e não coleta dados pessoais diretamente**. Ainda assim, alguns dados técnicos são gerados automaticamente pela simples navegação:
 
 - **Registros de acesso:** endereço IP, data e hora do acesso, navegador e sistema operacional. Esses registros são tratados pelo nosso provedor de hospedagem para garantir o funcionamento e a segurança do site.
-- **Preferência de tema:** a escolha entre tema claro e escuro é salva apenas no seu próprio navegador e não é enviada à Vestígio.
+- **Preferências de tema e de idioma:** a escolha entre tema claro e escuro e a escolha de idioma são salvas apenas no seu próprio navegador e não são enviadas à Vestígio.
 
 ### 3.2. Ao entrar em contato
 
@@ -146,10 +146,10 @@ Se alguém entrar em contato em nome da Vestígio pedindo esse tipo de informaç
 
 Este site **não utiliza cookies de publicidade nem ferramentas de rastreamento** para criar perfis de visitantes. São utilizados apenas:
 
-- **armazenamento local do navegador**, para lembrar a sua preferência de tema claro ou escuro;
+- **armazenamento local do navegador**, para lembrar a sua preferência de tema claro ou escuro e de idioma;
 - **cookies estritamente necessários** que o provedor de hospedagem pode utilizar para proteger o site contra ataques e acessos automatizados.
 
-Você pode limpar ou bloquear esses dados nas configurações do seu navegador, o que pode apenas fazer o site esquecer a sua preferência de tema.
+Você pode limpar ou bloquear esses dados nas configurações do seu navegador, o que pode apenas fazer o site esquecer as suas preferências de tema e de idioma.
 
 ---
 

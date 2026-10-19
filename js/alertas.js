@@ -90,6 +90,13 @@ var ALERTAS = [
   }
 ];
 
+/* Inglês: traduz os textos (dicionário em js/en/textos.js) e usa
+   os nomes de página em inglês. */
+traduzirTudo(ALERTAS, ['id', 'data', 'categoria', 'servicoRelacionado', 'pagina']);
+if (IDIOMA === 'en' && typeof PAGINAS_EN !== 'undefined') {
+  ALERTAS.forEach(function (a) { if (PAGINAS_EN.alertas[a.id]) a.pagina = PAGINAS_EN.alertas[a.id]; });
+}
+
 /* =========================================================
    AJUDANTES DOS ALERTAS
    Usados pelo site e pelo script ferramentas/gerar-paginas.js
@@ -100,11 +107,18 @@ function alertasPorData() {
   return ALERTAS.slice().sort(function (a, b) { return a.data < b.data ? 1 : -1; });
 }
 
-// "2026-10-12" vira "12 out 2026"
+// "2026-10-12" vira "12 out 2026" (no inglês, "Oct 12, 2026")
 var MESES_CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+var MESES_CURTOS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 function dataCurta(data) {
   var partes = data.split('-');
+  if (IDIOMA === 'en') return MESES_CURTOS_EN[Number(partes[1]) - 1] + ' ' + Number(partes[2]) + ', ' + partes[0];
   return Number(partes[2]) + ' ' + MESES_CURTOS[Number(partes[1]) - 1] + ' ' + partes[0];
+}
+
+// Nome do arquivo da página do alerta (no inglês, o nome em inglês)
+function paginaDoAlerta(alerta) {
+  return (alerta.pagina || alerta.id) + '.html';
 }
 
 // Número do alerta pela ordem de publicação: o mais antigo é o 01
@@ -133,10 +147,10 @@ function htmlDoCardDeAlerta(alerta, raiz, comEntrada) {
   return (
     '<li class="alerta-card" data-categoria="' + alerta.categoria + '"' + (comEntrada ? ' data-reveal-item' : '') + '>' +
       '<div class="alerta-card__topo">' +
-        '<span class="mono">Alerta ' + (numeroDoAlerta(alerta) < 10 ? '0' : '') + numeroDoAlerta(alerta) + '</span>' +
+        '<span class="mono">' + T('Alerta') + ' ' + (numeroDoAlerta(alerta) < 10 ? '0' : '') + numeroDoAlerta(alerta) + '</span>' +
         '<time class="mono" datetime="' + alerta.data + '">' + dataCurta(alerta.data) + '</time>' +
       '</div>' +
-      '<h3 class="alerta-card__titulo"><a class="alerta-card__link" href="' + raiz + 'alertas/' + alerta.id + '.html">' +
+      '<h3 class="alerta-card__titulo"><a class="alerta-card__link" href="' + raiz + PASTAS.alertas + paginaDoAlerta(alerta) + '">' +
         escaparAlerta(alerta.titulo) + '</a></h3>' +
       '<p class="alerta-card__resumo">' + escaparAlerta(alerta.resumo) + '</p>' +
       '<div class="alerta-card__pe">' +

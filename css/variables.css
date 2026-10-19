@@ -62,6 +62,8 @@
   --dur-fast: 220ms;
   --dur-base: 380ms;
   --dur-slow: 700ms;
+  --dur-mola: 540ms;     /* pílulas que deslizam com a curva elástica (menu, abas) */
+  --card-lift: -4px;     /* quanto um card sobe com o mouse em cima (todos iguais) */
 
   /* Camadas (z-index) organizadas em um lugar só */
   --z-ambient: -1;
@@ -171,6 +173,10 @@
 
   /* Verde do WhatsApp: usado SOMENTE no ícone */
   --whatsapp: #25D366;
+
+  /* Ponto do indicador "Atendendo agora" (js/atendimento.js) */
+  --status-on: #3DDC84;    /* dentro do horário */
+  --status-off: #E3A94A;   /* fora do horário (âmbar, sem alarme) */
 }
 
 @media (min-width: 640px) {
@@ -317,4 +323,7 @@
   --spot-edge-2: rgba(69, 162, 158, 0.55);
   --spot-glow: rgba(69, 162, 158, 0.06);
   --pill-bg: rgba(69, 162, 158, 0.12);   /* mais claro: texto #26706C passa de 4,5:1 */
+
+  --status-on: #1B8A4E;
+  --status-off: #B87714;
 }

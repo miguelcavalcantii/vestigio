@@ -504,6 +504,17 @@ var SERVICOS = [
    Exemplo: paginaDoServico(servico) devolve
    "golpe-do-pix-falso.html" (a página fica na pasta servicos/).
    ========================================================= */
+/* Inglês: traduz os textos (dicionário em js/en/textos.js) e usa
+   os nomes de página e as palavras da busca em inglês. */
+traduzirTudo(CATEGORIAS, ['id']);
+traduzirTudo(SERVICOS, ['id', 'categoria', 'icone', 'pagina', 'palavrasChave']);
+if (IDIOMA === 'en' && typeof PAGINAS_EN !== 'undefined') {
+  SERVICOS.forEach(function (s) {
+    if (PAGINAS_EN.servicos[s.id]) s.pagina = PAGINAS_EN.servicos[s.id];
+    if (PALAVRAS_EN[s.id]) s.palavrasChave = PALAVRAS_EN[s.id];
+  });
+}
+
 function paginaDoServico(servico) {
   if (servico.pagina) return servico.pagina + '.html';
   var nome = servico.nome

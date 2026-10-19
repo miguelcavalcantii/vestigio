@@ -36,7 +36,8 @@ var ITENS = [
   'js',
   'assets',
   'servicos',
-  'alertas'
+  'alertas',
+  'en'          // versão em inglês (gerada por ferramentas/gerar-paginas.js)
 ];
 
 // Dentro das pastas acima, o que NÃO vai para o ar

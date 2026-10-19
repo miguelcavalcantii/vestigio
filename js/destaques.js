@@ -6,6 +6,8 @@
    3. "Atuamos em": um serviço por vez, com ícone que se
       desenha, linha de progresso e contador (01 / 19)
    4. Entrada do rodapé
+   5. Ícone de aviso do "Caí em um golpe agora"
+   6. Selos de sigilo e segurança
 
    Regras:
    - Seguem o interruptor CONFIG.animacoesSempre (função
@@ -25,9 +27,10 @@
   var inView = temMotion ? Motion.inView : null;
   var stagger = temMotion ? Motion.stagger : null;
 
-  var EASE_OUT = [0.23, 1, 0.32, 1];
-  var EASE_IN = [0.32, 0, 0.67, 0];
-  var EASE_MOLA = [0.34, 1.56, 0.64, 1];   // passa um pouco do ponto e volta
+  var EASE_OUT = RITMO.suave;
+  var EASE_IN = RITMO.acelera;
+  var EASE_MOLA = RITMO.mola;   // passa um pouco do ponto e volta
+  var DESFOCAR = podeDesfocar();   // no celular, sem blur (pesa demais)
 
   function $(seletor, raiz) { return (raiz || document).querySelector(seletor); }
   function $$(seletor, raiz) { return Array.prototype.slice.call((raiz || document).querySelectorAll(seletor)); }
@@ -162,22 +165,22 @@
         });
       }
 
-      return animate([elTextos, elIcone],
-        { opacity: [1, 0], filter: ['blur(0px)', 'blur(8px)'], transform: ['translateY(0px)', 'translateY(-10px)'] },
-        { duration: 0.35, ease: EASE_IN }
-      ).finished.then(function () {
+      // Ritmo: sai rápido (acelerando) e entra em 0,6s com a curva principal.
+      // O desfoque só existe no computador (no celular pesa demais).
+      var sair = { opacity: [1, 0], transform: ['translateY(0px)', 'translateY(-10px)'] };
+      if (DESFOCAR) sair.filter = ['blur(0px)', 'blur(8px)'];
+      return animate([elTextos, elIcone], sair, { duration: 0.35, ease: EASE_IN }).finished.then(function () {
         preencher(i);
         tracarIcone();
-        // O desfoque da saída também precisa voltar a 0 no ícone
-        // (antes ele ficava em blur(8px) e o ícone virava uma mancha)
         animate(elIcone,
           { opacity: [0, 1], transform: ['scale(0.86)', 'scale(1)'] },
           { duration: 0.6, ease: EASE_MOLA });
-        animate(elIcone, { filter: ['blur(8px)', 'blur(0px)'] },
-          { duration: 0.45, ease: EASE_OUT });
-        return animate(elTextos,
-          { opacity: [0, 1], filter: ['blur(8px)', 'blur(0px)'], transform: ['translateY(12px)', 'translateY(0px)'] },
-          { duration: 0.65, ease: EASE_OUT }).finished;
+        // O desfoque da saída também precisa voltar a 0 no ícone
+        // (antes ele ficava em blur(8px) e o ícone virava uma mancha)
+        if (DESFOCAR) animate(elIcone, { filter: ['blur(8px)', 'blur(0px)'] }, { duration: 0.6, ease: EASE_OUT });
+        var entrar = { opacity: [0, 1], transform: ['translateY(12px)', 'translateY(0px)'] };
+        if (DESFOCAR) entrar.filter = ['blur(8px)', 'blur(0px)'];
+        return animate(elTextos, entrar, { duration: 0.6, ease: EASE_OUT }).finished;
       });
     }
 
@@ -230,7 +233,7 @@
     botaoPausa.addEventListener('click', function () {
       pausaBotao = !pausaBotao;
       botaoPausa.setAttribute('aria-pressed', String(pausaBotao));
-      botaoPausa.setAttribute('aria-label', pausaBotao ? 'Retomar a troca de serviços' : 'Pausar a troca de serviços');
+      botaoPausa.setAttribute('aria-label', T(pausaBotao ? 'Retomar a troca de serviços' : 'Pausar a troca de serviços'));
       atualizar();
     });
 
@@ -287,7 +290,7 @@
     itens.forEach(function (el) {
       el.style.opacity = '0';
       el.style.transform = 'translateY(24px)';
-      el.style.filter = 'blur(6px)';
+      if (DESFOCAR) el.style.filter = 'blur(6px)';
     });
     if (linha) linha.style.transform = 'scaleX(0)';
     pontos.forEach(function (p) { p.style.transform = 'scale(0)'; });
@@ -295,9 +298,10 @@
     inView(rodape, function () {
       if (linha) animate(linha, { transform: ['scaleX(0)', 'scaleX(1)'] }, { duration: 1.4, ease: EASE_OUT });
 
-      animate(itens,
-        { opacity: [0, 1], transform: ['translateY(24px)', 'translateY(0px)'], filter: ['blur(6px)', 'blur(0px)'] },
-        { duration: 0.8, ease: EASE_OUT, delay: stagger(0.08, { startDelay: 0.1 }) }
+      var subir = { opacity: [0, 1], transform: ['translateY(24px)', 'translateY(0px)'] };
+      if (DESFOCAR) subir.filter = ['blur(6px)', 'blur(0px)'];
+      animate(itens, subir,
+        { duration: RITMO.entrada, ease: EASE_OUT, delay: stagger(0.08, { startDelay: 0.1 }) }
       ).finished.then(function () {
         // Limpa os estilos: o hover e o resto do CSS voltam a valer
         itens.forEach(function (el) { el.style.transform = ''; el.style.filter = ''; });
@@ -308,8 +312,70 @@
     }, { amount: 0.12 });
   }
 
+  /* =========================================================
+     5. ÍCONE DE AVISO DO "CAÍ EM UM GOLPE AGORA"
+     A cada poucos segundos o triângulo dá um balanço curto,
+     apoiado na base (chama atenção sem assustar). Com o mouse
+     em cima, ele cresce um pouco e se endireita, com mola.
+     O balanço anima o <span>; o mouse anima o <svg> de dentro,
+     assim um não interrompe o outro.
+     ========================================================= */
+  function animarAvisoUrgente() {
+    if (!temMotion || calmo) return;
+
+    $$('.urgente__icone').forEach(function (el, i) {
+      animate(el, {
+        transform: ['rotate(0deg) scale(1)', 'rotate(-9deg) scale(1.08)', 'rotate(7deg) scale(1.08)',
+                    'rotate(-3deg) scale(1.03)', 'rotate(0deg) scale(1)']
+      }, { duration: 0.9, ease: 'easeInOut', repeat: Infinity, repeatDelay: 4.5, delay: 2 + i * 0.12 });
+    });
+
+    // Reação ao mouse (o botão do celular, sem mouse, só tem o balanço)
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    document.addEventListener('pointerover', function (evento) {
+      var botao = evento.target.closest('[data-urgente]');
+      if (!botao || botao.contains(evento.relatedTarget)) return;
+      var svg = $('.urgente__icone .icon', botao);
+      if (!svg) return;
+      animate(svg, { transform: ['scale(1) rotate(0deg)', 'scale(1.2) rotate(-6deg)', 'scale(1.14) rotate(0deg)'] },
+        { duration: 0.45, ease: EASE_MOLA });
+      botao.addEventListener('pointerleave', function sair() {
+        botao.removeEventListener('pointerleave', sair);
+        animate(svg, { transform: 'scale(1) rotate(0deg)' }, { duration: 0.3, ease: EASE_OUT });
+      });
+    });
+  }
+
+  /* =========================================================
+     6. SELOS DE SIGILO E SEGURANÇA
+     Quando aparecem na tela, os selos sobem um depois do outro
+     e o círculo do ícone cresce de leve. Acontece uma vez só.
+     ========================================================= */
+  function animarSelos() {
+    if (!temMotion || calmo) return;
+
+    $$('[data-selos]').forEach(function (lista) {
+      var selos = $$('.selo', lista);
+      var icones = $$('.selo__icone', lista);
+      // No topo da página inicial, espera a entrada do hero terminar
+      var espera = lista.closest('.hero') ? 0.55 : 0.05;
+
+      selos.forEach(function (el) { el.style.opacity = '0'; el.style.transform = 'translateY(12px)'; });
+      icones.forEach(function (el) { el.style.transform = 'scale(0.7)'; });
+
+      inView(lista, function () {
+        animate(selos, { opacity: [0, 1], transform: ['translateY(12px)', 'translateY(0px)'] },
+          { duration: 0.6, ease: EASE_OUT, delay: stagger(0.08, { startDelay: espera }) });
+        animate(icones, { transform: ['scale(0.7)', 'scale(1)'] },
+          { duration: 0.55, ease: EASE_MOLA, delay: stagger(0.08, { startDelay: espera + 0.05 }) });
+      }, { amount: 0.3 });
+    });
+  }
+
   animarLupa();
   animarUrgencia();
   prepararAtuamos();
   animarRodape();
+  animarAvisoUrgente();
+  animarSelos();
 })();

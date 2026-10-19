@@ -68,15 +68,23 @@
               Falar no WhatsApp
             </a>
             <button class="urgente urgente--lateral" type="button" aria-haspopup="dialog" data-urgente>
-              <span class="urgente__dot" aria-hidden="true"></span>
+              <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
               Caí em um golpe agora
             </button>
           </div>
         </div>
-        <ul role="list" class="seals pg-lateral__selos" aria-label="Garantias de atendimento">
-          <li><span data-icon="eye-off"></span>Atendimento sigiloso</li>
-          <li><span data-icon="shield-check"></span>Dentro da LGPD</li>
-          <li><span data-icon="scale"></span>Só fontes lícitas</li>
+        <!-- Selos de sigilo e segurança (entram em sequência: js/destaques.js, parte 6).
+             Só afirmações verdadeiras: nada de "certificado" ou selo de terceiros. -->
+        <ul role="list" class="seals selos pg-lateral__selos" data-selos aria-label="Garantias de atendimento">
+          <li class="selo"><span class="selo__icone" data-icon="eye-off" aria-hidden="true"></span><span class="selo__texto"><strong>Atendimento sigiloso</strong><span>Seu caso é tratado com discrição do início ao fim.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="message-square-lock" aria-hidden="true"></span><span class="selo__texto"><strong>Conversa protegida</strong><span>O atendimento pelo WhatsApp tem criptografia de ponta a ponta.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="lock" aria-hidden="true"></span><span class="selo__texto"><strong>Conexão criptografada</strong><span>Este site usa HTTPS: o que você acessa aqui viaja protegido.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="shield-check" aria-hidden="true"></span><span class="selo__texto"><strong>Dentro da LGPD</strong><span>Seus dados são usados apenas no seu caso.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="scale" aria-hidden="true"></span><span class="selo__texto"><strong>Só fontes lícitas</strong><span>Usamos apenas fontes abertas e bases de acesso lícito.</span></span></li>
+          <!-- Selo "Dados armazenados com criptografia": só incluir se passarmos a guardar
+               os arquivos dos casos criptografados. Hoje NÃO afirmamos isso.
+          <li class="selo"><span class="selo__icone" data-icon="lock" aria-hidden="true"></span><span class="selo__texto"><strong>Dados criptografados</strong><span>Os arquivos do seu caso ficam guardados com criptografia.</span></span></li>
+          -->
         </ul>
       </aside>
     </div>

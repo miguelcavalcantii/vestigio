@@ -77,8 +77,8 @@
           visiveis.forEach(function (el) { el.style.opacity = '1'; });
         }
         var n = visiveis.length;
-        status.textContent = (n === 1 ? '1 alerta' : n + ' alertas') +
-          (categoria === 'todos' ? ' no total.' : ' em ' + nome + '.');
+        status.textContent = (n === 1 ? T('1 alerta') : n + ' ' + T('alertas')) +
+          (categoria === 'todos' ? ' ' + T('no total.') : ' ' + T('em') + ' ' + nome + '.');
       });
     }
   }

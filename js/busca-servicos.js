@@ -17,7 +17,9 @@
   'use strict';
 
   // Exemplos que aparecem dentro do campo vazio, trocando sozinhos
-  var EXEMPLOS = ['pix', 'perfil falso', 'número novo', 'boleto', 'localizar pessoa'];
+  var EXEMPLOS = IDIOMA === 'en'
+    ? ['pix', 'fake profile', 'new number', 'boleto', 'find a person']
+    : ['pix', 'perfil falso', 'número novo', 'boleto', 'localizar pessoa'];
   var TROCA_DO_EXEMPLO = 3000;   // a cada 3 segundos
 
   var V = window.Vestigio;
@@ -55,10 +57,10 @@
   function anunciar(termo, quantos) {
     clearTimeout(timerStatus);
     timerStatus = setTimeout(function () {
-      if (!termo) status.textContent = 'Mostrando todos os serviços.';
-      else if (quantos === 0) status.textContent = 'Nenhum serviço encontrado.';
-      else if (quantos === 1) status.textContent = '1 serviço encontrado.';
-      else status.textContent = quantos + ' serviços encontrados.';
+      if (!termo) status.textContent = T('Mostrando todos os serviços.');
+      else if (quantos === 0) status.textContent = T('Nenhum serviço encontrado.');
+      else if (quantos === 1) status.textContent = T('1 serviço encontrado.');
+      else status.textContent = quantos + ' ' + T('serviços encontrados.');
     }, 450);
   }
 
@@ -69,7 +71,7 @@
       vazia.hidden = true;
       return;
     }
-    var texto = 'Olá! Vim pelo site da Vestígio. Não achei o meu caso na lista de serviços: "' + termo + '".';
+    var texto = T('Olá! Vim pelo site da Vestígio. Não achei o meu caso na lista de serviços:') + ' "' + termo + '".';
     botaoVazia.href = linkWhatsApp(texto);
     // O montador de mensagem (js/montador-whatsapp.js) abre com essa frase
     botaoVazia.setAttribute('data-montador', '');
@@ -153,13 +155,15 @@
       exemplo.textContent = novo;
       return;
     }
-    // O exemplo antigo sobe e some; o novo vem de baixo (com um leve desfoque)
-    V.animar(exemplo, { opacity: [1, 0], transform: ['translateY(0)', 'translateY(-6px)'], filter: ['blur(0px)', 'blur(3px)'] },
-      { duration: 0.22, ease: V.EASE_OUT })
+    // O exemplo antigo sobe e some; o novo vem de baixo (com um leve
+    // desfoque só no computador: no celular o blur pesa)
+    var sai = { opacity: [1, 0], transform: ['translateY(0)', 'translateY(-6px)'] };
+    var entra = { opacity: [0, 1], transform: ['translateY(6px)', 'translateY(0)'] };
+    if (podeDesfocar()) { sai.filter = ['blur(0px)', 'blur(3px)']; entra.filter = ['blur(3px)', 'blur(0px)']; }
+    V.animar(exemplo, sai, { duration: RITMO.rapido, ease: V.EASE_OUT })
       .then(function () {
         exemplo.textContent = novo;
-        return V.animar(exemplo, { opacity: [0, 1], transform: ['translateY(6px)', 'translateY(0)'], filter: ['blur(3px)', 'blur(0px)'] },
-          { duration: 0.32, ease: V.EASE_OUT });
+        return V.animar(exemplo, entra, { duration: RITMO.medio, ease: V.EASE_OUT });
       });
   }
 

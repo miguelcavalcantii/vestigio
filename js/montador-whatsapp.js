@@ -47,6 +47,7 @@ var OPCOES_MONTADOR = {
   // Tamanho máximo da frase
   limiteFrase: 200
 };
+traduzirTudo(OPCOES_MONTADOR);   // páginas em inglês (js/config.js)
 
 (function () {
   'use strict';
@@ -62,20 +63,20 @@ var OPCOES_MONTADOR = {
   /* ---------- Montar a mensagem ---------- */
   function montarMensagem() {
     var linhas = [];
-    linhas.push('Olá! Vim pelo site da Vestígio.' + (estado.urgente ? ' É urgente.' : ''));
+    linhas.push(T('Olá! Vim pelo site da Vestígio.') + (estado.urgente ? ' ' + T('É urgente.') : ''));
 
     var servico = estado.servico ? V.buscarServico(estado.servico) : null;
     if (servico) {
-      linhas.push('Assunto: ' + servico.nome);
+      linhas.push(T('Assunto:') + ' ' + servico.nome);
     } else if (estado.categoria === 'outro') {
-      linhas.push('O que aconteceu: ' + OPCOES_MONTADOR.outro.texto);
+      linhas.push(T('O que aconteceu:') + ' ' + OPCOES_MONTADOR.outro.texto);
     } else if (estado.categoria) {
-      linhas.push('O que aconteceu: ' + V.nomeDaCategoria(estado.categoria));
+      linhas.push(T('O que aconteceu:') + ' ' + V.nomeDaCategoria(estado.categoria));
     }
-    if (estado.quando) linhas.push('Quando foi: ' + estado.quando);
-    if (estado.boletim) linhas.push('Boletim de ocorrência: ' + estado.boletim);
+    if (estado.quando) linhas.push(T('Quando foi:') + ' ' + estado.quando);
+    if (estado.boletim) linhas.push(T('Boletim de ocorrência:') + ' ' + estado.boletim);
     var frase = (estado.frase || '').trim();
-    if (frase) linhas.push('Em uma frase: ' + frase);
+    if (frase) linhas.push(T('Em uma frase:') + ' ' + frase);
     if (estado.contexto) linhas.push(estado.contexto);
 
     // Nada preenchido? Usa a mensagem padrão do config.js
@@ -114,7 +115,7 @@ var OPCOES_MONTADOR = {
     var quando = OPCOES_MONTADOR.quando.map(function (o) { return chip('mont-quando', o.texto, o.rotulo); }).join('');
     var boletim = OPCOES_MONTADOR.boletim.map(function (o) { return chip('mont-boletim', o.texto, o.rotulo); }).join('');
 
-    painel.innerHTML =
+    painel.innerHTML = TH(
       '<div class="sheet__panel" data-sheet-panel>' +
         '<header class="sheet__header">' +
           '<span class="sheet__icon" aria-hidden="true">' + V.icone('message-square-text') + '</span>' +
@@ -167,7 +168,7 @@ var OPCOES_MONTADOR = {
             '<p class="mont__previa-titulo mono" id="mont-previa-titulo">Prévia da mensagem</p>' +
             '<div class="mont__conversa">' +
               '<div class="mont__para">' +
-                '<span class="mont__para-avatar" aria-hidden="true"><img src="' + V.raiz + 'assets/logo-simbolo.svg" alt="" width="16" height="16"></span>' +
+                '<span class="mont__para-avatar" aria-hidden="true"><img src="' + V.raizSite + 'assets/logo-simbolo.svg" alt="" width="16" height="16"></span>' +
                 '<span><strong>Vestígio</strong><span class="mono" data-config-numero></span></span>' +
               '</div>' +
               '<div class="mont__balao" data-mont-balao>' +
@@ -186,7 +187,7 @@ var OPCOES_MONTADOR = {
           '</a>' +
           '<a class="mont__rapido" href="#" target="_blank" rel="noopener" data-mont-rapido>Prefiro enviar sem preencher</a>' +
         '</footer>' +
-      '</div>';
+      '</div>');
 
     document.body.appendChild(painel);
     V.ligarPainel(painel);
@@ -287,8 +288,9 @@ var OPCOES_MONTADOR = {
 
     // O balão se ajeita com um desfoque rápido (o texto não "pula")
     if (V.podeMover() && painel.open) {
-      V.animar($('[data-mont-balao]', painel), { filter: ['blur(1.5px)', 'blur(0px)'], opacity: [0.75, 1] },
-        { duration: 0.22, ease: V.EASE_OUT });
+      var ajeitar = { opacity: [0.75, 1] };
+      if (podeDesfocar()) ajeitar.filter = ['blur(1.5px)', 'blur(0px)'];
+      V.animar($('[data-mont-balao]', painel), ajeitar, { duration: RITMO.rapido, ease: V.EASE_OUT });
     }
 
     $('[data-mont-enviar]', painel).href = linkWhatsApp(mensagem);

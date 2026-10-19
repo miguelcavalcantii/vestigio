@@ -116,24 +116,23 @@
   .urgente__extra { display: inline; }
 }
 
-/* Ponto verde-água com o mesmo "radar" do rótulo do hero (sem vermelho) */
-.urgente__dot {
-  position: relative;
+/* Ícone de aviso (triângulo com exclamação), na cor de destaque.
+   O balanço a cada poucos segundos e a reação ao mouse são da
+   Motion (js/destaques.js, parte 5). */
+.urgente__icone {
+  display: inline-flex;
   flex-shrink: 0;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent-line);
+  color: var(--accent-line);
+  transform-origin: 50% 80%;   /* balança apoiado na base, como uma placa */
 }
 
-.motion-ok .urgente__dot::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid var(--accent-line);
-  animation: radar 2.6s var(--ease-out) infinite;
+.urgente__icone .icon {
+  width: 1.15em;
+  height: 1.15em;
+  transform-origin: 50% 80%;
 }
+
+.mega__urgente-tag .urgente__icone .icon { width: 0.95em; height: 0.95em; }   /* acompanha o rótulo pequeno "Agora" */
 
 @media (hover: hover) and (pointer: fine) {
   .urgente:hover {
@@ -1411,7 +1410,7 @@
   background: linear-gradient(90deg, var(--accent-line), var(--accent-ink));
   transform: scaleX(var(--progresso, 0));
   transform-origin: left;
-  transition: transform 500ms var(--ease-fluid);
+  transition: transform var(--dur-slow) var(--ease-fluid);
 }
 
 /* ---------- Pergunta ---------- */
@@ -2407,7 +2406,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .alerta-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(var(--card-lift));
     border-color: rgba(var(--teal-rgb), 0.4);
   }
 

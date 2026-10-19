@@ -6,10 +6,12 @@
   <meta name="description" content="{{DESCRICAO}}">
   <meta name="theme-color" content="#F3F5F6">
   <link rel="canonical" href="{{URL}}">
+  <!-- A mesma página no outro idioma (o seletor de idioma também usa estes links) -->
+{{ALTERNATIVAS}}
 
   <!-- ===== OPEN GRAPH (prévia ao compartilhar o link) ===== -->
   <meta property="og:type" content="{{OG_TIPO}}">
-  <meta property="og:locale" content="pt_BR">
+  <meta property="og:locale" content="{{OG_LOCALE}}">
   <meta property="og:site_name" content="Vestígio Investigação Digital">
   <meta property="og:title" content="{{TITULO}}">
   <meta property="og:description" content="{{DESCRICAO}}">
@@ -19,25 +21,25 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="{{RAIZ}}assets/logo-simbolo.svg" type="image/svg+xml">
+  <link rel="icon" href="{{RAIZ_SITE}}assets/logo-simbolo.svg" type="image/svg+xml">
 
 {{MOLDE_TEMA}}
 
   <!-- ===== ESTILOS (os mesmos do site + os das páginas) ===== -->
-  <link rel="stylesheet" href="{{RAIZ}}css/fonts.css">
-  <link rel="stylesheet" href="{{RAIZ}}css/variables.css">
-  <link rel="stylesheet" href="{{RAIZ}}css/base.css">
-  <link rel="stylesheet" href="{{RAIZ}}css/components.css">
-  <link rel="stylesheet" href="{{RAIZ}}css/sections.css">
-  <link rel="stylesheet" href="{{RAIZ}}css/ferramentas.css">
-  <link rel="stylesheet" href="{{RAIZ}}css/paginas.css">
-  <link rel="stylesheet" href="{{RAIZ}}css/textura-fundo.css">
-  <link rel="stylesheet" href="{{RAIZ}}css/textura-mesa.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/fonts.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/variables.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/base.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/components.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/sections.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/ferramentas.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/paginas.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/textura-fundo.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/textura-mesa.css">
 
   <!-- Sem JavaScript: o que depende dele some; "Serviços" vira link comum -->
   <noscript>
     <style>
-      .main-nav__trigger, .urgente, .mega, .menu-toggle { display: none !important; }
+      .main-nav__trigger, .urgente, .mega, .menu-toggle, .idioma, .mobile-menu__idioma { display: none !important; }
       .main-nav__semjs { display: inline-flex !important; }
     </style>
   </noscript>

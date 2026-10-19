@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<!-- ARQUIVO GERADO por ferramentas/gerar-paginas.js. Não edite aqui:
+     mude os dados (js/services.js ou js/alertas.js) ou o modelo
+     (ferramentas/modelos/) e rode de novo: node ferramentas/gerar-paginas.js -->
+<html lang="en" data-raiz="../" data-raiz-site="../../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ===== SEO (cada página tem título, descrição e endereço próprios) ===== -->
+  <title>Police station support | Vestígio Digital Investigation</title>
+  <meta name="description" content="Help filing the boletim de ocorrência (police report) and following the police investigation. See how it works and what we will need from you.">
+  <meta name="theme-color" content="#F3F5F6">
+  <link rel="canonical" href="https://vestigio.app.br/en/services/police-station-support.html">
+  <!-- A mesma página no outro idioma (o seletor de idioma também usa estes links) -->
+  <link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/acompanhamento-em-delegacias.html">
+  <link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/police-station-support.html">
+  <link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/acompanhamento-em-delegacias.html">
+
+  <!-- ===== OPEN GRAPH (prévia ao compartilhar o link) ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Vestígio Investigação Digital">
+  <meta property="og:title" content="Police station support | Vestígio Digital Investigation">
+  <meta property="og:description" content="Help filing the boletim de ocorrência (police report) and following the police investigation. See how it works and what we will need from you.">
+  <meta property="og:url" content="https://vestigio.app.br/en/services/police-station-support.html">
+  <meta property="og:image" content="https://vestigio.app.br/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/logo-simbolo.svg" type="image/svg+xml">
+
+  <script>
+    (function () {
+      var html = document.documentElement;
+
+      // 1. Tema
+      var tema = null;
+      try { tema = localStorage.getItem('vestigio-tema'); } catch (e) {}
+      // Padrão: claro. Só fica escuro se a pessoa escolheu no botão.
+      if (tema !== 'light' && tema !== 'dark') tema = 'light';
+      html.setAttribute('data-theme', tema);
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', tema === 'light' ? '#F3F5F6' : '#0B0C10');
+
+      // 2. Animações
+      var ANIMACOES_SEMPRE = true;
+      var sistemaPedeMenos = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!ANIMACOES_SEMPRE && sistemaPedeMenos) {
+        html.classList.add('respeitar-movimento');
+      } else {
+        html.classList.add('motion-ok');
+        setTimeout(function () {
+          if (!window.animacoesProntas) html.classList.remove('motion-ok');
+        }, 3000);
+      }
+    })();
+  </script>
+
+  <!-- ===== ESTILOS (os mesmos do site + os das páginas) ===== -->
+  <link rel="stylesheet" href="../../css/fonts.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/sections.css">
+  <link rel="stylesheet" href="../../css/ferramentas.css">
+  <link rel="stylesheet" href="../../css/paginas.css">
+  <link rel="stylesheet" href="../../css/textura-fundo.css">
+  <link rel="stylesheet" href="../../css/textura-mesa.css">
+
+  <!-- Sem JavaScript: o que depende dele some; "Serviços" vira link comum -->
+  <noscript>
+    <style>
+      .main-nav__trigger, .urgente, .mega, .menu-toggle, .idioma, .mobile-menu__idioma { display: none !important; }
+      .main-nav__semjs { display: inline-flex !important; }
+    </style>
+  </noscript>
+
+  <!-- ===== DADOS ESTRUTURADOS (ajudam o Google a entender a página) ===== -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "name": "Police station support",
+          "description": "Filing a boletim de ocorrência (police report) for a cybercrime can be confusing, and an incomplete report hurts the investigation. We help you prepare your statement and the evidence, go with you to the police station when needed and follow the progress of the police investigation, bringing the information we gather to the authorities.",
+          "serviceType": "Recovery and legal support",
+          "url": "https://vestigio.app.br/en/services/police-station-support.html",
+          "inLanguage": "en",
+          "areaServed": {
+            "@type": "Country",
+            "name": "Brazil"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Vestígio Digital Investigation",
+            "url": "https://vestigio.app.br/en/",
+            "logo": "https://vestigio.app.br/assets/logo.svg",
+            "email": "contato@vestigio.app.br",
+            "sameAs": [
+              "https://www.instagram.com/vestigio.br/"
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://vestigio.app.br/en/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://vestigio.app.br/en/#servicos"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Police station support",
+              "item": "https://vestigio.app.br/en/services/police-station-support.html"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+
+</head>
+<body class="pagina pagina--servico">
+  <a class="skip-link" href="#conteudo">Skip to content</a>
+
+  <!-- Fundo do site: brilhos de luz (só decoração) -->
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <div class="island">
+      <a class="brand" href="../index.html" aria-label="Vestígio Digital Investigation, back to the home page">
+        <!-- Logo dentro do HTML (cor = currentColor): muda junto com o tema -->
+        <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 34" width="165" height="34" aria-hidden="true" focusable="false">
+          <g transform="translate(0 1.2) scale(0.8)">
+          <path d="M5 16V5h11" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/>
+          <circle cx="13.6" cy="13.6" r="1.6" fill="currentColor"/>
+          <circle cx="18.6" cy="18.6" r="2" fill="currentColor"/>
+          <circle cx="24.6" cy="24.6" r="4.4" fill="currentColor"/>
+          </g>
+          <path transform="translate(34 26)" fill="currentColor" d="M9.04 0 0.42 -20.59H5.06L10.18 -7.64Q10.42 -7.13 10.65 -6.51Q10.89 -5.9 11.11 -5.35Q11.33 -4.79 11.48 -4.39H11.67Q11.82 -4.76 12.02 -5.3Q12.23 -5.84 12.47 -6.45Q12.72 -7.05 12.95 -7.61L18.07 -20.59H22.49L13.87 0ZM33.22 0.36Q30.44 0.36 28.51 -0.52Q26.57 -1.41 25.56 -3.24Q24.55 -5.07 24.55 -7.89Q24.55 -10.7 25.55 -12.53Q26.55 -14.36 28.47 -15.25Q30.39 -16.15 33.15 -16.15Q35.84 -16.15 37.68 -15.27Q39.51 -14.39 40.43 -12.62Q41.36 -10.86 41.36 -8.19V-6.93H28.59Q28.66 -5.46 29.2 -4.51Q29.74 -3.57 30.77 -3.12Q31.8 -2.68 33.29 -2.68Q33.97 -2.68 34.67 -2.84Q35.38 -3.01 35.98 -3.35Q36.58 -3.69 36.98 -4.22Q37.37 -4.76 37.41 -5.49H41.3Q41.3 -4.14 40.73 -3.05Q40.16 -1.96 39.1 -1.2Q38.03 -0.45 36.54 -0.04Q35.05 0.36 33.22 0.36ZM28.62 -9.6H37.27Q37.27 -10.53 36.96 -11.19Q36.65 -11.85 36.09 -12.28Q35.54 -12.71 34.8 -12.91Q34.05 -13.1 33.17 -13.1Q31.83 -13.1 30.85 -12.72Q29.87 -12.33 29.32 -11.55Q28.77 -10.77 28.62 -9.6ZM51.97 0.36Q50.24 0.36 48.81 0.03Q47.38 -0.3 46.34 -0.92Q45.3 -1.54 44.74 -2.44Q44.18 -3.34 44.18 -4.49Q44.18 -4.64 44.19 -4.76Q44.21 -4.88 44.22 -4.97H48.12Q48.12 -4.92 48.12 -4.85Q48.11 -4.77 48.11 -4.71Q48.12 -3.93 48.68 -3.46Q49.24 -2.98 50.14 -2.78Q51.05 -2.58 52.06 -2.58Q53.03 -2.58 53.91 -2.73Q54.78 -2.88 55.34 -3.25Q55.9 -3.63 55.9 -4.3Q55.9 -5.08 55.24 -5.46Q54.59 -5.85 53.42 -6.08Q52.26 -6.32 50.75 -6.6Q49.54 -6.84 48.44 -7.17Q47.35 -7.5 46.49 -8.02Q45.64 -8.54 45.15 -9.36Q44.65 -10.17 44.65 -11.37Q44.65 -12.6 45.2 -13.49Q45.74 -14.38 46.74 -14.97Q47.73 -15.55 49.12 -15.85Q50.51 -16.14 52.19 -16.14Q53.76 -16.14 55.06 -15.85Q56.36 -15.55 57.32 -14.99Q58.28 -14.43 58.82 -13.61Q59.36 -12.8 59.36 -11.78Q59.36 -11.61 59.35 -11.45Q59.34 -11.29 59.33 -11.22H55.44V-11.39Q55.44 -12 55 -12.4Q54.56 -12.79 53.82 -13.01Q53.07 -13.22 52.08 -13.22Q51.54 -13.22 50.92 -13.14Q50.3 -13.06 49.77 -12.89Q49.23 -12.72 48.9 -12.44Q48.56 -12.16 48.56 -11.73Q48.56 -11.12 49.15 -10.79Q49.74 -10.46 50.73 -10.25Q51.71 -10.05 52.85 -9.81Q54.15 -9.55 55.4 -9.26Q56.64 -8.96 57.64 -8.47Q58.64 -7.98 59.23 -7.1Q59.82 -6.22 59.82 -4.78Q59.82 -3.36 59.27 -2.37Q58.71 -1.38 57.68 -0.78Q56.65 -0.18 55.2 0.09Q53.76 0.36 51.97 0.36ZM68.64 0.36Q67.04 0.36 66.08 -0.17Q65.13 -0.71 64.71 -1.72Q64.29 -2.74 64.29 -4.18V-12.69H61.85V-15.79H64.4L65.14 -20.31H68.18V-15.79H71.66V-12.69H68.18V-4.51Q68.18 -3.65 68.55 -3.19Q68.91 -2.74 69.93 -2.74H71.66V-0.13Q71.3 0 70.77 0.11Q70.23 0.22 69.66 0.29Q69.1 0.36 68.64 0.36ZM75.03 0V-15.79H78.92V0ZM74.39 -17.73 77.32 -21.7H81.61L81.62 -21.59L77.63 -17.73ZM86.35 5.69Q85.14 5.69 84.09 5.3Q83.03 4.91 82.39 4.08Q81.75 3.24 81.75 1.93Q81.75 0.69 82.54 -0.14Q83.34 -0.96 84.44 -1.37Q83.64 -1.79 83.2 -2.48Q82.77 -3.17 82.77 -4.06Q82.77 -5.23 83.6 -6.01Q84.43 -6.79 85.68 -7Q84.53 -7.68 83.89 -8.7Q83.26 -9.72 83.26 -10.97Q83.26 -12.69 84.16 -13.84Q85.05 -14.99 86.79 -15.57Q88.53 -16.15 91.03 -16.15Q92.02 -16.15 92.92 -16.04Q93.81 -15.93 94.57 -15.72Q95.81 -16.33 96.38 -17.11Q96.95 -17.89 97.04 -18.48H100.75Q100.74 -17.41 100.3 -16.6Q99.86 -15.79 99.07 -15.26Q98.29 -14.73 97.17 -14.47Q97.97 -13.84 98.4 -12.96Q98.82 -12.07 98.82 -10.97Q98.82 -9.31 97.99 -8.15Q97.17 -6.99 95.55 -6.39Q93.94 -5.79 91.56 -5.79H88.29Q87.55 -5.79 87.14 -5.5Q86.73 -5.21 86.73 -4.68Q86.73 -4.21 87.12 -3.89Q87.52 -3.56 88.3 -3.56H96.28Q98.3 -3.56 99.48 -2.33Q100.67 -1.1 100.67 0.81Q100.67 2.23 99.93 3.33Q99.18 4.43 97.91 5.06Q96.64 5.69 95 5.69ZM87.38 2.92H94.88Q95.41 2.92 95.83 2.73Q96.25 2.53 96.5 2.16Q96.75 1.78 96.75 1.3Q96.75 0.52 96.24 0.12Q95.73 -0.29 95.01 -0.29H87.45Q86.69 -0.29 86.18 0.13Q85.67 0.56 85.67 1.29Q85.67 2.02 86.15 2.47Q86.63 2.92 87.38 2.92ZM91.05 -8.5Q92.9 -8.5 93.92 -9.1Q94.94 -9.7 94.94 -10.97Q94.94 -12.25 93.92 -12.85Q92.9 -13.44 91.05 -13.44Q89.2 -13.44 88.18 -12.85Q87.16 -12.25 87.16 -10.97Q87.16 -10.1 87.62 -9.55Q88.07 -9 88.94 -8.75Q89.81 -8.5 91.05 -8.5ZM103.29 -18.3V-21.7H107.18V-18.3ZM103.29 0V-15.79H107.18V0ZM119.54 0.36Q116.74 0.36 114.79 -0.55Q112.84 -1.45 111.84 -3.29Q110.83 -5.13 110.83 -7.9Q110.83 -10.71 111.84 -12.53Q112.84 -14.36 114.79 -15.25Q116.74 -16.15 119.54 -16.15Q122.35 -16.15 124.29 -15.25Q126.23 -14.36 127.24 -12.53Q128.24 -10.71 128.24 -7.9Q128.24 -5.13 127.24 -3.29Q126.23 -1.45 124.29 -0.55Q122.35 0.36 119.54 0.36ZM119.54 -2.74Q121.09 -2.74 122.13 -3.3Q123.18 -3.85 123.7 -4.95Q124.22 -6.04 124.22 -7.65V-8.16Q124.22 -9.78 123.7 -10.87Q123.18 -11.96 122.13 -12.51Q121.09 -13.05 119.54 -13.05Q117.98 -13.05 116.94 -12.51Q115.89 -11.96 115.37 -10.87Q114.85 -9.78 114.85 -8.16V-7.65Q114.85 -6.04 115.37 -4.95Q115.89 -3.85 116.94 -3.3Q117.98 -2.74 119.54 -2.74Z"/>
+        </svg>
+      </a>
+
+      <nav class="main-nav" aria-label="Main menu">
+        <ul role="list" class="main-nav__list">
+          <!-- "Serviços" abre o painel de serviços (montado por js/navegacao.js).
+               Sem JavaScript, o painel não abre: por isso o link de reserva logo abaixo. -->
+          <li><button class="main-nav__trigger" type="button" aria-expanded="false" aria-controls="mega-servicos" data-mega-toggle data-secao="#servicos">Services<span class="main-nav__chevron" data-icon="chevron-down"></span></button><a class="main-nav__semjs" href="../index.html#servicos">Services</a></li>
+          <li><a href="../index.html#verificador">Is this a scam?</a></li>
+          <li><a href="../index.html#como-funciona">How it works</a></li>
+          <li class="main-nav__extra"><a href="../index.html#sobre">About</a></li>
+          <li><a href="../alerts.html">Alerts</a></li>
+          <li><a href="../index.html#duvidas">FAQ</a></li>
+          <li class="main-nav__extra"><a href="../index.html#contato">Contact</a></li>
+          <li aria-hidden="true" class="nav-glide-item"><span class="nav-glide"></span></li>
+        </ul>
+      </nav>
+
+      <!-- Botão de urgência: abre o painel "Primeiros 30 minutos" -->
+      <button class="urgente" type="button" aria-haspopup="dialog" data-urgente>
+        <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
+        <span>I’ve been scammed<span class="urgente__extra"> now</span></span>
+      </button>
+
+      <!-- Seletor de idioma (js/idioma.js). Mostra a bandeira do idioma da página;
+           os links das opções vêm das tags hreflang do <head>. -->
+      <div class="idioma" data-idioma>
+        <button class="idioma__botao" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idioma-menu" aria-label="Language: Português (Brasil)" data-idioma-botao>
+          <span class="idioma__bandeira idioma__bandeira--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
+          <span class="idioma__bandeira idioma__bandeira--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+        </button>
+        <ul class="idioma__menu" id="idioma-menu" role="menu" aria-label="Choose language" hidden data-idioma-menu>
+          <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>Português (Brasil)</a></li>
+          <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>English</a></li>
+        </ul>
+      </div>
+
+      <!-- Troca de tema claro/escuro (no celular ele fica no rodapé do menu) -->
+      <button class="theme-toggle" type="button" aria-label="Use light theme" aria-pressed="false" data-theme-toggle>
+        <span class="theme-toggle__icon theme-toggle__moon" data-icon="moon" aria-hidden="true"></span>
+        <span class="theme-toggle__icon theme-toggle__sun" data-icon="sun" aria-hidden="true"></span>
+      </button>
+
+      <a class="btn btn--primary btn--sm island__cta" href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+        Talk to a specialist
+        <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" data-menu-toggle>
+        <span class="sr-only" data-menu-label>Open menu</span>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span></span>
+      </button>
+      <!-- linha de progresso da leitura -->
+      <span class="island__progress" aria-hidden="true" data-reading></span>
+    </div>
+
+    <!-- PAINEL DE SERVIÇOS (abre pelo botão "Serviços" do menu).
+         As colunas são montadas por js/navegacao.js a partir de js/services.js:
+         não escreva serviços aqui. -->
+    <div class="mega" id="mega-servicos" data-mega hidden>
+      <div class="mega__cols" data-mega-cols></div>
+      <div class="mega__aside">
+        <div class="mega__urgente">
+          <p class="mega__urgente-tag"><span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span><span class="mono">Now</span></p>
+          <p class="mega__urgente-titulo">I’ve just been scammed</p>
+          <p class="mega__urgente-texto">The first 30 minutes matter. See what to do, step by step.</p>
+          <button class="btn btn--primary btn--sm btn--block" type="button" aria-haspopup="dialog" data-urgente>
+            See the first steps
+            <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+          </button>
+        </div>
+        <!-- Indicador "Atendendo agora" (js/atendimento.js; sem JavaScript, fica escondido) -->
+        <p class="status" data-status hidden></p>
+        <a class="mega__todos" href="../index.html#servicos">
+          See all services
+          <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu do celular (tela cheia, abre pelo botão acima) -->
+  <div class="mobile-menu" data-lenis-prevent id="menu-mobile" data-mobile-menu hidden>
+    <!-- Urgência no topo do menu: abre o painel "Primeiros 30 minutos" -->
+    <div class="mobile-menu__top">
+      <button class="urgente urgente--menu" type="button" aria-haspopup="dialog" data-urgente>
+        <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
+        <span class="urgente__texto">I’ve just been scammed</span>
+        <span class="urgente__seta" data-icon="arrow-right" aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav aria-label="Main menu (mobile)">
+      <ul role="list" class="mobile-menu__list">
+        <!-- "Serviços" vira uma sanfona com os serviços por categoria
+             (a lista é montada por js/navegacao.js) -->
+        <li class="mobile-menu__group">
+          <button class="mobile-menu__acc" type="button" aria-expanded="false" aria-controls="menu-servicos-lista" data-menu-servicos>
+            Services<span class="mobile-menu__acc-icon" data-icon="chevron-down" aria-hidden="true"></span>
+          </button>
+          <div class="mobile-menu__sub" id="menu-servicos-lista" data-menu-servicos-lista>
+            <div class="mobile-menu__sub-inner" data-menu-servicos-miolo></div>
+          </div>
+        </li>
+        <li><a href="../index.html#verificador">Is this a scam?</a></li>
+        <li><a href="../index.html#como-funciona">How it works</a></li>
+        <li><a href="../index.html#sobre">About</a></li>
+        <li><a href="../alerts.html">Alerts</a></li>
+        <li><a href="../index.html#duvidas">FAQ</a></li>
+        <li><a href="../index.html#contato">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a class="btn btn--primary btn--block" href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+        <span class="wa-icon" data-icon="whatsapp"></span>
+        Talk to a specialist
+      </a>
+      <p class="mobile-menu__note">Confidential service on WhatsApp.</p>
+      <p class="status" data-status hidden></p>
+      <!-- Idioma (versão do celular) -->
+      <div class="mobile-menu__theme mobile-menu__idioma">
+        <span>Language</span>
+        <!-- Seletor de idioma (js/idioma.js). Mostra a bandeira do idioma da página;
+             os links das opções vêm das tags hreflang do <head>. -->
+        <div class="idioma" data-idioma>
+          <button class="idioma__botao" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idioma-menu-celular" aria-label="Language: Português (Brasil)" data-idioma-botao>
+            <span class="idioma__bandeira idioma__bandeira--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
+            <span class="idioma__bandeira idioma__bandeira--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+          </button>
+          <ul class="idioma__menu" id="idioma-menu-celular" role="menu" aria-label="Choose language" hidden data-idioma-menu>
+            <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>Português (Brasil)</a></li>
+            <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>English</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Troca de tema claro/escuro (versão do celular) -->
+      <div class="mobile-menu__theme">
+        <span>Appearance</span>
+        <button class="theme-toggle" type="button" aria-label="Use light theme" aria-pressed="false" data-theme-toggle>
+          <span class="theme-toggle__icon theme-toggle__moon" data-icon="moon" aria-hidden="true"></span>
+          <span class="theme-toggle__icon theme-toggle__sun" data-icon="sun" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main id="conteudo">
+
+    <!-- ===== TOPO: caminho, título e ações ===== -->
+    <section class="pg-topo dot-grid" data-topo aria-labelledby="pg-titulo">
+      <div class="container">
+        <nav class="migalhas" aria-label="Breadcrumb">
+          <ol role="list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#servicos">Services</a></li>
+            <li><span aria-current="page">Police station support</span></li>
+          </ol>
+        </nav>
+        <div class="pg-topo__texto" data-reveal>
+          <p class="pg-topo__meta">
+            <span class="pg-topo__icone" aria-hidden="true"><span data-icon="siren"></span></span>
+            <span class="mono">Case 18 · Recovery and legal support</span>
+          </p>
+          <h1 id="pg-titulo">Police station support</h1>
+          <p class="pg-topo__lead">Help filing the boletim de ocorrência (police report) and following the police investigation.</p>
+          <div class="pg-topo__acoes">
+            <a class="btn btn--primary btn--lg" href="https://wa.me/5581992183600?text=Hi!%20I%20found%20you%20on%20the%20Vest%C3%ADgio%20website%20and%20I%20would%20like%20help%20with%3A%20Police%20station%20support." target="_blank" rel="noopener" data-montador="acompanhamento-delegacia">
+              <span class="wa-icon" data-icon="whatsapp"></span>
+              Talk about this case
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="../index.html#verificador">
+              Is this a scam? Check
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTEÚDO (o mesmo do painel de detalhe da página inicial) ===== -->
+    <div class="container pg-corpo">
+      <article class="pg-artigo">
+        <section class="pg-bloco" aria-labelledby="oque-titulo" data-reveal>
+          <h2 id="oque-titulo">What it is</h2>
+          <p>Filing a boletim de ocorrência (police report) for a cybercrime can be confusing, and an incomplete report hurts the investigation. We help you prepare your statement and the evidence, go with you to the police station when needed and follow the progress of the police investigation, bringing the information we gather to the authorities.</p>
+        </section>
+
+        <section class="pg-bloco" aria-labelledby="como-titulo" data-reveal>
+          <h2 id="como-titulo">How it works</h2>
+          <ol role="list" class="sheet__steps pg-passos">
+            <li>We organize your statement and the evidence before filing.</li>
+            <li>We point you to the right police station, including specialized units.</li>
+            <li>We go with you to file in person or guide you through filing online.</li>
+            <li>We follow the progress and hand new evidence to the authorities.</li>
+          </ol>
+        </section>
+
+        <section class="pg-bloco" aria-labelledby="precisamos-titulo" data-reveal>
+          <h2 id="precisamos-titulo">What we will need from you</h2>
+          <ul role="list" class="sheet__needs">
+            <li><span data-icon="check"></span><span>Your account of the facts, in the order they happened</span></li>
+            <li><span data-icon="check"></span><span>Screenshots, receipts and links you have already gathered</span></li>
+            <li><span data-icon="check"></span><span>ID document</span></li>
+            <li><span data-icon="check"></span><span>Police report number, if you have already filed one</span></li>
+            <li><span data-icon="check"></span><span>The city where you live and where it happened</span></li>
+          </ul>
+        </section>
+
+        <div class="pg-bloco" data-reveal>
+          <p class="sheet__warning">
+            <span data-icon="shield-check" aria-hidden="true"></span>
+            <span>We never ask for passwords, verification codes or access to your accounts.</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- Chamada para o WhatsApp (fica parada ao lado do texto no computador) -->
+      <aside class="pg-lateral" aria-labelledby="lateral-titulo">
+        <div class="pg-lateral__card bezel">
+          <div class="bezel__core pg-lateral__core">
+            <p class="mono pg-lateral__rotulo">Initial review</p>
+            <h2 id="lateral-titulo">Tell us what happened</h2>
+            <p>We will tell you honestly what can be done in your case. Confidential service on WhatsApp.</p>
+            <a class="btn btn--primary btn--block" href="https://wa.me/5581992183600?text=Hi!%20I%20found%20you%20on%20the%20Vest%C3%ADgio%20website%20and%20I%20would%20like%20help%20with%3A%20Police%20station%20support." target="_blank" rel="noopener" data-montador="acompanhamento-delegacia">
+              <span class="wa-icon" data-icon="whatsapp"></span>
+              Chat on WhatsApp
+            </a>
+            <button class="urgente urgente--lateral" type="button" aria-haspopup="dialog" data-urgente>
+              <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
+              I’ve just been scammed
+            </button>
+          </div>
+        </div>
+        <!-- Selos de sigilo e segurança (entram em sequência: js/destaques.js, parte 6).
+             Só afirmações verdadeiras: nada de "certificado" ou selo de terceiros. -->
+        <ul role="list" class="seals selos pg-lateral__selos" data-selos aria-label="Our commitments">
+          <li class="selo"><span class="selo__icone" data-icon="eye-off" aria-hidden="true"></span><span class="selo__texto"><strong>Confidential service</strong><span>Your case is handled discreetly from start to finish.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="message-square-lock" aria-hidden="true"></span><span class="selo__texto"><strong>Protected conversation</strong><span>Our WhatsApp conversations are end-to-end encrypted.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="lock" aria-hidden="true"></span><span class="selo__texto"><strong>Encrypted connection</strong><span>This site uses HTTPS: what you access here travels protected.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="shield-check" aria-hidden="true"></span><span class="selo__texto"><strong>LGPD compliant</strong><span>Your data is used only for your case, under the LGPD (Brazil’s General Data Protection Law).</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="scale" aria-hidden="true"></span><span class="selo__texto"><strong>Lawful sources only</strong><span>We only use open sources and lawfully accessible databases.</span></span></li>
+          <!-- Selo "Dados armazenados com criptografia": só incluir se passarmos a guardar
+               os arquivos dos casos criptografados. Hoje NÃO afirmamos isso.
+          <li class="selo"><span class="selo__icone" data-icon="lock" aria-hidden="true"></span><span class="selo__texto"><strong>Dados criptografados</strong><span>Os arquivos do seu caso ficam guardados com criptografia.</span></span></li>
+          -->
+        </ul>
+      </aside>
+    </div>
+
+    <!-- ===== SERVIÇOS RELACIONADOS (da mesma categoria) ===== -->
+    <section class="section pg-relacionados" aria-labelledby="relacionados-titulo">
+      <div class="container">
+        <div class="pg-secao-topo" data-reveal>
+          <h2 id="relacionados-titulo">Related services</h2>
+          <a class="btn btn--ghost btn--sm" href="../index.html#servicos">
+            See all services
+            <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+          </a>
+        </div>
+        <ul role="list" class="services__grid relacionados__grade">
+          <li class="service-card bezel" data-reveal-item>
+            <div class="bezel__core">
+              <div class="service-card__top">
+                <span class="service-card__icon"><span data-icon="scale"></span></span>
+                <span class="mono">Case 15</span>
+              </div>
+              <h3><a class="service-card__button" href="moral-damages-compensation.html">Compensation for moral damages</a></h3>
+              <p>A lawsuit to seek compensation when the scam or exposure caused you real harm.</p>
+              <span class="service-card__more" aria-hidden="true">See service<span class="btn__orb"><span data-icon="arrow-up-right"></span></span></span>
+            </div>
+          </li>
+          <li class="service-card bezel" data-reveal-item>
+            <div class="bezel__core">
+              <div class="service-card__top">
+                <span class="service-card__icon"><span data-icon="receipt-text"></span></span>
+                <span class="mono">Case 16</span>
+              </div>
+              <h3><a class="service-card__button" href="administrative-fund-recovery.html">Recovering money through administrative channels</a></h3>
+              <p>Requests to banks, platforms and institutions, without going to court.</p>
+              <span class="service-card__more" aria-hidden="true">See service<span class="btn__orb"><span data-icon="arrow-up-right"></span></span></span>
+            </div>
+          </li>
+          <li class="service-card bezel" data-reveal-item>
+            <div class="bezel__core">
+              <div class="service-card__top">
+                <span class="service-card__icon"><span data-icon="file-badge"></span></span>
+                <span class="mono">Case 17</span>
+              </div>
+              <h3><a class="service-card__button" href="court-fund-recovery.html">Recovering money through the courts</a></h3>
+              <p>A lawsuit to seek the return of your money, with a request to freeze accounts.</p>
+              <span class="service-card__more" aria-hidden="true">See service<span class="btn__orb"><span data-icon="arrow-up-right"></span></span></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="site-footer" data-rodape data-esconde-flutuante>
+    <!-- Linha do topo que se desenha e o "rastro" de pontos (js/destaques.js, parte 4) -->
+    <span class="site-footer__linha" aria-hidden="true" data-rodape-linha></span>
+    <div class="container">
+      <div class="site-footer__topo" data-rodape-item>
+        <div class="site-footer__marca">
+          <a class="site-footer__logo" href="../index.html" aria-label="Vestígio Digital Investigation, back to the home page">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 34" width="165" height="34" aria-hidden="true" focusable="false">
+            <g transform="translate(0 1.2) scale(0.8)">
+            <path d="M5 16V5h11" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/>
+            <circle cx="13.6" cy="13.6" r="1.6" fill="currentColor"/>
+            <circle cx="18.6" cy="18.6" r="2" fill="currentColor"/>
+            <circle cx="24.6" cy="24.6" r="4.4" fill="currentColor"/>
+            </g>
+            <path transform="translate(34 26)" fill="currentColor" d="M9.04 0 0.42 -20.59H5.06L10.18 -7.64Q10.42 -7.13 10.65 -6.51Q10.89 -5.9 11.11 -5.35Q11.33 -4.79 11.48 -4.39H11.67Q11.82 -4.76 12.02 -5.3Q12.23 -5.84 12.47 -6.45Q12.72 -7.05 12.95 -7.61L18.07 -20.59H22.49L13.87 0ZM33.22 0.36Q30.44 0.36 28.51 -0.52Q26.57 -1.41 25.56 -3.24Q24.55 -5.07 24.55 -7.89Q24.55 -10.7 25.55 -12.53Q26.55 -14.36 28.47 -15.25Q30.39 -16.15 33.15 -16.15Q35.84 -16.15 37.68 -15.27Q39.51 -14.39 40.43 -12.62Q41.36 -10.86 41.36 -8.19V-6.93H28.59Q28.66 -5.46 29.2 -4.51Q29.74 -3.57 30.77 -3.12Q31.8 -2.68 33.29 -2.68Q33.97 -2.68 34.67 -2.84Q35.38 -3.01 35.98 -3.35Q36.58 -3.69 36.98 -4.22Q37.37 -4.76 37.41 -5.49H41.3Q41.3 -4.14 40.73 -3.05Q40.16 -1.96 39.1 -1.2Q38.03 -0.45 36.54 -0.04Q35.05 0.36 33.22 0.36ZM28.62 -9.6H37.27Q37.27 -10.53 36.96 -11.19Q36.65 -11.85 36.09 -12.28Q35.54 -12.71 34.8 -12.91Q34.05 -13.1 33.17 -13.1Q31.83 -13.1 30.85 -12.72Q29.87 -12.33 29.32 -11.55Q28.77 -10.77 28.62 -9.6ZM51.97 0.36Q50.24 0.36 48.81 0.03Q47.38 -0.3 46.34 -0.92Q45.3 -1.54 44.74 -2.44Q44.18 -3.34 44.18 -4.49Q44.18 -4.64 44.19 -4.76Q44.21 -4.88 44.22 -4.97H48.12Q48.12 -4.92 48.12 -4.85Q48.11 -4.77 48.11 -4.71Q48.12 -3.93 48.68 -3.46Q49.24 -2.98 50.14 -2.78Q51.05 -2.58 52.06 -2.58Q53.03 -2.58 53.91 -2.73Q54.78 -2.88 55.34 -3.25Q55.9 -3.63 55.9 -4.3Q55.9 -5.08 55.24 -5.46Q54.59 -5.85 53.42 -6.08Q52.26 -6.32 50.75 -6.6Q49.54 -6.84 48.44 -7.17Q47.35 -7.5 46.49 -8.02Q45.64 -8.54 45.15 -9.36Q44.65 -10.17 44.65 -11.37Q44.65 -12.6 45.2 -13.49Q45.74 -14.38 46.74 -14.97Q47.73 -15.55 49.12 -15.85Q50.51 -16.14 52.19 -16.14Q53.76 -16.14 55.06 -15.85Q56.36 -15.55 57.32 -14.99Q58.28 -14.43 58.82 -13.61Q59.36 -12.8 59.36 -11.78Q59.36 -11.61 59.35 -11.45Q59.34 -11.29 59.33 -11.22H55.44V-11.39Q55.44 -12 55 -12.4Q54.56 -12.79 53.82 -13.01Q53.07 -13.22 52.08 -13.22Q51.54 -13.22 50.92 -13.14Q50.3 -13.06 49.77 -12.89Q49.23 -12.72 48.9 -12.44Q48.56 -12.16 48.56 -11.73Q48.56 -11.12 49.15 -10.79Q49.74 -10.46 50.73 -10.25Q51.71 -10.05 52.85 -9.81Q54.15 -9.55 55.4 -9.26Q56.64 -8.96 57.64 -8.47Q58.64 -7.98 59.23 -7.1Q59.82 -6.22 59.82 -4.78Q59.82 -3.36 59.27 -2.37Q58.71 -1.38 57.68 -0.78Q56.65 -0.18 55.2 0.09Q53.76 0.36 51.97 0.36ZM68.64 0.36Q67.04 0.36 66.08 -0.17Q65.13 -0.71 64.71 -1.72Q64.29 -2.74 64.29 -4.18V-12.69H61.85V-15.79H64.4L65.14 -20.31H68.18V-15.79H71.66V-12.69H68.18V-4.51Q68.18 -3.65 68.55 -3.19Q68.91 -2.74 69.93 -2.74H71.66V-0.13Q71.3 0 70.77 0.11Q70.23 0.22 69.66 0.29Q69.1 0.36 68.64 0.36ZM75.03 0V-15.79H78.92V0ZM74.39 -17.73 77.32 -21.7H81.61L81.62 -21.59L77.63 -17.73ZM86.35 5.69Q85.14 5.69 84.09 5.3Q83.03 4.91 82.39 4.08Q81.75 3.24 81.75 1.93Q81.75 0.69 82.54 -0.14Q83.34 -0.96 84.44 -1.37Q83.64 -1.79 83.2 -2.48Q82.77 -3.17 82.77 -4.06Q82.77 -5.23 83.6 -6.01Q84.43 -6.79 85.68 -7Q84.53 -7.68 83.89 -8.7Q83.26 -9.72 83.26 -10.97Q83.26 -12.69 84.16 -13.84Q85.05 -14.99 86.79 -15.57Q88.53 -16.15 91.03 -16.15Q92.02 -16.15 92.92 -16.04Q93.81 -15.93 94.57 -15.72Q95.81 -16.33 96.38 -17.11Q96.95 -17.89 97.04 -18.48H100.75Q100.74 -17.41 100.3 -16.6Q99.86 -15.79 99.07 -15.26Q98.29 -14.73 97.17 -14.47Q97.97 -13.84 98.4 -12.96Q98.82 -12.07 98.82 -10.97Q98.82 -9.31 97.99 -8.15Q97.17 -6.99 95.55 -6.39Q93.94 -5.79 91.56 -5.79H88.29Q87.55 -5.79 87.14 -5.5Q86.73 -5.21 86.73 -4.68Q86.73 -4.21 87.12 -3.89Q87.52 -3.56 88.3 -3.56H96.28Q98.3 -3.56 99.48 -2.33Q100.67 -1.1 100.67 0.81Q100.67 2.23 99.93 3.33Q99.18 4.43 97.91 5.06Q96.64 5.69 95 5.69ZM87.38 2.92H94.88Q95.41 2.92 95.83 2.73Q96.25 2.53 96.5 2.16Q96.75 1.78 96.75 1.3Q96.75 0.52 96.24 0.12Q95.73 -0.29 95.01 -0.29H87.45Q86.69 -0.29 86.18 0.13Q85.67 0.56 85.67 1.29Q85.67 2.02 86.15 2.47Q86.63 2.92 87.38 2.92ZM91.05 -8.5Q92.9 -8.5 93.92 -9.1Q94.94 -9.7 94.94 -10.97Q94.94 -12.25 93.92 -12.85Q92.9 -13.44 91.05 -13.44Q89.2 -13.44 88.18 -12.85Q87.16 -12.25 87.16 -10.97Q87.16 -10.1 87.62 -9.55Q88.07 -9 88.94 -8.75Q89.81 -8.5 91.05 -8.5ZM103.29 -18.3V-21.7H107.18V-18.3ZM103.29 0V-15.79H107.18V0ZM119.54 0.36Q116.74 0.36 114.79 -0.55Q112.84 -1.45 111.84 -3.29Q110.83 -5.13 110.83 -7.9Q110.83 -10.71 111.84 -12.53Q112.84 -14.36 114.79 -15.25Q116.74 -16.15 119.54 -16.15Q122.35 -16.15 124.29 -15.25Q126.23 -14.36 127.24 -12.53Q128.24 -10.71 128.24 -7.9Q128.24 -5.13 127.24 -3.29Q126.23 -1.45 124.29 -0.55Q122.35 0.36 119.54 0.36ZM119.54 -2.74Q121.09 -2.74 122.13 -3.3Q123.18 -3.85 123.7 -4.95Q124.22 -6.04 124.22 -7.65V-8.16Q124.22 -9.78 123.7 -10.87Q123.18 -11.96 122.13 -12.51Q121.09 -13.05 119.54 -13.05Q117.98 -13.05 116.94 -12.51Q115.89 -11.96 115.37 -10.87Q114.85 -9.78 114.85 -8.16V-7.65Q114.85 -6.04 115.37 -4.95Q115.89 -3.85 116.94 -3.3Q117.98 -2.74 119.54 -2.74Z"/>
+            </svg>
+          </a>
+          <p class="site-footer__frase">Every action leaves a <span class="ink">trail.</span></p>
+          <p class="site-footer__desc">Investigation of online scams and cybercrime, locating people and assets, and support in recovering money.</p>
+        </div>
+        <a class="btn btn--primary site-footer__cta" href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+          <span class="wa-icon" data-icon="whatsapp"></span>
+          Chat on WhatsApp
+          <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+        </a>
+      </div>
+
+      <div class="site-footer__colunas">
+        <nav class="site-footer__col" aria-labelledby="rodape-navegacao" data-rodape-item>
+          <h2 class="site-footer__titulo" id="rodape-navegacao">Navigation</h2>
+          <ul role="list" class="site-footer__links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#verificador">Is this a scam?</a></li>
+            <li><a href="../index.html#como-funciona">How it works</a></li>
+            <li><a href="../index.html#sobre">About</a></li>
+            <li><a href="../alerts.html">Scam alerts</a></li>
+            <li><a href="../index.html#duvidas">FAQ</a></li>
+            <li><a href="../index.html#contato">Contact</a></li>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+          </ul>
+        </nav>
+
+        <!-- Serviços: atalhos para as páginas da pasta servicos/ -->
+        <nav class="site-footer__col" aria-labelledby="rodape-servicos" data-rodape-item>
+          <h2 class="site-footer__titulo" id="rodape-servicos">Services</h2>
+          <ul role="list" class="site-footer__links">
+            <li><a href="../services/locating-people.html">Locating people</a></li>
+            <li><a href="../services/instagram-investigation.html">Instagram investigation</a></li>
+            <li><a href="../services/whatsapp-scams.html">WhatsApp scams</a></li>
+            <li><a href="../services/romance-scam.html">Romance scam</a></li>
+            <li><a href="../services/fake-pix-scam.html">Fake Pix scam</a></li>
+            <li><a href="../services/court-fund-recovery.html">Money recovery</a></li>
+            <li><a class="site-footer__mais" href="../index.html#servicos">See all services<span data-icon="arrow-right"></span></a></li>
+          </ul>
+        </nav>
+
+        <!-- Contato: e-mail, WhatsApp e horário vêm de js/config.js -->
+        <div class="site-footer__col site-footer__col--contato" data-rodape-item>
+          <h2 class="site-footer__titulo">Contact</h2>
+          <ul role="list" class="site-footer__contato">
+            <li><span class="site-footer__ico" data-icon="mail"></span><a href="mailto:contato@vestigio.app.br" data-config="email" data-mailto>contato@<wbr>vestigio.app.br</a></li>
+            <li><span class="site-footer__ico" data-icon="phone"></span><a href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener" data-config="whatsappFormatado">(81) 99218-3600</a></li>
+            <li><span class="site-footer__ico" data-icon="clock"></span><span data-config="horario">Monday to Friday, 9 a.m. to 6 p.m. (Brasília time)</span></li>
+            <li class="status" data-status hidden></li>
+          </ul>
+          <a class="urgencia urgencia--compacta" href="https://wa.me/5581992183600" data-whatsapp data-msg-config="mensagemUrgente" target="_blank" rel="noopener" data-urgencia>
+            <span class="urgencia__sinal" aria-hidden="true"><span class="urgencia__anel" data-urgencia-anel></span><span class="urgencia__anel" data-urgencia-anel></span><span class="urgencia__nucleo"></span></span>
+            <span class="urgencia__texto"><strong>Urgent cases</strong><span>After-hours help on WhatsApp</span></span>
+            <span class="urgencia__seta" data-icon="arrow-up-right" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="site-footer__col site-footer__col--redes" data-rodape-item>
+          <h2 class="site-footer__titulo">Social media</h2>
+          <a class="site-footer__social" href="https://www.instagram.com/vestigio.br/" target="_blank" rel="noopener">
+            <span class="site-footer__social-icone" data-icon="instagram" aria-hidden="true"></span>
+            <span class="site-footer__social-texto"><strong>Instagram</strong><span>@vestigio.br</span></span>
+            <span class="site-footer__social-seta" data-icon="arrow-up-right" aria-hidden="true"></span>
+          </a>
+          <p class="site-footer__nota">Scam alerts and tips to protect yourself.</p>
+        </div>
+      </div>
+
+      <div class="site-footer__base" data-rodape-item>
+        <p class="site-footer__aviso">
+          Investigations are carried out using lawful sources and within Brazilian law, including the LGPD (Brazil’s General Data Protection Law). Legal services are provided by partner lawyer(s) registered with the OAB (Brazilian Bar Association). Results depend on the particulars of each case and are not guaranteed.
+        </p>
+        <div class="site-footer__fim">
+          <p>© <span data-year>2026</span> Vestígio. All rights reserved.</p>
+          <a href="../privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp (aparece depois de rolar um pouco).
+       Ao tocar, abre duas opções: "Falar no WhatsApp" e "Caí em um golpe agora"
+       (js/navegacao.js, parte 4). -->
+  <button class="wa-float" type="button" data-wa-float aria-label="Contact us: WhatsApp or urgent help">
+    <span class="wa-icon" data-icon="whatsapp"></span>
+    <span class="wa-float__label" aria-hidden="true">Contact us</span>
+  </button>
+
+  <!-- ===== SCRIPTS (os mesmos do site, na mesma ordem) ===== -->
+  <script src="../../js/vendor/motion.js"></script>
+  <script src="../../js/vendor/lenis.min.js"></script>
+  <script src="../../js/en/textos.js"></script>
+  <script src="../../js/config.js"></script>
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/services.js"></script>
+  <script src="../../js/components.js"></script>
+  <script src="../../js/alertas.js"></script>
+  <script src="../../js/alertas-tela.js"></script>
+  <script src="../../js/animations.js"></script>
+  <script src="../../js/interacoes.js"></script>
+  <script src="../../js/navegacao.js"></script>
+  <script src="../../js/primeiros-30-minutos.js"></script>
+  <script src="../../js/montador-whatsapp.js"></script>
+  <script src="../../js/destaques.js"></script>
+  <script src="../../js/textura-fundo.js"></script>
+  <script src="../../js/textura-mesa.js"></script>
+  <script src="../../js/atendimento.js"></script>
+  <script src="../../js/idioma.js"></script>
+</body>
+</html>

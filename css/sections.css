@@ -499,7 +499,7 @@
   background: linear-gradient(90deg, var(--accent-line), var(--accent-ink));
   transform: scaleX(var(--progress, 1));
   transform-origin: left;
-  transition: transform 900ms var(--ease-fluid);
+  transition: transform var(--dur-slow) var(--ease-fluid);
 }
 
 .analysis__report {
@@ -548,7 +548,7 @@
 }
 
 .analysis__report {
-  transition: background-color 600ms var(--ease-fluid), color 600ms ease, box-shadow 600ms ease;
+  transition: background-color var(--dur-slow) var(--ease-fluid), color var(--dur-slow) ease, box-shadow var(--dur-slow) ease;
 }
 
 /* Linha de "leitura" que passa pelo card */
@@ -1037,6 +1037,136 @@
     grid-column: 1;
   }
 }
+
+/* ---------- Caminho das provas (js/caminho-das-provas.js) ----------
+   Com o JavaScript: a linha do CSS sai e entra um SVG que se
+   desenha com a rolagem, um "pacote" anda por ela e as etapas
+   acendem. Camadas: cartão da Vestígio (0) < linha (1) < textos
+   (1) < círculos (2) < pacote (3). */
+.relay__lanes { isolation: isolate; }
+
+.relay--js::before { display: none; }
+
+/* Cartão sutil em volta da Vestígio. Fica "por fora" (inset
+   negativo), então o layout e o alinhamento não mudam. */
+.relay__lane--us::before {
+  content: '';
+  position: absolute;
+  inset: -0.85rem -0.85rem;
+  z-index: 0;
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(var(--teal-rgb), calc(0.16 * var(--glow-k))), transparent 65%),
+    rgba(var(--surface-rgb), 0.5);
+  border: 1px solid var(--hairline-accent);
+  box-shadow: var(--highlight);
+  pointer-events: none;
+}
+
+.relay__lane > * { position: relative; z-index: 1; }
+.relay__lane > .relay__node { z-index: 2; }
+
+.relay__trilha {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.relay__base,
+.relay__traco {
+  fill: none;
+  stroke: var(--accent-ink);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+  stroke-linecap: round;
+}
+
+.relay__base { opacity: 0.14; }   /* o caminho que ainda falta, bem apagado */
+.relay__traco { opacity: 0.7; }
+
+.relay__revela {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 8;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+}
+
+/* Círculos: com o JavaScript, a Vestígio começa apagada como as outras
+   e todas acendem quando o pacote chega */
+.relay--js .relay__node {
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-slow) var(--ease-out);
+}
+
+.relay--js .relay__lane--us .relay__node:not(.is-aceso) {
+  background: var(--surface);
+  border-color: var(--hairline-strong);
+  box-shadow: none;
+}
+
+.relay__node.is-aceso {
+  border-color: var(--accent-line);
+  color: var(--accent-line);
+  box-shadow: 0 0 0 6px rgba(var(--cyan-rgb), calc(0.08 * var(--glow-k))), 0 0 22px -4px var(--glow-accent);
+}
+
+.relay__lane--us .relay__node.is-aceso { background: var(--navy); }
+
+/* Pacote de provas: papéis soltos que viram um relatório */
+.relay__pacote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.relay__papel,
+.relay__relatorio {
+  position: absolute;
+  left: -0.5rem;
+  top: -0.65rem;
+}
+
+.relay__papel {
+  width: 1rem;
+  height: 1.3rem;
+  border-radius: 3px;
+  background:
+    linear-gradient(var(--text-faint), var(--text-faint)) 3px 4px / 8px 1.5px no-repeat,
+    linear-gradient(var(--text-faint), var(--text-faint)) 3px 8px / 6px 1.5px no-repeat,
+    var(--surface);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: 0 4px 10px -4px rgba(var(--shadow-rgb), calc(0.5 * var(--shadow-k)));
+}
+
+.relay__relatorio {
+  left: -1rem;
+  top: -1rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9px;
+  background: var(--navy);
+  border: 1px solid var(--accent-line);
+  color: var(--accent-line);
+  box-shadow: 0 0 18px -4px var(--glow-accent);
+  opacity: 0;
+}
+
+.relay__relatorio .icon { width: 1.1rem; height: 1.1rem; }
 
 /* =========================================================
    3.5 COMO O GOLPE ACONTECE (demonstração em "celulares")
@@ -1589,7 +1719,7 @@
   box-shadow: 0 0.8em 1.6em -0.6em rgba(0, 0, 0, 0.7);
   opacity: 0;
   transform: translateY(-140%);
-  transition: transform 520ms var(--ease-elastic), opacity 240ms ease;
+  transition: transform var(--dur-mola) var(--ease-elastic), opacity var(--dur-fast) ease;
 }
 
 .notif.is-on {
@@ -1874,7 +2004,7 @@
   background: rgba(var(--ink-rgb), 0.04);
   color: var(--text-faint);
   line-height: 1.3;
-  transition: background-color 600ms var(--ease-fluid), color 600ms ease, box-shadow 600ms ease;
+  transition: background-color var(--dur-slow) var(--ease-fluid), color var(--dur-slow) ease, box-shadow var(--dur-slow) ease;
 }
 
 .case__report strong {
@@ -2202,7 +2332,7 @@ html:not(.motion-ok) .step {
 @media (hover: hover) and (pointer: fine) {
   .principle:hover {
     background: rgba(var(--ink-rgb), 0.075);
-    transform: translateY(-3px);
+    transform: translateY(var(--card-lift));
   }
 }
 

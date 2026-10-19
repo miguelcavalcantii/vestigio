@@ -25,7 +25,7 @@
 
   var animate = Motion.animate;
   var inView = Motion.inView;
-  var EASE_OUT = [0.23, 1, 0.32, 1];
+  var EASE_OUT = RITMO.suave;
   var PASSO = 24;                 // distância entre as linhas da grade (igual ao CSS)
   var SVG = 'http://www.w3.org/2000/svg';
 

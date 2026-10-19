@@ -26,7 +26,7 @@
       linha.classList.add('is-done');
     });
     var status = document.querySelector('[data-dossier-status]');
-    if (status) status.textContent = 'Concluído';
+    if (status) status.textContent = T('Concluído');
     var relatorio = document.querySelector('[data-dossier-report]');
     if (relatorio) relatorio.classList.add('is-ready');
   }
@@ -46,16 +46,17 @@
   var stagger = Motion.stagger;
   var scroll = Motion.scroll;
 
-  var EASE_OUT = [0.23, 1, 0.32, 1];
-  var EASE_FLUID = [0.32, 0.72, 0, 1];
+  var EASE_OUT = RITMO.suave;
+  var EASE_FLUID = RITMO.fluida;
+  var DESFOCAR = podeDesfocar();   // no celular, sem blur (pesa demais)
   var mouseFino = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   // Entrada padrão: sobe, perde o desfoque e aparece
   var APARECER = {
     opacity: [0, 1],
-    transform: ['translateY(40px)', 'translateY(0)'],
-    filter: ['blur(10px)', 'blur(0px)']
+    transform: ['translateY(40px)', 'translateY(0)']
   };
+  if (DESFOCAR) APARECER.filter = ['blur(10px)', 'blur(0px)'];
 
   /* =========================================================
      1. TÍTULO DO HERO, PALAVRA POR PALAVRA
@@ -146,7 +147,7 @@
     function reiniciar() {
       Array.prototype.forEach.call(linhas, function (l) { l.classList.remove('is-active', 'is-done'); });
       relatorio.classList.remove('is-ready');
-      status.textContent = 'Em análise';
+      status.textContent = T('Em análise');
       barra.style.setProperty('--progress', 0);
     }
 
@@ -164,7 +165,7 @@
           passo(i + 1);
         }, i === 0 ? 1600 : 1150);
       } else {
-        status.textContent = 'Concluído';
+        status.textContent = T('Concluído');
         relatorio.classList.add('is-ready');
         timer = setTimeout(function () { passo(0); }, 4200);
       }
@@ -249,8 +250,8 @@
      Subindo: o que volta pelo topo desce de -24px e reaparece; o que
      sai por baixo faz a entrada ao contrário e esmaece. */
   var SAIDA = { opacidade: 0.15, y: -24, escala: 0.98, desfoque: 4 };
-  var curvaEntrada = Motion.cubicBezier(0.23, 1, 0.32, 1);   // = EASE_OUT
-  var curvaSaida = Motion.cubicBezier(0.32, 0, 0.67, 0);      // começa devagar
+  var curvaEntrada = Motion.cubicBezier.apply(null, RITMO.suave);   // = EASE_OUT
+  var curvaSaida = Motion.cubicBezier.apply(null, RITMO.acelera);   // começa devagar
   var blocos = [];   // todos os blocos ligados (para o "redimensionar")
 
   function misturar(a, b, t) { return a + (b - a) * t; }
@@ -323,7 +324,7 @@
 
     var transform = (de.giro ? PERSPECTIVA + 'rotateX(' + giro.toFixed(2) + 'deg) ' : '') +
       'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0) scale(' + escala.toFixed(4) + ')';
-    var filtro = desfoque > 0.05 ? 'blur(' + desfoque.toFixed(2) + 'px)' : 'none';
+    var filtro = DESFOCAR && desfoque > 0.05 ? 'blur(' + desfoque.toFixed(2) + 'px)' : 'none';
     var corte = '';
     if (de.corte === 'baixo') corte = 'inset(0 0 ' + ((1 - e) * 100).toFixed(2) + '% 0)';
     if (de.corte === 'direita') corte = 'inset(0 ' + ((1 - e) * 100).toFixed(2) + '% 0 0)';

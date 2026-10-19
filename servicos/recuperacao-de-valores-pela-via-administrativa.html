@@ -2,7 +2,7 @@
 <!-- ARQUIVO GERADO por ferramentas/gerar-paginas.js. Não edite aqui:
      mude os dados (js/services.js ou js/alertas.js) ou o modelo
      (ferramentas/modelos/) e rode de novo: node ferramentas/gerar-paginas.js -->
-<html lang="pt-BR" data-raiz="../">
+<html lang="pt-BR" data-raiz="../" data-raiz-site="../">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,10 @@
   <meta name="description" content="Pedidos a bancos, plataformas e instituições, sem precisar de processo. Veja como funciona e o que vamos precisar de você.">
   <meta name="theme-color" content="#F3F5F6">
   <link rel="canonical" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html">
+  <!-- A mesma página no outro idioma (o seletor de idioma também usa estes links) -->
+  <link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html">
+  <link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/services/administrative-fund-recovery.html">
+  <link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html">
 
   <!-- ===== OPEN GRAPH (prévia ao compartilhar o link) ===== -->
   <meta property="og:type" content="website">
@@ -68,7 +72,7 @@
   <!-- Sem JavaScript: o que depende dele some; "Serviços" vira link comum -->
   <noscript>
     <style>
-      .main-nav__trigger, .urgente, .mega, .menu-toggle { display: none !important; }
+      .main-nav__trigger, .urgente, .mega, .menu-toggle, .idioma, .mobile-menu__idioma { display: none !important; }
       .main-nav__semjs { display: inline-flex !important; }
     </style>
   </noscript>
@@ -84,6 +88,7 @@
           "description": "Antes da Justiça existem caminhos administrativos: o MED do Pix (Mecanismo Especial de Devolução), a contestação de compras no cartão e reclamações formais ao banco, à plataforma e aos órgãos de defesa do consumidor. Quanto mais rápido, maiores as chances. Ajudamos a montar pedidos bem fundamentados e acompanhamos as respostas.",
           "serviceType": "Recuperação e suporte jurídico",
           "url": "https://vestigio.app.br/servicos/recuperacao-de-valores-pela-via-administrativa.html",
+          "inLanguage": "pt-BR",
           "areaServed": {
             "@type": "Country",
             "name": "Brasil"
@@ -166,9 +171,22 @@
 
       <!-- Botão de urgência: abre o painel "Primeiros 30 minutos" -->
       <button class="urgente" type="button" aria-haspopup="dialog" data-urgente>
-        <span class="urgente__dot" aria-hidden="true"></span>
+        <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
         <span>Caí em um golpe<span class="urgente__extra"> agora</span></span>
       </button>
+
+      <!-- Seletor de idioma (js/idioma.js). Mostra a bandeira do idioma da página;
+           os links das opções vêm das tags hreflang do <head>. -->
+      <div class="idioma" data-idioma>
+        <button class="idioma__botao" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idioma-menu" aria-label="Idioma: Português (Brasil)" data-idioma-botao>
+          <span class="idioma__bandeira idioma__bandeira--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
+          <span class="idioma__bandeira idioma__bandeira--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+        </button>
+        <ul class="idioma__menu" id="idioma-menu" role="menu" aria-label="Escolher idioma" hidden data-idioma-menu>
+          <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>Português (Brasil)</a></li>
+          <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>English</a></li>
+        </ul>
+      </div>
 
       <!-- Troca de tema claro/escuro (no celular ele fica no rodapé do menu) -->
       <button class="theme-toggle" type="button" aria-label="Usar tema claro" aria-pressed="false" data-theme-toggle>
@@ -196,7 +214,7 @@
       <div class="mega__cols" data-mega-cols></div>
       <div class="mega__aside">
         <div class="mega__urgente">
-          <p class="mega__urgente-tag"><span class="urgente__dot" aria-hidden="true"></span><span class="mono">Agora</span></p>
+          <p class="mega__urgente-tag"><span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span><span class="mono">Agora</span></p>
           <p class="mega__urgente-titulo">Caí em um golpe agora</p>
           <p class="mega__urgente-texto">Os primeiros 30 minutos contam. Veja, passo a passo, o que fazer.</p>
           <button class="btn btn--primary btn--sm btn--block" type="button" aria-haspopup="dialog" data-urgente>
@@ -204,6 +222,8 @@
             <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
           </button>
         </div>
+        <!-- Indicador "Atendendo agora" (js/atendimento.js; sem JavaScript, fica escondido) -->
+        <p class="status" data-status hidden></p>
         <a class="mega__todos" href="../index.html#servicos">
           Ver todos os serviços
           <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
@@ -217,7 +237,7 @@
     <!-- Urgência no topo do menu: abre o painel "Primeiros 30 minutos" -->
     <div class="mobile-menu__top">
       <button class="urgente urgente--menu" type="button" aria-haspopup="dialog" data-urgente>
-        <span class="urgente__dot" aria-hidden="true"></span>
+        <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
         <span class="urgente__texto">Caí em um golpe agora</span>
         <span class="urgente__seta" data-icon="arrow-right" aria-hidden="true"></span>
       </button>
@@ -248,6 +268,23 @@
         Falar com especialista
       </a>
       <p class="mobile-menu__note">Atendimento sigiloso pelo WhatsApp.</p>
+      <p class="status" data-status hidden></p>
+      <!-- Idioma (versão do celular) -->
+      <div class="mobile-menu__theme mobile-menu__idioma">
+        <span>Idioma</span>
+        <!-- Seletor de idioma (js/idioma.js). Mostra a bandeira do idioma da página;
+             os links das opções vêm das tags hreflang do <head>. -->
+        <div class="idioma" data-idioma>
+          <button class="idioma__botao" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idioma-menu-celular" aria-label="Idioma: Português (Brasil)" data-idioma-botao>
+            <span class="idioma__bandeira idioma__bandeira--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
+            <span class="idioma__bandeira idioma__bandeira--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+          </button>
+          <ul class="idioma__menu" id="idioma-menu-celular" role="menu" aria-label="Escolher idioma" hidden data-idioma-menu>
+            <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>Português (Brasil)</a></li>
+            <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>English</a></li>
+          </ul>
+        </div>
+      </div>
       <!-- Troca de tema claro/escuro (versão do celular) -->
       <div class="mobile-menu__theme">
         <span>Aparência</span>
@@ -346,15 +383,23 @@
               Falar no WhatsApp
             </a>
             <button class="urgente urgente--lateral" type="button" aria-haspopup="dialog" data-urgente>
-              <span class="urgente__dot" aria-hidden="true"></span>
+              <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
               Caí em um golpe agora
             </button>
           </div>
         </div>
-        <ul role="list" class="seals pg-lateral__selos" aria-label="Garantias de atendimento">
-          <li><span data-icon="eye-off"></span>Atendimento sigiloso</li>
-          <li><span data-icon="shield-check"></span>Dentro da LGPD</li>
-          <li><span data-icon="scale"></span>Só fontes lícitas</li>
+        <!-- Selos de sigilo e segurança (entram em sequência: js/destaques.js, parte 6).
+             Só afirmações verdadeiras: nada de "certificado" ou selo de terceiros. -->
+        <ul role="list" class="seals selos pg-lateral__selos" data-selos aria-label="Garantias de atendimento">
+          <li class="selo"><span class="selo__icone" data-icon="eye-off" aria-hidden="true"></span><span class="selo__texto"><strong>Atendimento sigiloso</strong><span>Seu caso é tratado com discrição do início ao fim.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="message-square-lock" aria-hidden="true"></span><span class="selo__texto"><strong>Conversa protegida</strong><span>O atendimento pelo WhatsApp tem criptografia de ponta a ponta.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="lock" aria-hidden="true"></span><span class="selo__texto"><strong>Conexão criptografada</strong><span>Este site usa HTTPS: o que você acessa aqui viaja protegido.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="shield-check" aria-hidden="true"></span><span class="selo__texto"><strong>Dentro da LGPD</strong><span>Seus dados são usados apenas no seu caso.</span></span></li>
+          <li class="selo"><span class="selo__icone" data-icon="scale" aria-hidden="true"></span><span class="selo__texto"><strong>Só fontes lícitas</strong><span>Usamos apenas fontes abertas e bases de acesso lícito.</span></span></li>
+          <!-- Selo "Dados armazenados com criptografia": só incluir se passarmos a guardar
+               os arquivos dos casos criptografados. Hoje NÃO afirmamos isso.
+          <li class="selo"><span class="selo__icone" data-icon="lock" aria-hidden="true"></span><span class="selo__texto"><strong>Dados criptografados</strong><span>Os arquivos do seu caso ficam guardados com criptografia.</span></span></li>
+          -->
         </ul>
       </aside>
     </div>
@@ -472,6 +517,7 @@
             <li><span class="site-footer__ico" data-icon="mail"></span><a href="mailto:contato@vestigio.app.br" data-config="email" data-mailto>contato@<wbr>vestigio.app.br</a></li>
             <li><span class="site-footer__ico" data-icon="phone"></span><a href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener" data-config="whatsappFormatado">(81) 99218-3600</a></li>
             <li><span class="site-footer__ico" data-icon="clock"></span><span data-config="horario">Segunda a sexta, das 9h às 18h</span></li>
+            <li class="status" data-status hidden></li>
           </ul>
           <a class="urgencia urgencia--compacta" href="https://wa.me/5581992183600" data-whatsapp data-msg-config="mensagemUrgente" target="_blank" rel="noopener" data-urgencia>
             <span class="urgencia__sinal" aria-hidden="true"><span class="urgencia__anel" data-urgencia-anel></span><span class="urgencia__anel" data-urgencia-anel></span><span class="urgencia__nucleo"></span></span>
@@ -528,5 +574,7 @@
   <script src="../js/destaques.js"></script>
   <script src="../js/textura-fundo.js"></script>
   <script src="../js/textura-mesa.js"></script>
+  <script src="../js/atendimento.js"></script>
+  <script src="../js/idioma.js"></script>
 </body>
 </html>

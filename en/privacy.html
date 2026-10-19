@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<!-- ARQUIVO GERADO por ferramentas/gerar-paginas.js. Não edite aqui:
+     mude os dados (js/services.js ou js/alertas.js) ou o modelo
+     (ferramentas/modelos/) e rode de novo: node ferramentas/gerar-paginas.js -->
+<html lang="en" data-raiz="" data-raiz-site="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ===== SEO (cada página tem título, descrição e endereço próprios) ===== -->
+  <title>Privacy policy | Vestígio Digital Investigation</title>
+  <meta name="description" content="How Vestígio Digital Investigation processes your personal data, under the LGPD (Brazil’s General Data Protection Law).">
+  <meta name="theme-color" content="#F3F5F6">
+  <link rel="canonical" href="https://vestigio.app.br/en/privacy.html">
+  <!-- A mesma página no outro idioma (o seletor de idioma também usa estes links) -->
+  <link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/privacidade.html">
+  <link rel="alternate" hreflang="en" href="https://vestigio.app.br/en/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/privacidade.html">
+
+  <!-- ===== OPEN GRAPH (prévia ao compartilhar o link) ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Vestígio Investigação Digital">
+  <meta property="og:title" content="Privacy policy | Vestígio Digital Investigation">
+  <meta property="og:description" content="How Vestígio Digital Investigation processes your personal data, under the LGPD (Brazil’s General Data Protection Law).">
+  <meta property="og:url" content="https://vestigio.app.br/en/privacy.html">
+  <meta property="og:image" content="https://vestigio.app.br/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../assets/logo-simbolo.svg" type="image/svg+xml">
+
+  <script>
+    (function () {
+      var html = document.documentElement;
+
+      // 1. Tema
+      var tema = null;
+      try { tema = localStorage.getItem('vestigio-tema'); } catch (e) {}
+      // Padrão: claro. Só fica escuro se a pessoa escolheu no botão.
+      if (tema !== 'light' && tema !== 'dark') tema = 'light';
+      html.setAttribute('data-theme', tema);
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', tema === 'light' ? '#F3F5F6' : '#0B0C10');
+
+      // 2. Animações
+      var ANIMACOES_SEMPRE = true;
+      var sistemaPedeMenos = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!ANIMACOES_SEMPRE && sistemaPedeMenos) {
+        html.classList.add('respeitar-movimento');
+      } else {
+        html.classList.add('motion-ok');
+        setTimeout(function () {
+          if (!window.animacoesProntas) html.classList.remove('motion-ok');
+        }, 3000);
+      }
+    })();
+  </script>
+
+  <!-- ===== ESTILOS (os mesmos do site + os das páginas) ===== -->
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/ferramentas.css">
+  <link rel="stylesheet" href="../css/paginas.css">
+  <link rel="stylesheet" href="../css/textura-fundo.css">
+  <link rel="stylesheet" href="../css/textura-mesa.css">
+
+  <!-- Sem JavaScript: o que depende dele some; "Serviços" vira link comum -->
+  <noscript>
+    <style>
+      .main-nav__trigger, .urgente, .mega, .menu-toggle, .idioma, .mobile-menu__idioma { display: none !important; }
+      .main-nav__semjs { display: inline-flex !important; }
+    </style>
+  </noscript>
+
+  <!-- ===== DADOS ESTRUTURADOS (ajudam o Google a entender a página) ===== -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Privacy policy",
+      "url": "https://vestigio.app.br/en/privacy.html",
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Vestígio Digital Investigation",
+        "url": "https://vestigio.app.br/en/",
+        "logo": "https://vestigio.app.br/assets/logo.svg",
+        "email": "contato@vestigio.app.br",
+        "sameAs": [
+          "https://www.instagram.com/vestigio.br/"
+        ]
+      }
+    }
+  </script>
+
+</head>
+<body class="pagina pagina--privacidade">
+  <a class="skip-link" href="#conteudo">Skip to content</a>
+
+  <!-- Fundo do site: brilhos de luz (só decoração) -->
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <div class="island">
+      <a class="brand" href="index.html" aria-label="Vestígio Digital Investigation, back to the home page">
+        <!-- Logo dentro do HTML (cor = currentColor): muda junto com o tema -->
+        <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 34" width="165" height="34" aria-hidden="true" focusable="false">
+          <g transform="translate(0 1.2) scale(0.8)">
+          <path d="M5 16V5h11" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/>
+          <circle cx="13.6" cy="13.6" r="1.6" fill="currentColor"/>
+          <circle cx="18.6" cy="18.6" r="2" fill="currentColor"/>
+          <circle cx="24.6" cy="24.6" r="4.4" fill="currentColor"/>
+          </g>
+          <path transform="translate(34 26)" fill="currentColor" d="M9.04 0 0.42 -20.59H5.06L10.18 -7.64Q10.42 -7.13 10.65 -6.51Q10.89 -5.9 11.11 -5.35Q11.33 -4.79 11.48 -4.39H11.67Q11.82 -4.76 12.02 -5.3Q12.23 -5.84 12.47 -6.45Q12.72 -7.05 12.95 -7.61L18.07 -20.59H22.49L13.87 0ZM33.22 0.36Q30.44 0.36 28.51 -0.52Q26.57 -1.41 25.56 -3.24Q24.55 -5.07 24.55 -7.89Q24.55 -10.7 25.55 -12.53Q26.55 -14.36 28.47 -15.25Q30.39 -16.15 33.15 -16.15Q35.84 -16.15 37.68 -15.27Q39.51 -14.39 40.43 -12.62Q41.36 -10.86 41.36 -8.19V-6.93H28.59Q28.66 -5.46 29.2 -4.51Q29.74 -3.57 30.77 -3.12Q31.8 -2.68 33.29 -2.68Q33.97 -2.68 34.67 -2.84Q35.38 -3.01 35.98 -3.35Q36.58 -3.69 36.98 -4.22Q37.37 -4.76 37.41 -5.49H41.3Q41.3 -4.14 40.73 -3.05Q40.16 -1.96 39.1 -1.2Q38.03 -0.45 36.54 -0.04Q35.05 0.36 33.22 0.36ZM28.62 -9.6H37.27Q37.27 -10.53 36.96 -11.19Q36.65 -11.85 36.09 -12.28Q35.54 -12.71 34.8 -12.91Q34.05 -13.1 33.17 -13.1Q31.83 -13.1 30.85 -12.72Q29.87 -12.33 29.32 -11.55Q28.77 -10.77 28.62 -9.6ZM51.97 0.36Q50.24 0.36 48.81 0.03Q47.38 -0.3 46.34 -0.92Q45.3 -1.54 44.74 -2.44Q44.18 -3.34 44.18 -4.49Q44.18 -4.64 44.19 -4.76Q44.21 -4.88 44.22 -4.97H48.12Q48.12 -4.92 48.12 -4.85Q48.11 -4.77 48.11 -4.71Q48.12 -3.93 48.68 -3.46Q49.24 -2.98 50.14 -2.78Q51.05 -2.58 52.06 -2.58Q53.03 -2.58 53.91 -2.73Q54.78 -2.88 55.34 -3.25Q55.9 -3.63 55.9 -4.3Q55.9 -5.08 55.24 -5.46Q54.59 -5.85 53.42 -6.08Q52.26 -6.32 50.75 -6.6Q49.54 -6.84 48.44 -7.17Q47.35 -7.5 46.49 -8.02Q45.64 -8.54 45.15 -9.36Q44.65 -10.17 44.65 -11.37Q44.65 -12.6 45.2 -13.49Q45.74 -14.38 46.74 -14.97Q47.73 -15.55 49.12 -15.85Q50.51 -16.14 52.19 -16.14Q53.76 -16.14 55.06 -15.85Q56.36 -15.55 57.32 -14.99Q58.28 -14.43 58.82 -13.61Q59.36 -12.8 59.36 -11.78Q59.36 -11.61 59.35 -11.45Q59.34 -11.29 59.33 -11.22H55.44V-11.39Q55.44 -12 55 -12.4Q54.56 -12.79 53.82 -13.01Q53.07 -13.22 52.08 -13.22Q51.54 -13.22 50.92 -13.14Q50.3 -13.06 49.77 -12.89Q49.23 -12.72 48.9 -12.44Q48.56 -12.16 48.56 -11.73Q48.56 -11.12 49.15 -10.79Q49.74 -10.46 50.73 -10.25Q51.71 -10.05 52.85 -9.81Q54.15 -9.55 55.4 -9.26Q56.64 -8.96 57.64 -8.47Q58.64 -7.98 59.23 -7.1Q59.82 -6.22 59.82 -4.78Q59.82 -3.36 59.27 -2.37Q58.71 -1.38 57.68 -0.78Q56.65 -0.18 55.2 0.09Q53.76 0.36 51.97 0.36ZM68.64 0.36Q67.04 0.36 66.08 -0.17Q65.13 -0.71 64.71 -1.72Q64.29 -2.74 64.29 -4.18V-12.69H61.85V-15.79H64.4L65.14 -20.31H68.18V-15.79H71.66V-12.69H68.18V-4.51Q68.18 -3.65 68.55 -3.19Q68.91 -2.74 69.93 -2.74H71.66V-0.13Q71.3 0 70.77 0.11Q70.23 0.22 69.66 0.29Q69.1 0.36 68.64 0.36ZM75.03 0V-15.79H78.92V0ZM74.39 -17.73 77.32 -21.7H81.61L81.62 -21.59L77.63 -17.73ZM86.35 5.69Q85.14 5.69 84.09 5.3Q83.03 4.91 82.39 4.08Q81.75 3.24 81.75 1.93Q81.75 0.69 82.54 -0.14Q83.34 -0.96 84.44 -1.37Q83.64 -1.79 83.2 -2.48Q82.77 -3.17 82.77 -4.06Q82.77 -5.23 83.6 -6.01Q84.43 -6.79 85.68 -7Q84.53 -7.68 83.89 -8.7Q83.26 -9.72 83.26 -10.97Q83.26 -12.69 84.16 -13.84Q85.05 -14.99 86.79 -15.57Q88.53 -16.15 91.03 -16.15Q92.02 -16.15 92.92 -16.04Q93.81 -15.93 94.57 -15.72Q95.81 -16.33 96.38 -17.11Q96.95 -17.89 97.04 -18.48H100.75Q100.74 -17.41 100.3 -16.6Q99.86 -15.79 99.07 -15.26Q98.29 -14.73 97.17 -14.47Q97.97 -13.84 98.4 -12.96Q98.82 -12.07 98.82 -10.97Q98.82 -9.31 97.99 -8.15Q97.17 -6.99 95.55 -6.39Q93.94 -5.79 91.56 -5.79H88.29Q87.55 -5.79 87.14 -5.5Q86.73 -5.21 86.73 -4.68Q86.73 -4.21 87.12 -3.89Q87.52 -3.56 88.3 -3.56H96.28Q98.3 -3.56 99.48 -2.33Q100.67 -1.1 100.67 0.81Q100.67 2.23 99.93 3.33Q99.18 4.43 97.91 5.06Q96.64 5.69 95 5.69ZM87.38 2.92H94.88Q95.41 2.92 95.83 2.73Q96.25 2.53 96.5 2.16Q96.75 1.78 96.75 1.3Q96.75 0.52 96.24 0.12Q95.73 -0.29 95.01 -0.29H87.45Q86.69 -0.29 86.18 0.13Q85.67 0.56 85.67 1.29Q85.67 2.02 86.15 2.47Q86.63 2.92 87.38 2.92ZM91.05 -8.5Q92.9 -8.5 93.92 -9.1Q94.94 -9.7 94.94 -10.97Q94.94 -12.25 93.92 -12.85Q92.9 -13.44 91.05 -13.44Q89.2 -13.44 88.18 -12.85Q87.16 -12.25 87.16 -10.97Q87.16 -10.1 87.62 -9.55Q88.07 -9 88.94 -8.75Q89.81 -8.5 91.05 -8.5ZM103.29 -18.3V-21.7H107.18V-18.3ZM103.29 0V-15.79H107.18V0ZM119.54 0.36Q116.74 0.36 114.79 -0.55Q112.84 -1.45 111.84 -3.29Q110.83 -5.13 110.83 -7.9Q110.83 -10.71 111.84 -12.53Q112.84 -14.36 114.79 -15.25Q116.74 -16.15 119.54 -16.15Q122.35 -16.15 124.29 -15.25Q126.23 -14.36 127.24 -12.53Q128.24 -10.71 128.24 -7.9Q128.24 -5.13 127.24 -3.29Q126.23 -1.45 124.29 -0.55Q122.35 0.36 119.54 0.36ZM119.54 -2.74Q121.09 -2.74 122.13 -3.3Q123.18 -3.85 123.7 -4.95Q124.22 -6.04 124.22 -7.65V-8.16Q124.22 -9.78 123.7 -10.87Q123.18 -11.96 122.13 -12.51Q121.09 -13.05 119.54 -13.05Q117.98 -13.05 116.94 -12.51Q115.89 -11.96 115.37 -10.87Q114.85 -9.78 114.85 -8.16V-7.65Q114.85 -6.04 115.37 -4.95Q115.89 -3.85 116.94 -3.3Q117.98 -2.74 119.54 -2.74Z"/>
+        </svg>
+      </a>
+
+      <nav class="main-nav" aria-label="Main menu">
+        <ul role="list" class="main-nav__list">
+          <!-- "Serviços" abre o painel de serviços (montado por js/navegacao.js).
+               Sem JavaScript, o painel não abre: por isso o link de reserva logo abaixo. -->
+          <li><button class="main-nav__trigger" type="button" aria-expanded="false" aria-controls="mega-servicos" data-mega-toggle data-secao="#servicos">Services<span class="main-nav__chevron" data-icon="chevron-down"></span></button><a class="main-nav__semjs" href="index.html#servicos">Services</a></li>
+          <li><a href="index.html#verificador">Is this a scam?</a></li>
+          <li><a href="index.html#como-funciona">How it works</a></li>
+          <li class="main-nav__extra"><a href="index.html#sobre">About</a></li>
+          <li><a href="alerts.html">Alerts</a></li>
+          <li><a href="index.html#duvidas">FAQ</a></li>
+          <li class="main-nav__extra"><a href="index.html#contato">Contact</a></li>
+          <li aria-hidden="true" class="nav-glide-item"><span class="nav-glide"></span></li>
+        </ul>
+      </nav>
+
+      <!-- Botão de urgência: abre o painel "Primeiros 30 minutos" -->
+      <button class="urgente" type="button" aria-haspopup="dialog" data-urgente>
+        <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
+        <span>I’ve been scammed<span class="urgente__extra"> now</span></span>
+      </button>
+
+      <!-- Seletor de idioma (js/idioma.js). Mostra a bandeira do idioma da página;
+           os links das opções vêm das tags hreflang do <head>. -->
+      <div class="idioma" data-idioma>
+        <button class="idioma__botao" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idioma-menu" aria-label="Language: Português (Brasil)" data-idioma-botao>
+          <span class="idioma__bandeira idioma__bandeira--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
+          <span class="idioma__bandeira idioma__bandeira--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+        </button>
+        <ul class="idioma__menu" id="idioma-menu" role="menu" aria-label="Choose language" hidden data-idioma-menu>
+          <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>Português (Brasil)</a></li>
+          <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>English</a></li>
+        </ul>
+      </div>
+
+      <!-- Troca de tema claro/escuro (no celular ele fica no rodapé do menu) -->
+      <button class="theme-toggle" type="button" aria-label="Use light theme" aria-pressed="false" data-theme-toggle>
+        <span class="theme-toggle__icon theme-toggle__moon" data-icon="moon" aria-hidden="true"></span>
+        <span class="theme-toggle__icon theme-toggle__sun" data-icon="sun" aria-hidden="true"></span>
+      </button>
+
+      <a class="btn btn--primary btn--sm island__cta" href="index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+        Talk to a specialist
+        <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" data-menu-toggle>
+        <span class="sr-only" data-menu-label>Open menu</span>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span></span>
+      </button>
+      <!-- linha de progresso da leitura -->
+      <span class="island__progress" aria-hidden="true" data-reading></span>
+    </div>
+
+    <!-- PAINEL DE SERVIÇOS (abre pelo botão "Serviços" do menu).
+         As colunas são montadas por js/navegacao.js a partir de js/services.js:
+         não escreva serviços aqui. -->
+    <div class="mega" id="mega-servicos" data-mega hidden>
+      <div class="mega__cols" data-mega-cols></div>
+      <div class="mega__aside">
+        <div class="mega__urgente">
+          <p class="mega__urgente-tag"><span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span><span class="mono">Now</span></p>
+          <p class="mega__urgente-titulo">I’ve just been scammed</p>
+          <p class="mega__urgente-texto">The first 30 minutes matter. See what to do, step by step.</p>
+          <button class="btn btn--primary btn--sm btn--block" type="button" aria-haspopup="dialog" data-urgente>
+            See the first steps
+            <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+          </button>
+        </div>
+        <!-- Indicador "Atendendo agora" (js/atendimento.js; sem JavaScript, fica escondido) -->
+        <p class="status" data-status hidden></p>
+        <a class="mega__todos" href="index.html#servicos">
+          See all services
+          <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu do celular (tela cheia, abre pelo botão acima) -->
+  <div class="mobile-menu" data-lenis-prevent id="menu-mobile" data-mobile-menu hidden>
+    <!-- Urgência no topo do menu: abre o painel "Primeiros 30 minutos" -->
+    <div class="mobile-menu__top">
+      <button class="urgente urgente--menu" type="button" aria-haspopup="dialog" data-urgente>
+        <span class="urgente__icone" data-icon="triangle-alert" aria-hidden="true"></span>
+        <span class="urgente__texto">I’ve just been scammed</span>
+        <span class="urgente__seta" data-icon="arrow-right" aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav aria-label="Main menu (mobile)">
+      <ul role="list" class="mobile-menu__list">
+        <!-- "Serviços" vira uma sanfona com os serviços por categoria
+             (a lista é montada por js/navegacao.js) -->
+        <li class="mobile-menu__group">
+          <button class="mobile-menu__acc" type="button" aria-expanded="false" aria-controls="menu-servicos-lista" data-menu-servicos>
+            Services<span class="mobile-menu__acc-icon" data-icon="chevron-down" aria-hidden="true"></span>
+          </button>
+          <div class="mobile-menu__sub" id="menu-servicos-lista" data-menu-servicos-lista>
+            <div class="mobile-menu__sub-inner" data-menu-servicos-miolo></div>
+          </div>
+        </li>
+        <li><a href="index.html#verificador">Is this a scam?</a></li>
+        <li><a href="index.html#como-funciona">How it works</a></li>
+        <li><a href="index.html#sobre">About</a></li>
+        <li><a href="alerts.html">Alerts</a></li>
+        <li><a href="index.html#duvidas">FAQ</a></li>
+        <li><a href="index.html#contato">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a class="btn btn--primary btn--block" href="index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+        <span class="wa-icon" data-icon="whatsapp"></span>
+        Talk to a specialist
+      </a>
+      <p class="mobile-menu__note">Confidential service on WhatsApp.</p>
+      <p class="status" data-status hidden></p>
+      <!-- Idioma (versão do celular) -->
+      <div class="mobile-menu__theme mobile-menu__idioma">
+        <span>Language</span>
+        <!-- Seletor de idioma (js/idioma.js). Mostra a bandeira do idioma da página;
+             os links das opções vêm das tags hreflang do <head>. -->
+        <div class="idioma" data-idioma>
+          <button class="idioma__botao" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idioma-menu-celular" aria-label="Language: Português (Brasil)" data-idioma-botao>
+            <span class="idioma__bandeira idioma__bandeira--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
+            <span class="idioma__bandeira idioma__bandeira--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+          </button>
+          <ul class="idioma__menu" id="idioma-menu-celular" role="menu" aria-label="Choose language" hidden data-idioma-menu>
+            <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>Português (Brasil)</a></li>
+            <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>English</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Troca de tema claro/escuro (versão do celular) -->
+      <div class="mobile-menu__theme">
+        <span>Appearance</span>
+        <button class="theme-toggle" type="button" aria-label="Use light theme" aria-pressed="false" data-theme-toggle>
+          <span class="theme-toggle__icon theme-toggle__moon" data-icon="moon" aria-hidden="true"></span>
+          <span class="theme-toggle__icon theme-toggle__sun" data-icon="sun" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<!-- Conteúdo da Política de privacidade. O cabeçalho, o rodapé e os
+     scripts vêm de _pagina.html, iguais aos das outras páginas.
+     Mudou o texto? Rode: node ferramentas/gerar-paginas.js
+     Estilo: bloco "POLÍTICA DE PRIVACIDADE" de css/paginas.css. -->
+  <main id="conteudo" class="legal-page">
+    <div class="container">
+      <article class="legal-page__body">
+        <a class="back" href="index.html"><span data-icon="arrow-right"></span>Back to the site</a>
+
+        <!-- ===== TOPO ===== -->
+        <header class="legal-topo" id="topo-politica">
+          <p class="legal-topo__data"><span class="legal-topo__ponto" aria-hidden="true"></span><span class="mono">Last updated: <time datetime="2026-10-17">October 17, 2026</time></span></p>
+          <h1>Privacy Policy</h1>
+          <p class="legal-topo__empresa"><strong>Vestígio — Digital Investigation</strong></p>
+          <p class="legal-topo__lead">This Privacy Policy explains clearly what personal data Vestígio processes, for what purposes, with whom it may be shared, how long it is kept and what your rights are. It was drafted in accordance with Brazil’s General Data Protection Law (LGPD — Lei nº 13.709/2018), the Brazilian Internet Civil Rights Framework (Marco Civil da Internet — Lei nº 12.965/2014) and Lei nº 13.432/2017, which regulates private investigation in Brazil.</p>
+          <p>By browsing this site or contacting Vestígio, you acknowledge that you are aware of the practices described below.</p>
+        </header>
+
+        <!-- ===== ÍNDICE ===== -->
+        <nav class="legal-indice" aria-labelledby="indice-titulo">
+          <h2 class="legal-indice__titulo mono" id="indice-titulo">On this page</h2>
+          <ol role="list" class="legal-indice__lista">
+            <li><a href="#responsavel"><span class="mono">01</span>Who is responsible for your data</a></li>
+            <li><a href="#aplicacao"><span class="mono">02</span>Who this policy applies to</a></li>
+            <li><a href="#dados"><span class="mono">03</span>What data we process</a></li>
+            <li><a href="#finalidades"><span class="mono">04</span>What we use the data for, and on what legal basis</a></li>
+            <li><a href="#sensiveis"><span class="mono">05</span>Sensitive personal data</a></li>
+            <li><a href="#compartilhamento"><span class="mono">06</span>Who we share the data with</a></li>
+            <li><a href="#transferencia"><span class="mono">07</span>International data transfers</a></li>
+            <li><a href="#prazos"><span class="mono">08</span>How long we keep the data</a></li>
+            <li><a href="#seguranca"><span class="mono">09</span>How we protect the data</a></li>
+            <li><a href="#compromissos"><span class="mono">10</span>Our ethical commitments</a></li>
+            <li><a href="#cookies"><span class="mono">11</span>Cookies and similar technologies</a></li>
+            <li><a href="#direitos"><span class="mono">12</span>Your rights as a data subject</a></li>
+            <li><a href="#exercer"><span class="mono">13</span>How to exercise your rights</a></li>
+            <li><a href="#criancas"><span class="mono">14</span>Children and teenagers</a></li>
+            <li><a href="#links"><span class="mono">15</span>Links to other websites</a></li>
+            <li><a href="#alteracoes"><span class="mono">16</span>Changes to this policy</a></li>
+            <li><a href="#contato-privacidade"><span class="mono">17</span>Contact</a></li>
+          </ol>
+        </nav>
+
+        <!-- ===== 1 ===== -->
+        <section class="legal-secao" id="responsavel" aria-labelledby="t-responsavel">
+          <h2 id="t-responsavel"><span class="legal-num mono">01</span>Who is responsible for your data</h2>
+          <p>A <strong>Vestígio</strong>, operating in Recife (Pernambuco) and serving clients across Brazil, is the controller of the personal data processed through its website and its digital investigation services.</p>
+          <p><strong>Privacy channel (Data Protection Officer):</strong> <a href="mailto:contato@vestigio.app.br" data-config="email" data-mailto>contato@<wbr>vestigio.app.br</a></p>
+          <p>This is the official channel for questions, requests and complaints about personal data.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 2 ===== -->
+        <section class="legal-secao" id="aplicacao" aria-labelledby="t-aplicacao">
+          <h2 id="t-aplicacao"><span class="legal-num mono">02</span>Who this policy applies to</h2>
+          <p>This policy applies to:</p>
+          <ul class="legal-lista">
+            <li><strong>Visitors</strong> to the site;</li>
+            <li><strong>People who contact</strong> Vestígio by WhatsApp, email or social media;</li>
+            <li><strong>Clients</strong>, individuals or companies, who hire our services;</li>
+            <li><strong>Third parties</strong> whose data may be processed during a commissioned investigation.</li>
+          </ul>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 3 ===== -->
+        <section class="legal-secao" id="dados" aria-labelledby="t-dados">
+          <h2 id="t-dados"><span class="legal-num mono">03</span>What data we process</h2>
+
+          <h3>3.1. When you browse the site</h3>
+          <p>The site <strong>has no forms and does not collect personal data directly</strong>. Even so, some technical data is generated automatically just by browsing:</p>
+          <ul class="legal-lista">
+            <li><strong>Access logs:</strong> IP address, date and time of access, browser and operating system. These logs are processed by our hosting provider to keep the site running and secure.</li>
+            <li><strong>Theme and language preferences:</strong> your choice of light or dark theme and of language is saved only in your own browser and is not sent to Vestígio.</li>
+          </ul>
+
+          <h3>3.2. When you contact us</h3>
+          <p>When you reach us by WhatsApp, email or social media, we process the data you choose to send us, such as:</p>
+          <ul class="legal-lista">
+            <li>name, phone number and email;</li>
+            <li>a description of the situation or case;</li>
+            <li>documents, screenshots, receipts, links and other files you share.</li>
+          </ul>
+
+          <h3>3.3. When you hire a service</h3>
+          <p>To formalize and provide the service, we may process:</p>
+          <ul class="legal-lista">
+            <li>the client’s identification and contact details (name, CPF or CNPJ — Brazilian individual or company taxpayer ID, address, phone number and email);</li>
+            <li>data needed for the contract, billing and issuing tax documents;</li>
+            <li>information and materials provided by the client about the case;</li>
+            <li>records of communications related to the service.</li>
+          </ul>
+
+          <h3>3.4. During the investigation</h3>
+          <p>The nature of the investigation service may involve processing data of <strong>third parties</strong> related to the case (for example, the person or profile being investigated). This data is obtained <strong>exclusively by lawful means</strong>, such as open and public sources, information provided by the client and lawfully accessible records, and processed only to the extent needed for the purpose of the case.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 4 (tabela: rola na horizontal no celular) ===== -->
+        <section class="legal-secao" id="finalidades" aria-labelledby="t-finalidades">
+          <h2 id="t-finalidades"><span class="legal-num mono">04</span>What we use the data for, and on what legal basis</h2>
+          <div class="legal-tabela" role="region" aria-labelledby="t-finalidades" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Purpose</th>
+                  <th scope="col">Legal basis (LGPD)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Replying to contacts and questions and preparing quotes</td>
+                  <td>Pre-contractual steps at the data subject’s request (art. 7, V)</td>
+                </tr>
+                <tr>
+                  <td>Entering into and performing the service contract</td>
+                  <td>Performance of a contract (art. 7, V)</td>
+                </tr>
+                <tr>
+                  <td>Carrying out the commissioned investigation and preparing the report</td>
+                  <td>Regular exercise of rights in judicial, administrative or arbitration proceedings (art. 7, VI) and legitimate interest (art. 7, IX)</td>
+                </tr>
+                <tr>
+                  <td>Meeting tax, accounting and legal obligations</td>
+                  <td>Compliance with a legal or regulatory obligation (art. 7, II)</td>
+                </tr>
+                <tr>
+                  <td>Keeping the site secure and running</td>
+                  <td>Legitimate interest (art. 7, IX)</td>
+                </tr>
+                <tr>
+                  <td>Defending Vestígio in any legal proceedings</td>
+                  <td>Regular exercise of rights (art. 7, VI)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="legal-tabela__dica mono" aria-hidden="true">Swipe sideways to see the whole table</p>
+          <p>Whenever we rely on legitimate interest, we assess whether the processing is necessary, proportionate and compatible with the rights and expectations of the data subjects involved.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 5 ===== -->
+        <section class="legal-secao" id="sensiveis" aria-labelledby="t-sensiveis">
+          <h2 id="t-sensiveis"><span class="legal-num mono">05</span>Sensitive personal data</h2>
+          <p>In some cases, the information sent by the client or related to the investigation may contain <strong>sensitive data</strong>, such as health data, racial or ethnic origin, religious beliefs or sex life. This data is processed only when strictly necessary for the case and on the grounds set out in art. 11 of the LGPD, mainly the regular exercise of rights. We recommend that you send only the information that is truly relevant to your case.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 6 ===== -->
+        <section class="legal-secao" id="compartilhamento" aria-labelledby="t-compartilhamento">
+          <h2 id="t-compartilhamento"><span class="legal-num mono">06</span>Who we share the data with</h2>
+          <p>Vestígio <strong>does not sell, rent or trade personal data</strong>. Data is shared only when necessary, in the following situations:</p>
+          <ul class="legal-lista">
+            <li><strong>Essential service providers:</strong> website hosting, email, messaging apps, cloud storage and accounting, which process the data only to enable our operations;</li>
+            <li><strong>The client’s lawyers or legal partners</strong>, when authorized by the client or necessary for the case;</li>
+            <li><strong>Public authorities</strong>, such as the police, the Public Prosecutor’s Office (Ministério Público) and the courts, upon a lawful request or court order, or when the client chooses to use the report to file a police report or support a lawsuit;</li>
+            <li><strong>Defense of rights</strong>, when necessary to protect Vestígio in judicial, administrative or arbitration proceedings.</li>
+          </ul>
+          <p>Investigation reports are delivered <strong>exclusively to the client who commissioned them</strong> or to whomever the client formally designates.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 7 ===== -->
+        <section class="legal-secao" id="transferencia" aria-labelledby="t-transferencia">
+          <h2 id="t-transferencia"><span class="legal-num mono">07</span>International data transfers</h2>
+          <p>Some tools we use, such as email, messaging and hosting services, may store data on servers located outside Brazil. In those cases, the transfer takes place in accordance with art. 33 of the LGPD, with providers that adopt adequate data protection standards.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 8 ===== -->
+        <section class="legal-secao" id="prazos" aria-labelledby="t-prazos">
+          <h2 id="t-prazos"><span class="legal-num mono">08</span>How long we keep the data</h2>
+          <p>Data is kept only for as long as necessary for the purposes described in this policy:</p>
+          <ul class="legal-lista">
+            <li><strong>Contacts that do not lead to a contract:</strong> deleted within 6 months of the last contact;</li>
+            <li><strong>Client data and case materials:</strong> kept while the service is provided and, after it ends, for the period needed to meet legal obligations and for the regular exercise of rights, as a rule up to 5 years;</li>
+            <li><strong>Tax and accounting documents:</strong> for the period required by tax law;</li>
+            <li><strong>Site access logs:</strong> for the period set by the hosting provider and by the Marco Civil da Internet (Brazilian Internet Civil Rights Framework).</li>
+          </ul>
+          <p>At the end of these periods, the data is securely deleted or anonymized.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 9 ===== -->
+        <section class="legal-secao" id="seguranca" aria-labelledby="t-seguranca">
+          <h2 id="t-seguranca"><span class="legal-num mono">09</span>How we protect the data</h2>
+          <p>We adopt technical and administrative measures to protect the data against unauthorized access, loss, alteration or improper disclosure, including:</p>
+          <ul class="legal-lista">
+            <li>access to the data restricted to the people involved in the service;</li>
+            <li>a duty of <strong>professional confidentiality</strong> over all case information, under Lei nº 13.432/2017;</li>
+            <li>two-factor authentication and strong passwords on the accounts the company uses;</li>
+            <li>protected storage of case materials;</li>
+            <li>a secure connection (HTTPS) across the whole site.</li>
+          </ul>
+          <p>No system is completely immune to incidents. If a security incident occurs that may create a significant risk or harm to data subjects, Vestígio will notify those affected and the ANPD (Brazil’s National Data Protection Authority), as required by law.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 10 ===== -->
+        <section class="legal-secao" id="compromissos" aria-labelledby="t-compromissos">
+          <h2 id="t-compromissos"><span class="legal-num mono">10</span>Our ethical commitments</h2>
+          <p>Vestígio operates within the law. That is why:</p>
+          <ul class="legal-lista">
+            <li><strong>we do not hack</strong> accounts, devices, systems or networks, nor do we carry out any unauthorized access;</li>
+            <li><strong>we do not intercept</strong> private communications;</li>
+            <li><strong>we do not obtain</strong> data through fraud, deception or breach of legally protected confidentiality;</li>
+            <li><strong>we never ask for</strong> passwords, verification codes or access to your accounts.</li>
+          </ul>
+          <p>If anyone contacts you on behalf of Vestígio asking for this kind of information, do not reply and let us know through the official channel.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 11 ===== -->
+        <section class="legal-secao" id="cookies" aria-labelledby="t-cookies">
+          <h2 id="t-cookies"><span class="legal-num mono">11</span>Cookies and similar technologies</h2>
+          <p>This site <strong>does not use advertising cookies or tracking tools</strong> to build visitor profiles. Only the following are used:</p>
+          <ul class="legal-lista">
+            <li><strong>the browser’s local storage</strong>, to remember your light or dark theme preference and your language;</li>
+            <li><strong>strictly necessary cookies</strong> that the hosting provider may use to protect the site against attacks and automated access.</li>
+          </ul>
+          <p>You can clear or block this data in your browser settings; the only effect is that the site may forget your theme and language preferences.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 12 ===== -->
+        <section class="legal-secao" id="direitos" aria-labelledby="t-direitos">
+          <h2 id="t-direitos"><span class="legal-num mono">12</span>Your rights as a data subject</h2>
+          <p>Under art. 18 of the LGPD, you may request at any time:</p>
+          <ol class="legal-lista legal-lista--numerada">
+            <li><strong>confirmation</strong> that we process your data;</li>
+            <li><strong>access</strong> to the data we hold about you;</li>
+            <li><strong>correction</strong> of incomplete, inaccurate or outdated data;</li>
+            <li><strong>anonymization, blocking or deletion</strong> of data that is unnecessary, excessive or processed unlawfully;</li>
+            <li><strong>portability</strong> of the data to another provider, where applicable;</li>
+            <li><strong>deletion</strong> of data processed based on your consent;</li>
+            <li><strong>information</strong> about who your data has been shared with;</li>
+            <li><strong>review</strong> of decisions made solely on the basis of automated processing;</li>
+            <li><strong>objection</strong> to processing carried out in breach of the law.</li>
+          </ol>
+          <p>Some requests may be limited when there is a legal obligation to retain data, a need for the regular exercise of rights or a duty of confidentiality toward third parties and the client.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 13 ===== -->
+        <section class="legal-secao" id="exercer" aria-labelledby="t-exercer">
+          <h2 id="t-exercer"><span class="legal-num mono">13</span>How to exercise your rights</h2>
+          <p>Send your request to <a href="mailto:contato@vestigio.app.br" data-mailto><strong>contato@<wbr>vestigio.app.br</strong></a>, stating your name and what you would like. To protect your data, we may ask for information that confirms your identity before fulfilling the request.</p>
+          <p>We respond to requests within <strong>15 days</strong>, in accordance with the LGPD. If you are not satisfied with the response, you can also file a complaint with the <strong>ANPD (Brazil’s National Data Protection Authority)</strong> through the website <a href="https://www.gov.br/anpd" target="_blank" rel="noopener">gov.br/anpd</a>.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 14 ===== -->
+        <section class="legal-secao" id="criancas" aria-labelledby="t-criancas">
+          <h2 id="t-criancas"><span class="legal-num mono">14</span>Children and teenagers</h2>
+          <p>Vestígio’s services are hired by people aged 18 or over or by companies. Data about children and teenagers is processed only when necessary for a case, always in their best interest and with the involvement of at least one parent or legal guardian, in accordance with art. 14 of the LGPD.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 15 ===== -->
+        <section class="legal-secao" id="links" aria-labelledby="t-links">
+          <h2 id="t-links"><span class="legal-num mono">15</span>Links to other websites</h2>
+          <p>The site may contain links to third-party services, such as WhatsApp and Instagram. When you access them, you are subject to those platforms’ privacy policies, for which Vestígio is not responsible.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 16 ===== -->
+        <section class="legal-secao" id="alteracoes" aria-labelledby="t-alteracoes">
+          <h2 id="t-alteracoes"><span class="legal-num mono">16</span>Changes to this policy</h2>
+          <p>This policy may be updated to reflect changes in our services or in the law. The date of the last update will always be shown at the top of this document. We recommend checking this page from time to time.</p>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+
+        <!-- ===== 17 ===== -->
+        <section class="legal-secao" id="contato-privacidade" aria-labelledby="t-contato">
+          <h2 id="t-contato"><span class="legal-num mono">17</span>Contact</h2>
+          <p>Questions about this policy or about how your data is processed:</p>
+          <dl class="legal-contato">
+            <div>
+              <dt><span data-icon="mail"></span>Email</dt>
+              <dd><a href="mailto:contato@vestigio.app.br" data-config="email" data-mailto>contato@<wbr>vestigio.app.br</a></dd>
+            </div>
+            <div>
+              <dt><span data-icon="instagram"></span>Instagram</dt>
+              <dd><a href="https://www.instagram.com/vestigio.br/" target="_blank" rel="noopener">@vestigio.br</a></dd>
+            </div>
+            <div>
+              <dt><span data-icon="map-pin"></span>Where we operate</dt>
+              <dd>Recife (Pernambuco), serving clients across Brazil</dd>
+            </div>
+          </dl>
+          <a class="legal-subir" href="#topo-politica">Back to top<span data-icon="arrow-up"></span></a>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer" data-rodape data-esconde-flutuante>
+    <!-- Linha do topo que se desenha e o "rastro" de pontos (js/destaques.js, parte 4) -->
+    <span class="site-footer__linha" aria-hidden="true" data-rodape-linha></span>
+    <div class="container">
+      <div class="site-footer__topo" data-rodape-item>
+        <div class="site-footer__marca">
+          <a class="site-footer__logo" href="index.html" aria-label="Vestígio Digital Investigation, back to the home page">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 34" width="165" height="34" aria-hidden="true" focusable="false">
+            <g transform="translate(0 1.2) scale(0.8)">
+            <path d="M5 16V5h11" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/>
+            <circle cx="13.6" cy="13.6" r="1.6" fill="currentColor"/>
+            <circle cx="18.6" cy="18.6" r="2" fill="currentColor"/>
+            <circle cx="24.6" cy="24.6" r="4.4" fill="currentColor"/>
+            </g>
+            <path transform="translate(34 26)" fill="currentColor" d="M9.04 0 0.42 -20.59H5.06L10.18 -7.64Q10.42 -7.13 10.65 -6.51Q10.89 -5.9 11.11 -5.35Q11.33 -4.79 11.48 -4.39H11.67Q11.82 -4.76 12.02 -5.3Q12.23 -5.84 12.47 -6.45Q12.72 -7.05 12.95 -7.61L18.07 -20.59H22.49L13.87 0ZM33.22 0.36Q30.44 0.36 28.51 -0.52Q26.57 -1.41 25.56 -3.24Q24.55 -5.07 24.55 -7.89Q24.55 -10.7 25.55 -12.53Q26.55 -14.36 28.47 -15.25Q30.39 -16.15 33.15 -16.15Q35.84 -16.15 37.68 -15.27Q39.51 -14.39 40.43 -12.62Q41.36 -10.86 41.36 -8.19V-6.93H28.59Q28.66 -5.46 29.2 -4.51Q29.74 -3.57 30.77 -3.12Q31.8 -2.68 33.29 -2.68Q33.97 -2.68 34.67 -2.84Q35.38 -3.01 35.98 -3.35Q36.58 -3.69 36.98 -4.22Q37.37 -4.76 37.41 -5.49H41.3Q41.3 -4.14 40.73 -3.05Q40.16 -1.96 39.1 -1.2Q38.03 -0.45 36.54 -0.04Q35.05 0.36 33.22 0.36ZM28.62 -9.6H37.27Q37.27 -10.53 36.96 -11.19Q36.65 -11.85 36.09 -12.28Q35.54 -12.71 34.8 -12.91Q34.05 -13.1 33.17 -13.1Q31.83 -13.1 30.85 -12.72Q29.87 -12.33 29.32 -11.55Q28.77 -10.77 28.62 -9.6ZM51.97 0.36Q50.24 0.36 48.81 0.03Q47.38 -0.3 46.34 -0.92Q45.3 -1.54 44.74 -2.44Q44.18 -3.34 44.18 -4.49Q44.18 -4.64 44.19 -4.76Q44.21 -4.88 44.22 -4.97H48.12Q48.12 -4.92 48.12 -4.85Q48.11 -4.77 48.11 -4.71Q48.12 -3.93 48.68 -3.46Q49.24 -2.98 50.14 -2.78Q51.05 -2.58 52.06 -2.58Q53.03 -2.58 53.91 -2.73Q54.78 -2.88 55.34 -3.25Q55.9 -3.63 55.9 -4.3Q55.9 -5.08 55.24 -5.46Q54.59 -5.85 53.42 -6.08Q52.26 -6.32 50.75 -6.6Q49.54 -6.84 48.44 -7.17Q47.35 -7.5 46.49 -8.02Q45.64 -8.54 45.15 -9.36Q44.65 -10.17 44.65 -11.37Q44.65 -12.6 45.2 -13.49Q45.74 -14.38 46.74 -14.97Q47.73 -15.55 49.12 -15.85Q50.51 -16.14 52.19 -16.14Q53.76 -16.14 55.06 -15.85Q56.36 -15.55 57.32 -14.99Q58.28 -14.43 58.82 -13.61Q59.36 -12.8 59.36 -11.78Q59.36 -11.61 59.35 -11.45Q59.34 -11.29 59.33 -11.22H55.44V-11.39Q55.44 -12 55 -12.4Q54.56 -12.79 53.82 -13.01Q53.07 -13.22 52.08 -13.22Q51.54 -13.22 50.92 -13.14Q50.3 -13.06 49.77 -12.89Q49.23 -12.72 48.9 -12.44Q48.56 -12.16 48.56 -11.73Q48.56 -11.12 49.15 -10.79Q49.74 -10.46 50.73 -10.25Q51.71 -10.05 52.85 -9.81Q54.15 -9.55 55.4 -9.26Q56.64 -8.96 57.64 -8.47Q58.64 -7.98 59.23 -7.1Q59.82 -6.22 59.82 -4.78Q59.82 -3.36 59.27 -2.37Q58.71 -1.38 57.68 -0.78Q56.65 -0.18 55.2 0.09Q53.76 0.36 51.97 0.36ZM68.64 0.36Q67.04 0.36 66.08 -0.17Q65.13 -0.71 64.71 -1.72Q64.29 -2.74 64.29 -4.18V-12.69H61.85V-15.79H64.4L65.14 -20.31H68.18V-15.79H71.66V-12.69H68.18V-4.51Q68.18 -3.65 68.55 -3.19Q68.91 -2.74 69.93 -2.74H71.66V-0.13Q71.3 0 70.77 0.11Q70.23 0.22 69.66 0.29Q69.1 0.36 68.64 0.36ZM75.03 0V-15.79H78.92V0ZM74.39 -17.73 77.32 -21.7H81.61L81.62 -21.59L77.63 -17.73ZM86.35 5.69Q85.14 5.69 84.09 5.3Q83.03 4.91 82.39 4.08Q81.75 3.24 81.75 1.93Q81.75 0.69 82.54 -0.14Q83.34 -0.96 84.44 -1.37Q83.64 -1.79 83.2 -2.48Q82.77 -3.17 82.77 -4.06Q82.77 -5.23 83.6 -6.01Q84.43 -6.79 85.68 -7Q84.53 -7.68 83.89 -8.7Q83.26 -9.72 83.26 -10.97Q83.26 -12.69 84.16 -13.84Q85.05 -14.99 86.79 -15.57Q88.53 -16.15 91.03 -16.15Q92.02 -16.15 92.92 -16.04Q93.81 -15.93 94.57 -15.72Q95.81 -16.33 96.38 -17.11Q96.95 -17.89 97.04 -18.48H100.75Q100.74 -17.41 100.3 -16.6Q99.86 -15.79 99.07 -15.26Q98.29 -14.73 97.17 -14.47Q97.97 -13.84 98.4 -12.96Q98.82 -12.07 98.82 -10.97Q98.82 -9.31 97.99 -8.15Q97.17 -6.99 95.55 -6.39Q93.94 -5.79 91.56 -5.79H88.29Q87.55 -5.79 87.14 -5.5Q86.73 -5.21 86.73 -4.68Q86.73 -4.21 87.12 -3.89Q87.52 -3.56 88.3 -3.56H96.28Q98.3 -3.56 99.48 -2.33Q100.67 -1.1 100.67 0.81Q100.67 2.23 99.93 3.33Q99.18 4.43 97.91 5.06Q96.64 5.69 95 5.69ZM87.38 2.92H94.88Q95.41 2.92 95.83 2.73Q96.25 2.53 96.5 2.16Q96.75 1.78 96.75 1.3Q96.75 0.52 96.24 0.12Q95.73 -0.29 95.01 -0.29H87.45Q86.69 -0.29 86.18 0.13Q85.67 0.56 85.67 1.29Q85.67 2.02 86.15 2.47Q86.63 2.92 87.38 2.92ZM91.05 -8.5Q92.9 -8.5 93.92 -9.1Q94.94 -9.7 94.94 -10.97Q94.94 -12.25 93.92 -12.85Q92.9 -13.44 91.05 -13.44Q89.2 -13.44 88.18 -12.85Q87.16 -12.25 87.16 -10.97Q87.16 -10.1 87.62 -9.55Q88.07 -9 88.94 -8.75Q89.81 -8.5 91.05 -8.5ZM103.29 -18.3V-21.7H107.18V-18.3ZM103.29 0V-15.79H107.18V0ZM119.54 0.36Q116.74 0.36 114.79 -0.55Q112.84 -1.45 111.84 -3.29Q110.83 -5.13 110.83 -7.9Q110.83 -10.71 111.84 -12.53Q112.84 -14.36 114.79 -15.25Q116.74 -16.15 119.54 -16.15Q122.35 -16.15 124.29 -15.25Q126.23 -14.36 127.24 -12.53Q128.24 -10.71 128.24 -7.9Q128.24 -5.13 127.24 -3.29Q126.23 -1.45 124.29 -0.55Q122.35 0.36 119.54 0.36ZM119.54 -2.74Q121.09 -2.74 122.13 -3.3Q123.18 -3.85 123.7 -4.95Q124.22 -6.04 124.22 -7.65V-8.16Q124.22 -9.78 123.7 -10.87Q123.18 -11.96 122.13 -12.51Q121.09 -13.05 119.54 -13.05Q117.98 -13.05 116.94 -12.51Q115.89 -11.96 115.37 -10.87Q114.85 -9.78 114.85 -8.16V-7.65Q114.85 -6.04 115.37 -4.95Q115.89 -3.85 116.94 -3.3Q117.98 -2.74 119.54 -2.74Z"/>
+            </svg>
+          </a>
+          <p class="site-footer__frase">Every action leaves a <span class="ink">trail.</span></p>
+          <p class="site-footer__desc">Investigation of online scams and cybercrime, locating people and assets, and support in recovering money.</p>
+        </div>
+        <a class="btn btn--primary site-footer__cta" href="index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+          <span class="wa-icon" data-icon="whatsapp"></span>
+          Chat on WhatsApp
+          <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+        </a>
+      </div>
+
+      <div class="site-footer__colunas">
+        <nav class="site-footer__col" aria-labelledby="rodape-navegacao" data-rodape-item>
+          <h2 class="site-footer__titulo" id="rodape-navegacao">Navigation</h2>
+          <ul role="list" class="site-footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#verificador">Is this a scam?</a></li>
+            <li><a href="index.html#como-funciona">How it works</a></li>
+            <li><a href="index.html#sobre">About</a></li>
+            <li><a href="alerts.html">Scam alerts</a></li>
+            <li><a href="index.html#duvidas">FAQ</a></li>
+            <li><a href="index.html#contato">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </nav>
+
+        <!-- Serviços: atalhos para as páginas da pasta servicos/ -->
+        <nav class="site-footer__col" aria-labelledby="rodape-servicos" data-rodape-item>
+          <h2 class="site-footer__titulo" id="rodape-servicos">Services</h2>
+          <ul role="list" class="site-footer__links">
+            <li><a href="services/locating-people.html">Locating people</a></li>
+            <li><a href="services/instagram-investigation.html">Instagram investigation</a></li>
+            <li><a href="services/whatsapp-scams.html">WhatsApp scams</a></li>
+            <li><a href="services/romance-scam.html">Romance scam</a></li>
+            <li><a href="services/fake-pix-scam.html">Fake Pix scam</a></li>
+            <li><a href="services/court-fund-recovery.html">Money recovery</a></li>
+            <li><a class="site-footer__mais" href="index.html#servicos">See all services<span data-icon="arrow-right"></span></a></li>
+          </ul>
+        </nav>
+
+        <!-- Contato: e-mail, WhatsApp e horário vêm de js/config.js -->
+        <div class="site-footer__col site-footer__col--contato" data-rodape-item>
+          <h2 class="site-footer__titulo">Contact</h2>
+          <ul role="list" class="site-footer__contato">
+            <li><span class="site-footer__ico" data-icon="mail"></span><a href="mailto:contato@vestigio.app.br" data-config="email" data-mailto>contato@<wbr>vestigio.app.br</a></li>
+            <li><span class="site-footer__ico" data-icon="phone"></span><a href="index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener" data-config="whatsappFormatado">(81) 99218-3600</a></li>
+            <li><span class="site-footer__ico" data-icon="clock"></span><span data-config="horario">Monday to Friday, 9 a.m. to 6 p.m. (Brasília time)</span></li>
+            <li class="status" data-status hidden></li>
+          </ul>
+          <a class="urgencia urgencia--compacta" href="https://wa.me/5581992183600" data-whatsapp data-msg-config="mensagemUrgente" target="_blank" rel="noopener" data-urgencia>
+            <span class="urgencia__sinal" aria-hidden="true"><span class="urgencia__anel" data-urgencia-anel></span><span class="urgencia__anel" data-urgencia-anel></span><span class="urgencia__nucleo"></span></span>
+            <span class="urgencia__texto"><strong>Urgent cases</strong><span>After-hours help on WhatsApp</span></span>
+            <span class="urgencia__seta" data-icon="arrow-up-right" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="site-footer__col site-footer__col--redes" data-rodape-item>
+          <h2 class="site-footer__titulo">Social media</h2>
+          <a class="site-footer__social" href="https://www.instagram.com/vestigio.br/" target="_blank" rel="noopener">
+            <span class="site-footer__social-icone" data-icon="instagram" aria-hidden="true"></span>
+            <span class="site-footer__social-texto"><strong>Instagram</strong><span>@vestigio.br</span></span>
+            <span class="site-footer__social-seta" data-icon="arrow-up-right" aria-hidden="true"></span>
+          </a>
+          <p class="site-footer__nota">Scam alerts and tips to protect yourself.</p>
+        </div>
+      </div>
+
+      <div class="site-footer__base" data-rodape-item>
+        <p class="site-footer__aviso">
+          Investigations are carried out using lawful sources and within Brazilian law, including the LGPD (Brazil’s General Data Protection Law). Legal services are provided by partner lawyer(s) registered with the OAB (Brazilian Bar Association). Results depend on the particulars of each case and are not guaranteed.
+        </p>
+        <div class="site-footer__fim">
+          <p>© <span data-year>2026</span> Vestígio. All rights reserved.</p>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp (aparece depois de rolar um pouco).
+       Ao tocar, abre duas opções: "Falar no WhatsApp" e "Caí em um golpe agora"
+       (js/navegacao.js, parte 4). -->
+  <button class="wa-float" type="button" data-wa-float aria-label="Contact us: WhatsApp or urgent help">
+    <span class="wa-icon" data-icon="whatsapp"></span>
+    <span class="wa-float__label" aria-hidden="true">Contact us</span>
+  </button>
+
+  <!-- ===== SCRIPTS (os mesmos do site, na mesma ordem) ===== -->
+  <script src="../js/vendor/motion.js"></script>
+  <script src="../js/vendor/lenis.min.js"></script>
+  <script src="../js/en/textos.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/services.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/alertas.js"></script>
+  <script src="../js/alertas-tela.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/interacoes.js"></script>
+  <script src="../js/navegacao.js"></script>
+  <script src="../js/primeiros-30-minutos.js"></script>
+  <script src="../js/montador-whatsapp.js"></script>
+  <script src="../js/destaques.js"></script>
+  <script src="../js/textura-fundo.js"></script>
+  <script src="../js/textura-mesa.js"></script>
+  <script src="../js/atendimento.js"></script>
+  <script src="../js/idioma.js"></script>
+</body>
+</html>

@@ -46,6 +46,9 @@ var NAO_FACA = [
   { titulo: 'Não envie senhas nem códigos.', texto: 'Ninguém sério pede isso.' },
   { titulo: 'Não se culpe.', texto: 'Pedir ajuda rápido é o que mais conta.' }
 ];
+// Páginas em inglês (js/config.js)
+traduzirTudo(PASSOS_URGENTES, ['id']);
+traduzirTudo(NAO_FACA);
 
 (function () {
   'use strict';
@@ -81,11 +84,11 @@ var NAO_FACA = [
             '<svg viewBox="0 0 16 16" focusable="false"><path pathLength="1" d="M3.5 8.5l3 3 6-7"/></svg>' +
           '</span>' +
           '<span class="check__texto">' +
-            '<span class="check__num mono">Passo ' + V.doisDigitos(i + 1) + '</span>' +
+            '<span class="check__num mono">' + T('Passo') + ' ' + V.doisDigitos(i + 1) + '</span>' +
             '<strong>' + V.escapar(passo.titulo) + '</strong>' +
             '<span>' + V.escapar(passo.texto) + '</span>' +
           '</span>' +
-          '<span class="check__feito mono" aria-hidden="true">Feito</span>' +
+          '<span class="check__feito mono" aria-hidden="true">' + T('Feito') + '</span>' +
         '</label>' +
       '</li>'
     );
@@ -98,9 +101,9 @@ var NAO_FACA = [
     painel.setAttribute('aria-labelledby', 'urgente-titulo');
     painel.setAttribute('aria-describedby', 'urgente-intro');
 
-    var mensagem = 'Olá! Vim pelo site da Vestígio. É urgente: acabei de cair em um golpe e preciso de orientação.';
+    var mensagem = T('Olá! Vim pelo site da Vestígio. É urgente: acabei de cair em um golpe e preciso de orientação.');
 
-    painel.innerHTML =
+    painel.innerHTML = TH(
       '<div class="sheet__panel" data-sheet-panel>' +
         '<header class="sheet__header">' +
           '<span class="sheet__icon" aria-hidden="true">' + V.icone('life-buoy') + '</span>' +
@@ -115,7 +118,7 @@ var NAO_FACA = [
           '<div class="urg__progresso">' +
             '<div class="urg__progresso-topo">' +
               '<span class="mono">Progresso</span>' +
-              '<span class="mono" data-urg-contagem>0 de ' + PASSOS_URGENTES.length + '</span>' +
+              '<span class="mono" data-urg-contagem>0 ' + T('de') + ' ' + PASSOS_URGENTES.length + '</span>' +
             '</div>' +
             '<div class="urg__barra" role="progressbar" aria-label="Passos concluídos" aria-valuemin="0" aria-valuemax="' + PASSOS_URGENTES.length + '" aria-valuenow="0" data-urg-barra>' +
               '<span></span>' +
@@ -138,7 +141,7 @@ var NAO_FACA = [
             'Falar com a Vestígio agora' +
           '</a>' +
         '</footer>' +
-      '</div>';
+      '</div>');
 
     document.body.appendChild(painel);
     V.ligarPainel(painel);
@@ -182,7 +185,7 @@ var NAO_FACA = [
     barra.style.setProperty('--progresso', (feitos / total).toFixed(3));
     barra.setAttribute('aria-valuenow', String(feitos));
     barra.classList.toggle('is-completa', feitos === total);
-    V.$('[data-urg-contagem]', painel).textContent = feitos + ' de ' + total;
+    V.$('[data-urg-contagem]', painel).textContent = feitos + ' ' + T('de') + ' ' + total;
     V.$('[data-urg-limpar]', painel).hidden = feitos === 0;
 
     var pronto = V.$('[data-urg-pronto]', painel);
