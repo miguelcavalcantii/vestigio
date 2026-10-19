@@ -354,6 +354,10 @@
   display: none;
 }
 
+/* Links do menu da ilha sempre numa linha só */
+.main-nav a,
+.main-nav__trigger { white-space: nowrap; }
+
 /* Botão do menu (celular): duas linhas que viram um X */
 .menu-toggle {
   display: inline-grid;
@@ -391,11 +395,6 @@
 
 .menu-toggle[aria-expanded='true'] .menu-toggle__bars span:last-child {
   transform: translateY(-3.75px) rotate(-45deg);
-}
-
-/* ---------- BOTÃO DE TEMA (lua no escuro, sol no claro) ----------
-   Mesmo tamanho do botão do menu. Os dois ícones ficam um em cima
-   do outro: o que não vale some girando 90 graus. */
 }
 
 @media (min-width: 640px) {
@@ -565,7 +564,7 @@
 /* Sigla "PT" / "EN" ao lado da bandeira (só em telas largas do computador) */
 .seletor__sigla { display: none; }
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
   .seletor__sigla--pt { display: inline; }
   :root[lang^='en'] .seletor__sigla--pt { display: none; }
   :root[lang^='en'] .seletor__sigla--en { display: inline; }

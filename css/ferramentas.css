@@ -116,6 +116,9 @@
   .urgente__extra { display: inline; }
 }
 
+/* No inglês o botão já diz "I've been scammed": o "now" sobraria */
+:root[lang^='en'] .urgente__extra { display: none; }
+
 /* Ícone de aviso (triângulo com exclamação), na cor de destaque.
    O balanço a cada poucos segundos e a reação ao mouse são da
    Motion (js/destaques.js, parte 5). */
