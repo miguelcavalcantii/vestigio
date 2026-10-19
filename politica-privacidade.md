@@ -13,7 +13,7 @@ Ao navegar neste site ou entrar em contato com a Vestígio, você declara estar 
 
 A **Vestígio**, com atuação em Recife/PE e atendimento em todo o Brasil, é a controladora dos dados pessoais tratados no âmbito do seu site e dos seus serviços de investigação digital.
 
-**Canal de privacidade (Encarregado de Dados):** contato.vestigioo@gmail.com
+**Canal de privacidade (Encarregado de Dados):** contato@vestigio.app.br
 
 Este é o canal oficial para dúvidas, solicitações e reclamações relacionadas a dados pessoais.
 
@@ -173,7 +173,7 @@ Alguns pedidos podem ser limitados quando houver obrigação legal de guarda, ne
 
 ## 13. Como exercer seus direitos
 
-Envie sua solicitação para **contato.vestigioo@gmail.com**, informando o seu nome e o que deseja. Para proteger os seus dados, poderemos pedir informações que confirmem a sua identidade antes de atender ao pedido.
+Envie sua solicitação para **contato@vestigio.app.br**, informando o seu nome e o que deseja. Para proteger os seus dados, poderemos pedir informações que confirmem a sua identidade antes de atender ao pedido.
 
 Respondemos às solicitações no prazo de até **15 dias**, conforme a LGPD. Se não ficar satisfeito com a resposta, você também pode apresentar reclamação à **Autoridade Nacional de Proteção de Dados (ANPD)** pelo site gov.br/anpd.
 
@@ -201,6 +201,6 @@ Esta política pode ser atualizada para refletir mudanças nos nossos serviços 
 
 Dúvidas sobre esta política ou sobre o tratamento dos seus dados:
 
-**E-mail:** contato.vestigioo@gmail.com
+**E-mail:** contato@vestigio.app.br
 **Instagram:** @vestigio.br
 **Atuação:** Recife/PE, com atendimento em todo o Brasil

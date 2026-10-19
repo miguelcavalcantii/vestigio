@@ -347,7 +347,7 @@ Cópia dos arquivos de antes em `_backup-antes-v3.1/`.
 
 Cópia completa do site antes destas mudanças: pasta `vestigio-site-backup-2026-10-17` (ao lado desta).
 
-- **E-mail:** `contato.vestigioo@gmail.com` (em `js/config.js`, campo `email`).
+- **E-mail:** `contato@vestigio.app.br` (em `js/config.js`, campo `email`).
 - **Urgência:** aviso "Casos urgentes: atendimento fora do horário" no contato e no rodapé. Mensagem do WhatsApp em `CONFIG.mensagemUrgente`.
 - **Sem CNPJ:** saiu do rodapé e dos textos.
 - **Rodapé novo:** logo, "Toda ação deixa um rastro.", colunas (navegação, serviços, contato, redes sociais) e Política de Privacidade. O mesmo rodapé vai para as páginas geradas e para `privacidade.html` ao rodar `node ferramentas/gerar-paginas.js`.

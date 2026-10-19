@@ -25,7 +25,7 @@ var CONFIG = {
   mensagemUrgente: 'Olá! Vim pelo site da Vestígio. Tenho um caso urgente e preciso de atendimento fora do horário.',
 
   // E-mail de contato (aparece no contato, no rodapé e na política de privacidade).
-  email: 'contato.vestigioo@gmail.com',
+  email: 'contato@vestigio.app.br',
 
   // Horário de atendimento (definitivo).
   horario: 'Segunda a sexta, das 9h às 18h',
