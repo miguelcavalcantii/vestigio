@@ -58,7 +58,7 @@ var SERVICOS = [
       'Entregamos um relatório organizado para o boletim de ocorrência e as medidas jurídicas.'
     ],
     precisamos: [
-      'Prints das conversas, do primeiro ao último contato',
+      'As conversas, do primeiro ao último contato (se foram pelo WhatsApp, use a opção "Exportar conversa"; nas outras redes, prints)',
       'Links ou @ dos perfis usados pela pessoa',
       'Fotos que ela enviou (os arquivos, se possível)',
       'Comprovantes de Pix, transferências ou depósitos',
@@ -83,7 +83,8 @@ var SERVICOS = [
     ],
     precisamos: [
       'Link ou print do anúncio (mesmo que já tenha saído do ar)',
-      'Prints da conversa no aplicativo e no WhatsApp',
+      'Prints da conversa no aplicativo',
+      'A conversa do WhatsApp, pela opção "Exportar conversa"',
       'Links recebidos por mensagem ou e-mail',
       'Comprovante de pagamento e dados da conta que recebeu',
       'Nome de usuário do anunciante na plataforma',
@@ -179,7 +180,7 @@ var SERVICOS = [
       'O comprovante Pix recebido (arquivo ou print original)',
       'Extrato da sua conta no período',
       'Chave Pix, nome e banco que aparecem na transação',
-      'Prints da conversa com a pessoa',
+      'A conversa com a pessoa (se foi pelo WhatsApp, use a opção "Exportar conversa"; nas outras redes, prints)',
       'Data, horário e valor',
       'Protocolo do atendimento no seu banco, se já tiver aberto',
       'Boletim de ocorrência, se já tiver registrado'
@@ -316,12 +317,11 @@ var SERVICOS = [
     oQueE: 'Buscamos o paradeiro atual de uma pessoa a partir do que você já sabe, usando fontes abertas e bases de acesso lícito. É muito usado para citação em processos, cobrança de dívidas e reencontro de familiares. Cada pedido passa por análise, e não fazemos buscas com fins de perseguição ou que possam colocar alguém em risco.',
     comoFunciona: [
       'Analisamos o pedido e a finalidade da busca.',
-      'Reunimos os dados conhecidos e pesquisamos fontes lícitas.',
+      'Reunimos os dados conhecidos e realizamos as pesquisas necessárias para a localização da pessoa.',
       'Validamos os endereços e contatos encontrados.',
       'Entregamos um relatório com as informações e suas fontes.'
     ],
     precisamos: [
-      'Nome completo da pessoa',
       'CPF, se tiver',
       'Data de nascimento ou idade aproximada',
       'Últimos endereços, cidades e telefones conhecidos',
@@ -393,7 +393,7 @@ var SERVICOS = [
     ],
     precisamos: [
       'Um relato do que aconteceu e de como isso afetou você',
-      'Provas: prints, links, conversas e publicações',
+      'Provas: prints, links, publicações e conversas (as do WhatsApp, pela opção "Exportar conversa")',
       'Comprovantes de prejuízos financeiros, se houver',
       'Atestados ou laudos, se houve impacto na sua saúde',
       'Boletim de ocorrência',
@@ -418,7 +418,7 @@ var SERVICOS = [
       'Comprovantes de pagamento (Pix, TED, boleto ou cartão)',
       'Extrato ou fatura do período',
       'Protocolos de atendimento que você já abriu',
-      'Prints das conversas com o golpista',
+      'As conversas com o golpista (se foram pelo WhatsApp, use a opção "Exportar conversa"; nas outras redes, prints)',
       'Boletim de ocorrência',
       'Documento de identidade'
     ],
