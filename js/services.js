@@ -34,14 +34,203 @@
    ========================================================= */
 
 var CATEGORIAS = [
-  { id: 'estelionato', nome: 'Estelionato digital' },
-  { id: 'redes', nome: 'Redes sociais' },
   { id: 'localizacao', nome: 'Investigação e localização' },
+  { id: 'redes', nome: 'Redes sociais' },
+  { id: 'estelionato', nome: 'Estelionato digital' },
   { id: 'recuperacao', nome: 'Recuperação e suporte jurídico' },
   { id: 'privacidade', nome: 'Privacidade' }
 ];
 
 var SERVICOS = [
+  /* ---------- INVESTIGAÇÃO E LOCALIZAÇÃO ---------- */
+  {
+    id: 'email-falso',
+    categoria: 'localizacao',
+    icone: 'mail-warning',
+    nome: 'E-mail falso',
+    resumo: 'E-mails que se passam por bancos, empresas ou pessoas para enganar ou ameaçar.',
+    palavrasChave: ['e-mail', 'email', 'phishing', 'link suspeito', 'anexo', 'banco', 'remetente', 'ameaça', 'chantagem', 'e-mail anônimo', 'cabeçalho', 'spam'],
+    oQueE: 'Mensagens que imitam bancos, empresas, órgãos públicos ou alguém conhecido para pedir pagamentos, dados ou cliques em links. Também cobre e-mails anônimos com ameaças, chantagem ou difamação. O cabeçalho técnico de um e-mail guarda pistas importantes sobre a sua origem.',
+    comoFunciona: [
+      'Analisamos o cabeçalho técnico e os servidores de envio.',
+      'Verificamos domínios, links e anexos sem colocar você em risco.',
+      'Cruzamos endereços e domínios com outras ocorrências.',
+      'Entregamos um relatório técnico com as evidências encontradas.'
+    ],
+    precisamos: [
+      'O e-mail original encaminhado como anexo ou o código-fonte da mensagem (explicamos como fazer)',
+      'Prints da mensagem',
+      'Links e anexos citados (não abra novamente)',
+      'Data de recebimento',
+      'O que aconteceu depois: se você pagou, clicou ou respondeu',
+      'Boletim de ocorrência, se já tiver registrado'
+    ]
+  },
+  {
+    id: 'telefones-emails-enderecos',
+    categoria: 'localizacao',
+    icone: 'contact-round',
+    nome: 'Linhas telefônicas, e‑mails e endereços', // o hífen de "e‑mails" é especial: não deixa a palavra quebrar no meio
+    resumo: 'Levantamento lícito de informações sobre números, e-mails e endereços ligados a um caso.',
+    palavrasChave: ['telefone', 'número', 'celular', 'linha', 'operadora', 'e-mail', 'endereço', 'de quem é esse número', 'titular', 'chip', 'dados'],
+    oQueE: 'Quando um número de telefone, um e-mail ou um endereço aparece em um golpe, uma ameaça ou um processo, investigamos o que fontes abertas e bases de acesso lícito revelam sobre ele: a quem pode estar ligado, onde já foi usado e que outros dados se conectam a ele. Dados protegidos por sigilo, como registros de ligações, só podem ser obtidos por ordem judicial. Nesses casos, orientamos o pedido pelo caminho correto.',
+    comoFunciona: [
+      'Entendemos o caso e a finalidade legítima da pesquisa.',
+      'Consultamos fontes abertas e bases de acesso lícito.',
+      'Cruzamos e validamos as informações encontradas.',
+      'Entregamos um relatório com a fonte e o grau de confiança de cada dado.'
+    ],
+    precisamos: [
+      'Os números, e-mails ou endereços a investigar',
+      'O contexto: onde e como eles apareceram',
+      'Prints ou documentos em que eles aparecem',
+      'A finalidade da investigação (processo, boletim etc.)',
+      'Número do processo, se houver'
+    ]
+  },
+  {
+    id: 'localizacao-pessoas',
+    categoria: 'localizacao',
+    icone: 'user-search',
+    nome: 'Localização de pessoas',
+    resumo: 'Busca de paradeiro para citação judicial, cobrança, reencontro e outros fins legítimos.',
+    palavrasChave: ['localizar pessoa', 'paradeiro', 'encontrar alguém', 'achar pessoa', 'endereço atual', 'citação', 'processo', 'devedor', 'parente', 'reencontro', 'família', 'pessoa sumida'],
+    oQueE: 'Buscamos o paradeiro atual de uma pessoa a partir do que você já sabe, usando fontes abertas e bases de acesso lícito. É muito usado para citação em processos, cobrança de dívidas e reencontro de familiares. Cada pedido passa por análise, e não fazemos buscas com fins de perseguição ou que possam colocar alguém em risco.',
+    comoFunciona: [
+      'Analisamos o pedido e a finalidade da busca.',
+      'Reunimos os dados conhecidos e realizamos as pesquisas necessárias para a localização da pessoa.',
+      'Validamos os endereços e contatos encontrados.',
+      'Entregamos um relatório com as informações e suas fontes.'
+    ],
+    precisamos: [
+      'CPF, se tiver',
+      'Data de nascimento ou idade aproximada',
+      'Últimos endereços, cidades e telefones conhecidos',
+      'Nomes de parentes, empresa ou local de trabalho, se souber',
+      'O motivo da busca e o número do processo, se houver'
+    ]
+  },
+  {
+    id: 'bens-devedor',
+    categoria: 'localizacao',
+    icone: 'landmark',
+    nome: 'Busca de bens de devedor judicial',
+    resumo: 'Imóveis, veículos, empresas e outros bens para a execução de sentença.',
+    palavrasChave: ['bens', 'devedor', 'dívida', 'penhora', 'execução', 'sentença', 'imóvel', 'veículo', 'patrimônio', 'empresa', 'cobrança', 'processo', 'advogado'],
+    oQueE: 'Você ganhou a ação, mas o devedor diz que não tem nada em nome dele? Fazemos um levantamento de bens que podem ser indicados ao juiz para penhora: imóveis, veículos, empresas, participações em sociedades e sinais de patrimônio ocultado em nome de terceiros. O relatório é preparado para o seu advogado usar no processo.',
+    comoFunciona: [
+      'Analisamos o processo e os dados do devedor.',
+      'Pesquisamos registros públicos, empresas e vínculos patrimoniais.',
+      'Identificamos indícios de bens em nome de terceiros.',
+      'Entregamos um relatório técnico para instruir os pedidos de penhora.'
+    ],
+    precisamos: [
+      'Número do processo (cumprimento ou execução de sentença)',
+      'Nome completo e CPF do devedor (ou, se for empresa, o número de cadastro dela)',
+      'Cópia da sentença ou da decisão',
+      'Valor atualizado da dívida',
+      'Endereços, empresas e bens que você já conhece',
+      'Contato do seu advogado, se tiver'
+    ]
+  },
+  {
+    id: 'sites-falsos',
+    categoria: 'localizacao',
+    icone: 'browser-alert',
+    nome: 'Investigação em sites falsos',
+    resumo: 'Lojas falsas, páginas que imitam bancos e empresas e links de pagamento falsos.',
+    palavrasChave: ['site falso', 'loja falsa', 'link falso', 'página clonada', 'comprei num site', 'phishing', 'site clonado', 'loja online', 'produto não chegou', 'link de pagamento', 'domínio', 'anúncio patrocinado'],
+    oQueE: 'Sites e lojas virtuais criados só para enganar: vendem produtos que nunca chegam, imitam a página de bancos e empresas conhecidas para roubar dados ou geram links de pagamento falsos. Por trás de cada site existem registros que deixam rastro: o domínio, a hospedagem, a forma de pagamento e os perfis ligados a ele. Investigamos quem está por trás e organizamos as provas.',
+    comoFunciona: [
+      'Registramos o site, as páginas e os anúncios antes que saiam do ar.',
+      'Analisamos domínio, hospedagem, certificados e sites parecidos ligados a ele.',
+      'Rastreamos as contas de pagamento e os perfis usados para divulgar o site, em fontes lícitas.',
+      'Entregamos um relatório técnico com as provas organizadas para o boletim de ocorrência e as medidas jurídicas.'
+    ],
+    precisamos: [
+      'Endereço (link) do site ou da página, mesmo que já tenha saído do ar',
+      'Prints das páginas, do produto e do carrinho de compras',
+      'Comprovantes de pagamento (Pix, boleto, cartão)',
+      'E-mails, mensagens ou SMS de confirmação que você recebeu',
+      'Onde você encontrou o site (anúncio, rede social, busca)',
+      'Boletim de ocorrência, se já tiver registrado'
+    ]
+  },
+
+  /* ---------- REDES SOCIAIS ---------- */
+  {
+    id: 'instagram',
+    categoria: 'redes',
+    icone: 'camera',
+    nome: 'Instagram',
+    resumo: 'Perfis falsos, contas invadidas, lojas falsas e ataques à sua reputação.',
+    pagina: 'investigacao-no-instagram',
+    palavrasChave: ['instagram', 'perfil falso', 'conta invadida', 'conta hackeada', 'hackearam', 'loja falsa', 'seguidores', 'stories', 'direct', 'fake', 'ameaça', 'exposição', 'investimento'],
+    oQueE: 'Investigamos perfis falsos que usam seu nome ou suas fotos, lojas que vendem e não entregam, contas invadidas que passaram a pedir dinheiro aos seus seguidores, ameaças, perseguição e exposição indevida. O objetivo é preservar as provas antes que sumam e buscar identificar quem está por trás da conta.',
+    comoFunciona: [
+      'Preservamos as provas: perfil, publicações, stories e mensagens.',
+      'Analisamos o perfil, seus vínculos e seus padrões de uso.',
+      'Buscamos identificar o responsável por meio de fontes abertas e lícitas.',
+      'Orientamos a denúncia à plataforma e os próximos passos jurídicos.'
+    ],
+    precisamos: [
+      'Link e @ do perfil investigado',
+      'Prints de publicações, stories e mensagens, com a data visível',
+      'Links de publicações específicas',
+      'Se a conta invadida for sua: o e-mail e o telefone que estavam vinculados a ela',
+      'Um relato de quando e como tudo começou',
+      'Boletim de ocorrência, se já tiver registrado'
+    ]
+  },
+  {
+    id: 'whatsapp',
+    categoria: 'redes',
+    icone: 'message-circle',
+    nome: 'WhatsApp',
+    resumo: 'Clonagem, falso parente com número novo, extorsão e ameaças.',
+    pagina: 'golpes-no-whatsapp',
+    palavrasChave: ['whatsapp', 'zap', 'número novo', 'troquei de número', 'clonado', 'clonagem', 'filho', 'filha', 'mãe', 'pai', 'parente', 'código de verificação', 'extorsão', 'ameaça', 'chantagem'],
+    oQueE: 'Inclui o golpe do número novo (alguém finge ser um parente e pede dinheiro), contas clonadas, mensagens de ameaça ou extorsão e grupos usados para aplicar golpes. Trabalhamos a partir das conversas e dos números envolvidos para preservar as provas e buscar a identificação dos responsáveis.',
+    comoFunciona: [
+      'Preservamos as conversas de forma organizada e com data.',
+      'Analisamos os números, as fotos de perfil e as contas de pagamento.',
+      'Cruzamos as informações com outras fontes abertas.',
+      'Entregamos um relatório para o boletim de ocorrência e a ação judicial.'
+    ],
+    precisamos: [
+      'A conversa exportada pelo próprio WhatsApp (opção "Exportar conversa")',
+      'Prints das mensagens com o número visível',
+      'Os números de telefone envolvidos',
+      'Comprovantes dos pagamentos feitos, se houver',
+      'Datas e horários aproximados',
+      'Boletim de ocorrência, se já tiver registrado'
+    ]
+  },
+  {
+    id: 'facebook',
+    categoria: 'redes',
+    icone: 'users-round',
+    nome: 'Facebook',
+    resumo: 'Perfis e páginas falsas, grupos de golpe, anúncios enganosos e difamação.',
+    pagina: 'investigacao-no-facebook',
+    palavrasChave: ['facebook', 'perfil falso', 'página falsa', 'grupo', 'anúncio patrocinado', 'marketplace', 'messenger', 'difamação', 'comentário', 'perseguição', 'conta invadida'],
+    oQueE: 'No Facebook são comuns páginas que imitam empresas, anúncios patrocinados de produtos que não existem, perfis falsos e grupos de compra e venda usados para golpes. Também atuamos em casos de difamação e perseguição.',
+    comoFunciona: [
+      'Registramos perfis, páginas, anúncios e comentários antes que sumam.',
+      'Analisamos os vínculos entre perfis, páginas e contas de pagamento.',
+      'Buscamos identificar os responsáveis por meio de fontes abertas e lícitas.',
+      'Orientamos a denúncia à plataforma e as medidas legais.'
+    ],
+    precisamos: [
+      'Link do perfil, da página, do grupo ou do anúncio',
+      'Prints com a data visível',
+      'Mensagens trocadas pelo Messenger',
+      'Comprovantes de pagamento, se houver',
+      'Contato de outras vítimas ou testemunhas, se conhecer',
+      'Boletim de ocorrência, se já tiver registrado'
+    ]
+  },
+
   /* ---------- ESTELIONATO DIGITAL ---------- */
   {
     id: 'golpe-do-amor',
@@ -183,195 +372,6 @@ var SERVICOS = [
       'A conversa com a pessoa (se foi pelo WhatsApp, use a opção "Exportar conversa"; nas outras redes, prints)',
       'Data, horário e valor',
       'Protocolo do atendimento no seu banco, se já tiver aberto',
-      'Boletim de ocorrência, se já tiver registrado'
-    ]
-  },
-
-  /* ---------- REDES SOCIAIS ---------- */
-  {
-    id: 'instagram',
-    categoria: 'redes',
-    icone: 'camera',
-    nome: 'Instagram',
-    resumo: 'Perfis falsos, contas invadidas, lojas falsas e ataques à sua reputação.',
-    pagina: 'investigacao-no-instagram',
-    palavrasChave: ['instagram', 'perfil falso', 'conta invadida', 'conta hackeada', 'hackearam', 'loja falsa', 'seguidores', 'stories', 'direct', 'fake', 'ameaça', 'exposição', 'investimento'],
-    oQueE: 'Investigamos perfis falsos que usam seu nome ou suas fotos, lojas que vendem e não entregam, contas invadidas que passaram a pedir dinheiro aos seus seguidores, ameaças, perseguição e exposição indevida. O objetivo é preservar as provas antes que sumam e buscar identificar quem está por trás da conta.',
-    comoFunciona: [
-      'Preservamos as provas: perfil, publicações, stories e mensagens.',
-      'Analisamos o perfil, seus vínculos e seus padrões de uso.',
-      'Buscamos identificar o responsável por meio de fontes abertas e lícitas.',
-      'Orientamos a denúncia à plataforma e os próximos passos jurídicos.'
-    ],
-    precisamos: [
-      'Link e @ do perfil investigado',
-      'Prints de publicações, stories e mensagens, com a data visível',
-      'Links de publicações específicas',
-      'Se a conta invadida for sua: o e-mail e o telefone que estavam vinculados a ela',
-      'Um relato de quando e como tudo começou',
-      'Boletim de ocorrência, se já tiver registrado'
-    ]
-  },
-  {
-    id: 'whatsapp',
-    categoria: 'redes',
-    icone: 'message-circle',
-    nome: 'WhatsApp',
-    resumo: 'Clonagem, falso parente com número novo, extorsão e ameaças.',
-    pagina: 'golpes-no-whatsapp',
-    palavrasChave: ['whatsapp', 'zap', 'número novo', 'troquei de número', 'clonado', 'clonagem', 'filho', 'filha', 'mãe', 'pai', 'parente', 'código de verificação', 'extorsão', 'ameaça', 'chantagem'],
-    oQueE: 'Inclui o golpe do número novo (alguém finge ser um parente e pede dinheiro), contas clonadas, mensagens de ameaça ou extorsão e grupos usados para aplicar golpes. Trabalhamos a partir das conversas e dos números envolvidos para preservar as provas e buscar a identificação dos responsáveis.',
-    comoFunciona: [
-      'Preservamos as conversas de forma organizada e com data.',
-      'Analisamos os números, as fotos de perfil e as contas de pagamento.',
-      'Cruzamos as informações com outras fontes abertas.',
-      'Entregamos um relatório para o boletim de ocorrência e a ação judicial.'
-    ],
-    precisamos: [
-      'A conversa exportada pelo próprio WhatsApp (opção "Exportar conversa")',
-      'Prints das mensagens com o número visível',
-      'Os números de telefone envolvidos',
-      'Comprovantes dos pagamentos feitos, se houver',
-      'Datas e horários aproximados',
-      'Boletim de ocorrência, se já tiver registrado'
-    ]
-  },
-  {
-    id: 'facebook',
-    categoria: 'redes',
-    icone: 'users-round',
-    nome: 'Facebook',
-    resumo: 'Perfis e páginas falsas, grupos de golpe, anúncios enganosos e difamação.',
-    pagina: 'investigacao-no-facebook',
-    palavrasChave: ['facebook', 'perfil falso', 'página falsa', 'grupo', 'anúncio patrocinado', 'marketplace', 'messenger', 'difamação', 'comentário', 'perseguição', 'conta invadida'],
-    oQueE: 'No Facebook são comuns páginas que imitam empresas, anúncios patrocinados de produtos que não existem, perfis falsos e grupos de compra e venda usados para golpes. Também atuamos em casos de difamação e perseguição.',
-    comoFunciona: [
-      'Registramos perfis, páginas, anúncios e comentários antes que sumam.',
-      'Analisamos os vínculos entre perfis, páginas e contas de pagamento.',
-      'Buscamos identificar os responsáveis por meio de fontes abertas e lícitas.',
-      'Orientamos a denúncia à plataforma e as medidas legais.'
-    ],
-    precisamos: [
-      'Link do perfil, da página, do grupo ou do anúncio',
-      'Prints com a data visível',
-      'Mensagens trocadas pelo Messenger',
-      'Comprovantes de pagamento, se houver',
-      'Contato de outras vítimas ou testemunhas, se conhecer',
-      'Boletim de ocorrência, se já tiver registrado'
-    ]
-  },
-
-  /* ---------- INVESTIGAÇÃO E LOCALIZAÇÃO ---------- */
-  {
-    id: 'email-falso',
-    categoria: 'localizacao',
-    icone: 'mail-warning',
-    nome: 'E-mail falso',
-    resumo: 'E-mails que se passam por bancos, empresas ou pessoas para enganar ou ameaçar.',
-    palavrasChave: ['e-mail', 'email', 'phishing', 'link suspeito', 'anexo', 'banco', 'remetente', 'ameaça', 'chantagem', 'e-mail anônimo', 'cabeçalho', 'spam'],
-    oQueE: 'Mensagens que imitam bancos, empresas, órgãos públicos ou alguém conhecido para pedir pagamentos, dados ou cliques em links. Também cobre e-mails anônimos com ameaças, chantagem ou difamação. O cabeçalho técnico de um e-mail guarda pistas importantes sobre a sua origem.',
-    comoFunciona: [
-      'Analisamos o cabeçalho técnico e os servidores de envio.',
-      'Verificamos domínios, links e anexos sem colocar você em risco.',
-      'Cruzamos endereços e domínios com outras ocorrências.',
-      'Entregamos um relatório técnico com as evidências encontradas.'
-    ],
-    precisamos: [
-      'O e-mail original encaminhado como anexo ou o código-fonte da mensagem (explicamos como fazer)',
-      'Prints da mensagem',
-      'Links e anexos citados (não abra novamente)',
-      'Data de recebimento',
-      'O que aconteceu depois: se você pagou, clicou ou respondeu',
-      'Boletim de ocorrência, se já tiver registrado'
-    ]
-  },
-  {
-    id: 'telefones-emails-enderecos',
-    categoria: 'localizacao',
-    icone: 'contact-round',
-    nome: 'Linhas telefônicas, e‑mails e endereços', // o hífen de "e‑mails" é especial: não deixa a palavra quebrar no meio
-    resumo: 'Levantamento lícito de informações sobre números, e-mails e endereços ligados a um caso.',
-    palavrasChave: ['telefone', 'número', 'celular', 'linha', 'operadora', 'e-mail', 'endereço', 'de quem é esse número', 'titular', 'chip', 'dados'],
-    oQueE: 'Quando um número de telefone, um e-mail ou um endereço aparece em um golpe, uma ameaça ou um processo, investigamos o que fontes abertas e bases de acesso lícito revelam sobre ele: a quem pode estar ligado, onde já foi usado e que outros dados se conectam a ele. Dados protegidos por sigilo, como registros de ligações, só podem ser obtidos por ordem judicial. Nesses casos, orientamos o pedido pelo caminho correto.',
-    comoFunciona: [
-      'Entendemos o caso e a finalidade legítima da pesquisa.',
-      'Consultamos fontes abertas e bases de acesso lícito.',
-      'Cruzamos e validamos as informações encontradas.',
-      'Entregamos um relatório com a fonte e o grau de confiança de cada dado.'
-    ],
-    precisamos: [
-      'Os números, e-mails ou endereços a investigar',
-      'O contexto: onde e como eles apareceram',
-      'Prints ou documentos em que eles aparecem',
-      'A finalidade da investigação (processo, boletim etc.)',
-      'Número do processo, se houver'
-    ]
-  },
-  {
-    id: 'localizacao-pessoas',
-    categoria: 'localizacao',
-    icone: 'user-search',
-    nome: 'Localização de pessoas',
-    resumo: 'Busca de paradeiro para citação judicial, cobrança, reencontro e outros fins legítimos.',
-    palavrasChave: ['localizar pessoa', 'paradeiro', 'encontrar alguém', 'achar pessoa', 'endereço atual', 'citação', 'processo', 'devedor', 'parente', 'reencontro', 'família', 'pessoa sumida'],
-    oQueE: 'Buscamos o paradeiro atual de uma pessoa a partir do que você já sabe, usando fontes abertas e bases de acesso lícito. É muito usado para citação em processos, cobrança de dívidas e reencontro de familiares. Cada pedido passa por análise, e não fazemos buscas com fins de perseguição ou que possam colocar alguém em risco.',
-    comoFunciona: [
-      'Analisamos o pedido e a finalidade da busca.',
-      'Reunimos os dados conhecidos e realizamos as pesquisas necessárias para a localização da pessoa.',
-      'Validamos os endereços e contatos encontrados.',
-      'Entregamos um relatório com as informações e suas fontes.'
-    ],
-    precisamos: [
-      'CPF, se tiver',
-      'Data de nascimento ou idade aproximada',
-      'Últimos endereços, cidades e telefones conhecidos',
-      'Nomes de parentes, empresa ou local de trabalho, se souber',
-      'O motivo da busca e o número do processo, se houver'
-    ]
-  },
-  {
-    id: 'bens-devedor',
-    categoria: 'localizacao',
-    icone: 'landmark',
-    nome: 'Busca de bens de devedor judicial',
-    resumo: 'Imóveis, veículos, empresas e outros bens para a execução de sentença.',
-    palavrasChave: ['bens', 'devedor', 'dívida', 'penhora', 'execução', 'sentença', 'imóvel', 'veículo', 'patrimônio', 'empresa', 'cobrança', 'processo', 'advogado'],
-    oQueE: 'Você ganhou a ação, mas o devedor diz que não tem nada em nome dele? Fazemos um levantamento de bens que podem ser indicados ao juiz para penhora: imóveis, veículos, empresas, participações em sociedades e sinais de patrimônio ocultado em nome de terceiros. O relatório é preparado para o seu advogado usar no processo.',
-    comoFunciona: [
-      'Analisamos o processo e os dados do devedor.',
-      'Pesquisamos registros públicos, empresas e vínculos patrimoniais.',
-      'Identificamos indícios de bens em nome de terceiros.',
-      'Entregamos um relatório técnico para instruir os pedidos de penhora.'
-    ],
-    precisamos: [
-      'Número do processo (cumprimento ou execução de sentença)',
-      'Nome completo e CPF do devedor (ou, se for empresa, o número de cadastro dela)',
-      'Cópia da sentença ou da decisão',
-      'Valor atualizado da dívida',
-      'Endereços, empresas e bens que você já conhece',
-      'Contato do seu advogado, se tiver'
-    ]
-  },
-  {
-    id: 'sites-falsos',
-    categoria: 'localizacao',
-    icone: 'browser-alert',
-    nome: 'Investigação em sites falsos',
-    resumo: 'Lojas falsas, páginas que imitam bancos e empresas e links de pagamento falsos.',
-    palavrasChave: ['site falso', 'loja falsa', 'link falso', 'página clonada', 'comprei num site', 'phishing', 'site clonado', 'loja online', 'produto não chegou', 'link de pagamento', 'domínio', 'anúncio patrocinado'],
-    oQueE: 'Sites e lojas virtuais criados só para enganar: vendem produtos que nunca chegam, imitam a página de bancos e empresas conhecidas para roubar dados ou geram links de pagamento falsos. Por trás de cada site existem registros que deixam rastro: o domínio, a hospedagem, a forma de pagamento e os perfis ligados a ele. Investigamos quem está por trás e organizamos as provas.',
-    comoFunciona: [
-      'Registramos o site, as páginas e os anúncios antes que saiam do ar.',
-      'Analisamos domínio, hospedagem, certificados e sites parecidos ligados a ele.',
-      'Rastreamos as contas de pagamento e os perfis usados para divulgar o site, em fontes lícitas.',
-      'Entregamos um relatório técnico com as provas organizadas para o boletim de ocorrência e as medidas jurídicas.'
-    ],
-    precisamos: [
-      'Endereço (link) do site ou da página, mesmo que já tenha saído do ar',
-      'Prints das páginas, do produto e do carrinho de compras',
-      'Comprovantes de pagamento (Pix, boleto, cartão)',
-      'E-mails, mensagens ou SMS de confirmação que você recebeu',
-      'Onde você encontrou o site (anúncio, rede social, busca)',
       'Boletim de ocorrência, se já tiver registrado'
     ]
   },
