@@ -286,7 +286,9 @@ var TEMPOS_DEMO = {
       { duration: 0.3, ease: [0.5, 0, 0.75, 0] }).finished.then(function () {
       palco.setAttribute('data-tela', tela);
       atualizarIndicador(tela);
-      sai.style.transform = '';
+      // Volta ao normal sem tirar o transform (tirar desfazia a camada
+      // do aparelho no Safari do iPhone e a moldura piscava)
+      sai.style.transform = 'translateX(0px) scale(1)';
       sai.style.opacity = '';
       animar(entra, { transform: ['translateX(28px) scale(0.96)', 'translateX(0px) scale(1)'], opacity: [0, 1] },
         { duration: 0.45, ease: EASE_OUT });

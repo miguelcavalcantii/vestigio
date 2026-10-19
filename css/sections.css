@@ -1190,6 +1190,22 @@
     transform: translateZ(0);
   }
 
+  /* O aparelho e a tela ficam SEMPRE em camada própria (desde o início).
+     Sem isso, o Safari do iPhone só desenhava a moldura depois da 1ª
+     troca de tela, e ela piscava a cada camada criada e desfeita. */
+  .phone,
+  .phone__screen {
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* A textura "mesa de análise" sai de trás dos aparelhos no celular:
+     ela se misturava com a moldura no Safari do iPhone (e o aparelho
+     já cobria quase toda ela). A textura geral da página continua. */
+  .demo__stage::before,
+  .demo__stage > .mesa-vivo { display: none; }
+
   /* Legenda: longe dos botões flutuantes (voltar ao topo e WhatsApp,
      no canto direito) e com espaço no fim da seção */
   .demo__note { padding-inline: 4.75rem; }
