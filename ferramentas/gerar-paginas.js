@@ -25,8 +25,8 @@ var path = require('path');
 var vm = require('vm');
 
 // Endereço definitivo do site (usado no Google, no compartilhamento e no sitemap).
-// TODO: trocar pelo domínio definitivo (o mesmo do <link rel="canonical"> do index.html)
-var DOMINIO = 'https://www.vestigio.com.br';
+// O mesmo do <link rel="canonical"> do index.html
+var DOMINIO = 'https://vestigio.app.br';
 
 var PASTA = path.join(__dirname, '..');            // a pasta do site
 var MODELOS = path.join(__dirname, 'modelos');
@@ -484,6 +484,7 @@ function sitemap(enderecos) {
 console.log('Gerando páginas...');
 var enderecos = [
   { url: DOMINIO + '/', data: HOJE },
+  { url: DOMINIO + '/privacidade.html', data: HOJE },
   { url: DOMINIO + '/alertas.html', data: HOJE }
 ];
 
@@ -507,7 +508,7 @@ ALERTAS.forEach(function (alerta) {
 
 // Política de privacidade: montada como as outras páginas (mesmo
 // cabeçalho, rodapé, tema e scripts). O texto fica em
-// ferramentas/modelos/privacidade.html. Não entra no sitemap (noindex).
+// ferramentas/modelos/privacidade.html.
 gravar('privacidade.html', montarPagina({
   raiz: '',
   titulo: 'Política de privacidade | Vestígio Investigação Digital',
@@ -517,7 +518,7 @@ gravar('privacidade.html', montarPagina({
   paginaAtual: 'privacidade.html',
   jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Política de privacidade', url: DOMINIO + '/privacidade.html', publisher: ORGANIZACAO },
   conteudo: lerModelo('privacidade.html').replace(/\s+$/, '')
-}).replace('  <meta name="description"', '  <meta name="robots" content="noindex">\n  <meta name="description"'));
+}));
 
 gravar('sitemap.xml', sitemap(enderecos));
 gravar('robots.txt', 'User-agent: *\nAllow: /\n\nSitemap: ' + DOMINIO + '/sitemap.xml\n');

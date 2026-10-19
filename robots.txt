@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.vestigio.com.br/sitemap.xml
+Sitemap: https://vestigio.app.br/sitemap.xml
