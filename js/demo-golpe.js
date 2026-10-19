@@ -280,13 +280,15 @@ var TEMPOS_DEMO = {
 
     var sai = aparelhos[anterior - 1];
     var entra = aparelhos[tela - 1];
-    animar(sai, { transform: ['perspective(900px) rotateY(0deg)', 'perspective(900px) rotateY(80deg)'], opacity: [1, 0] },
+    // Troca em 2D (desliza e esmaece). A antiga "virada" em 3D (rotateY)
+    // fazia o Safari do iPhone sumir com a moldura do aparelho.
+    animar(sai, { transform: ['translateX(0px) scale(1)', 'translateX(-28px) scale(0.96)'], opacity: [1, 0] },
       { duration: 0.3, ease: [0.5, 0, 0.75, 0] }).finished.then(function () {
       palco.setAttribute('data-tela', tela);
       atualizarIndicador(tela);
       sai.style.transform = '';
       sai.style.opacity = '';
-      animar(entra, { transform: ['perspective(900px) rotateY(-80deg)', 'perspective(900px) rotateY(0deg)'], opacity: [0, 1] },
+      animar(entra, { transform: ['translateX(28px) scale(0.96)', 'translateX(0px) scale(1)'], opacity: [0, 1] },
         { duration: 0.45, ease: EASE_OUT });
     });
   }
@@ -452,8 +454,22 @@ var TEMPOS_DEMO = {
   /* =========================================================
      8. MOVIMENTO DOS CELULARES
      ========================================================= */
-  // Entram presos à rolagem: saem de uma leve rotação, 36px abaixo
+  // Entram presos à rolagem: saem de uma leve rotação, 36px abaixo.
+  // No celular (um aparelho só), a entrada é simples e acontece uma vez
+  // quando o aparelho aparece: a versão presa à rolagem podia ficar pela
+  // metade no Safari do iPhone e nos navegadores do WhatsApp e Instagram.
   function entrarComARolagem() {
+    if (umAparelhoSo.matches) {
+      if (typeof Motion === 'undefined' || !Motion.inView) return;
+      $$('[data-demo-enter]', secao).forEach(function (el) {
+        el.style.opacity = '0';
+        Motion.inView(el, function () {
+          animar(el, { opacity: [0, 1], transform: ['translateY(24px)', 'translateY(0px)'] },
+            { duration: 0.7, ease: EASE_OUT });
+        }, { amount: 0.15 });
+      });
+      return;
+    }
     if (typeof window.presoARolagem !== 'function') return;
     $$('[data-demo-enter]', secao).forEach(function (el, i) {
       var giro = i === 0 ? -7 : 7;

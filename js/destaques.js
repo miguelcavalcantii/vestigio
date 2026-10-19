@@ -168,9 +168,13 @@
       ).finished.then(function () {
         preencher(i);
         tracarIcone();
+        // O desfoque da saída também precisa voltar a 0 no ícone
+        // (antes ele ficava em blur(8px) e o ícone virava uma mancha)
         animate(elIcone,
           { opacity: [0, 1], transform: ['scale(0.86)', 'scale(1)'] },
           { duration: 0.6, ease: EASE_MOLA });
+        animate(elIcone, { filter: ['blur(8px)', 'blur(0px)'] },
+          { duration: 0.45, ease: EASE_OUT });
         return animate(elTextos,
           { opacity: [0, 1], filter: ['blur(8px)', 'blur(0px)'], transform: ['translateY(12px)', 'translateY(0px)'] },
           { duration: 0.65, ease: EASE_OUT }).finished;

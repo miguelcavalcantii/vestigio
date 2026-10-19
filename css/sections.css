@@ -1172,6 +1172,29 @@
 
 /* Um aparelho só (celular e tablet): mostra a tela da etapa atual */
 @media (max-width: 1023px) {
+  /* Tamanho proporcional à tela: nunca mais largo que 76% nem mais
+     alto que a tela (o aparelho tem proporção 9/19) */
+  .demo__stage {
+    --phone-w: min(17rem, 76vw, calc((100vh - 9rem) * 9 / 19));
+    --phone-w: min(17rem, 76vw, calc((100svh - 9rem) * 9 / 19));
+  }
+
+  /* Sem 3D no celular: no Safari do iPhone (e no navegador do WhatsApp
+     e do Instagram) a perspectiva fazia a textura animada ser
+     desenhada POR CIMA da moldura, e só os balões apareciam soltos.
+     O aparelho fica numa camada própria, sempre na frente da textura. */
+  .demo__enter { perspective: none; }
+  .demo__tilt { will-change: auto; }
+  .demo__phone {
+    z-index: 1;
+    transform: translateZ(0);
+  }
+
+  /* Legenda: longe dos botões flutuantes (voltar ao topo e WhatsApp,
+     no canto direito) e com espaço no fim da seção */
+  .demo__note { padding-inline: 4.75rem; }
+  .demo { padding-bottom: max(var(--section-y), 7.5rem); }
+
   .demo__phone { grid-row: 2; }
   .demo__indicator { grid-row: 1; }
   .demo__stage[data-tela='1'] .demo__phone--investigacao,
