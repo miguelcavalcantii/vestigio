@@ -336,9 +336,8 @@ html.respeitar-movimento *::after {
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Durante a troca, as outras transições de cor ficam desligadas
-   (o ícone sol/lua continua girando) */
-.trocando-tema *:not(.theme-toggle__icon),
+/* Durante a troca, as outras transições de cor ficam desligadas */
+.trocando-tema *,
 .trocando-tema *::before,
 .trocando-tema *::after {
   transition: none !important;

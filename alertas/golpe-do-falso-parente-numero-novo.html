@@ -72,7 +72,7 @@
   <!-- Sem JavaScript: o que depende dele some; "Serviços" vira link comum -->
   <noscript>
     <style>
-      .main-nav__trigger, .urgente, .mega, .menu-toggle, .idioma, .mobile-menu__idioma { display: none !important; }
+      .main-nav__trigger, .urgente, .mega, .menu-toggle, .seletor, .mobile-menu__idioma { display: none !important; }
       .main-nav__semjs { display: inline-flex !important; }
     </style>
   </noscript>
@@ -182,24 +182,35 @@
         <span>Caí em um golpe<span class="urgente__extra"> agora</span></span>
       </button>
 
-      <!-- Seletor de idioma (js/idioma.js). Mostra a bandeira do idioma da página;
-           os links das opções vêm das tags hreflang do <head>. -->
-      <div class="idioma" data-idioma>
-        <button class="idioma__botao" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idioma-menu" aria-label="Idioma: Português (Brasil)" data-idioma-botao>
-          <span class="idioma__bandeira idioma__bandeira--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
-          <span class="idioma__bandeira idioma__bandeira--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+      <!-- Seletor de idioma (js/seletores.js). O botão mostra a bandeira do idioma da
+           página (o CSS escolhe pelo <html lang>); as opções levam para a mesma página
+           no outro idioma (endereços das tags hreflang do <head>). -->
+      <div class="seletor seletor--idioma" data-seletor="idioma">
+        <button class="seletor__botao" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="idioma-menu" aria-label="Escolher idioma" data-seletor-botao>
+          <span class="seletor__icone seletor__icone--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
+          <span class="seletor__icone seletor__icone--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+          <span class="seletor__sigla seletor__sigla--pt" aria-hidden="true">PT</span><span class="seletor__sigla seletor__sigla--en" aria-hidden="true">EN</span>
+          <span class="seletor__seta" data-icon="chevron-down" aria-hidden="true" data-seletor-seta></span>
         </button>
-        <ul class="idioma__menu" id="idioma-menu" role="menu" aria-label="Escolher idioma" hidden data-idioma-menu>
-          <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>Português (Brasil)</a></li>
-          <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>English</a></li>
+        <ul class="seletor__menu" id="idioma-menu" role="menu" aria-label="Escolher idioma" hidden data-seletor-menu>
+          <li role="none"><a class="seletor__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="seletor__icone"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span><span class="seletor__nome">Português (Brasil)</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></a></li>
+          <li role="none"><a class="seletor__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="seletor__icone"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span><span class="seletor__nome">English</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></a></li>
         </ul>
       </div>
 
-      <!-- Troca de tema claro/escuro (no celular ele fica no rodapé do menu) -->
-      <button class="theme-toggle" type="button" aria-label="Usar tema claro" aria-pressed="false" data-theme-toggle>
-        <span class="theme-toggle__icon theme-toggle__moon" data-icon="moon" aria-hidden="true"></span>
-        <span class="theme-toggle__icon theme-toggle__sun" data-icon="sun" aria-hidden="true"></span>
-      </button>
+      <!-- Seletor de tema claro/escuro (js/seletores.js). O botão mostra o ícone do
+           tema atual (sol = claro, lua = escuro); a escolha fica salva em "vestigio-tema". -->
+      <div class="seletor seletor--tema" data-seletor="tema">
+        <button class="seletor__botao" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="tema-menu" aria-label="Escolher tema" data-seletor-botao>
+          <span class="seletor__icone seletor__icone--claro" data-icon="sun" aria-hidden="true"></span>
+          <span class="seletor__icone seletor__icone--escuro" data-icon="moon" aria-hidden="true"></span>
+          <span class="seletor__seta" data-icon="chevron-down" aria-hidden="true" data-seletor-seta></span>
+        </button>
+        <ul class="seletor__menu" id="tema-menu" role="menu" aria-label="Escolher tema" hidden data-seletor-menu>
+          <li role="none"><button class="seletor__opcao" type="button" role="menuitemradio" aria-checked="false" data-tema-opcao="light"><span class="seletor__icone" data-icon="sun" aria-hidden="true"></span><span class="seletor__nome">Claro</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></button></li>
+          <li role="none"><button class="seletor__opcao" type="button" role="menuitemradio" aria-checked="false" data-tema-opcao="dark"><span class="seletor__icone" data-icon="moon" aria-hidden="true"></span><span class="seletor__nome">Escuro</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></button></li>
+        </ul>
+      </div>
 
       <a class="btn btn--primary btn--sm island__cta" href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
         Falar com especialista
@@ -276,29 +287,39 @@
       </a>
       <p class="mobile-menu__note">Atendimento sigiloso pelo WhatsApp.</p>
       <p class="status" data-status hidden></p>
-      <!-- Idioma (versão do celular) -->
+      <!-- Idioma e aparência (versão do celular): os mesmos seletores, com o menu abrindo para cima -->
       <div class="mobile-menu__theme mobile-menu__idioma">
         <span>Idioma</span>
-        <!-- Seletor de idioma (js/idioma.js). Mostra a bandeira do idioma da página;
-             os links das opções vêm das tags hreflang do <head>. -->
-        <div class="idioma" data-idioma>
-          <button class="idioma__botao" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="idioma-menu-celular" aria-label="Idioma: Português (Brasil)" data-idioma-botao>
-            <span class="idioma__bandeira idioma__bandeira--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
-            <span class="idioma__bandeira idioma__bandeira--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+        <!-- Seletor de idioma (js/seletores.js). O botão mostra a bandeira do idioma da
+             página (o CSS escolhe pelo <html lang>); as opções levam para a mesma página
+             no outro idioma (endereços das tags hreflang do <head>). -->
+        <div class="seletor seletor--idioma" data-seletor="idioma">
+          <button class="seletor__botao" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="idioma-menu-celular" aria-label="Escolher idioma" data-seletor-botao>
+            <span class="seletor__icone seletor__icone--pt"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>
+            <span class="seletor__icone seletor__icone--en"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>
+            <span class="seletor__seta" data-icon="chevron-down" aria-hidden="true" data-seletor-seta></span>
           </button>
-          <ul class="idioma__menu" id="idioma-menu-celular" role="menu" aria-label="Escolher idioma" hidden data-idioma-menu>
-            <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span>Português (Brasil)</a></li>
-            <li role="none"><a class="idioma__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="idioma__bandeira"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span>English</a></li>
+          <ul class="seletor__menu" id="idioma-menu-celular" role="menu" aria-label="Escolher idioma" hidden data-seletor-menu>
+            <li role="none"><a class="seletor__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="pt-BR" lang="pt-BR" data-idioma-opcao="pt"><span class="seletor__icone"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.2 27.6 10 15 17.8 2.4 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 9.1c2.9-.6 6-.1 8.7 1.4" fill="none" stroke="#fff" stroke-width=".9"/></svg></span><span class="seletor__nome">Português (Brasil)</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></a></li>
+            <li role="none"><a class="seletor__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="seletor__icone"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span><span class="seletor__nome">English</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></a></li>
           </ul>
         </div>
       </div>
-      <!-- Troca de tema claro/escuro (versão do celular) -->
       <div class="mobile-menu__theme">
         <span>Aparência</span>
-        <button class="theme-toggle" type="button" aria-label="Usar tema claro" aria-pressed="false" data-theme-toggle>
-          <span class="theme-toggle__icon theme-toggle__moon" data-icon="moon" aria-hidden="true"></span>
-          <span class="theme-toggle__icon theme-toggle__sun" data-icon="sun" aria-hidden="true"></span>
-        </button>
+        <!-- Seletor de tema claro/escuro (js/seletores.js). O botão mostra o ícone do
+             tema atual (sol = claro, lua = escuro); a escolha fica salva em "vestigio-tema". -->
+        <div class="seletor seletor--tema" data-seletor="tema">
+          <button class="seletor__botao" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="tema-menu-celular" aria-label="Escolher tema" data-seletor-botao>
+            <span class="seletor__icone seletor__icone--claro" data-icon="sun" aria-hidden="true"></span>
+            <span class="seletor__icone seletor__icone--escuro" data-icon="moon" aria-hidden="true"></span>
+            <span class="seletor__seta" data-icon="chevron-down" aria-hidden="true" data-seletor-seta></span>
+          </button>
+          <ul class="seletor__menu" id="tema-menu-celular" role="menu" aria-label="Escolher tema" hidden data-seletor-menu>
+            <li role="none"><button class="seletor__opcao" type="button" role="menuitemradio" aria-checked="false" data-tema-opcao="light"><span class="seletor__icone" data-icon="sun" aria-hidden="true"></span><span class="seletor__nome">Claro</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></button></li>
+            <li role="none"><button class="seletor__opcao" type="button" role="menuitemradio" aria-checked="false" data-tema-opcao="dark"><span class="seletor__icone" data-icon="moon" aria-hidden="true"></span><span class="seletor__nome">Escuro</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></button></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -515,6 +536,6 @@
   <script src="../js/textura-fundo.js"></script>
   <script src="../js/textura-mesa.js"></script>
   <script src="../js/atendimento.js"></script>
-  <script src="../js/idioma.js"></script>
+  <script src="../js/seletores.js"></script>
 </body>
 </html>

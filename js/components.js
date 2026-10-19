@@ -780,9 +780,9 @@
     document.documentElement.setAttribute('data-theme', tema);
     var meta = $('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', COR_DO_FUNDO[tema]);
-    $$('[data-theme-toggle]').forEach(function (botao) {
-      botao.setAttribute('aria-pressed', tema === 'light' ? 'true' : 'false');
-      botao.setAttribute('aria-label', tema === 'light' ? T('Usar tema escuro') : T('Usar tema claro'));
+    // Marca a opção certa nos seletores de tema (js/seletores.js)
+    $$('[data-tema-opcao]').forEach(function (opcao) {
+      opcao.setAttribute('aria-checked', String(opcao.getAttribute('data-tema-opcao') === tema));
     });
   }
 
@@ -833,14 +833,10 @@
     document.documentElement.classList.remove('trocando-tema');
   }
 
+  // Os seletores de tema (menu "Claro / Escuro") ficam em js/seletores.js
+  // e chamam Vestigio.trocarTema. Aqui só marcamos a opção do tema atual.
   function prepararTema() {
-    aplicarTema(temaAtual());   // deixa os botões com o rótulo certo
-
-    $$('[data-theme-toggle]').forEach(function (botao) {
-      botao.addEventListener('click', function () {
-        trocarTema(temaAtual() === 'light' ? 'dark' : 'light');
-      });
-    });
+    aplicarTema(temaAtual());
   }
 
   /* =========================================================
@@ -942,6 +938,8 @@
     avisar: avisar,
     copiarTexto: copiarTexto,
     compartilhar: compartilhar,
+    temaAtual: temaAtual,
+    trocarTema: function (tema) { if (tema !== temaAtual()) trocarTema(tema); },
     // Controle dos cards de serviço (só existe na página inicial)
     servicos: function () { return controleServicos; }
   };

@@ -396,45 +396,6 @@
 /* ---------- BOTÃO DE TEMA (lua no escuro, sol no claro) ----------
    Mesmo tamanho do botão do menu. Os dois ícones ficam um em cima
    do outro: o que não vale some girando 90 graus. */
-.theme-toggle {
-  display: none;               /* no celular ele fica no rodapé do menu */
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: rgba(var(--ink-rgb), 0.06);
-  color: var(--text);
-  -webkit-tap-highlight-color: transparent;
-  transition: background-color var(--dur-fast) ease;
-}
-
-.theme-toggle__icon {
-  grid-area: 1 / 1;
-  display: grid;
-  transition:
-    opacity var(--dur-base) var(--ease-out),
-    transform var(--dur-base) var(--ease-out);
-}
-
-.theme-toggle .icon {
-  width: 1.2rem;
-  height: 1.2rem;
-}
-
-.theme-toggle__sun,
-[data-theme='light'] .theme-toggle__moon {
-  opacity: 0;
-  transform: rotate(-90deg) scale(0.6);
-}
-
-[data-theme='light'] .theme-toggle__sun {
-  opacity: 1;
-  transform: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .theme-toggle:hover { background: rgba(var(--ink-rgb), 0.12); }
 }
 
 @media (min-width: 640px) {
@@ -452,7 +413,6 @@
 @media (min-width: 1280px) {
   .main-nav { display: block; }
   .menu-toggle { display: none; }
-  .island .theme-toggle { display: inline-grid; }
   .brand { margin-right: 0; }
   .main-nav { margin-inline: auto; }
 }
@@ -516,66 +476,112 @@
   color: var(--text);
 }
 
-.mobile-menu__theme .theme-toggle {
-  display: inline-grid;
-}
-
 @media (min-width: 1280px) {
   .mobile-menu { display: none !important; }
 }
 
-/* ---------- SELETOR DE IDIOMA (js/idioma.js) ----------
-   Fechado: só a bandeira do idioma da página, num botão redondo
-   igual ao do tema. Aberto: um menu pequeno com as duas opções.
-   Na ilha aparece a partir de 1280px (como o botão de tema);
-   abaixo disso fica no rodapé do menu do celular. */
-.idioma {
+/* ---------- SELETORES DE IDIOMA E DE TEMA (js/seletores.js) ----------
+   Os dois são iguais: um botão em forma de pílula (ícone + setinha)
+   que abre um menu pequeno. Na ilha aparecem a partir de 1280px;
+   abaixo disso ficam no rodapé do menu do celular, com o menu
+   abrindo para cima. */
+.seletor {
   position: relative;
   display: none;
   flex-shrink: 0;
 }
 
-.island .idioma { display: none; }
-.mobile-menu__idioma .idioma { display: block; }
+.mobile-menu__theme .seletor { display: block; }
 
 @media (min-width: 1280px) {
-  .island .idioma { display: block; }
+  .island .seletor { display: block; }
 }
 
-.idioma__botao {
-  display: grid;
-  place-items: center;
-  width: 2.75rem;
+.seletor__botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   height: 2.75rem;
-  border-radius: 50%;
-  background: rgba(var(--ink-rgb), 0.06);
+  padding: 0 0.6rem 0 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.05);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color var(--dur-fast) ease;
+  transition:
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .idioma__botao:hover { background: rgba(var(--ink-rgb), 0.12); }
+  .seletor__botao:hover {
+    background: rgba(var(--ink-rgb), 0.1);
+    border-color: rgba(var(--teal-rgb), 0.45);
+  }
 }
 
-.idioma__bandeira {
-  display: block;
+.seletor__botao:focus-visible {
+  outline: 2px solid var(--accent-line);
+  outline-offset: 2px;
+}
+
+/* Menu aberto: o botão fica "ativo" */
+.seletor__botao[aria-expanded='true'] {
+  background: rgba(var(--teal-rgb), 0.16);
+  border-color: var(--accent-line);
+}
+
+/* Ícone do botão e das opções: bandeira redonda ou sol/lua */
+.seletor__icone {
+  display: grid;
+  place-items: center;
   width: 1.25rem;
   height: 1.25rem;
-  border-radius: 50%;
-  overflow: hidden;
   flex-shrink: 0;
+}
+
+.seletor__icone > svg:not(.icon) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(var(--line-rgb), 0.35);
 }
 
-.idioma__bandeira svg { display: block; width: 100%; height: 100%; }
+.seletor__icone .icon { width: 1.15rem; height: 1.15rem; }
 
-/* No botão, só a bandeira do idioma da página */
-.idioma__botao .idioma__bandeira { grid-area: 1 / 1; }
-.idioma__botao .idioma__bandeira--en,
-:root[lang^='en'] .idioma__botao .idioma__bandeira--pt { display: none; }
-:root[lang^='en'] .idioma__botao .idioma__bandeira--en { display: block; }
+/* No botão, só o ícone atual: a bandeira pelo <html lang>, o sol/lua pelo tema */
+.seletor__botao .seletor__icone--en,
+:root[lang^='en'] .seletor__botao .seletor__icone--pt,
+.seletor__botao .seletor__icone--escuro,
+[data-theme='light'] .seletor__botao .seletor__icone--escuro { display: none; }
+:root[lang^='en'] .seletor__botao .seletor__icone--en,
+[data-theme='dark'] .seletor__botao .seletor__icone--escuro { display: grid; }
+[data-theme='dark'] .seletor__botao .seletor__icone--claro { display: none; }
 
-.idioma__menu {
+/* Sigla "PT" / "EN" ao lado da bandeira (só em telas largas do computador) */
+.seletor__sigla { display: none; }
+
+@media (min-width: 1440px) {
+  .seletor__sigla--pt { display: inline; }
+  :root[lang^='en'] .seletor__sigla--pt { display: none; }
+  :root[lang^='en'] .seletor__sigla--en { display: inline; }
+}
+
+.seletor__seta {
+  display: grid;
+  color: var(--text-muted);
+}
+
+.seletor__seta .icon { width: 0.95rem; height: 0.95rem; }
+
+/* Sem a Motion (ou com movimento reduzido), a setinha gira sem animação */
+.seletor__botao[aria-expanded='true'] .seletor__seta:not([data-motion]) { transform: rotate(180deg); }
+
+.seletor__menu {
   position: absolute;
   top: calc(100% + 0.6rem);
   right: 0;
@@ -583,6 +589,7 @@
   display: grid;
   gap: 0.15rem;
   min-width: 13.5rem;
+  max-width: calc(100vw - 2 * var(--gutter));
   padding: 0.4rem;
   border-radius: 18px;
   background: var(--header-bg-solid);
@@ -593,47 +600,53 @@
   transform-origin: top right;
 }
 
-.idioma__menu[hidden] { display: none; }
+.seletor__menu[hidden] { display: none; }
 
 /* No menu do celular o seletor fica embaixo: o menu abre para cima */
-.mobile-menu__idioma .idioma__menu {
+.mobile-menu__theme .seletor__menu {
   top: auto;
   bottom: calc(100% + 0.6rem);
   transform-origin: bottom right;
 }
 
-.idioma__opcao {
+.seletor__opcao {
   display: flex;
   align-items: center;
   gap: 0.7rem;
+  width: 100%;
   padding: 0.6rem 0.75rem;
   border-radius: 12px;
   color: var(--text);
   font-size: var(--fs-sm);
   font-weight: 500;
+  text-align: left;
   text-decoration: none;
   white-space: nowrap;
   transition: background-color var(--dur-fast) ease;
 }
 
-.idioma__opcao[aria-checked='true'] {
+.seletor__opcao[aria-checked='true'] {
   background: rgba(var(--teal-rgb), 0.14);
   font-weight: 600;
 }
 
-.idioma__opcao[aria-checked='true']::after {
-  content: '';
-  width: 0.4rem;
-  height: 0.4rem;
+/* Check só na opção escolhida */
+.seletor__check {
+  display: grid;
   margin-left: auto;
-  border-radius: 50%;
-  background: var(--accent-line);
+  color: var(--accent-line);
+  visibility: hidden;
 }
 
-.idioma__opcao:focus-visible { outline: 2px solid var(--accent-line); outline-offset: -2px; }
+.seletor__check .icon { width: 1rem; height: 1rem; }
+
+.seletor__opcao[aria-checked='true'] .seletor__check { visibility: visible; }
+
+.seletor__opcao:focus-visible { outline: 2px solid var(--accent-line); outline-offset: -2px; }
 
 @media (hover: hover) and (pointer: fine) {
-  .idioma__opcao:hover { background: rgba(var(--ink-rgb), 0.08); }
+  .seletor__opcao:hover { background: rgba(var(--ink-rgb), 0.08); }
+  .seletor__opcao[aria-checked='true']:hover { background: rgba(var(--teal-rgb), 0.2); }
 }
 
 /* ---------- ATALHOS (chips) ---------- */
@@ -1440,7 +1453,6 @@ html.respeitar-movimento .service-card:hover .service-card__more .btn__orb { tra
 html.respeitar-movimento .wa-float { transform: none; }
 html.respeitar-movimento .accordion__panel { transition: none; }
 html.respeitar-movimento .tabs__indicator { transition: none; }
-html.respeitar-movimento .theme-toggle .icon { transition: none; }
 
 /* =========================================================
    BORDA QUE ACENDE ONDE O MOUSE PASSA ("lanterna" nas bordas)

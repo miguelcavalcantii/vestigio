@@ -6,7 +6,7 @@ mude o dicionário e rode o gerador de novo:
 - textos dos scripts e dos dados (serviços, alertas, verificador, painéis): `js/en/textos.js`
 - textos das páginas (página inicial, modelos, política de privacidade): `ferramentas/traducoes/paginas-en.js`
 
-Total: 886 frases.
+Total: 891 frases.
 
 | Português | English |
 | --- | --- |
@@ -510,6 +510,11 @@ Total: 886 frases.
 | Aparência | Appearance |
 | Idioma | Language |
 | Escolher idioma | Choose language |
+| Escolher tema | Choose theme |
+| Claro | Light |
+| Escuro | Dark |
+| PT | PT |
+| EN | EN |
 | Idioma: Português (Brasil) | Language: Português (Brasil) |
 | Português (Brasil) | Português (Brasil) |
 | English | English |

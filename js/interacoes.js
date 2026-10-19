@@ -243,7 +243,7 @@
   var TIPOS_GELATINA = [
     { seletor: '.btn', puxar: 3, esticar: 0.03, crescer: 1.015, apertar: [1.03, 0.95], mola: 0.16, atrito: 0.64 },
     { seletor: '.chip, .tab, .urgente, .wa-dial__opcao, .verif__resposta', puxar: 2, esticar: 0.03, crescer: 1.02, apertar: [1.03, 0.94], mola: 0.16, atrito: 0.64 },
-    { seletor: '.wa-float, .menu-toggle, .theme-toggle, .sheet__close, .busca__limpar', puxar: 3, esticar: 0.03, crescer: 1.03, apertar: [1.04, 0.94], mola: 0.16, atrito: 0.64 },
+    { seletor: '.wa-float, .menu-toggle, .seletor__botao, .sheet__close, .busca__limpar', puxar: 3, esticar: 0.03, crescer: 1.03, apertar: [1.04, 0.94], mola: 0.16, atrito: 0.64 },
     // Voltar ao topo: sem esticar (o círculo não deforma), só cresce e aperta
     { seletor: '.topo', puxar: 3, esticar: 0, crescer: 1.04, apertar: [1.04, 0.94], mola: 0.16, atrito: 0.64 },
     // Cards de serviço: além da gelatina, INCLINAM em 3D na direção do mouse
