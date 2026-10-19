@@ -25,14 +25,20 @@
   var temMotion = typeof Motion !== 'undefined';
   var calmo = reduzirMovimento();
 
-  // Endereço da página no idioma pedido (mesmo caminho do site atual)
+  // Endereço da página no idioma pedido. O caminho vem da tag hreflang
+  // (ex.: "/en/services/romance-scam.html") e é montado a partir da pasta
+  // do site em que a pessoa está: assim funciona no domínio oficial, nas
+  // prévias e até abrindo os arquivos no computador.
+  var RAIZ_SITE = document.documentElement.getAttribute('data-raiz-site') ||
+    document.documentElement.getAttribute('data-raiz') || '';
+
   function enderecoEm(idioma) {
     var link = document.querySelector('link[rel="alternate"][hreflang="' + (idioma === 'en' ? 'en' : 'pt-BR') + '"]');
     if (!link) return null;
     try {
-      var destino = new URL(link.getAttribute('href'));
-      // Só o caminho: assim funciona também nas prévias e no domínio de testes
-      return destino.pathname + location.hash;
+      var caminho = new URL(link.getAttribute('href')).pathname.replace(/^\//, '');
+      var destino = new URL(RAIZ_SITE + caminho, location.href);
+      return destino.href.replace(/#.*$/, '') + location.hash;
     } catch (e) {
       return null;
     }
@@ -55,7 +61,7 @@
       var atual = idioma === IDIOMA;
       opcao.setAttribute('aria-checked', String(atual));
       var destino = enderecoEm(idioma);
-      if (destino && location.protocol.indexOf('http') === 0) opcao.setAttribute('href', destino);
+      if (destino) opcao.setAttribute('href', destino);
 
       opcao.addEventListener('click', function (evento) {
         if (atual) {
@@ -67,7 +73,7 @@
         guardar(idioma);
         // Confere o endereço na hora do clique (a seção atual, ex.: #servicos, vai junto)
         var agora = enderecoEm(idioma);
-        if (agora && location.protocol.indexOf('http') === 0) opcao.setAttribute('href', agora);
+        if (agora) opcao.setAttribute('href', agora);
         else if (opcao.getAttribute('href') === '#') evento.preventDefault();
       });
     });

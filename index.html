@@ -73,9 +73,9 @@
     (function () {
       var salvo = null;
       try { salvo = localStorage.getItem('vestigio-idioma'); } catch (e) {}
-      var caminho = location.pathname;
-      if (salvo === 'en' && /^\/(index(\.html)?)?$/.test(caminho) && location.protocol.indexOf('http') === 0) {
-        location.replace('/en/' + location.hash);
+      // Endereço relativo: funciona no domínio oficial e nas prévias
+      if (salvo === 'en' && location.protocol.indexOf('http') === 0) {
+        location.replace('en/' + location.hash);
       }
     })();
   </script>
