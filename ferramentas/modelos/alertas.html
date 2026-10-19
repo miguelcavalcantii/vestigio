@@ -1,0 +1,51 @@
+  <main id="conteudo">
+
+    <!-- ===== TOPO ===== -->
+    <section class="pg-topo dot-grid" data-topo aria-labelledby="pg-titulo">
+      <div class="container">
+{{MIGALHAS}}
+        <div class="pg-topo__texto" data-reveal>
+          <p class="pg-topo__meta">
+            <span class="pg-topo__icone" aria-hidden="true"><span data-icon="newspaper"></span></span>
+            <span class="mono">Boletim · {{TOTAL}}</span>
+          </p>
+          <h1 id="pg-titulo">Alertas de golpes</h1>
+          <p class="pg-topo__lead">Golpes que circulam por aí, explicados de forma simples, com o que fazer para se proteger.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LISTA (o mais recente em destaque; filtro por categoria) ===== -->
+    <section class="alertas" aria-label="Lista de alertas">
+      <div class="container">
+{{DESTAQUE}}
+        <div class="alertas__barra">
+          <p class="alertas__barra-titulo mono" id="filtro-titulo">Filtrar por categoria</p>
+          <div class="alertas__filtro" role="group" aria-labelledby="filtro-titulo" data-alertas-filtro>
+{{FILTROS}}
+          </div>
+        </div>
+        <p class="sr-only" aria-live="polite" data-alertas-status></p>
+        <ul role="list" class="alertas__grade">
+{{CARDS}}
+        </ul>
+        <p class="alertas__vazio" data-alertas-vazio hidden>Nenhum outro alerta nesta categoria por enquanto.</p>
+      </div>
+    </section>
+
+    <!-- ===== CHAMADA FINAL ===== -->
+    <section class="section pg-cta" aria-labelledby="cta-titulo">
+      <div class="container">
+        <div class="cta bezel" data-reveal>
+          <div class="bezel__core cta__core">
+            <h2 id="cta-titulo">Viu um golpe parecido com o seu? Conte o que aconteceu.</h2>
+            <a class="btn btn--primary btn--lg" href="{{LINK_WHATSAPP}}" target="_blank" rel="noopener" data-montador>
+              <span class="wa-icon" data-icon="whatsapp"></span>
+              Falar no WhatsApp
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

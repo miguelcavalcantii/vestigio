@@ -788,10 +788,6 @@
     try { localStorage.setItem(CHAVE_TEMA, tema); } catch (e) { /* sem problema */ }
   }
 
-  function temaSalvo() {
-    try { return localStorage.getItem(CHAVE_TEMA); } catch (e) { return null; }
-  }
-
   // Plano B (navegador sem View Transitions): uma "cortina" na cor do
   // fundo do tema NOVO aparece, o tema troca por baixo e ela some.
   function trocarComCortina(novoTema) {
@@ -841,11 +837,6 @@
       botao.addEventListener('click', function () {
         trocarTema(temaAtual() === 'light' ? 'dark' : 'light');
       });
-    });
-
-    // Quem nunca escolheu segue o sistema, inclusive se ele mudar depois
-    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (m) {
-      if (!temaSalvo()) aplicarTema(m.matches ? 'light' : 'dark');
     });
   }
 

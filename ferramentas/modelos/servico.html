@@ -1,0 +1,99 @@
+  <main id="conteudo">
+
+    <!-- ===== TOPO: caminho, título e ações ===== -->
+    <section class="pg-topo dot-grid" data-topo aria-labelledby="pg-titulo">
+      <div class="container">
+{{MIGALHAS}}
+        <div class="pg-topo__texto" data-reveal>
+          <p class="pg-topo__meta">
+            <span class="pg-topo__icone" aria-hidden="true"><span data-icon="{{ICONE}}"></span></span>
+            <span class="mono">Caso {{NUMERO}} · {{CATEGORIA}}</span>
+          </p>
+          <h1 id="pg-titulo">{{NOME}}</h1>
+          <p class="pg-topo__lead">{{RESUMO}}</p>
+          <div class="pg-topo__acoes">
+            <a class="btn btn--primary btn--lg" href="{{LINK_WHATSAPP}}" target="_blank" rel="noopener" data-montador="{{ID}}">
+              <span class="wa-icon" data-icon="whatsapp"></span>
+              Falar sobre este caso
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="{{RAIZ}}index.html#verificador">
+              Isso é golpe? Verifique
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTEÚDO (o mesmo do painel de detalhe da página inicial) ===== -->
+    <div class="container pg-corpo">
+      <article class="pg-artigo">
+        <section class="pg-bloco" aria-labelledby="oque-titulo" data-reveal>
+          <h2 id="oque-titulo">O que é</h2>
+          <p>{{O_QUE_E}}</p>
+        </section>
+{{AVISO}}
+        <section class="pg-bloco" aria-labelledby="como-titulo" data-reveal>
+          <h2 id="como-titulo">Como funciona</h2>
+          <ol role="list" class="sheet__steps pg-passos">
+{{PASSOS}}
+          </ol>
+        </section>
+
+        <section class="pg-bloco" aria-labelledby="precisamos-titulo" data-reveal>
+          <h2 id="precisamos-titulo">O que vamos precisar de você</h2>
+          <ul role="list" class="sheet__needs">
+{{PRECISAMOS}}
+          </ul>
+        </section>
+
+        <div class="pg-bloco" data-reveal>
+          <p class="sheet__warning">
+            <span data-icon="shield-check" aria-hidden="true"></span>
+            <span>Nunca pedimos senhas, códigos de verificação ou acesso às suas contas.</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- Chamada para o WhatsApp (fica parada ao lado do texto no computador) -->
+      <aside class="pg-lateral" aria-labelledby="lateral-titulo">
+        <div class="pg-lateral__card bezel">
+          <div class="bezel__core pg-lateral__core">
+            <p class="mono pg-lateral__rotulo">Análise inicial</p>
+            <h2 id="lateral-titulo">Conte o que aconteceu</h2>
+            <p>Dizemos, com honestidade, o que é possível fazer no seu caso. Atendimento sigiloso pelo WhatsApp.</p>
+            <a class="btn btn--primary btn--block" href="{{LINK_WHATSAPP}}" target="_blank" rel="noopener" data-montador="{{ID}}">
+              <span class="wa-icon" data-icon="whatsapp"></span>
+              Falar no WhatsApp
+            </a>
+            <button class="urgente urgente--lateral" type="button" aria-haspopup="dialog" data-urgente>
+              <span class="urgente__dot" aria-hidden="true"></span>
+              Caí em um golpe agora
+            </button>
+          </div>
+        </div>
+        <ul role="list" class="seals pg-lateral__selos" aria-label="Garantias de atendimento">
+          <li><span data-icon="eye-off"></span>Atendimento sigiloso</li>
+          <li><span data-icon="shield-check"></span>Dentro da LGPD</li>
+          <li><span data-icon="scale"></span>Só fontes lícitas</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- ===== SERVIÇOS RELACIONADOS (da mesma categoria) ===== -->
+    <section class="section pg-relacionados" aria-labelledby="relacionados-titulo">
+      <div class="container">
+        <div class="pg-secao-topo" data-reveal>
+          <h2 id="relacionados-titulo">Serviços relacionados</h2>
+          <a class="btn btn--ghost btn--sm" href="{{RAIZ}}index.html#servicos">
+            Ver todos os serviços
+            <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+          </a>
+        </div>
+        <ul role="list" class="services__grid relacionados__grade">
+{{RELACIONADOS}}
+        </ul>
+      </div>
+    </section>
+  </main>

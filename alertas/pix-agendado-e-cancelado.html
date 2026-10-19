@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<!-- ARQUIVO GERADO por ferramentas/gerar-paginas.js. Não edite aqui:
+     mude os dados (js/services.js ou js/alertas.js) ou o modelo
+     (ferramentas/modelos/) e rode de novo: node ferramentas/gerar-paginas.js -->
+<html lang="pt-BR" data-raiz="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ===== SEO (cada página tem título, descrição e endereço próprios) ===== -->
+  <title>Pix agendado e cancelado: o comprovante que não vale nada | Alertas Vestígio</title>
+  <meta name="description" content="O comprador mostra um comprovante de Pix verdadeiro, mas o pagamento era só um agendamento, cancelado depois da entrega. Veja como funciona e como se proteger.">
+  <meta name="theme-color" content="#F3F5F6">
+  <link rel="canonical" href="https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html">
+
+  <!-- ===== OPEN GRAPH (prévia ao compartilhar o link) ===== -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Vestígio Investigação Digital">
+  <meta property="og:title" content="Pix agendado e cancelado: o comprovante que não vale nada | Alertas Vestígio">
+  <meta property="og:description" content="O comprador mostra um comprovante de Pix verdadeiro, mas o pagamento era só um agendamento, cancelado depois da entrega. Veja como funciona e como se proteger.">
+  <meta property="og:url" content="https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html">
+  <meta property="og:image" content="https://vestigio.app.br/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../assets/logo-simbolo.svg" type="image/svg+xml">
+
+  <script>
+    (function () {
+      var html = document.documentElement;
+
+      // 1. Tema
+      var tema = null;
+      try { tema = localStorage.getItem('vestigio-tema'); } catch (e) {}
+      // Padrão: claro. Só fica escuro se a pessoa escolheu no botão.
+      if (tema !== 'light' && tema !== 'dark') tema = 'light';
+      html.setAttribute('data-theme', tema);
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', tema === 'light' ? '#F3F5F6' : '#0B0C10');
+
+      // 2. Animações
+      var ANIMACOES_SEMPRE = true;
+      var sistemaPedeMenos = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!ANIMACOES_SEMPRE && sistemaPedeMenos) {
+        html.classList.add('respeitar-movimento');
+      } else {
+        html.classList.add('motion-ok');
+        setTimeout(function () {
+          if (!window.animacoesProntas) html.classList.remove('motion-ok');
+        }, 3000);
+      }
+    })();
+  </script>
+
+  <!-- ===== ESTILOS (os mesmos do site + os das páginas) ===== -->
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/ferramentas.css">
+  <link rel="stylesheet" href="../css/paginas.css">
+  <link rel="stylesheet" href="../css/textura-fundo.css">
+  <link rel="stylesheet" href="../css/textura-mesa.css">
+
+  <!-- Sem JavaScript: o que depende dele some; "Serviços" vira link comum -->
+  <noscript>
+    <style>
+      .main-nav__trigger, .urgente, .mega, .menu-toggle { display: none !important; }
+      .main-nav__semjs { display: inline-flex !important; }
+    </style>
+  </noscript>
+
+  <!-- ===== DADOS ESTRUTURADOS (ajudam o Google a entender a página) ===== -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "Pix agendado e cancelado: o comprovante que não vale nada",
+          "description": "O comprador mostra um comprovante de Pix verdadeiro, mas o pagamento era só um agendamento, cancelado depois da entrega.",
+          "datePublished": "2026-09-28",
+          "inLanguage": "pt-BR",
+          "url": "https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html",
+          "mainEntityOfPage": "https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html",
+          "author": {
+            "@type": "Organization",
+            "name": "Vestígio Investigação Digital",
+            "url": "https://vestigio.app.br/",
+            "logo": "https://vestigio.app.br/assets/logo.svg",
+            "email": "contato.vestigioo@gmail.com",
+            "sameAs": [
+              "https://www.instagram.com/vestigio.br/"
+            ]
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Vestígio Investigação Digital",
+            "url": "https://vestigio.app.br/",
+            "logo": "https://vestigio.app.br/assets/logo.svg",
+            "email": "contato.vestigioo@gmail.com",
+            "sameAs": [
+              "https://www.instagram.com/vestigio.br/"
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://vestigio.app.br/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Alertas",
+              "item": "https://vestigio.app.br/alertas.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Pix agendado e cancelado: o comprovante que não vale nada",
+              "item": "https://vestigio.app.br/alertas/pix-agendado-e-cancelado.html"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+
+</head>
+<body class="pagina pagina--alerta">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Fundo do site: brilhos de luz (só decoração) -->
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="scroll-sentinel" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <div class="island">
+      <a class="brand" href="../index.html" aria-label="Vestígio Investigação Digital, voltar ao início">
+        <!-- Logo dentro do HTML (cor = currentColor): muda junto com o tema -->
+        <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 34" width="165" height="34" aria-hidden="true" focusable="false">
+          <g transform="translate(0 1.2) scale(0.8)">
+          <path d="M5 16V5h11" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/>
+          <circle cx="13.6" cy="13.6" r="1.6" fill="currentColor"/>
+          <circle cx="18.6" cy="18.6" r="2" fill="currentColor"/>
+          <circle cx="24.6" cy="24.6" r="4.4" fill="currentColor"/>
+          </g>
+          <path transform="translate(34 26)" fill="currentColor" d="M9.04 0 0.42 -20.59H5.06L10.18 -7.64Q10.42 -7.13 10.65 -6.51Q10.89 -5.9 11.11 -5.35Q11.33 -4.79 11.48 -4.39H11.67Q11.82 -4.76 12.02 -5.3Q12.23 -5.84 12.47 -6.45Q12.72 -7.05 12.95 -7.61L18.07 -20.59H22.49L13.87 0ZM33.22 0.36Q30.44 0.36 28.51 -0.52Q26.57 -1.41 25.56 -3.24Q24.55 -5.07 24.55 -7.89Q24.55 -10.7 25.55 -12.53Q26.55 -14.36 28.47 -15.25Q30.39 -16.15 33.15 -16.15Q35.84 -16.15 37.68 -15.27Q39.51 -14.39 40.43 -12.62Q41.36 -10.86 41.36 -8.19V-6.93H28.59Q28.66 -5.46 29.2 -4.51Q29.74 -3.57 30.77 -3.12Q31.8 -2.68 33.29 -2.68Q33.97 -2.68 34.67 -2.84Q35.38 -3.01 35.98 -3.35Q36.58 -3.69 36.98 -4.22Q37.37 -4.76 37.41 -5.49H41.3Q41.3 -4.14 40.73 -3.05Q40.16 -1.96 39.1 -1.2Q38.03 -0.45 36.54 -0.04Q35.05 0.36 33.22 0.36ZM28.62 -9.6H37.27Q37.27 -10.53 36.96 -11.19Q36.65 -11.85 36.09 -12.28Q35.54 -12.71 34.8 -12.91Q34.05 -13.1 33.17 -13.1Q31.83 -13.1 30.85 -12.72Q29.87 -12.33 29.32 -11.55Q28.77 -10.77 28.62 -9.6ZM51.97 0.36Q50.24 0.36 48.81 0.03Q47.38 -0.3 46.34 -0.92Q45.3 -1.54 44.74 -2.44Q44.18 -3.34 44.18 -4.49Q44.18 -4.64 44.19 -4.76Q44.21 -4.88 44.22 -4.97H48.12Q48.12 -4.92 48.12 -4.85Q48.11 -4.77 48.11 -4.71Q48.12 -3.93 48.68 -3.46Q49.24 -2.98 50.14 -2.78Q51.05 -2.58 52.06 -2.58Q53.03 -2.58 53.91 -2.73Q54.78 -2.88 55.34 -3.25Q55.9 -3.63 55.9 -4.3Q55.9 -5.08 55.24 -5.46Q54.59 -5.85 53.42 -6.08Q52.26 -6.32 50.75 -6.6Q49.54 -6.84 48.44 -7.17Q47.35 -7.5 46.49 -8.02Q45.64 -8.54 45.15 -9.36Q44.65 -10.17 44.65 -11.37Q44.65 -12.6 45.2 -13.49Q45.74 -14.38 46.74 -14.97Q47.73 -15.55 49.12 -15.85Q50.51 -16.14 52.19 -16.14Q53.76 -16.14 55.06 -15.85Q56.36 -15.55 57.32 -14.99Q58.28 -14.43 58.82 -13.61Q59.36 -12.8 59.36 -11.78Q59.36 -11.61 59.35 -11.45Q59.34 -11.29 59.33 -11.22H55.44V-11.39Q55.44 -12 55 -12.4Q54.56 -12.79 53.82 -13.01Q53.07 -13.22 52.08 -13.22Q51.54 -13.22 50.92 -13.14Q50.3 -13.06 49.77 -12.89Q49.23 -12.72 48.9 -12.44Q48.56 -12.16 48.56 -11.73Q48.56 -11.12 49.15 -10.79Q49.74 -10.46 50.73 -10.25Q51.71 -10.05 52.85 -9.81Q54.15 -9.55 55.4 -9.26Q56.64 -8.96 57.64 -8.47Q58.64 -7.98 59.23 -7.1Q59.82 -6.22 59.82 -4.78Q59.82 -3.36 59.27 -2.37Q58.71 -1.38 57.68 -0.78Q56.65 -0.18 55.2 0.09Q53.76 0.36 51.97 0.36ZM68.64 0.36Q67.04 0.36 66.08 -0.17Q65.13 -0.71 64.71 -1.72Q64.29 -2.74 64.29 -4.18V-12.69H61.85V-15.79H64.4L65.14 -20.31H68.18V-15.79H71.66V-12.69H68.18V-4.51Q68.18 -3.65 68.55 -3.19Q68.91 -2.74 69.93 -2.74H71.66V-0.13Q71.3 0 70.77 0.11Q70.23 0.22 69.66 0.29Q69.1 0.36 68.64 0.36ZM75.03 0V-15.79H78.92V0ZM74.39 -17.73 77.32 -21.7H81.61L81.62 -21.59L77.63 -17.73ZM86.35 5.69Q85.14 5.69 84.09 5.3Q83.03 4.91 82.39 4.08Q81.75 3.24 81.75 1.93Q81.75 0.69 82.54 -0.14Q83.34 -0.96 84.44 -1.37Q83.64 -1.79 83.2 -2.48Q82.77 -3.17 82.77 -4.06Q82.77 -5.23 83.6 -6.01Q84.43 -6.79 85.68 -7Q84.53 -7.68 83.89 -8.7Q83.26 -9.72 83.26 -10.97Q83.26 -12.69 84.16 -13.84Q85.05 -14.99 86.79 -15.57Q88.53 -16.15 91.03 -16.15Q92.02 -16.15 92.92 -16.04Q93.81 -15.93 94.57 -15.72Q95.81 -16.33 96.38 -17.11Q96.95 -17.89 97.04 -18.48H100.75Q100.74 -17.41 100.3 -16.6Q99.86 -15.79 99.07 -15.26Q98.29 -14.73 97.17 -14.47Q97.97 -13.84 98.4 -12.96Q98.82 -12.07 98.82 -10.97Q98.82 -9.31 97.99 -8.15Q97.17 -6.99 95.55 -6.39Q93.94 -5.79 91.56 -5.79H88.29Q87.55 -5.79 87.14 -5.5Q86.73 -5.21 86.73 -4.68Q86.73 -4.21 87.12 -3.89Q87.52 -3.56 88.3 -3.56H96.28Q98.3 -3.56 99.48 -2.33Q100.67 -1.1 100.67 0.81Q100.67 2.23 99.93 3.33Q99.18 4.43 97.91 5.06Q96.64 5.69 95 5.69ZM87.38 2.92H94.88Q95.41 2.92 95.83 2.73Q96.25 2.53 96.5 2.16Q96.75 1.78 96.75 1.3Q96.75 0.52 96.24 0.12Q95.73 -0.29 95.01 -0.29H87.45Q86.69 -0.29 86.18 0.13Q85.67 0.56 85.67 1.29Q85.67 2.02 86.15 2.47Q86.63 2.92 87.38 2.92ZM91.05 -8.5Q92.9 -8.5 93.92 -9.1Q94.94 -9.7 94.94 -10.97Q94.94 -12.25 93.92 -12.85Q92.9 -13.44 91.05 -13.44Q89.2 -13.44 88.18 -12.85Q87.16 -12.25 87.16 -10.97Q87.16 -10.1 87.62 -9.55Q88.07 -9 88.94 -8.75Q89.81 -8.5 91.05 -8.5ZM103.29 -18.3V-21.7H107.18V-18.3ZM103.29 0V-15.79H107.18V0ZM119.54 0.36Q116.74 0.36 114.79 -0.55Q112.84 -1.45 111.84 -3.29Q110.83 -5.13 110.83 -7.9Q110.83 -10.71 111.84 -12.53Q112.84 -14.36 114.79 -15.25Q116.74 -16.15 119.54 -16.15Q122.35 -16.15 124.29 -15.25Q126.23 -14.36 127.24 -12.53Q128.24 -10.71 128.24 -7.9Q128.24 -5.13 127.24 -3.29Q126.23 -1.45 124.29 -0.55Q122.35 0.36 119.54 0.36ZM119.54 -2.74Q121.09 -2.74 122.13 -3.3Q123.18 -3.85 123.7 -4.95Q124.22 -6.04 124.22 -7.65V-8.16Q124.22 -9.78 123.7 -10.87Q123.18 -11.96 122.13 -12.51Q121.09 -13.05 119.54 -13.05Q117.98 -13.05 116.94 -12.51Q115.89 -11.96 115.37 -10.87Q114.85 -9.78 114.85 -8.16V-7.65Q114.85 -6.04 115.37 -4.95Q115.89 -3.85 116.94 -3.3Q117.98 -2.74 119.54 -2.74Z"/>
+        </svg>
+      </a>
+
+      <nav class="main-nav" aria-label="Menu principal">
+        <ul role="list" class="main-nav__list">
+          <!-- "Serviços" abre o painel de serviços (montado por js/navegacao.js).
+               Sem JavaScript, o painel não abre: por isso o link de reserva logo abaixo. -->
+          <li><button class="main-nav__trigger" type="button" aria-expanded="false" aria-controls="mega-servicos" data-mega-toggle data-secao="#servicos">Serviços<span class="main-nav__chevron" data-icon="chevron-down"></span></button><a class="main-nav__semjs" href="../index.html#servicos">Serviços</a></li>
+          <li><a href="../index.html#verificador">Isso é golpe?</a></li>
+          <li><a href="../index.html#como-funciona">Como funciona</a></li>
+          <li class="main-nav__extra"><a href="../index.html#sobre">Sobre</a></li>
+          <li><a href="../alertas.html" aria-current="page">Alertas</a></li>
+          <li><a href="../index.html#duvidas">Dúvidas</a></li>
+          <li class="main-nav__extra"><a href="../index.html#contato">Contato</a></li>
+          <li aria-hidden="true" class="nav-glide-item"><span class="nav-glide"></span></li>
+        </ul>
+      </nav>
+
+      <!-- Botão de urgência: abre o painel "Primeiros 30 minutos" -->
+      <button class="urgente" type="button" aria-haspopup="dialog" data-urgente>
+        <span class="urgente__dot" aria-hidden="true"></span>
+        <span>Caí em um golpe<span class="urgente__extra"> agora</span></span>
+      </button>
+
+      <!-- Troca de tema claro/escuro (no celular ele fica no rodapé do menu) -->
+      <button class="theme-toggle" type="button" aria-label="Usar tema claro" aria-pressed="false" data-theme-toggle>
+        <span class="theme-toggle__icon theme-toggle__moon" data-icon="moon" aria-hidden="true"></span>
+        <span class="theme-toggle__icon theme-toggle__sun" data-icon="sun" aria-hidden="true"></span>
+      </button>
+
+      <a class="btn btn--primary btn--sm island__cta" href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+        Falar com especialista
+        <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" data-menu-toggle>
+        <span class="sr-only" data-menu-label>Abrir menu</span>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span></span>
+      </button>
+      <!-- linha de progresso da leitura -->
+      <span class="island__progress" aria-hidden="true" data-reading></span>
+    </div>
+
+    <!-- PAINEL DE SERVIÇOS (abre pelo botão "Serviços" do menu).
+         As colunas são montadas por js/navegacao.js a partir de js/services.js:
+         não escreva serviços aqui. -->
+    <div class="mega" id="mega-servicos" data-mega hidden>
+      <div class="mega__cols" data-mega-cols></div>
+      <div class="mega__aside">
+        <div class="mega__urgente">
+          <p class="mega__urgente-tag"><span class="urgente__dot" aria-hidden="true"></span><span class="mono">Agora</span></p>
+          <p class="mega__urgente-titulo">Caí em um golpe agora</p>
+          <p class="mega__urgente-texto">Os primeiros 30 minutos contam. Veja, passo a passo, o que fazer.</p>
+          <button class="btn btn--primary btn--sm btn--block" type="button" aria-haspopup="dialog" data-urgente>
+            Ver os primeiros passos
+            <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+          </button>
+        </div>
+        <a class="mega__todos" href="../index.html#servicos">
+          Ver todos os serviços
+          <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu do celular (tela cheia, abre pelo botão acima) -->
+  <div class="mobile-menu" data-lenis-prevent id="menu-mobile" data-mobile-menu hidden>
+    <!-- Urgência no topo do menu: abre o painel "Primeiros 30 minutos" -->
+    <div class="mobile-menu__top">
+      <button class="urgente urgente--menu" type="button" aria-haspopup="dialog" data-urgente>
+        <span class="urgente__dot" aria-hidden="true"></span>
+        <span class="urgente__texto">Caí em um golpe agora</span>
+        <span class="urgente__seta" data-icon="arrow-right" aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav aria-label="Menu principal (celular)">
+      <ul role="list" class="mobile-menu__list">
+        <!-- "Serviços" vira uma sanfona com os serviços por categoria
+             (a lista é montada por js/navegacao.js) -->
+        <li class="mobile-menu__group">
+          <button class="mobile-menu__acc" type="button" aria-expanded="false" aria-controls="menu-servicos-lista" data-menu-servicos>
+            Serviços<span class="mobile-menu__acc-icon" data-icon="chevron-down" aria-hidden="true"></span>
+          </button>
+          <div class="mobile-menu__sub" id="menu-servicos-lista" data-menu-servicos-lista>
+            <div class="mobile-menu__sub-inner" data-menu-servicos-miolo></div>
+          </div>
+        </li>
+        <li><a href="../index.html#verificador">Isso é golpe?</a></li>
+        <li><a href="../index.html#como-funciona">Como funciona</a></li>
+        <li><a href="../index.html#sobre">Sobre</a></li>
+        <li><a href="../alertas.html" aria-current="page">Alertas</a></li>
+        <li><a href="../index.html#duvidas">Dúvidas</a></li>
+        <li><a href="../index.html#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a class="btn btn--primary btn--block" href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+        <span class="wa-icon" data-icon="whatsapp"></span>
+        Falar com especialista
+      </a>
+      <p class="mobile-menu__note">Atendimento sigiloso pelo WhatsApp.</p>
+      <!-- Troca de tema claro/escuro (versão do celular) -->
+      <div class="mobile-menu__theme">
+        <span>Aparência</span>
+        <button class="theme-toggle" type="button" aria-label="Usar tema claro" aria-pressed="false" data-theme-toggle>
+          <span class="theme-toggle__icon theme-toggle__moon" data-icon="moon" aria-hidden="true"></span>
+          <span class="theme-toggle__icon theme-toggle__sun" data-icon="sun" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de progresso da leitura (enche conforme o texto passa) -->
+  <div class="leitura" aria-hidden="true"><span data-leitura></span></div>
+
+  <main id="conteudo">
+    <article class="alerta" aria-labelledby="pg-titulo">
+
+      <!-- ===== TOPO ===== -->
+      <header class="pg-topo dot-grid" data-topo>
+        <div class="container">
+        <nav class="migalhas" aria-label="Caminho da página">
+          <ol role="list">
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="../alertas.html">Alertas</a></li>
+            <li><span aria-current="page">Pix agendado e cancelado: o comprovante que não vale nada</span></li>
+          </ol>
+        </nav>
+          <div class="pg-topo__texto alerta__cabeca" data-reveal>
+            <p class="pg-topo__meta">
+              <span class="status-pill">Alerta 01</span>
+              <span class="mono"><time datetime="2026-09-28">28 set 2026</time> · Estelionato digital</span>
+            </p>
+            <h1 id="pg-titulo">Pix agendado e cancelado: o comprovante que não vale nada</h1>
+            <p class="pg-topo__lead">O comprador mostra um comprovante de Pix verdadeiro, mas o pagamento era só um agendamento, cancelado depois da entrega.</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===== TEXTO ===== -->
+      <div class="container">
+        <div class="alerta__corpo" data-artigo>
+          <div class="alerta__texto" data-reveal>
+            <p>Você vende um produto pela internet e o comprador manda, na hora, um comprovante de Pix. O documento parece verdadeiro, com valor, data e o seu nome. Confiante, você entrega o produto ou despacha a encomenda.</p>
+            <p>O que o comprovante não deixa claro é que o Pix foi apenas agendado para outro dia. Depois de receber o produto, o golpista cancela o agendamento e o dinheiro nunca cai na sua conta. Há também versões com comprovantes editados, de transferências que nunca existiram.</p>
+            <p>O golpe aposta na pressa de fechar a venda e no hábito de olhar só o comprovante, sem conferir o extrato.</p>
+          </div>
+
+          <!-- "Como se proteger" em destaque (mesmo visual do guia "Faça agora") -->
+          <section class="alerta__protecao bezel guide__card guide__card--do" aria-labelledby="protecao-titulo" data-reveal>
+            <div class="bezel__core guide__core">
+              <h2 class="guide__title" id="protecao-titulo"><span class="guide__badge" data-icon="shield-check"></span>Como se proteger</h2>
+              <ol role="list" class="guide__list">
+                <li>Só entregue o produto depois de ver o dinheiro no extrato da sua conta, e não apenas no comprovante.</li>
+                <li>Leia o comprovante com atenção: palavras como “agendamento” ou “agendado” indicam que o dinheiro ainda não saiu.</li>
+                <li>Desconfie de quem tem muita pressa ou quer mandar alguém buscar o produto na mesma hora.</li>
+                <li>Guarde a conversa, o comprovante recebido e os dados de quem comprou.</li>
+              </ol>
+            </div>
+          </section>
+
+          <div class="alerta__acoes">
+            <button class="btn btn--ghost" type="button" data-compartilhar="O comprador mostra um comprovante de Pix verdadeiro, mas o pagamento era só um agendamento, cancelado depois da entrega.">
+              <span data-icon="share-2" aria-hidden="true"></span>
+              Compartilhar este alerta
+            </button>
+            <a class="verif__link" href="../index.html#verificador">
+              <span data-icon="circle-help" aria-hidden="true"></span>
+              Isso é golpe? Faça a verificação
+            </a>
+          </div>
+
+          <aside class="alerta__servico" aria-labelledby="servico-titulo">
+            <p class="mono alerta__servico-rotulo" id="servico-titulo">Serviço relacionado</p>
+            <a class="alerta__servico-link" href="../servicos/golpe-do-pix-falso.html">
+              <span class="service-card__icon" aria-hidden="true"><span data-icon="banknote-x"></span></span>
+              <span class="alerta__servico-texto"><strong>Golpe do Pix falso</strong><span>Comprovantes editados, Pix agendado e cancelado e pedidos de devolução indevida.</span></span>
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== CHAMADA FINAL ===== -->
+    <section class="section pg-cta" aria-labelledby="cta-titulo">
+      <div class="container">
+        <div class="cta bezel" data-reveal>
+          <div class="bezel__core cta__core">
+            <h2 id="cta-titulo">Caiu em um golpe parecido? Conte o que aconteceu.</h2>
+            <a class="btn btn--primary btn--lg" href="https://wa.me/5581992183600?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Vest%C3%ADgio%20e%20gostaria%20de%20atendimento%20sobre%3A%20Golpe%20do%20Pix%20falso." target="_blank" rel="noopener" data-montador="pix-falso">
+              <span class="wa-icon" data-icon="whatsapp"></span>
+              Falar no WhatsApp
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="site-footer" data-rodape data-esconde-flutuante>
+    <!-- Linha do topo que se desenha e o "rastro" de pontos (js/destaques.js, parte 4) -->
+    <span class="site-footer__linha" aria-hidden="true" data-rodape-linha></span>
+    <div class="container">
+      <div class="site-footer__topo" data-rodape-item>
+        <div class="site-footer__marca">
+          <a class="site-footer__logo" href="../index.html" aria-label="Vestígio Investigação Digital, voltar ao início">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 34" width="165" height="34" aria-hidden="true" focusable="false">
+            <g transform="translate(0 1.2) scale(0.8)">
+            <path d="M5 16V5h11" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/>
+            <circle cx="13.6" cy="13.6" r="1.6" fill="currentColor"/>
+            <circle cx="18.6" cy="18.6" r="2" fill="currentColor"/>
+            <circle cx="24.6" cy="24.6" r="4.4" fill="currentColor"/>
+            </g>
+            <path transform="translate(34 26)" fill="currentColor" d="M9.04 0 0.42 -20.59H5.06L10.18 -7.64Q10.42 -7.13 10.65 -6.51Q10.89 -5.9 11.11 -5.35Q11.33 -4.79 11.48 -4.39H11.67Q11.82 -4.76 12.02 -5.3Q12.23 -5.84 12.47 -6.45Q12.72 -7.05 12.95 -7.61L18.07 -20.59H22.49L13.87 0ZM33.22 0.36Q30.44 0.36 28.51 -0.52Q26.57 -1.41 25.56 -3.24Q24.55 -5.07 24.55 -7.89Q24.55 -10.7 25.55 -12.53Q26.55 -14.36 28.47 -15.25Q30.39 -16.15 33.15 -16.15Q35.84 -16.15 37.68 -15.27Q39.51 -14.39 40.43 -12.62Q41.36 -10.86 41.36 -8.19V-6.93H28.59Q28.66 -5.46 29.2 -4.51Q29.74 -3.57 30.77 -3.12Q31.8 -2.68 33.29 -2.68Q33.97 -2.68 34.67 -2.84Q35.38 -3.01 35.98 -3.35Q36.58 -3.69 36.98 -4.22Q37.37 -4.76 37.41 -5.49H41.3Q41.3 -4.14 40.73 -3.05Q40.16 -1.96 39.1 -1.2Q38.03 -0.45 36.54 -0.04Q35.05 0.36 33.22 0.36ZM28.62 -9.6H37.27Q37.27 -10.53 36.96 -11.19Q36.65 -11.85 36.09 -12.28Q35.54 -12.71 34.8 -12.91Q34.05 -13.1 33.17 -13.1Q31.83 -13.1 30.85 -12.72Q29.87 -12.33 29.32 -11.55Q28.77 -10.77 28.62 -9.6ZM51.97 0.36Q50.24 0.36 48.81 0.03Q47.38 -0.3 46.34 -0.92Q45.3 -1.54 44.74 -2.44Q44.18 -3.34 44.18 -4.49Q44.18 -4.64 44.19 -4.76Q44.21 -4.88 44.22 -4.97H48.12Q48.12 -4.92 48.12 -4.85Q48.11 -4.77 48.11 -4.71Q48.12 -3.93 48.68 -3.46Q49.24 -2.98 50.14 -2.78Q51.05 -2.58 52.06 -2.58Q53.03 -2.58 53.91 -2.73Q54.78 -2.88 55.34 -3.25Q55.9 -3.63 55.9 -4.3Q55.9 -5.08 55.24 -5.46Q54.59 -5.85 53.42 -6.08Q52.26 -6.32 50.75 -6.6Q49.54 -6.84 48.44 -7.17Q47.35 -7.5 46.49 -8.02Q45.64 -8.54 45.15 -9.36Q44.65 -10.17 44.65 -11.37Q44.65 -12.6 45.2 -13.49Q45.74 -14.38 46.74 -14.97Q47.73 -15.55 49.12 -15.85Q50.51 -16.14 52.19 -16.14Q53.76 -16.14 55.06 -15.85Q56.36 -15.55 57.32 -14.99Q58.28 -14.43 58.82 -13.61Q59.36 -12.8 59.36 -11.78Q59.36 -11.61 59.35 -11.45Q59.34 -11.29 59.33 -11.22H55.44V-11.39Q55.44 -12 55 -12.4Q54.56 -12.79 53.82 -13.01Q53.07 -13.22 52.08 -13.22Q51.54 -13.22 50.92 -13.14Q50.3 -13.06 49.77 -12.89Q49.23 -12.72 48.9 -12.44Q48.56 -12.16 48.56 -11.73Q48.56 -11.12 49.15 -10.79Q49.74 -10.46 50.73 -10.25Q51.71 -10.05 52.85 -9.81Q54.15 -9.55 55.4 -9.26Q56.64 -8.96 57.64 -8.47Q58.64 -7.98 59.23 -7.1Q59.82 -6.22 59.82 -4.78Q59.82 -3.36 59.27 -2.37Q58.71 -1.38 57.68 -0.78Q56.65 -0.18 55.2 0.09Q53.76 0.36 51.97 0.36ZM68.64 0.36Q67.04 0.36 66.08 -0.17Q65.13 -0.71 64.71 -1.72Q64.29 -2.74 64.29 -4.18V-12.69H61.85V-15.79H64.4L65.14 -20.31H68.18V-15.79H71.66V-12.69H68.18V-4.51Q68.18 -3.65 68.55 -3.19Q68.91 -2.74 69.93 -2.74H71.66V-0.13Q71.3 0 70.77 0.11Q70.23 0.22 69.66 0.29Q69.1 0.36 68.64 0.36ZM75.03 0V-15.79H78.92V0ZM74.39 -17.73 77.32 -21.7H81.61L81.62 -21.59L77.63 -17.73ZM86.35 5.69Q85.14 5.69 84.09 5.3Q83.03 4.91 82.39 4.08Q81.75 3.24 81.75 1.93Q81.75 0.69 82.54 -0.14Q83.34 -0.96 84.44 -1.37Q83.64 -1.79 83.2 -2.48Q82.77 -3.17 82.77 -4.06Q82.77 -5.23 83.6 -6.01Q84.43 -6.79 85.68 -7Q84.53 -7.68 83.89 -8.7Q83.26 -9.72 83.26 -10.97Q83.26 -12.69 84.16 -13.84Q85.05 -14.99 86.79 -15.57Q88.53 -16.15 91.03 -16.15Q92.02 -16.15 92.92 -16.04Q93.81 -15.93 94.57 -15.72Q95.81 -16.33 96.38 -17.11Q96.95 -17.89 97.04 -18.48H100.75Q100.74 -17.41 100.3 -16.6Q99.86 -15.79 99.07 -15.26Q98.29 -14.73 97.17 -14.47Q97.97 -13.84 98.4 -12.96Q98.82 -12.07 98.82 -10.97Q98.82 -9.31 97.99 -8.15Q97.17 -6.99 95.55 -6.39Q93.94 -5.79 91.56 -5.79H88.29Q87.55 -5.79 87.14 -5.5Q86.73 -5.21 86.73 -4.68Q86.73 -4.21 87.12 -3.89Q87.52 -3.56 88.3 -3.56H96.28Q98.3 -3.56 99.48 -2.33Q100.67 -1.1 100.67 0.81Q100.67 2.23 99.93 3.33Q99.18 4.43 97.91 5.06Q96.64 5.69 95 5.69ZM87.38 2.92H94.88Q95.41 2.92 95.83 2.73Q96.25 2.53 96.5 2.16Q96.75 1.78 96.75 1.3Q96.75 0.52 96.24 0.12Q95.73 -0.29 95.01 -0.29H87.45Q86.69 -0.29 86.18 0.13Q85.67 0.56 85.67 1.29Q85.67 2.02 86.15 2.47Q86.63 2.92 87.38 2.92ZM91.05 -8.5Q92.9 -8.5 93.92 -9.1Q94.94 -9.7 94.94 -10.97Q94.94 -12.25 93.92 -12.85Q92.9 -13.44 91.05 -13.44Q89.2 -13.44 88.18 -12.85Q87.16 -12.25 87.16 -10.97Q87.16 -10.1 87.62 -9.55Q88.07 -9 88.94 -8.75Q89.81 -8.5 91.05 -8.5ZM103.29 -18.3V-21.7H107.18V-18.3ZM103.29 0V-15.79H107.18V0ZM119.54 0.36Q116.74 0.36 114.79 -0.55Q112.84 -1.45 111.84 -3.29Q110.83 -5.13 110.83 -7.9Q110.83 -10.71 111.84 -12.53Q112.84 -14.36 114.79 -15.25Q116.74 -16.15 119.54 -16.15Q122.35 -16.15 124.29 -15.25Q126.23 -14.36 127.24 -12.53Q128.24 -10.71 128.24 -7.9Q128.24 -5.13 127.24 -3.29Q126.23 -1.45 124.29 -0.55Q122.35 0.36 119.54 0.36ZM119.54 -2.74Q121.09 -2.74 122.13 -3.3Q123.18 -3.85 123.7 -4.95Q124.22 -6.04 124.22 -7.65V-8.16Q124.22 -9.78 123.7 -10.87Q123.18 -11.96 122.13 -12.51Q121.09 -13.05 119.54 -13.05Q117.98 -13.05 116.94 -12.51Q115.89 -11.96 115.37 -10.87Q114.85 -9.78 114.85 -8.16V-7.65Q114.85 -6.04 115.37 -4.95Q115.89 -3.85 116.94 -3.3Q117.98 -2.74 119.54 -2.74Z"/>
+            </svg>
+          </a>
+          <p class="site-footer__frase">Toda ação deixa um <span class="ink">rastro.</span></p>
+          <p class="site-footer__desc">Investigação de golpes e crimes digitais, localização de pessoas e bens e apoio na recuperação de valores.</p>
+        </div>
+        <a class="btn btn--primary site-footer__cta" href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
+          <span class="wa-icon" data-icon="whatsapp"></span>
+          Falar no WhatsApp
+          <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+        </a>
+      </div>
+
+      <div class="site-footer__colunas">
+        <nav class="site-footer__col" aria-labelledby="rodape-navegacao" data-rodape-item>
+          <h2 class="site-footer__titulo" id="rodape-navegacao">Navegação</h2>
+          <ul role="list" class="site-footer__links">
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="../index.html#verificador">Isso é golpe?</a></li>
+            <li><a href="../index.html#como-funciona">Como funciona</a></li>
+            <li><a href="../index.html#sobre">Sobre</a></li>
+            <li><a href="../alertas.html">Alertas de golpes</a></li>
+            <li><a href="../index.html#duvidas">Dúvidas</a></li>
+            <li><a href="../index.html#contato">Contato</a></li>
+            <li><a href="../privacidade.html">Política de Privacidade</a></li>
+          </ul>
+        </nav>
+
+        <!-- Serviços: atalhos para as páginas da pasta servicos/ -->
+        <nav class="site-footer__col" aria-labelledby="rodape-servicos" data-rodape-item>
+          <h2 class="site-footer__titulo" id="rodape-servicos">Serviços</h2>
+          <ul role="list" class="site-footer__links">
+            <li><a href="../servicos/golpe-do-pix-falso.html">Golpe do Pix falso</a></li>
+            <li><a href="../servicos/golpes-no-whatsapp.html">Golpes no WhatsApp</a></li>
+            <li><a href="../servicos/golpe-do-amor.html">Golpe do amor</a></li>
+            <li><a href="../servicos/investigacao-no-instagram.html">Investigação no Instagram</a></li>
+            <li><a href="../servicos/localizacao-de-pessoas.html">Localização de pessoas</a></li>
+            <li><a href="../servicos/recuperacao-de-valores-pela-via-judicial.html">Recuperação de valores</a></li>
+            <li><a class="site-footer__mais" href="../index.html#servicos">Ver todos os serviços<span data-icon="arrow-right"></span></a></li>
+          </ul>
+        </nav>
+
+        <!-- Contato: e-mail, WhatsApp e horário vêm de js/config.js -->
+        <div class="site-footer__col site-footer__col--contato" data-rodape-item>
+          <h2 class="site-footer__titulo">Contato</h2>
+          <ul role="list" class="site-footer__contato">
+            <li><span class="site-footer__ico" data-icon="mail"></span><a href="mailto:contato.vestigioo@gmail.com" data-config="email" data-mailto>contato.vestigioo@<wbr>gmail.com</a></li>
+            <li><span class="site-footer__ico" data-icon="phone"></span><a href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener" data-config="whatsappFormatado">(81) 99218-3600</a></li>
+            <li><span class="site-footer__ico" data-icon="clock"></span><span data-config="horario">Segunda a sexta, das 9h às 18h</span></li>
+          </ul>
+          <a class="urgencia urgencia--compacta" href="https://wa.me/5581992183600" data-whatsapp data-msg-config="mensagemUrgente" target="_blank" rel="noopener" data-urgencia>
+            <span class="urgencia__sinal" aria-hidden="true"><span class="urgencia__anel" data-urgencia-anel></span><span class="urgencia__anel" data-urgencia-anel></span><span class="urgencia__nucleo"></span></span>
+            <span class="urgencia__texto"><strong>Casos urgentes</strong><span>Atendimento fora do horário pelo WhatsApp</span></span>
+            <span class="urgencia__seta" data-icon="arrow-up-right" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="site-footer__col site-footer__col--redes" data-rodape-item>
+          <h2 class="site-footer__titulo">Redes sociais</h2>
+          <a class="site-footer__social" href="https://www.instagram.com/vestigio.br/" target="_blank" rel="noopener">
+            <span class="site-footer__social-icone" data-icon="instagram" aria-hidden="true"></span>
+            <span class="site-footer__social-texto"><strong>Instagram</strong><span>@vestigio.br</span></span>
+            <span class="site-footer__social-seta" data-icon="arrow-up-right" aria-hidden="true"></span>
+          </a>
+          <p class="site-footer__nota">Alertas de golpes e dicas de proteção.</p>
+        </div>
+      </div>
+
+      <div class="site-footer__base" data-rodape-item>
+        <p class="site-footer__aviso">
+          As investigações são realizadas com fontes lícitas e dentro da legislação brasileira, incluindo a LGPD. Serviços jurídicos são prestados por advogado(s) parceiro(s) inscrito(s) na OAB. Os resultados dependem das particularidades de cada caso e não são garantidos.
+        </p>
+        <div class="site-footer__fim">
+          <p>© <span data-year>2026</span> Vestígio. Todos os direitos reservados.</p>
+          <a href="../privacidade.html">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp (aparece depois de rolar um pouco).
+       Ao tocar, abre duas opções: "Falar no WhatsApp" e "Caí em um golpe agora"
+       (js/navegacao.js, parte 4). -->
+  <button class="wa-float" type="button" data-wa-float aria-label="Fale conosco: WhatsApp ou ajuda urgente">
+    <span class="wa-icon" data-icon="whatsapp"></span>
+    <span class="wa-float__label" aria-hidden="true">Fale conosco</span>
+  </button>
+
+  <!-- ===== SCRIPTS (os mesmos do site, na mesma ordem) ===== -->
+  <script src="../js/vendor/motion.js"></script>
+  <script src="../js/vendor/lenis.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/services.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/alertas.js"></script>
+  <script src="../js/alertas-tela.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/interacoes.js"></script>
+  <script src="../js/navegacao.js"></script>
+  <script src="../js/primeiros-30-minutos.js"></script>
+  <script src="../js/montador-whatsapp.js"></script>
+  <script src="../js/destaques.js"></script>
+  <script src="../js/textura-fundo.js"></script>
+  <script src="../js/textura-mesa.js"></script>
+</body>
+</html>
