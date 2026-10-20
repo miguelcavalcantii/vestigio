@@ -1,0 +1,404 @@
+/* =========================================================
+   FORMULÁRIO DE CONTATO POR E-MAIL + BOTÃO "COPIAR"
+   ---------------------------------------------------------
+   1. Seção #contato em duas colunas (canais | formulário)
+   2. Formulário: campos, aviso, erro e botão "Enviar"
+   3. Card "Mensagem enviada" e o check que se desenha
+   4. Botão "Copiar" ao lado do e-mail (rodapé e contato)
+   5. Página obrigado.html (quem está sem JavaScript)
+   O comportamento fica em js/contato.js.
+   ========================================================= */
+
+/* ---------- 1. SEÇÃO EM DUAS COLUNAS ---------- */
+.contact__grid {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+}
+
+.contact__grid .contact__list { margin-top: 0; }
+
+@media (min-width: 1024px) {
+  .contact__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+    align-items: start;
+  }
+
+  /* Na coluna da esquerda a lista volta para 2 colunas */
+  .contact__grid .contact__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- 2. FORMULÁRIO ---------- */
+.contato-form {
+  --radius-shell: 30px;
+}
+
+.contato-form__core {
+  position: relative;
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+
+.contato-form__topo {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.contato-form__selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  color: var(--accent-ink);
+}
+
+.contato-form__titulo {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--fs-lg);
+}
+
+.contato-form__titulo:focus { outline: none; }
+
+.contato-form__lead {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  max-width: 46ch;
+}
+
+.contato-form__campos {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .contato-form__campos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .campo--largo { grid-column: 1 / -1; }
+}
+
+.campo {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+}
+
+.campo__rotulo {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) ease;
+}
+
+.campo:focus-within .campo__rotulo { color: var(--accent-ink); }
+
+.campo__entrada {
+  display: block;
+  width: 100%;
+  min-height: 3.25rem;           /* fácil de tocar */
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.03);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;               /* 16px: o iPhone não dá zoom no campo */
+  line-height: 1.45;
+  caret-color: var(--accent-ink);
+  -webkit-appearance: none;
+  appearance: none;
+  transition:
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-fast) ease;
+}
+
+.campo__entrada::placeholder { color: var(--text-faint); }
+
+@media (hover: hover) and (pointer: fine) {
+  .campo__entrada:hover { border-color: rgba(var(--teal-rgb), 0.45); }
+}
+
+.campo__entrada:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  background: rgba(var(--ink-rgb), 0.045);
+  box-shadow: 0 0 0 4px rgba(var(--teal-rgb), 0.16);
+}
+
+textarea.campo__entrada {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+/* Lista de assuntos com a setinha do site no lugar da do sistema */
+.campo__seletor { position: relative; }
+
+.campo__seletor .campo__entrada {
+  padding-right: 2.75rem;
+  cursor: pointer;
+}
+
+.campo__seletor .campo__entrada:invalid { color: var(--text-faint); }   /* "Escolha um assunto" */
+.campo__entrada option { background: var(--surface); color: var(--text); }
+
+.campo__seta {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  color: var(--text-faint);
+  pointer-events: none;
+}
+
+/* Campo com erro: borda e rótulo em coral (no foco, o ciano volta) */
+.campo__entrada[aria-invalid='true'] { border-color: var(--erro); }
+.campo__entrada[aria-invalid='true']:focus { box-shadow: 0 0 0 4px rgba(var(--erro-rgb), 0.16); }
+.campo:has([aria-invalid='true']) .campo__rotulo { color: var(--erro); }
+
+.campo__erro {
+  margin: 0;
+  color: var(--erro);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+}
+
+.campo__erro[hidden] { display: none; }
+
+.contato-form__aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: var(--space-5) 0 var(--space-4);
+  color: var(--text-faint);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.contato-form__aviso > [data-icon] {
+  margin-top: 0.15em;
+  color: var(--accent-2);
+}
+
+/* Falha no envio: sóbrio, sem vermelho gritando */
+.contato-form__falha {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0 0 var(--space-4);
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--erro-rgb), 0.35);
+  background: rgba(var(--erro-rgb), 0.08);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.contato-form__falha[hidden] { display: none; }
+.contato-form__falha > [data-icon] { margin-top: 0.15em; color: var(--erro); }
+
+.contato-form__enviar { width: 100%; }
+
+@media (min-width: 640px) {
+  .contato-form__enviar { width: auto; min-width: 15rem; }
+}
+
+.contato-form__enviar[disabled] { cursor: progress; }
+
+/* "Enviando…": o aviãozinho dá lugar a um spinner na bolinha */
+.contato-form__spinner {
+  display: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: contato-girar 0.7s linear infinite;
+}
+
+.contato-form__enviar.is-enviando .contato-form__spinner { display: block; }
+.contato-form__enviar.is-enviando .contato-form__icone-enviar { display: none; }
+
+@keyframes contato-girar {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- 3. CARD "MENSAGEM ENVIADA" ---------- */
+.contato-sucesso {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+}
+
+.contato-sucesso[hidden] { display: none; }
+
+.contato-sucesso__titulo {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--fs-lg);
+}
+
+.contato-sucesso__titulo:focus { outline: none; }   /* recebe o foco só para o leitor de tela */
+
+.contato-sucesso__texto {
+  margin: 0;
+  color: var(--text-body);
+  max-width: 44ch;
+}
+
+.contato-sucesso__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-2);
+}
+
+.contato-sucesso__outra {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-ink);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--teal-rgb), 0.45);
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+  transition: text-decoration-color var(--dur-fast) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contato-sucesso__outra:hover { text-decoration-color: currentColor; }
+}
+
+/* Check em círculo: o traço do círculo e depois o do check se desenham.
+   pathLength="1" no SVG: o tamanho de cada traço vale 1. */
+.check-desenho {
+  width: 3.5rem;
+  height: 3.5rem;
+  fill: none;
+  stroke: var(--accent-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.check-desenho__circulo {
+  stroke-width: 2;
+  stroke-dasharray: 1 1;
+  transform: rotate(-90deg);     /* começa a desenhar do topo */
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.check-desenho__traco {
+  stroke-width: 2.75;
+  stroke-dasharray: 1 1;
+}
+
+/* Sem JavaScript (obrigado.html): o CSS desenha sozinho */
+.check-desenho--auto .check-desenho__circulo { animation: check-desenhar 0.6s var(--ease-out) 0.15s both; }
+.check-desenho--auto .check-desenho__traco { animation: check-desenhar 0.4s var(--ease-out) 0.65s both; }
+
+@keyframes check-desenhar {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- 4. BOTÃO "COPIAR" ---------- */
+.email-copiavel {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  min-width: 0;
+}
+
+.copiar-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 1.875rem;
+  padding: 0 0.7rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.03);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease,
+    transform var(--dur-press) var(--ease-out);
+}
+
+.copiar-email:active { transform: scale(0.96); }
+
+@media (hover: hover) and (pointer: fine) {
+  .copiar-email:hover { color: var(--text); border-color: rgba(var(--teal-rgb), 0.55); }
+}
+
+/* No celular, área de toque maior */
+@media (pointer: coarse) {
+  .copiar-email { min-height: 2.25rem; padding: 0 0.85rem; }
+}
+
+.copiar-email.is-copiado {
+  color: var(--accent-ink);
+  border-color: rgba(var(--teal-rgb), 0.55);
+  background: rgba(var(--teal-rgb), 0.1);
+}
+
+/* Os dois ícones ocupam o mesmo lugar: "copiar" sai, "check" entra */
+.copiar-email__icones {
+  display: inline-grid;
+  width: 1em;
+  height: 1em;
+}
+
+.copiar-email__icones > * {
+  grid-area: 1 / 1;
+  transition:
+    opacity var(--dur-fast) ease,
+    transform var(--dur-base) var(--ease-elastic);
+}
+
+.copiar-email__icones .icon { width: 1em; height: 1em; }
+.copiar-email__ok { opacity: 0; transform: scale(0.4); }
+.copiar-email__ok .icon { stroke-width: 2.25; }
+.copiar-email.is-copiado .copiar-email__copiar { opacity: 0; transform: scale(0.4); }
+.copiar-email.is-copiado .copiar-email__ok { opacity: 1; transform: scale(1); }
+
+/* ---------- 5. PÁGINA OBRIGADO (sem JavaScript) ---------- */
+.obrigado-page {
+  display: grid;
+  min-height: 78vh;
+  min-height: 78svh;
+  align-items: center;
+  padding-block: calc(var(--header-h) + var(--space-7)) var(--space-9);
+}
+
+.obrigado-page .contato-form { max-width: 36rem; margin-inline: auto; }
+.obrigado-page .contato-sucesso { padding-block: var(--space-4); }
+.obrigado-page .contato-sucesso__titulo { font-size: var(--fs-xl); }
+
+/* ---------- MOVIMENTO REDUZIDO ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .contato-form__spinner { animation-duration: 2s; }
+  .check-desenho--auto .check-desenho__circulo,
+  .check-desenho--auto .check-desenho__traco { animation: none; }
+  .copiar-email__icones > * { transition: opacity var(--dur-fast) ease; transform: none !important; }
+}

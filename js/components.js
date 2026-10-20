@@ -138,10 +138,6 @@
       }
     });
 
-    $$('[data-mailto]').forEach(function (link) {
-      link.href = 'mailto:' + CONFIG.email;
-    });
-
     // Ano atual no rodapé
     $$('[data-year]').forEach(function (el) {
       el.textContent = new Date().getFullYear();

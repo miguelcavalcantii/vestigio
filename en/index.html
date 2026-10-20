@@ -103,6 +103,7 @@
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/sections.css">
   <link rel="stylesheet" href="../css/ferramentas.css">
+  <link rel="stylesheet" href="../css/contato.css">
   <!-- Textura animada do fundo (para desligar: texturaFundo em js/config.js) -->
   <link rel="stylesheet" href="../css/textura-fundo.css">
   <!-- Textura "mesa de análise" (Como o golpe acontece, Sobre e bloco final) -->
@@ -1085,6 +1086,11 @@
           </div>
         </div>
 
+        <!-- Contato em duas colunas: à esquerda os canais (WhatsApp é o
+             principal); à direita o formulário por e-mail. No celular, o
+             formulário fica abaixo. -->
+        <div class="contact__grid">
+        <div class="contact__info">
         <dl class="contact__list" data-reveal-group>
           <div class="contact__item" data-reveal-item>
             <dt><span data-icon="phone"></span>WhatsApp</dt>
@@ -1092,7 +1098,7 @@
           </div>
           <div class="contact__item" data-reveal-item>
             <dt><span data-icon="mail"></span>Email</dt>
-            <dd><a href="mailto:contato@vestigio.app.br" data-config="email" data-mailto>contato@<wbr>vestigio.app.br</a></dd>
+            <dd class="email-copiavel"><a href="#formulario-contato" data-config="email">contato@<wbr>vestigio.app.br</a><button class="copiar-email" type="button" data-copiar-email aria-label="Copy email address"><span class="copiar-email__icones" aria-hidden="true"><span class="copiar-email__copiar" data-icon="copy"></span><span class="copiar-email__ok" data-icon="check"></span></span><span class="copiar-email__texto" data-copiar-texto>Copy</span></button></dd>
           </div>
           <div class="contact__item" data-reveal-item>
             <dt><span data-icon="clock"></span>Hours</dt>
@@ -1118,6 +1124,95 @@
             Message us on WhatsApp
             <span class="urgencia__seta" data-icon="arrow-up-right"></span>
           </a>
+        </div>
+        </div>
+
+        <!-- FORMULÁRIO DE CONTATO POR E-MAIL (Web3Forms)
+             Sem JavaScript: o navegador envia direto e o Web3Forms leva
+             a pessoa para obrigado.html (campo "redirect").
+             Com JavaScript (js/contato.js): envia sem sair da página e
+             mostra o card "Mensagem enviada". Estilo: css/contato.css. -->
+        <div class="contato-form bezel" id="formulario-contato" data-reveal>
+          <div class="bezel__core contato-form__core" data-contato-palco>
+            <form class="contato-form__form" action="https://api.web3forms.com/submit" method="POST" data-contato-form aria-labelledby="contato-form-titulo">
+              <div class="contato-form__topo">
+                <p class="contato-form__selo mono"><span data-icon="mail"></span>Email alternative</p>
+                <h3 class="contato-form__titulo" id="contato-form-titulo" tabindex="-1">Prefer email?</h3>
+                <p class="contato-form__lead">Write to us here and we’ll reply by email. For a faster response, use WhatsApp.</p>
+              </div>
+
+              <input type="hidden" name="access_key" value="514d9597-b932-4c1e-9308-9254fba0e564">
+              <input type="hidden" name="subject" value="Novo contato pelo site da Vestígio">
+              <input type="hidden" name="from_name" value="Site Vestígio">
+              <input type="hidden" name="redirect" value="https://www.vestigio.app.br/en/thanks.html">
+              <input type="checkbox" name="botcheck" class="contato-form__isca" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none;">
+
+              <div class="contato-form__campos">
+                <div class="campo" data-campo>
+                  <label class="campo__rotulo" for="cf-nome">Name</label>
+                  <input class="campo__entrada" id="cf-nome" type="text" name="nome" autocomplete="name" required aria-describedby="cf-nome-erro">
+                  <p class="campo__erro" id="cf-nome-erro" data-campo-erro hidden></p>
+                </div>
+                <div class="campo" data-campo>
+                  <label class="campo__rotulo" for="cf-email">Email</label>
+                  <input class="campo__entrada" id="cf-email" type="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="cf-email-erro">
+                  <p class="campo__erro" id="cf-email-erro" data-campo-erro hidden></p>
+                </div>
+                <div class="campo campo--largo" data-campo>
+                  <label class="campo__rotulo" for="cf-assunto">Subject</label>
+                  <div class="campo__seletor">
+                    <select class="campo__entrada" id="cf-assunto" name="assunto" required aria-describedby="cf-assunto-erro">
+                      <option value="" selected disabled>Choose a subject</option>
+                      <option value="Golpe digital">Online scam</option>
+                      <option value="Localização de pessoas ou bens">Locating people or assets</option>
+                      <option value="Redes sociais">Social media</option>
+                      <option value="Outro assunto">Something else</option>
+                    </select>
+                    <span class="campo__seta" data-icon="chevron-down" aria-hidden="true"></span>
+                  </div>
+                  <p class="campo__erro" id="cf-assunto-erro" data-campo-erro hidden></p>
+                </div>
+                <div class="campo campo--largo" data-campo>
+                  <label class="campo__rotulo" for="cf-mensagem">Message</label>
+                  <textarea class="campo__entrada" id="cf-mensagem" name="mensagem" rows="5" placeholder="Briefly tell us what happened." required aria-describedby="cf-mensagem-erro"></textarea>
+                  <p class="campo__erro" id="cf-mensagem-erro" data-campo-erro hidden></p>
+                </div>
+              </div>
+
+              <p class="contato-form__aviso"><span data-icon="lock"></span><span>Do not send passwords, codes or documents here. After the first contact, we’ll agree on a secure channel.</span></p>
+
+              <p class="contato-form__falha" data-contato-falha hidden><span data-icon="triangle-alert"></span><span>We couldn’t send your message right now. Please try again or reach us on WhatsApp.</span></p>
+
+              <button class="btn btn--primary btn--lg contato-form__enviar" type="submit" data-contato-enviar>
+                <span class="contato-form__rotulo" data-contato-rotulo>Send message</span>
+                <span class="btn__orb" aria-hidden="true">
+                  <span class="contato-form__icone-enviar" data-icon="send"></span>
+                  <span class="contato-form__spinner"></span>
+                </span>
+              </button>
+            </form>
+
+            <!-- Card que entra no lugar do formulário depois do envio -->
+            <div class="contato-sucesso" data-contato-sucesso hidden>
+              <svg class="check-desenho" viewBox="0 0 52 52" aria-hidden="true" focusable="false" data-check-desenho>
+                <circle class="check-desenho__circulo" cx="26" cy="26" r="24" pathLength="1"></circle>
+                <path class="check-desenho__traco" d="M15.5 27.5l7 7 14-15" pathLength="1"></path>
+              </svg>
+              <h3 class="contato-sucesso__titulo" tabindex="-1" data-contato-sucesso-titulo>Message sent</h3>
+              <p class="contato-sucesso__texto">We’ve received your message and will reply within 1 business day. If it’s urgent, message us on WhatsApp.</p>
+              <div class="contato-sucesso__acoes">
+                <a class="btn btn--ghost" href="https://wa.me/5581992183600" data-whatsapp target="_blank" rel="noopener">
+                  <span class="wa-icon" data-icon="whatsapp"></span>
+                  Message us on WhatsApp
+                </a>
+                <button class="contato-sucesso__outra" type="button" data-contato-outra><span data-icon="rotate-ccw"></span>Send another message</button>
+              </div>
+            </div>
+
+            <!-- Leitores de tela anunciam "Enviando", sucesso e erro -->
+            <p class="sr-only" aria-live="polite" data-contato-status></p>
+          </div>
+        </div>
         </div>
       </div>
     </section>
@@ -1187,7 +1282,7 @@
         <div class="site-footer__col site-footer__col--contato" data-rodape-item>
           <h2 class="site-footer__titulo">Contact</h2>
           <ul role="list" class="site-footer__contato">
-            <li><span class="site-footer__ico" data-icon="mail"></span><a href="mailto:contato@vestigio.app.br" data-config="email" data-mailto>contato@<wbr>vestigio.app.br</a></li>
+            <li><span class="site-footer__ico" data-icon="mail"></span><span class="email-copiavel"><a href="#formulario-contato" data-config="email">contato@<wbr>vestigio.app.br</a><button class="copiar-email copiar-email--compacto" type="button" data-copiar-email aria-label="Copy email address"><span class="copiar-email__icones" aria-hidden="true"><span class="copiar-email__copiar" data-icon="copy"></span><span class="copiar-email__ok" data-icon="check"></span></span><span class="copiar-email__texto" data-copiar-texto>Copy</span></button></span></li>
             <li><span class="site-footer__ico" data-icon="phone"></span><a href="#contato" data-whatsapp data-montador target="_blank" rel="noopener" data-config="whatsappFormatado">(81) 99218-3600</a></li>
             <li><span class="site-footer__ico" data-icon="clock"></span><span data-config="horario">Monday to Friday, 9 a.m. to 6 p.m. (Brasília time)</span></li>
             <li class="status" data-status hidden></li>
@@ -1282,6 +1377,7 @@
       17. atendimento.js  indicador "Atendendo agora" (horário de Recife)
       18. caminho-das-provas.js  linha "Você → Vestígio → Polícia e Justiça"
       19. seletores.js  seletores de idioma (Português / English) e de tema (claro / escuro)
+      20. contato.js    formulário de contato por e-mail e botão "Copiar" do e-mail
       Nas páginas em inglês (pasta en/), js/en/textos.js vem antes do config.js. -->
   <script src="../js/vendor/motion.js"></script>
   <script src="../js/vendor/lenis.min.js"></script>
@@ -1306,5 +1402,6 @@
   <script src="../js/atendimento.js"></script>
   <script src="../js/caminho-das-provas.js"></script>
   <script src="../js/seletores.js"></script>
+  <script src="../js/contato.js"></script>
 </body>
 </html>

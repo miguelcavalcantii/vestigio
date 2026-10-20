@@ -27,6 +27,7 @@ var SAIDA = path.join(PASTA, 'publicar');
 var ITENS = [
   'index.html',
   'privacidade.html',
+  'obrigado.html',   // depois do formulário de contato (só para quem está sem JavaScript)
   'alertas.html',
   '404.html',
   'robots.txt',

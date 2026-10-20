@@ -6,7 +6,7 @@ mude o dicionário e rode o gerador de novo:
 - textos dos scripts e dos dados (serviços, alertas, verificador, painéis): `js/en/textos.js`
 - textos das páginas (página inicial, modelos, política de privacidade): `ferramentas/traducoes/paginas-en.js`
 
-Total: 891 frases.
+Total: 926 frases.
 
 | Português | English |
 | --- | --- |
@@ -488,6 +488,20 @@ Total: 891 frases.
 | Atendendo agora | Available now |
 | Fora do horário | Outside business hours |
 | Urgente? Chame no WhatsApp | Urgent? Message us on WhatsApp |
+| Copiar | Copy |
+| Copiado! | Copied! |
+| Copiar e-mail | Copy email address |
+| E-mail copiado | Email address copied |
+| Informe o seu nome. | Please enter your name. |
+| Informe o seu e-mail. | Please enter your email address. |
+| Escolha um assunto. | Please choose a subject. |
+| Escreva a sua mensagem. | Please write your message. |
+| Digite um e-mail válido, como nome@exemplo.com. | Enter a valid email address, such as name@example.com. |
+| Enviando… | Sending… |
+| Enviando a sua mensagem… | Sending your message… |
+| Enviar mensagem | Send message |
+| Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp. | We couldn’t send your message right now. Please try again or reach us on WhatsApp. |
+| Mensagem enviada. Respondemos em até 1 dia útil. | Message sent. We reply within 1 business day. |
 | Vestígio \| Investigação Digital e Detetive Particular em Recife | Vestígio \| Digital Investigation and Private Detective in Recife, Brazil |
 | Investigação digital e detetive particular em Recife: golpes digitais, localização de pessoas e bens e apoio na recuperação de valores. Atendimento sigiloso pelo WhatsApp, em todo o Brasil. | Digital investigation and private detective services in Recife, Brazil: online scams, locating people and assets, and support in recovering money. Confidential service on WhatsApp, across Brazil. |
 | Vestígio \| Investigação Digital | Vestígio \| Digital Investigation |
@@ -720,6 +734,7 @@ Total: 891 frases.
 | Voltar ao site | Back to the site |
 | Última atualização: | Last updated: |
 | 17 de outubro de 2026 | October 17, 2026 |
+| 20 de outubro de 2026 | October 20, 2026 |
 | Vestígio — Investigação Digital | Vestígio — Digital Investigation |
 | Esta Política de Privacidade explica, de forma clara, quais dados pessoais a Vestígio trata, para quais finalidades, com quem eles podem ser compartilhados, por quanto tempo são guardados e quais são os seus direitos. Ela foi elaborada em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018), com o Marco Civil da Internet (Lei nº 12.965/2014) e com a Lei nº 13.432/2017, que regula a atividade de investigação particular. | This Privacy Policy explains clearly what personal data Vestígio processes, for what purposes, with whom it may be shared, how long it is kept and what your rights are. It was drafted in accordance with Brazil’s General Data Protection Law (LGPD — Lei nº 13.709/2018), the Brazilian Internet Civil Rights Framework (Marco Civil da Internet — Lei nº 12.965/2014) and Lei nº 13.432/2017, which regulates private investigation in Brazil. |
 | Ao navegar neste site ou entrar em contato com a Vestígio, você declara estar ciente das práticas descritas abaixo. | By browsing this site or contacting Vestígio, you acknowledge that you are aware of the practices described below. |
@@ -874,7 +889,7 @@ Total: 891 frases.
 | a tratamentos realizados em desacordo com a lei. | to processing carried out in breach of the law. |
 | Alguns pedidos podem ser limitados quando houver obrigação legal de guarda, necessidade de exercício regular de direitos ou dever de sigilo em relação a terceiros e ao cliente contratante. | Some requests may be limited when there is a legal obligation to retain data, a need for the regular exercise of rights or a duty of confidentiality toward third parties and the client. |
 | Envie sua solicitação para | Send your request to |
-| , informando o seu nome e o que deseja. Para proteger os seus dados, poderemos pedir informações que confirmem a sua identidade antes de atender ao pedido. | , stating your name and what you would like. To protect your data, we may ask for information that confirms your identity before fulfilling the request. |
+| (pelo formulário de contato do site), informando o seu nome e o que deseja. Para proteger os seus dados, poderemos pedir informações que confirmem a sua identidade antes de atender ao pedido. | (through the contact form on the website), stating your name and what you would like. To protect your data, we may ask for information that confirms your identity before fulfilling the request. |
 | Respondemos às solicitações no prazo de até | We respond to requests within |
 | 15 dias | 15 days |
 | , conforme a LGPD. Se não ficar satisfeito com a resposta, você também pode apresentar reclamação à | , in accordance with the LGPD. If you are not satisfied with the response, you can also file a complaint with the |
@@ -901,3 +916,23 @@ Total: 891 frases.
 | Veja como funciona e como se proteger. | See how it works and how to protect yourself. |
 | Alertas Vestígio | Vestígio Alerts |
 | Vestígio Investigação Digital | Vestígio Digital Investigation |
+| Formulário de contato: | Contact form: |
+| as mensagens enviadas pelo formulário de contato do site são entregues por meio do serviço | messages sent through the website’s contact form are delivered by the |
+| Web3Forms | Web3Forms |
+| até o e-mail da Vestígio. Esses dados (nome, e-mail, assunto e mensagem) são usados apenas para responder ao seu contato, conforme a LGPD. | service to Vestígio’s email address. This data (name, email, subject and message) is used only to reply to you, in accordance with the LGPD (Brazil’s General Data Protection Law). |
+| Mensagem enviada \| Vestígio Investigação Digital | Message sent \| Vestígio Digital Investigation |
+| Recebemos o seu contato e respondemos em até 1 dia útil. | We’ve received your message and will reply within 1 business day. |
+| Mensagem enviada | Message sent |
+| Recebemos o seu contato e respondemos em até 1 dia útil. Se for urgente, chame no WhatsApp. | We’ve received your message and will reply within 1 business day. If it’s urgent, message us on WhatsApp. |
+| Alternativa por e-mail | Email alternative |
+| Prefere e-mail? | Prefer email? |
+| Escreva aqui e respondemos no seu e-mail. Para um retorno mais rápido, use o WhatsApp. | Write to us here and we’ll reply by email. For a faster response, use WhatsApp. |
+| Nome | Name |
+| Assunto | Subject |
+| Escolha um assunto | Choose a subject |
+| Golpe digital | Online scam |
+| Localização de pessoas ou bens | Locating people or assets |
+| Outro assunto | Something else |
+| Conte resumidamente o que aconteceu. | Briefly tell us what happened. |
+| Não envie senhas, códigos ou documentos por aqui. Depois do primeiro contato, combinamos um canal seguro. | Do not send passwords, codes or documents here. After the first contact, we’ll agree on a secure channel. |
+| Enviar outra mensagem | Send another message |

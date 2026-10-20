@@ -177,6 +177,10 @@
   /* Ponto do indicador "Atendendo agora" (js/atendimento.js) */
   --status-on: #3DDC84;    /* dentro do horário */
   --status-off: #E3A94A;   /* fora do horário (âmbar, sem alarme) */
+
+  /* Erros do formulário de contato (css/contato.css): coral sóbrio, sem alarme */
+  --erro: #F0A39A;
+  --erro-rgb: 240, 163, 154;
 }
 
 @media (min-width: 640px) {
@@ -326,4 +330,7 @@
 
   --status-on: #1B8A4E;
   --status-off: #B87714;
+
+  --erro: #A8382C;          /* erros do formulário de contato, 5,9:1 sobre branco */
+  --erro-rgb: 168, 56, 44;
 }

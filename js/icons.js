@@ -33,6 +33,8 @@ var ICONS = {
   'arrow-right': '<path d="M5 12h14" /><path d="m12 5 7 7-7 7" />',
   'arrow-up-right': '<path d="M7 7h10v10" /><path d="M7 17 17 7" />',
   'check': '<path d="M20 6 9 17l-5-5" />',
+  'send': '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /><path d="m21.854 2.147-10.94 10.939" />',
+  'copy': '<rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />',
   'chevron-down': '<path d="m6 9 6 6 6-6" />',
   'menu': '<path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" />',
   'mail': '<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" />',

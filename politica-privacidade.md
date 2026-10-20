@@ -1,7 +1,7 @@
 # Política de Privacidade
 
 **Vestígio — Investigação Digital**
-Última atualização: 17 de outubro de 2026
+Última atualização: 20 de outubro de 2026
 
 Esta Política de Privacidade explica, de forma clara, quais dados pessoais a Vestígio trata, para quais finalidades, com quem eles podem ser compartilhados, por quanto tempo são guardados e quais são os seus direitos. Ela foi elaborada em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018), com o Marco Civil da Internet (Lei nº 12.965/2014) e com a Lei nº 13.432/2017, que regula a atividade de investigação particular.
 
@@ -91,6 +91,8 @@ A Vestígio **não vende, aluga ou comercializa dados pessoais**. O compartilham
 - **Advogados do cliente ou parceiros jurídicos**, quando autorizado pelo cliente ou necessário para o caso;
 - **Autoridades públicas**, como polícia, Ministério Público e Poder Judiciário, mediante requisição legal, ordem judicial ou quando o próprio cliente decidir utilizar o relatório para registrar ocorrência ou instruir processo;
 - **Defesa de direitos**, quando necessário para proteger a Vestígio em processos judiciais, administrativos ou arbitrais.
+
+**Formulário de contato:** as mensagens enviadas pelo formulário de contato do site são entregues por meio do serviço **Web3Forms** até o e-mail da Vestígio. Esses dados (nome, e-mail, assunto e mensagem) são usados apenas para responder ao seu contato, conforme a LGPD.
 
 Os relatórios de investigação são entregues **exclusivamente ao cliente contratante** ou a quem ele indicar formalmente.
 

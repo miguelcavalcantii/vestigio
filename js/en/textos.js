@@ -601,5 +601,21 @@ var TEXTOS_EN = {
   'Pausar a troca de serviços': 'Pause the service carousel',
   'Atendendo agora': 'Available now',
   'Fora do horário': 'Outside business hours',
-  'Urgente? Chame no WhatsApp': 'Urgent? Message us on WhatsApp'
+  'Urgente? Chame no WhatsApp': 'Urgent? Message us on WhatsApp',
+
+  /* ---------- Formulário de contato e botão "Copiar" (js/contato.js) ---------- */
+  'Copiar': 'Copy',
+  'Copiado!': 'Copied!',
+  'Copiar e-mail': 'Copy email address',
+  'E-mail copiado': 'Email address copied',
+  'Informe o seu nome.': 'Please enter your name.',
+  'Informe o seu e-mail.': 'Please enter your email address.',
+  'Escolha um assunto.': 'Please choose a subject.',
+  'Escreva a sua mensagem.': 'Please write your message.',
+  'Digite um e-mail válido, como nome@exemplo.com.': 'Enter a valid email address, such as name@example.com.',
+  'Enviando…': 'Sending…',
+  'Enviando a sua mensagem…': 'Sending your message…',
+  'Enviar mensagem': 'Send message',
+  'Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp.': 'We couldn’t send your message right now. Please try again or reach us on WhatsApp.',
+  'Mensagem enviada. Respondemos em até 1 dia útil.': 'Message sent. We reply within 1 business day.'
 };

@@ -15,6 +15,7 @@
         alertas.html                      lista de alertas
         alertas/<id-do-alerta>.html       uma página por alerta
         privacidade.html                  política de privacidade
+        obrigado.html                     "Mensagem enviada" (formulário sem JavaScript)
    5. Cria (ou atualiza) as mesmas páginas em INGLÊS, na pasta en/:
         en/index.html (a partir do index.html), en/services/...,
         en/alerts.html, en/alerts/..., en/privacy.html e en/404.html
@@ -136,13 +137,13 @@ var tradutorEn = criarTradutor(DICIONARIO_EN);
 var IDIOMAS = {
   pt: {
     codigo: 'pt', lang: 'pt-BR', ogLocale: 'pt_BR', pasta: '', dados: DADOS_PT,
-    nomes: { servicos: 'servicos/', alertas: 'alertas/', listaAlertas: 'alertas.html', privacidade: 'privacidade.html' },
+    nomes: { servicos: 'servicos/', alertas: 'alertas/', listaAlertas: 'alertas.html', privacidade: 'privacidade.html', obrigado: 'obrigado.html' },
     t: function (texto) { return texto; },        // rótulos do gerador
     html: function (codigo) { return codigo; }     // textos dos modelos
   },
   en: {
     codigo: 'en', lang: 'en', ogLocale: 'en_US', pasta: 'en/', dados: DADOS_EN,
-    nomes: { servicos: 'services/', alertas: 'alerts/', listaAlertas: 'alerts.html', privacidade: 'privacy.html' },
+    nomes: { servicos: 'services/', alertas: 'alerts/', listaAlertas: 'alerts.html', privacidade: 'privacy.html', obrigado: 'thanks.html' },
     t: tradutorEn.texto,
     html: tradutorEn.html
   }
@@ -150,7 +151,7 @@ var IDIOMAS = {
 
 /* Caminhos equivalentes: página em português → página em inglês
    (relativos à pasta de cada idioma) */
-var CAMINHO_EN = { 'index.html': 'index.html', 'alertas.html': 'alerts.html', 'privacidade.html': 'privacy.html' };
+var CAMINHO_EN = { 'index.html': 'index.html', 'alertas.html': 'alerts.html', 'privacidade.html': 'privacy.html', 'obrigado.html': 'thanks.html' };
 DADOS_PT.SERVICOS.forEach(function (servico) {
   var ingles = DADOS_EN.SERVICOS.filter(function (s) { return s.id === servico.id; })[0];
   CAMINHO_EN['servicos/' + DADOS_PT.paginaDoServico(servico)] = 'services/' + DADOS_EN.paginaDoServico(ingles);
@@ -595,6 +596,28 @@ function paginaDePrivacidade(idioma) {
 }
 
 /* =========================================================
+   7b. "MENSAGEM ENVIADA" (obrigado.html)
+   Para onde o Web3Forms leva quem envia o formulário de contato
+   com o JavaScript desligado. Não entra no Google (noindex) nem
+   no sitemap. O texto fica em ferramentas/modelos/obrigado.html.
+   ========================================================= */
+function paginaDeObrigado(idioma) {
+  var url = urlDe(idioma.pasta + idioma.nomes.obrigado);
+  var html = montarPagina(idioma, {
+    raiz: '',
+    caminho: 'obrigado.html',
+    titulo: idioma.t('Mensagem enviada | Vestígio Investigação Digital'),
+    descricao: idioma.t('Recebemos o seu contato e respondemos em até 1 dia útil.'),
+    url: url,
+    classe: 'pagina--obrigado',
+    jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: idioma.t('Mensagem enviada'), url: url, inLanguage: idioma.lang, publisher: organizacao(idioma) },
+    conteudo: idioma.html(lerModelo('obrigado.html').replace(/\s+$/, ''))
+  });
+  return trocar(html, '  <meta name="viewport" content="width=device-width, initial-scale=1">\n',
+    '  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <meta name="robots" content="noindex">\n');
+}
+
+/* =========================================================
    8. PÁGINA INICIAL E 404 EM INGLÊS (a partir do index.html e do 404.html)
    ========================================================= */
 var AVISO_GERADO = '<!-- ARQUIVO GERADO por ferramentas/gerar-paginas.js a partir do index.html e de\n' +
@@ -611,6 +634,8 @@ function paginaInicialEn() {
   html = trocar(html, '<meta property="og:locale" content="pt_BR">', '<meta property="og:locale" content="en_US">');
   html = trocar(html, '<meta property="og:url" content="' + DOMINIO + '/">', '<meta property="og:url" content="' + DOMINIO + '/en/">');
   html = trocar(html, '"areaServed": { "@type": "Country", "name": "Brasil" }', '"areaServed": { "@type": "Country", "name": "Brazil" }');
+  // Formulário de contato sem JavaScript: volta para a página "obrigado" em inglês
+  html = trocar(html, 'name="redirect" value="https://www.vestigio.app.br/obrigado.html"', 'name="redirect" value="https://www.vestigio.app.br/en/thanks.html"');
   // Links: arquivos do site sobem uma pasta; páginas trocam de nome
   html = html.replace(/(href|src)="(?![a-z]+:|\/|\.\.\/|#)([^"]*)"/g, function (inteiro, atributo, alvo) {
     if (/^(assets|css|js)\//.test(alvo)) return atributo + '="../' + alvo + '"';
@@ -703,6 +728,7 @@ var feitos = { servicos: [], alertas: [], 'en/services': [], 'en/alerts': [] };
   });
 
   gravar(idioma.pasta + idioma.nomes.privacidade, paginaDePrivacidade(idioma));
+  gravar(idioma.pasta + idioma.nomes.obrigado, paginaDeObrigado(idioma));
 });
 
 gravar('en/index.html', paginaInicialEn());
