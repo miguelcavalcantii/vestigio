@@ -24,10 +24,14 @@
   <meta property="og:title" content="Police station support | Vestígio Digital Investigation">
   <meta property="og:description" content="Help filing the boletim de ocorrência (police report) and following the police investigation. See how it works and what we will need from you.">
   <meta property="og:url" content="https://vestigio.app.br/en/services/police-station-support.html">
-  <meta property="og:image" content="https://vestigio.app.br/assets/og-image.png">
+  <!-- Imagem própria de cada página: assets/og/ (gerada por ferramentas/gerar-og.js) -->
+  <meta property="og:image" content="https://vestigio.app.br/assets/og/en/police-station-support.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vestígio: Police station support">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://vestigio.app.br/assets/og/en/police-station-support.png">
+  <meta name="twitter:image:alt" content="Vestígio: Police station support">
 
   <link rel="icon" href="../../assets/logo-simbolo.svg" type="image/svg+xml">
 
@@ -44,7 +48,26 @@
       var meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', tema === 'light' ? '#F3F5F6' : '#0B0C10');
 
-      // 2. Animações
+      // 2. Acessibilidade (painel "Acessibilidade" do menu, js/acessibilidade.js):
+      //    tamanho do texto e alto contraste salvos neste navegador.
+      //    NIVEIS precisa ser igual ao de js/acessibilidade.js.
+      var NIVEIS = [1, 1.125, 1.25, 1.375];
+      var nivel = 0;
+      var contraste = null;
+      try {
+        nivel = parseInt(localStorage.getItem('vestigio-texto'), 10) || 0;
+        contraste = localStorage.getItem('vestigio-contraste');
+      } catch (e) {}
+      if (nivel > 0 && nivel < NIVEIS.length) {
+        html.style.setProperty('--escala-texto', NIVEIS[nivel]);
+        html.setAttribute('data-texto', nivel);
+        // Texto maior: o menu completo só cabe numa tela mais larga.
+        // Até lá, a ilha usa o menu de tela cheia (classe menu-compacto).
+        if (window.innerWidth < 1280 * NIVEIS[nivel]) html.classList.add('menu-compacto');
+      }
+      if (contraste === 'alto') html.setAttribute('data-contraste', 'alto');
+
+      // 3. Animações
       var ANIMACOES_SEMPRE = true;
       var sistemaPedeMenos = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!ANIMACOES_SEMPRE && sistemaPedeMenos) {
@@ -66,6 +89,7 @@
   <link rel="stylesheet" href="../../css/sections.css">
   <link rel="stylesheet" href="../../css/ferramentas.css">
   <link rel="stylesheet" href="../../css/contato.css">
+  <link rel="stylesheet" href="../../css/acessibilidade.css">
   <link rel="stylesheet" href="../../css/paginas.css">
   <link rel="stylesheet" href="../../css/textura-fundo.css">
   <link rel="stylesheet" href="../../css/textura-mesa.css">
@@ -163,9 +187,18 @@
           <li><a href="../index.html#verificador">Is this a scam?</a></li>
           <li><a href="../index.html#como-funciona">How it works</a></li>
           <li class="main-nav__extra"><a href="../index.html#sobre">About</a></li>
-          <li><a href="../alerts.html">Alerts</a></li>
           <li><a href="../index.html#duvidas">FAQ</a></li>
           <li class="main-nav__extra"><a href="../index.html#contato">Contact</a></li>
+          <!-- "Mais": submenu com as páginas extras (js/navegacao.js, parte 2b).
+               Páginas novas entram AQUI, não no menu principal.
+               O que fica entre SO-PT e /SO-PT não vai para as páginas em inglês.
+               Sem JavaScript, o botão some e fica só o link de reserva "Alertas". -->
+          <li class="main-nav__mais" data-mais>
+            <button class="main-nav__trigger" type="button" aria-expanded="false" aria-controls="menu-mais" data-mais-botao>More<span class="main-nav__chevron" data-icon="chevron-down"></span></button><a class="main-nav__semjs" href="../alerts.html">Alerts</a>
+            <ul role="list" class="main-nav__mais-menu" id="menu-mais" hidden data-mais-menu>
+              <li><a class="main-nav__mais-link" href="../alerts.html"><span class="main-nav__mais-icone" data-icon="newspaper" aria-hidden="true"></span><span class="main-nav__mais-texto"><strong>Scam alerts</strong><span>Scams going around right now</span></span></a></li>
+            </ul>
+          </li>
           <li aria-hidden="true" class="nav-glide-item"><span class="nav-glide"></span></li>
         </ul>
       </nav>
@@ -192,18 +225,34 @@
         </ul>
       </div>
 
-      <!-- Seletor de tema claro/escuro (js/seletores.js). O botão mostra o ícone do
-           tema atual (sol = claro, lua = escuro); a escolha fica salva em "vestigio-tema". -->
-      <div class="seletor seletor--tema" data-seletor="tema">
-        <button class="seletor__botao" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="tema-menu" aria-label="Choose theme" data-seletor-botao>
-          <span class="seletor__icone seletor__icone--claro" data-icon="sun" aria-hidden="true"></span>
-          <span class="seletor__icone seletor__icone--escuro" data-icon="moon" aria-hidden="true"></span>
-          <span class="seletor__seta" data-icon="chevron-down" aria-hidden="true" data-seletor-seta></span>
+      <!-- PAINEL DE ACESSIBILIDADE (js/acessibilidade.js; estilo em css/acessibilidade.css):
+           tamanho do texto, alto contraste e aparência (claro/escuro).
+           As escolhas ficam salvas neste navegador e são aplicadas pelo
+           script MOLDE-TEMA do <head>, antes de a página aparecer.
+           No celular, as mesmas opções ficam no rodapé do menu. -->
+      <div class="seletor seletor--a11y" data-a11y>
+        <button class="seletor__botao" type="button" aria-expanded="false" aria-controls="a11y-painel" aria-label="Accessibility" data-a11y-botao>
+          <span class="seletor__icone" data-icon="configuracoes" aria-hidden="true"></span>
+          <span class="seletor__seta" data-icon="chevron-down" aria-hidden="true"></span>
         </button>
-        <ul class="seletor__menu" id="tema-menu" role="menu" aria-label="Choose theme" hidden data-seletor-menu>
-          <li role="none"><button class="seletor__opcao" type="button" role="menuitemradio" aria-checked="false" data-tema-opcao="light"><span class="seletor__icone" data-icon="sun" aria-hidden="true"></span><span class="seletor__nome">Light</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></button></li>
-          <li role="none"><button class="seletor__opcao" type="button" role="menuitemradio" aria-checked="false" data-tema-opcao="dark"><span class="seletor__icone" data-icon="moon" aria-hidden="true"></span><span class="seletor__nome">Dark</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></button></li>
-        </ul>
+        <div class="a11y-painel" id="a11y-painel" role="group" aria-labelledby="a11y-titulo" hidden data-a11y-painel>
+          <p class="a11y-painel__titulo" id="a11y-titulo">Accessibility</p>
+          <div class="a11y-opcao">
+            <p class="a11y-opcao__rotulo" id="a11y-texto-rotulo">Text size</p>
+            <div class="a11y-texto" role="group" aria-labelledby="a11y-texto-rotulo"><button class="a11y-texto__botao" type="button" aria-label="Decrease text size" data-a11y-texto="menos">A<span aria-hidden="true">−</span></button><button class="a11y-texto__botao" type="button" aria-label="Reset text size" data-a11y-texto="normal">A</button><button class="a11y-texto__botao" type="button" aria-label="Increase text size" data-a11y-texto="mais">A<span aria-hidden="true">+</span></button><span class="a11y-texto__nivel" aria-live="polite" data-a11y-nivel>100%</span></div>
+          </div>
+          <div class="a11y-opcao a11y-opcao--linha">
+            <p class="a11y-opcao__rotulo" id="a11y-contraste-rotulo">High contrast</p>
+            <button class="a11y-chave" type="button" role="switch" aria-checked="false" aria-labelledby="a11y-contraste-rotulo" data-a11y-contraste><span class="a11y-chave__bola" aria-hidden="true"></span></button>
+          </div>
+          <div class="a11y-opcao">
+            <p class="a11y-opcao__rotulo" id="a11y-tema-rotulo">Appearance</p>
+            <div class="a11y-tema" role="group" aria-labelledby="a11y-tema-rotulo">
+              <button class="a11y-tema__opcao" type="button" aria-pressed="false" data-a11y-tema="light"><span data-icon="sun" aria-hidden="true"></span>Light</button>
+              <button class="a11y-tema__opcao" type="button" aria-pressed="false" data-a11y-tema="dark"><span data-icon="moon" aria-hidden="true"></span>Dark</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <a class="btn btn--primary btn--sm island__cta" href="../index.html#contato" data-whatsapp data-montador target="_blank" rel="noopener">
@@ -269,9 +318,21 @@
         <li><a href="../index.html#verificador">Is this a scam?</a></li>
         <li><a href="../index.html#como-funciona">How it works</a></li>
         <li><a href="../index.html#sobre">About</a></li>
-        <li><a href="../alerts.html">Alerts</a></li>
         <li><a href="../index.html#duvidas">FAQ</a></li>
         <li><a href="../index.html#contato">Contact</a></li>
+        <!-- "Mais": sanfona igual à de "Serviços" (js/navegacao.js, parte 2b) -->
+        <li class="mobile-menu__group">
+          <button class="mobile-menu__acc" type="button" aria-expanded="false" aria-controls="menu-mais-lista" data-menu-mais>
+            More<span class="mobile-menu__acc-icon" data-icon="chevron-down" aria-hidden="true"></span>
+          </button>
+          <div class="mobile-menu__sub" id="menu-mais-lista" data-menu-mais-lista>
+            <div class="mobile-menu__sub-inner">
+              <ul role="list" class="mobile-menu__mais">
+                <li><a class="mobile-menu__servico" href="../alerts.html"><span class="mobile-menu__servico-icone" data-icon="newspaper" aria-hidden="true"></span><span>Scam alerts</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
       </ul>
     </nav>
     <div class="mobile-menu__footer">
@@ -298,6 +359,15 @@
             <li role="none"><a class="seletor__opcao" role="menuitemradio" aria-checked="false" href="../index.html#" hreflang="en" lang="en" data-idioma-opcao="en"><span class="seletor__icone"><svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zM0 3.08h30v1.54H0zM0 6.15h30v1.54H0zM0 9.23h30v1.54H0zM0 12.31h30v1.54H0zM0 15.38h30v1.54H0zM0 18.46h30V20H0z" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".55"/><circle cx="6.5" cy="2.2" r=".55"/><circle cx="10.6" cy="2.2" r=".55"/><circle cx="4.45" cy="4.4" r=".55"/><circle cx="8.55" cy="4.4" r=".55"/><circle cx="2.4" cy="6.6" r=".55"/><circle cx="6.5" cy="6.6" r=".55"/><circle cx="10.6" cy="6.6" r=".55"/><circle cx="4.45" cy="8.8" r=".55"/><circle cx="8.55" cy="8.8" r=".55"/></g></svg></span><span class="seletor__nome">English</span><span class="seletor__check" data-icon="check" aria-hidden="true"></span></a></li>
           </ul>
         </div>
+      </div>
+      <!-- Acessibilidade (versão do celular): as mesmas opções do painel da ilha -->
+      <div class="mobile-menu__theme">
+        <span id="a11y-texto-rotulo-celular">Text size</span>
+        <div class="a11y-texto" role="group" aria-labelledby="a11y-texto-rotulo-celular"><button class="a11y-texto__botao" type="button" aria-label="Decrease text size" data-a11y-texto="menos">A<span aria-hidden="true">−</span></button><button class="a11y-texto__botao" type="button" aria-label="Reset text size" data-a11y-texto="normal">A</button><button class="a11y-texto__botao" type="button" aria-label="Increase text size" data-a11y-texto="mais">A<span aria-hidden="true">+</span></button><span class="a11y-texto__nivel" aria-live="polite" data-a11y-nivel>100%</span></div>
+      </div>
+      <div class="mobile-menu__theme">
+        <span id="a11y-contraste-rotulo-celular">High contrast</span>
+        <button class="a11y-chave" type="button" role="switch" aria-checked="false" aria-labelledby="a11y-contraste-rotulo-celular" data-a11y-contraste><span class="a11y-chave__bola" aria-hidden="true"></span></button>
       </div>
       <div class="mobile-menu__theme">
         <span>Appearance</span>
@@ -561,7 +631,9 @@
         </p>
         <div class="site-footer__fim">
           <p>© <span data-year>2026</span> Vestígio. All rights reserved.</p>
-          <a href="../privacy.html">Privacy Policy</a>
+          <span class="site-footer__legais">
+            <a href="../privacy.html">Privacy Policy</a>
+          </span>
         </div>
       </div>
     </div>
@@ -596,5 +668,6 @@
   <script src="../../js/atendimento.js"></script>
   <script src="../../js/seletores.js"></script>
   <script src="../../js/contato.js"></script>
+  <script src="../../js/acessibilidade.js"></script>
 </body>
 </html>

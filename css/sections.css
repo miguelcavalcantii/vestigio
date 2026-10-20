@@ -2959,6 +2959,12 @@ html:not(.motion-ok) .step {
   gap: var(--space-3) var(--space-5);
 }
 
+.site-footer__legais {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+}
+
 .site-footer__fim a {
   color: var(--text-muted);
   text-decoration: underline;

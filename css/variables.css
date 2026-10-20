@@ -215,10 +215,16 @@
       mais devagar nessa faixa. As fórmulas foram feitas para
       chegar ao MESMO valor de antes em 1920px: a partir de 1920
       o visual não muda.
-   Abaixo de 1280px (celular e tablet) nada disso vale. */
+   Abaixo de 1280px (celular e tablet) nada disso vale.
+   --escala-texto: tamanho do texto escolhido no painel Acessibilidade
+   (1 a 1,375; js/acessibilidade.js). Multiplica tudo, porque o site usa rem. */
+html {
+  font-size: calc(100% * var(--escala-texto, 1));
+}
+
 @media (min-width: 1280px) {
   html {
-    font-size: clamp(0.90625rem, 0.53125rem + 0.46875vw, 1rem);
+    font-size: calc(clamp(0.90625rem, 0.53125rem + 0.46875vw, 1rem) * var(--escala-texto, 1));
   }
 }
 

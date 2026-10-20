@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- MODELO DA IMAGEM DE COMPARTILHAMENTO (Open Graph), 1200 × 630
+     Usado por ferramentas/gerar-og.js: o script abre este arquivo, chama
+     preencher({ rotulo, titulo, frase, idioma }) e tira a foto.
+     Para ver no navegador: abra este arquivo com ?titulo=...&frase=...&rotulo=...
+     Mesmo visual da og-image.png original: fundo escuro, logo, título grande,
+     o "rastro" de pontos e o endereço do site. Sem grade de fundo. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Imagem de compartilhamento</title>
+  <link rel="stylesheet" href="../../css/fonts.css">
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    body {
+      position: relative;
+      font-family: 'Archivo', system-ui, sans-serif;
+      color: #EDEEEF;
+      background:
+        radial-gradient(640px 520px at 108% -12%, rgba(69, 162, 158, 0.34), transparent 62%),
+        radial-gradient(560px 420px at -8% 118%, rgba(31, 40, 51, 0.95), transparent 70%),
+        #0B0C10;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .quadro {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 64px 80px 58px;
+    }
+
+    .logo { height: 46px; width: auto; display: block; }
+
+    .texto {
+      align-self: end;
+      max-width: 860px;
+      padding-bottom: 34px;
+    }
+
+    .rotulo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      font-family: 'Martian Mono', ui-monospace, monospace;
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9AA3AA;
+    }
+
+    .rotulo::before {
+      content: '';
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #66FCF1;
+    }
+
+    .titulo {
+      font-size: 84px;          /* o script diminui até caber em 3 linhas */
+      font-weight: 650;
+      font-stretch: 108%;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      color: #F3F4F5;
+      text-wrap: balance;
+    }
+
+    .frase {
+      margin-top: 22px;
+      max-width: 800px;
+      font-size: 30px;
+      line-height: 1.35;
+      color: #C5C6C7;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .rodape {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 26px;
+      border-top: 1px solid rgba(197, 198, 199, 0.14);
+    }
+
+    .site {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Martian Mono', ui-monospace, monospace;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #66FCF1;
+    }
+
+    .selo {
+      font-size: 22px;
+      color: #9AA3AA;
+    }
+
+    /* O "rastro": pontos que crescem, como o símbolo da marca */
+    .rastro {
+      position: absolute;
+      top: 70px;
+      right: 64px;
+      width: 330px;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <svg class="rastro" viewBox="0 0 330 300" aria-hidden="true">
+    <path d="M30 40 C 120 0, 230 20, 210 90 S 60 150, 120 200 S 270 230, 290 262" fill="none" stroke="rgba(102,252,241,0.55)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 11"/>
+    <circle cx="30" cy="40" r="4" fill="rgba(102,252,241,0.45)"/>
+    <circle cx="210" cy="90" r="5.5" fill="rgba(102,252,241,0.6)"/>
+    <circle cx="120" cy="200" r="7" fill="rgba(102,252,241,0.75)"/>
+    <circle cx="290" cy="262" r="12" fill="#66FCF1"/>
+    <circle cx="290" cy="262" r="26" fill="none" stroke="rgba(102,252,241,0.35)" stroke-width="2"/>
+    <path d="M258 234v-10h10M322 290v10h-10" fill="none" stroke="#E7E8EE" stroke-width="3" stroke-linecap="square"/>
+  </svg>
+
+  <div class="quadro">
+    <img class="logo" src="../../assets/logo.svg" alt="">
+    <div class="texto">
+      <p class="rotulo" data-rotulo>Investigação digital</p>
+      <h1 class="titulo" data-titulo>Todo golpe digital deixa rastro.</h1>
+      <p class="frase" data-frase>Investigamos golpes, localizamos pessoas e bens e organizamos as provas, com sigilo.</p>
+    </div>
+    <div class="rodape">
+      <span class="site">vestigio.app.br</span>
+      <span class="selo" data-selo>Atendimento sigiloso pelo WhatsApp</span>
+    </div>
+  </div>
+
+  <script>
+    var SELO = { pt: 'Atendimento sigiloso pelo WhatsApp', en: 'Confidential service on WhatsApp' };
+
+    // Preenche os textos e diminui o título até caber em 3 linhas
+    window.preencher = function (dados) {
+      document.documentElement.lang = dados.idioma === 'en' ? 'en' : 'pt-BR';
+      document.querySelector('[data-rotulo]').textContent = dados.rotulo || '';
+      document.querySelector('[data-titulo]').textContent = dados.titulo || '';
+      document.querySelector('[data-frase]').textContent = dados.frase || '';
+      document.querySelector('[data-selo]').textContent = SELO[dados.idioma] || SELO.pt;
+
+      var titulo = document.querySelector('[data-titulo]');
+      var frase = document.querySelector('[data-frase]');
+      var texto = document.querySelector('.texto');
+      var logo = document.querySelector('.logo');
+      var tamanho = 84;
+
+      function linhas() { return Math.round(titulo.scrollHeight / (tamanho * 1.04)); }
+      // O bloco de texto precisa ficar abaixo do logo, com folga
+      function cabe() { return texto.getBoundingClientRect().top >= logo.getBoundingClientRect().bottom + 36; }
+
+      frase.style.webkitLineClamp = '2';
+      titulo.style.fontSize = tamanho + 'px';
+      // 3 linhas no máximo e tudo cabendo; o mínimo (54px) ainda é bem legível na prévia do WhatsApp
+      while (tamanho > 54 && (linhas() > 3 || !cabe())) {
+        tamanho -= 2;
+        titulo.style.fontSize = tamanho + 'px';
+      }
+      // Último recurso: a frase fica com 1 linha
+      if (!cabe()) frase.style.webkitLineClamp = '1';
+      return { tamanho: tamanho, linhas: linhas(), cabe: cabe() };
+    };
+
+    // Abrindo no navegador para conferir: ?titulo=...&frase=...&rotulo=...
+    var q = new URLSearchParams(location.search);
+    if (q.get('titulo')) window.preencher({ titulo: q.get('titulo'), frase: q.get('frase'), rotulo: q.get('rotulo'), idioma: q.get('idioma') });
+  </script>
+</body>
+</html>

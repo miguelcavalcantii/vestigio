@@ -1,0 +1,373 @@
+/* =========================================================
+   ACESSIBILIDADE
+   ---------------------------------------------------------
+   1. Painel "Acessibilidade" da ilha (mesmo estilo dos seletores)
+   2. Controles: tamanho do texto, interruptor, aparência
+   3. Menu compacto (texto maior em tela de computador)
+   4. Alto contraste (temas claro e escuro)
+   5. VLibras (botão oficial do governo, só em português)
+   O comportamento fica em js/acessibilidade.js.
+   ========================================================= */
+
+/* ---------- 1. PAINEL DA ILHA ---------- */
+.seletor--a11y .seletor__icone .icon { width: 1.3rem; height: 1.3rem; }
+
+/* A setinha gira quando o painel abre */
+.seletor--a11y .seletor__seta .icon { transition: transform var(--dur-base) var(--ease-fluid); }
+.seletor--a11y .seletor__botao[aria-expanded='true'] .seletor__seta .icon { transform: rotate(180deg); }
+
+.a11y-painel {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  z-index: 2;
+  display: grid;
+  gap: var(--space-4);
+  width: 18.5rem;
+  max-width: calc(100vw - 2 * var(--gutter));
+  padding: var(--space-4);
+  border-radius: 20px;
+  /* Fundo sólido: o painel tem controles, o texto de trás não pode aparecer */
+  background: var(--surface);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: var(--highlight), var(--shadow-float);
+  transform-origin: top right;
+}
+
+.a11y-painel[hidden] { display: none; }
+
+.a11y-painel__titulo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.a11y-opcao {
+  display: grid;
+  gap: 0.5rem;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.a11y-opcao--linha {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.a11y-opcao__rotulo {
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+/* ---------- 2. CONTROLES ---------- */
+/* A− / A / A+ */
+.a11y-texto {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.a11y-texto__botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 0.6rem;
+  border-radius: 12px;
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.04);
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease, transform var(--dur-press) var(--ease-out);
+}
+
+.a11y-texto__botao:nth-child(1) { font-size: 0.875rem; }
+.a11y-texto__botao:nth-child(2) { font-size: 1rem; }
+.a11y-texto__botao:nth-child(3) { font-size: 1.15rem; }
+
+.a11y-texto__botao:active { transform: scale(0.95); }
+
+.a11y-texto__botao[aria-pressed='true'] {
+  background: rgba(var(--teal-rgb), 0.16);
+  border-color: var(--accent-line);
+}
+
+.a11y-texto__botao[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .a11y-texto__botao:not([aria-disabled='true']):hover { border-color: rgba(var(--teal-rgb), 0.55); }
+}
+
+.a11y-texto__nivel {
+  margin-left: auto;
+  min-width: 3.6rem;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Interruptor (alto contraste) */
+.a11y-chave {
+  position: relative;
+  flex-shrink: 0;
+  width: 3.25rem;
+  height: 1.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.1);
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+
+.a11y-chave__bola {
+  position: absolute;
+  top: 50%;
+  left: 0.2rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: var(--text);
+  transform: translateY(-50%);
+  transition: transform var(--dur-base) var(--ease-elastic), background-color var(--dur-fast) ease;
+}
+
+.a11y-chave[aria-checked='true'] {
+  background: var(--accent);
+  border-color: var(--accent-line);
+}
+
+.a11y-chave[aria-checked='true'] .a11y-chave__bola {
+  background: var(--on-accent);
+  transform: translate(1.3rem, -50%);
+}
+
+/* Claro / Escuro */
+.a11y-tema {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+}
+
+.a11y-tema__opcao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 2.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--ink-rgb), 0.04);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+
+.a11y-tema__opcao[aria-pressed='true'] {
+  background: rgba(var(--teal-rgb), 0.16);
+  border-color: var(--accent-line);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .a11y-tema__opcao:hover { border-color: rgba(var(--teal-rgb), 0.55); }
+}
+
+.a11y-texto__botao:focus-visible,
+.a11y-chave:focus-visible,
+.a11y-tema__opcao:focus-visible {
+  outline: 2px solid var(--accent-line);
+  outline-offset: 2px;
+}
+
+/* No rodapé do menu do celular os controles ficam à direita do rótulo */
+.mobile-menu__theme .a11y-texto__nivel { display: none; }
+
+/* ---------- 3. MENU COMPACTO ----------
+   Com o texto maior, o menu completo da ilha não cabe em 1280px.
+   O JS liga "menu-compacto" até a tela ter 1280px × a escala
+   (ex.: 1600px com 125%). Nesse intervalo vale o menu de tela cheia,
+   mas o botão Acessibilidade continua na ilha (para a pessoa poder
+   voltar o texto ao normal sem procurar). */
+@media (min-width: 1280px) {
+  html.menu-compacto .main-nav,
+  html.menu-compacto .island .urgente,
+  html.menu-compacto .island .seletor:not(.seletor--a11y) { display: none; }
+  html.menu-compacto .menu-toggle { display: inline-grid; }
+  html.menu-compacto .brand { margin-right: auto; }
+  html.menu-compacto .mobile-menu:not([hidden]) { display: flex !important; }
+}
+
+/* Texto maior: os títulos enormes param de crescer antes de passar da tela
+   (no celular, "investigamos." não cabe com 137,5%) */
+html[data-texto] .hero__title { font-size: min(var(--fs-2xl), 12.5vw); }
+html[data-texto] :is(h1, h2, h3) { overflow-wrap: break-word; }
+
+/* Botões e rótulos que nunca quebram linha ficariam mais largos que a
+   tela do celular com o texto maior: com o texto aumentado, eles quebram. */
+html[data-texto] .btn,
+html[data-texto] .urgente,
+html[data-texto] .wa-dial__opcao {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+  padding-block: 0.55rem;
+}
+html[data-texto] :is(.eyebrow, .mono) { overflow-wrap: anywhere; white-space: normal; }
+html[data-texto] .eyebrow { flex-wrap: wrap; }
+/* Colunas de grade podem encolher (senão um texto comprido alarga a coluna) */
+html[data-texto] :is(.container, .obrigado-page) > * { min-width: 0; }
+
+/* ---------- 4. ALTO CONTRASTE ----------
+   Textos mais fortes, bordas marcadas, links sublinhados,
+   textura de fundo e grão bem mais fracos. */
+:root[data-contraste='alto']:not([data-theme='light']) {
+  --text: #FFFFFF;
+  --text-body: #EEF0F1;
+  --text-muted: #DADDE0;
+  --text-faint: #C9CED2;
+  --on-navy-body: #EEF0F1;
+  --on-navy-muted: #DADDE0;
+  --on-navy-faint: #C9CED2;
+  --on-feature-muted: #EEF0F1;
+  --muted-on-menu: #DADDE0;
+  --hairline: rgba(255, 255, 255, 0.24);
+  --hairline-strong: rgba(255, 255, 255, 0.45);
+  --line-rgb: 255, 255, 255;
+  --grain-opacity: 0;
+  --erro: #FFB4AA;
+}
+
+:root[data-contraste='alto'][data-theme='light'] {
+  --text: #000000;
+  --text-body: #0B0C10;
+  --text-muted: #1F262C;
+  --text-faint: #2A3238;
+  --on-navy-body: #0B0C10;
+  --on-navy-muted: #1F262C;
+  --on-navy-faint: #2A3238;
+  --on-feature-muted: #0B0C10;
+  --muted-on-menu: #1F262C;
+  --accent-ink: #0F4A47;
+  --accent-2: #135753;
+  --accent-line: #135753;
+  --hairline: rgba(0, 0, 0, 0.3);
+  --hairline-strong: rgba(0, 0, 0, 0.55);
+  --line-rgb: 0, 0, 0;
+  --grain-opacity: 0;
+  --erro: #8A1F14;
+}
+
+/* Textura animada e grade de pontos bem mais fracas */
+[data-contraste='alto'] .textura-fundo { opacity: 0.3; }
+[data-contraste='alto'] .dot-grid::after { opacity: 0.35; }
+[data-contraste='alto'] .ambient::after { display: none; }
+
+/* Links dentro de texto: sempre sublinhados */
+[data-contraste='alto'] :where(main, .site-footer) :is(p, li, dd, td) a:not(.btn):not(.chip):not([class*='__']),
+[data-contraste='alto'] .site-footer__links a,
+[data-contraste='alto'] .site-footer__contato a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+}
+
+/* Foco do teclado mais grosso */
+[data-contraste='alto'] :focus-visible {
+  outline: 3px solid var(--accent-line) !important;
+  outline-offset: 2px !important;
+}
+
+/* ---------- 5. VLIBRAS ----------
+   O botão do VLibras fica fixo no meio da tela, na direita (o próprio
+   script do governo põe ele lá, dentro de #vlibras-access-wrapper).
+   Fica longe do botão do WhatsApp e do "voltar ao topo" (embaixo).
+   Some quando o menu de tela cheia ou um painel estão abertos,
+   para não ficar em cima dos botões deles. */
+html.is-locked #vlibras-access-wrapper,
+html.sheet-open #vlibras-access-wrapper,
+html.wa-dial-aberto #vlibras-access-wrapper { display: none; }
+
+/* Telas baixas (celular deitado): o meio da tela fica perto dos botões
+   flutuantes. O VLibras sobe para logo abaixo do menu.
+   Como o botão dele é "fixed" dentro do wrapper, o transform no wrapper
+   (fixo no canto, sem tamanho) leva o botão junto. */
+@media (max-height: 520px) {
+  #vlibras-access-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    z-index: 30;
+    transform: translateY(calc(-50vh + 20px + var(--header-h) + 0.5rem));
+  }
+}
+
+/* ---------- 6. ANIMAÇÃO DA ENGRENAGEM ----------
+   Mouse em cima: a engrenagem gira um dente (60°) com a curva "mola".
+   Painel aberto: fica meia volta girada (180°), como um ajuste sendo feito.
+   Só não anima se o site estiver respeitando "reduzir movimento". */
+html:not(.respeitar-movimento) .seletor--a11y .seletor__icone .icon {
+  transition: transform 700ms var(--ease-elastic);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html:not(.respeitar-movimento) .seletor--a11y .seletor__botao:hover .seletor__icone .icon { transform: rotate(60deg); }
+}
+
+html:not(.respeitar-movimento) .seletor--a11y .seletor__botao[aria-expanded='true'] .seletor__icone .icon { transform: rotate(180deg); }
+
+/* ---------- 7. ANIMAÇÃO DA BANDEIRA (seletor de idioma) ----------
+   Mouse em cima ou menu abrindo: a bandeira "tremula" (balança e cresce
+   um pouco) e um brilho atravessa o círculo. */
+.seletor--idioma .seletor__botao .seletor__icone {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.seletor--idioma .seletor__botao .seletor__icone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.65) 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+@keyframes bandeira-tremula {
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-12deg) scale(1.12); }
+  45% { transform: rotate(9deg) scale(1.08); }
+  70% { transform: rotate(-4deg) scale(1.03); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes bandeira-brilho {
+  to { transform: translateX(120%); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html:not(.respeitar-movimento) .seletor--idioma .seletor__botao:hover .seletor__icone {
+    animation: bandeira-tremula 650ms var(--ease-out);
+  }
+  html:not(.respeitar-movimento) .seletor--idioma .seletor__botao:hover .seletor__icone::after {
+    animation: bandeira-brilho 650ms var(--ease-out) 80ms;
+  }
+}
+
+html:not(.respeitar-movimento) .seletor--idioma .seletor__botao[aria-expanded='true'] .seletor__icone {
+  animation: bandeira-tremula 650ms var(--ease-out);
+}

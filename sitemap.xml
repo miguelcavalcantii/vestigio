@@ -43,6 +43,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/alertas.html"/>
   </url>
   <url>
+    <loc>https://vestigio.app.br/delegacias.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/delegacias.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/delegacias.html"/>
+  </url>
+  <url>
+    <loc>https://vestigio.app.br/termos.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/termos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vestigio.app.br/termos.html"/>
+  </url>
+  <url>
     <loc>https://vestigio.app.br/servicos/e-mail-falso.html</loc>
     <lastmod>2026-10-20</lastmod>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vestigio.app.br/servicos/e-mail-falso.html"/>

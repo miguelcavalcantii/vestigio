@@ -121,8 +121,9 @@
       pilula.style.setProperty('--glide-w', link.offsetWidth + 'px');
     }
 
-    // Links e o botão "Serviços" (que abre o painel de serviços)
-    Array.prototype.forEach.call(lista.querySelectorAll('a, button'), function (link) {
+    // Links e os botões "Serviços" e "Mais" (só os do primeiro nível:
+    // os links de dentro do painel "Mais" não movem a pílula)
+    Array.prototype.forEach.call(lista.querySelectorAll(':scope > li > a, :scope > li > button'), function (link) {
       link.addEventListener('pointerenter', function () {
         // Na primeira vez a pílula aparece já no lugar (sem "voar" do canto)
         if (!lista.classList.contains('is-gliding')) {

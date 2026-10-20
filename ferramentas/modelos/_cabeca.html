@@ -16,10 +16,14 @@
   <meta property="og:title" content="{{TITULO}}">
   <meta property="og:description" content="{{DESCRICAO}}">
   <meta property="og:url" content="{{URL}}">
-  <meta property="og:image" content="{{DOMINIO}}/assets/og-image.png">
+  <!-- Imagem própria de cada página: assets/og/ (gerada por ferramentas/gerar-og.js) -->
+  <meta property="og:image" content="{{OG_IMAGEM}}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{OG_ALT}}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{OG_IMAGEM}}">
+  <meta name="twitter:image:alt" content="{{OG_ALT}}">
 
   <link rel="icon" href="{{RAIZ_SITE}}assets/logo-simbolo.svg" type="image/svg+xml">
 
@@ -33,6 +37,7 @@
   <link rel="stylesheet" href="{{RAIZ_SITE}}css/sections.css">
   <link rel="stylesheet" href="{{RAIZ_SITE}}css/ferramentas.css">
   <link rel="stylesheet" href="{{RAIZ_SITE}}css/contato.css">
+  <link rel="stylesheet" href="{{RAIZ_SITE}}css/acessibilidade.css">
   <link rel="stylesheet" href="{{RAIZ_SITE}}css/paginas.css">
   <link rel="stylesheet" href="{{RAIZ_SITE}}css/textura-fundo.css">
   <link rel="stylesheet" href="{{RAIZ_SITE}}css/textura-mesa.css">

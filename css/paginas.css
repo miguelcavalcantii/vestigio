@@ -857,3 +857,313 @@ a.service-card__button {
 @media (min-width: 640px) {
   .legal-contato { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* =========================================================
+   DELEGACIAS POR ESTADO (delegacias.html)
+   Cards montados por js/delegacias.js a partir de
+   assets/data/delegacias.json. Pernambuco vem primeiro, em destaque.
+   ========================================================= */
+.deleg {
+  padding-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+}
+
+/* Busca por estado */
+.deleg__busca {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 34rem;
+  margin-bottom: var(--space-5);
+}
+
+.deleg__busca[hidden] { display: none; }
+
+.deleg__rotulo {
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.deleg__campo { position: relative; }
+
+.deleg__lupa {
+  position: absolute;
+  top: 50%;
+  left: 1.1rem;
+  transform: translateY(-50%);
+  color: var(--text-faint);
+  pointer-events: none;
+}
+
+.deleg__input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0 1.1rem 0 3rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  background: rgba(var(--surface-rgb), 0.7);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;               /* 16px: o iPhone não dá zoom */
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-base) var(--ease-out);
+}
+
+.deleg__input::placeholder { color: var(--text-faint); }
+
+.deleg__input:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 4px rgba(var(--teal-rgb), 0.16);
+}
+
+.deleg__status {
+  min-height: 1.2em;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* Grade de cards */
+.deleg__grade {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.deleg__grade[hidden] { display: none; }
+
+@media (min-width: 720px) {
+  .deleg__grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1100px) {
+  .deleg__grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+}
+
+.deleg-card[hidden] { display: none; }
+
+.deleg-card__core {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+/* Pernambuco: ocupa a linha inteira e ganha a borda ciano */
+.deleg-card--destaque {
+  grid-column: 1 / -1;
+  border-color: var(--hairline-accent);
+  background: rgba(var(--teal-rgb), 0.06);
+}
+
+.deleg-card--destaque .deleg-card__core {
+  background:
+    radial-gradient(60% 120% at 100% 0%, rgba(var(--teal-rgb), calc(0.16 * var(--glow-k))), transparent 60%),
+    linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+}
+
+@media (min-width: 1100px) {
+  .deleg-card--destaque .deleg-card__core {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    column-gap: var(--space-6);
+  }
+  .deleg-card--destaque .deleg-card__topo,
+  .deleg-card--destaque .deleg-card__fontes { grid-column: 1 / -1; }
+}
+
+.deleg-card__topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.deleg-card__uf {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 0.5rem;
+  border-radius: 14px;
+  background: rgba(var(--teal-rgb), 0.12);
+  border: 1px solid rgba(var(--teal-rgb), 0.3);
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.deleg-card__nome {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--fs-lg);
+}
+
+.deleg-card__selo { margin-left: auto; }
+
+/* Botão "Registrar BO online" */
+.deleg-card__bo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(var(--teal-rgb), 0.35);
+  background: rgba(var(--teal-rgb), 0.08);
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease, transform var(--dur-press) var(--ease-out);
+}
+
+.deleg-card__bo:active { transform: scale(0.98); }
+
+@media (hover: hover) and (pointer: fine) {
+  .deleg-card__bo:hover { background: rgba(var(--teal-rgb), 0.16); border-color: var(--accent-line); }
+  .deleg-card__bo:hover .deleg-card__bo-seta { transform: translate(2px, -2px); }
+}
+
+.deleg-card__bo:focus-visible { outline: 2px solid var(--accent-line); outline-offset: 2px; }
+
+.deleg-card__bo-icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.deleg-card__bo-texto {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.deleg-card__bo-texto strong { font-size: var(--fs-base); }
+.deleg-card__bo-texto span { color: var(--text-muted); font-size: var(--fs-sm); }
+
+.deleg-card__bo-seta {
+  display: grid;
+  margin-left: auto;
+  color: var(--accent-ink);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* Delegacia especializada */
+.deleg-card__esp {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.deleg-card__rotulo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.deleg-card__esp-nome {
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.deleg-card__sigla { color: var(--accent-ink); font-weight: 600; }
+
+.deleg-card__info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: var(--text-body);
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+}
+
+.deleg-card__info .icon { flex-shrink: 0; margin-top: 0.15em; color: var(--accent-2); }
+.deleg-card__info a { color: var(--text); }
+
+.deleg-card__obs {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.deleg-card__fontes {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--hairline);
+  color: var(--text-faint);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.deleg-card__fontes a { color: var(--accent-ink); }
+
+.deleg__vazio {
+  padding: var(--space-5);
+  border: 1px dashed var(--hairline-strong);
+  border-radius: 22px;
+  color: var(--text-muted);
+}
+
+.deleg__vazio[hidden] { display: none; }
+
+/* Lista simples (sem JavaScript) */
+.deleg__lista {
+  display: grid;
+  gap: 0.75rem;
+  color: var(--text-body);
+}
+
+.deleg__semjs[hidden] { display: none; }
+
+/* Caixa "Antes de ir à delegacia" */
+.deleg-antes {
+  padding-bottom: var(--space-6);
+}
+
+.deleg-antes__core {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+
+@media (min-width: 900px) {
+  .deleg-antes__core { grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--space-5); }
+}
+
+.deleg-antes__icone {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: rgba(var(--teal-rgb), 0.14);
+  border: 1px solid rgba(var(--teal-rgb), 0.3);
+  color: var(--accent-ink);
+}
+
+.deleg-antes__icone .icon { width: 1.5rem; height: 1.5rem; }
+
+.deleg-antes__texto h2 {
+  margin: 0 0 0.35rem;
+  color: var(--text);
+  font-size: var(--fs-lg);
+}
+
+.deleg-antes__texto p { color: var(--text-body); max-width: 56ch; }
+
+.deleg-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: var(--space-5);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
+
+.deleg-aviso > [data-icon] { margin-top: 0.2em; color: var(--accent-2); }
+.deleg-aviso .mono { display: inline-block; margin-top: 0.35rem; }

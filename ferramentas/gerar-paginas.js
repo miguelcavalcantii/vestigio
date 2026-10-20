@@ -15,6 +15,9 @@
         alertas.html                      lista de alertas
         alertas/<id-do-alerta>.html       uma página por alerta
         privacidade.html                  política de privacidade
+        termos.html                       termos de uso (só em português)
+        delegacias.html                   delegacias por estado (só em português;
+                                          dados em assets/data/delegacias.json)
         obrigado.html                     "Mensagem enviada" (formulário sem JavaScript)
    5. Cria (ou atualiza) as mesmas páginas em INGLÊS, na pasta en/:
         en/index.html (a partir do index.html), en/services/...,
@@ -145,9 +148,15 @@ var IDIOMAS = {
     codigo: 'en', lang: 'en', ogLocale: 'en_US', pasta: 'en/', dados: DADOS_EN,
     nomes: { servicos: 'services/', alertas: 'alerts/', listaAlertas: 'alerts.html', privacidade: 'privacy.html', obrigado: 'thanks.html' },
     t: tradutorEn.texto,
-    html: tradutorEn.html
+    html: function (codigo) { return tradutorEn.html(semTrechosSoPt(codigo)); }
   }
 };
+
+// Trechos entre <!-- SO-PT --> e <!-- /SO-PT --> (ex.: "Delegacias por estado"
+// no menu "Mais") existem só em português: saem das páginas em inglês.
+function semTrechosSoPt(codigo) {
+  return codigo.replace(/[ \t]*<!-- SO-PT -->[\s\S]*?<!-- \/SO-PT -->\n?/g, '');
+}
 
 /* Caminhos equivalentes: página em português → página em inglês
    (relativos à pasta de cada idioma) */
@@ -169,8 +178,13 @@ function caminhoNoIdioma(alvo, idioma) {
 }
 
 // As tags hreflang: a mesma página nos dois idiomas
-function alternativas(caminhoPt) {
+function alternativas(caminhoPt, soPortugues) {
   var pt = urlDe(caminhoPt);
+  // Página que só existe em português (ex.: delegacias.html): sem versão em inglês
+  if (soPortugues) {
+    return '  <link rel="alternate" hreflang="pt-BR" href="' + pt + '">\n' +
+      '  <link rel="alternate" hreflang="x-default" href="' + pt + '">';
+  }
   var en = urlDe('en/' + caminhoNoIdioma(caminhoPt, IDIOMAS.en));
   return '  <link rel="alternate" hreflang="pt-BR" href="' + pt + '">\n' +
     '  <link rel="alternate" hreflang="en" href="' + en + '">\n' +
@@ -229,6 +243,36 @@ function rodape(idioma, raiz, raizSite) {
 /* =========================================================
    4. PARTES QUE SE REPETEM
    ========================================================= */
+
+/* IMAGEM DE COMPARTILHAMENTO (Open Graph) DE CADA PÁGINA
+   Cada página diz o título, a frase e o rótulo da imagem (opcoes.og).
+   O gerador anota tudo em ferramentas/og/paginas.json e o script
+   ferramentas/gerar-og.js transforma cada item num PNG 1200×630 em
+   assets/og/ (inglês em assets/og/en/). Página sem opcoes.og usa a
+   imagem da página inicial do idioma. */
+var OG_PAGINAS = [];
+
+function imagemDeCompartilhamento(idioma, og) {
+  var pasta = 'assets/og/' + (idioma.codigo === 'en' ? 'en/' : '');
+  if (!og) {
+    var inicio = idioma.codigo === 'en' ? 'home' : 'inicio';
+    return { url: DOMINIO + '/' + pasta + inicio + '.png', alt: idioma.t('Vestígio: Todo golpe digital deixa rastro.') };
+  }
+  var arquivo = pasta + og.arquivo + '.png';
+  OG_PAGINAS.push({ arquivo: arquivo, idioma: idioma.codigo, rotulo: og.rotulo, titulo: og.titulo, frase: og.frase });
+  return { url: DOMINIO + '/' + arquivo, alt: 'Vestígio: ' + og.titulo };
+}
+
+// Imagem da página inicial (a cabeça do index.html é escrita à mão)
+function ogDaPaginaInicial(idioma) {
+  OG_PAGINAS.push({
+    arquivo: 'assets/og/' + (idioma.codigo === 'en' ? 'en/home' : 'inicio') + '.png',
+    idioma: idioma.codigo,
+    rotulo: idioma.t('Investigação digital'),
+    titulo: idioma.t('Todo golpe digital deixa rastro.'),
+    frase: idioma.t('Investigamos golpes, localizamos pessoas e bens e organizamos as provas, com sigilo.')
+  });
+}
 var MODELO_PAGINA = lerModelo('_pagina.html');
 var MODELO_CABECA = lerModelo('_cabeca.html');
 
@@ -238,13 +282,16 @@ var MODELO_CABECA = lerModelo('_cabeca.html');
 //   tags hreflang dos dois idiomas.
 function montarPagina(idioma, opcoes) {
   var raizSite = opcoes.raiz + (idioma.pasta ? '../' : '');
+  var og = imagemDeCompartilhamento(idioma, opcoes.og);
   var cabeca = preencher(idioma.html(MODELO_CABECA), {
     TITULO: escapar(opcoes.titulo),
     DESCRICAO: escapar(opcoes.descricao),
     URL: opcoes.url,
-    ALTERNATIVAS: alternativas(opcoes.caminho),
+    ALTERNATIVAS: alternativas(opcoes.caminho, opcoes.soPortugues),
     OG_TIPO: opcoes.ogTipo || 'website',
     OG_LOCALE: idioma.ogLocale,
+    OG_IMAGEM: og.url,
+    OG_ALT: escapar(og.alt),
     DOMINIO: DOMINIO,
     RAIZ_SITE: raizSite,
     MOLDE_TEMA: MOLDE_TEMA,
@@ -309,15 +356,23 @@ function pais(idioma) {
 var MODELO_SERVICO = lerModelo('servico.html');
 
 // Título que aparece no Google, de acordo com a categoria
+// Título da aba e do Google: o Google corta por volta de 60-65 caracteres.
+// Se "nome | marca longa" passar disso, usa só "| Vestígio".
+var LIMITE_TITULO = 65;
+function comMarca(base, marcaLonga) {
+  var completo = base + ' | ' + marcaLonga;
+  return completo.length <= LIMITE_TITULO ? completo : base + ' | Vestígio';
+}
+
 function tituloDoServico(idioma, servico) {
   if (idioma.codigo === 'en') {
     if (servico.categoria === 'estelionato') return servico.nome + ': what to do if it happened to you | Vestígio';
     if (servico.categoria === 'redes') return servico.nome + ' scams and fake profiles: what to do | Vestígio';
-    return servico.nome + ' | Vestígio Digital Investigation';
+    return comMarca(servico.nome, 'Vestígio Digital Investigation');
   }
   if (servico.categoria === 'estelionato') return 'Caí no ' + servico.nome.charAt(0).toLowerCase() + servico.nome.slice(1) + '. O que fazer? | Vestígio';
   if (servico.categoria === 'redes') return 'Golpes e perfis falsos no ' + servico.nome + ': o que fazer | Vestígio';
-  return servico.nome + ' | Vestígio Investigação Digital';
+  return comMarca(servico.nome, 'Vestígio Investigação Digital');
 }
 
 function nomeDaCategoria(idioma, id) {
@@ -397,6 +452,7 @@ function paginaDeServico(idioma, servico) {
     raiz: raiz,
     caminho: 'servicos/' + DADOS_PT.paginaDoServico(servicoPt),
     classe: 'pagina--servico',
+    og: { arquivo: D.paginaDoServico(servico).replace(/\.html$/, ''), rotulo: idioma.t('Serviço') + ' · ' + categoria, titulo: servico.nome, frase: servico.resumo },
     titulo: tituloDoServico(idioma, servico),
     descricao: resumir(servico.resumo + ' ' + idioma.t('Veja como funciona e o que vamos precisar de você.'), 160),
     url: url,
@@ -480,6 +536,7 @@ function paginaDaLista(idioma) {
     raiz: raiz,
     caminho: 'alertas.html',
     classe: 'pagina--alertas',
+    og: { arquivo: idioma.nomes.listaAlertas.replace(/\.html$/, ''), rotulo: idioma.t('Alertas de golpes'), titulo: idioma.t('Golpes que estão circulando agora'), frase: idioma.t('Como cada golpe funciona e o que fazer para se proteger.') },
     paginaAtual: 'alertas.html',
     titulo: idioma.t('Alertas de golpes: como funcionam e como se proteger | Vestígio'),
     descricao: idioma.t('Golpes que circulam pelo WhatsApp, redes sociais e sites de venda, explicados de forma simples, com o que fazer para se proteger.'),
@@ -549,9 +606,10 @@ function paginaDeAlerta(idioma, alerta) {
     raiz: raiz,
     caminho: 'alertas/' + alerta.id + '.html',
     classe: 'pagina--alerta',
+    og: { arquivo: D.paginaDoAlerta(alerta).replace(/\.html$/, ''), rotulo: idioma.t('Alerta de golpe') + ' · ' + categoria, titulo: alerta.titulo, frase: alerta.resumo },
     paginaAtual: 'alertas.html',
     ogTipo: 'article',
-    titulo: alerta.titulo + ' | ' + idioma.t('Alertas Vestígio'),
+    titulo: comMarca(alerta.titulo, idioma.t('Alertas Vestígio')),
     descricao: resumir(alerta.resumo + ' ' + idioma.t('Veja como funciona e como se proteger.'), 160),
     url: url,
     conteudo: conteudo,
@@ -585,6 +643,7 @@ function paginaDePrivacidade(idioma) {
   return montarPagina(idioma, {
     raiz: '',
     caminho: 'privacidade.html',
+    og: { arquivo: idioma.nomes.privacidade.replace(/\.html$/, ''), rotulo: idioma.t('Seus dados'), titulo: idioma.t('Política de Privacidade'), frase: idioma.t('Como tratamos os seus dados pessoais, conforme a LGPD.') },
     titulo: idioma.t('Política de privacidade | Vestígio Investigação Digital'),
     descricao: idioma.t('Como a Vestígio Investigação Digital trata os seus dados pessoais, conforme a LGPD.'),
     url: url,
@@ -592,6 +651,95 @@ function paginaDePrivacidade(idioma) {
     paginaAtual: 'privacidade.html',
     jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: idioma.t('Política de privacidade'), url: url, inLanguage: idioma.lang, publisher: organizacao(idioma) },
     conteudo: idioma.html(lerModelo('privacidade.html').replace(/\s+$/, ''))
+  });
+}
+
+/* =========================================================
+   7c. TERMOS DE USO (termos.html, só em português)
+   Mesmo visual da Política de Privacidade. O texto fica em
+   ferramentas/modelos/termos.html (rascunho: precisa da revisão
+   do advogado parceiro antes de ir ao ar).
+   ========================================================= */
+function paginaDeTermos() {
+  var idioma = IDIOMAS.pt;
+  var url = urlDe('termos.html');
+  return montarPagina(idioma, {
+    raiz: '',
+    caminho: 'termos.html',
+    soPortugues: true,
+    og: { arquivo: 'termos', rotulo: 'Transparência', titulo: 'Termos de uso', frase: 'O que fazemos, o que não fazemos e os nossos canais oficiais.' },
+    titulo: 'Termos de uso | Vestígio Investigação Digital',
+    descricao: 'Como funcionam o site e os serviços da Vestígio: o que fazemos, o que não fazemos, contratação, canais oficiais e responsabilidades.',
+    url: url,
+    classe: 'pagina--privacidade pagina--termos',
+    paginaAtual: 'termos.html',
+    jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Termos de uso', url: url, inLanguage: idioma.lang, publisher: organizacao(idioma) },
+    conteudo: lerModelo('termos.html').replace(/\s+$/, '')
+  });
+}
+
+/* =========================================================
+   7a. DELEGACIAS POR ESTADO (delegacias.html, só em português)
+   Os dados vêm de assets/data/delegacias.json. Com JavaScript,
+   js/delegacias.js monta os cards e a busca a partir do JSON.
+   Aqui o gerador escreve a lista simples de links (para quem
+   está sem JavaScript) com os mesmos dados.
+   ========================================================= */
+var DELEGACIAS = JSON.parse(ler('assets/data/delegacias.json'));
+var MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+// Pernambuco (sede da Vestígio) primeiro; os outros em ordem alfabética
+function estadosEmOrdem() {
+  return DELEGACIAS.estados.slice().sort(function (a, b) {
+    if (!a.destaque !== !b.destaque) return a.destaque ? -1 : 1;
+    return a.nome.localeCompare(b.nome, 'pt-BR');
+  });
+}
+
+function paginaDeDelegacias() {
+  var idioma = IDIOMAS.pt;
+  var url = urlDe('delegacias.html');
+  var caminho = [
+    { nome: 'Início', href: 'index.html', url: urlDe('index.html') },
+    { nome: 'Delegacias por estado', url: url }
+  ];
+  var partes = DELEGACIAS.verificadoEm.split('-');
+  var lista = '          <ul role="list" class="deleg__lista">\n' + estadosEmOrdem().map(function (e) {
+    var esp = e.especializada
+      ? ' · Especializada: ' + escapar(e.especializada.nome) + (e.especializada.sigla ? ' (' + escapar(e.especializada.sigla) + ')' : '')
+      : '';
+    return '            <li><strong>' + escapar(e.nome) + ' (' + e.uf + ')</strong>: ' +
+      '<a href="' + escapar(e.bo.url) + '" target="_blank" rel="noopener">registrar BO online</a> · ' +
+      '<a href="' + escapar(e.policiaCivil) + '" target="_blank" rel="noopener">site da Polícia Civil</a>' + esp + '</li>';
+  }).join('\n') + '\n          </ul>';
+
+  var conteudo = preencher(lerModelo('delegacias.html').replace(/\s+$/, ''), {
+    MIGALHAS: migalhas(idioma, caminho),
+    TOTAL: String(DELEGACIAS.estados.filter(function (e) { return e.uf !== 'DF'; }).length),
+    LISTA_SEM_JS: lista,
+    VERIFICADO_ISO: DELEGACIAS.verificadoEm,
+    VERIFICADO: Number(partes[2]) + ' de ' + MESES[Number(partes[1]) - 1] + ' de ' + partes[0],
+    LINK_WHATSAPP: escapar(idioma.dados.linkWhatsApp('Olá! Quero ajuda para organizar as provas antes de registrar o boletim de ocorrência.'))
+  });
+
+  return montarPagina(idioma, {
+    raiz: '',
+    caminho: 'delegacias.html',
+    soPortugues: true,
+    classe: 'pagina--delegacias',
+    og: { arquivo: 'delegacias', rotulo: 'Delegacias por estado', titulo: 'Onde registrar o boletim de ocorrência', frase: 'BO online e delegacia de crimes cibernéticos de cada estado.' },
+    paginaAtual: 'delegacias.html',
+    titulo: 'Onde registrar o BO: delegacias por estado | Vestígio',
+    descricao: 'Delegacia virtual (BO online) e delegacia especializada em crimes cibernéticos dos 26 estados e do Distrito Federal, com links para os sites oficiais.',
+    url: url,
+    conteudo: conteudo,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        { '@type': 'WebPage', name: 'Onde registrar o boletim de ocorrência', url: url, inLanguage: idioma.lang, publisher: organizacao(idioma) },
+        migalhasJson(caminho)
+      ]
+    }
   });
 }
 
@@ -607,7 +755,7 @@ function paginaDeObrigado(idioma) {
     raiz: '',
     caminho: 'obrigado.html',
     titulo: idioma.t('Mensagem enviada | Vestígio Investigação Digital'),
-    descricao: idioma.t('Recebemos o seu contato e respondemos em até 1 dia útil.'),
+    descricao: idioma.t('Recebemos o seu contato e respondemos em até 1 dia útil. Se for urgente, chame no WhatsApp.'),
     url: url,
     classe: 'pagina--obrigado',
     jsonLd: { '@context': 'https://schema.org', '@type': 'WebPage', name: idioma.t('Mensagem enviada'), url: url, inLanguage: idioma.lang, publisher: organizacao(idioma) },
@@ -633,6 +781,7 @@ function paginaInicialEn() {
   html = trocar(html, '<link rel="canonical" href="' + DOMINIO + '/">', '<link rel="canonical" href="' + DOMINIO + '/en/">');
   html = trocar(html, '<meta property="og:locale" content="pt_BR">', '<meta property="og:locale" content="en_US">');
   html = trocar(html, '<meta property="og:url" content="' + DOMINIO + '/">', '<meta property="og:url" content="' + DOMINIO + '/en/">');
+  html = html.split(DOMINIO + '/assets/og/inicio.png').join(DOMINIO + '/assets/og/en/home.png');
   html = trocar(html, '"areaServed": { "@type": "Country", "name": "Brasil" }', '"areaServed": { "@type": "Country", "name": "Brazil" }');
   // Formulário de contato sem JavaScript: volta para a página "obrigado" em inglês
   html = trocar(html, 'name="redirect" value="https://www.vestigio.app.br/obrigado.html"', 'name="redirect" value="https://www.vestigio.app.br/en/thanks.html"');
@@ -661,6 +810,12 @@ function sitemap(enderecos) {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
     enderecos.map(function (e) {
       var pt = urlDe(e.caminho);
+      // Página só em português (ex.: delegacias.html): uma entrada, sem inglês
+      if (e.soPortugues) {
+        return '  <url>\n    <loc>' + pt + '</loc>\n    <lastmod>' + e.data + '</lastmod>\n' +
+          '    <xhtml:link rel="alternate" hreflang="pt-BR" href="' + pt + '"/>\n' +
+          '    <xhtml:link rel="alternate" hreflang="x-default" href="' + pt + '"/>\n  </url>';
+      }
       var en = urlDe('en/' + caminhoNoIdioma(e.caminho, IDIOMAS.en));
       var ligacoes =
         '    <xhtml:link rel="alternate" hreflang="pt-BR" href="' + pt + '"/>\n' +
@@ -702,7 +857,9 @@ console.log('Gerando páginas...');
 var enderecos = [
   { caminho: 'index.html', data: HOJE },
   { caminho: 'privacidade.html', data: HOJE },
-  { caminho: 'alertas.html', data: HOJE }
+  { caminho: 'alertas.html', data: HOJE },
+  { caminho: 'delegacias.html', data: DELEGACIAS.verificadoEm, soPortugues: true },
+  { caminho: 'termos.html', data: HOJE, soPortugues: true }
 ];
 var feitos = { servicos: [], alertas: [], 'en/services': [], 'en/alerts': [] };
 
@@ -731,12 +888,21 @@ var feitos = { servicos: [], alertas: [], 'en/services': [], 'en/alerts': [] };
   gravar(idioma.pasta + idioma.nomes.obrigado, paginaDeObrigado(idioma));
 });
 
+gravar('delegacias.html', paginaDeDelegacias());
+ogDaPaginaInicial(IDIOMAS.pt);
+ogDaPaginaInicial(IDIOMAS.en);
+gravar('termos.html', paginaDeTermos());
 gravar('en/index.html', paginaInicialEn());
 gravar('en/404.html', pagina404En());
 
 gravar('sitemap.xml', sitemap(enderecos));
 gravar('robots.txt', 'User-agent: *\nAllow: /\n\nSitemap: ' + DOMINIO + '/sitemap.xml\n');
 gravar('traducoes-para-revisar.md', listaParaRevisar());
+// Lista das imagens de compartilhamento (para ferramentas/gerar-og.js)
+gravar('ferramentas/og/paginas.json', JSON.stringify({
+  _leia: 'Gerado por ferramentas/gerar-paginas.js. Não edite: rode node ferramentas/gerar-og.js para criar as imagens.',
+  paginas: OG_PAGINAS
+}, null, 2) + '\n');
 
 // Avisa se sobrou alguma página antiga (ex.: um serviço que foi apagado)
 Object.keys(feitos).forEach(function (pasta) {

@@ -1,0 +1,89 @@
+<!-- Página "Delegacias por estado" (só em português).
+     Os dados ficam em assets/data/delegacias.json (só fontes oficiais).
+     Com JavaScript, js/delegacias.js monta os cards a partir do JSON e
+     liga a busca. Sem JavaScript, fica a lista simples de links abaixo
+     (gerada do mesmo JSON por ferramentas/gerar-paginas.js).
+     Estilo: bloco "DELEGACIAS POR ESTADO" de css/paginas.css. -->
+  <main id="conteudo">
+
+    <!-- ===== TOPO ===== -->
+    <section class="pg-topo dot-grid" data-topo aria-labelledby="pg-titulo">
+      <div class="container">
+{{MIGALHAS}}
+        <div class="pg-topo__texto" data-reveal>
+          <p class="pg-topo__meta">
+            <span class="pg-topo__icone" aria-hidden="true"><span data-icon="landmark"></span></span>
+            <span class="mono">Delegacias · {{TOTAL}} estados e DF</span>
+          </p>
+          <h1 id="pg-titulo">Onde registrar o boletim de ocorrência</h1>
+          <p class="pg-topo__lead">Na maioria dos estados, o boletim de ocorrência (BO) pode ser feito pela internet, na delegacia virtual da Polícia Civil. Em golpes digitais, a delegacia especializada em crimes cibernéticos, quando o estado tem uma, é a mais indicada para receber o caso.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BUSCA + CARDS ===== -->
+    <section class="deleg" aria-labelledby="deleg-lista-titulo">
+      <div class="container">
+        <h2 class="sr-only" id="deleg-lista-titulo">Delegacias por estado</h2>
+        <div class="deleg__busca" role="search">
+          <label class="deleg__rotulo" for="deleg-busca">Procure o seu estado</label>
+          <div class="deleg__campo">
+            <span class="deleg__lupa" data-icon="search" aria-hidden="true"></span>
+            <input class="deleg__input" id="deleg-busca" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Ex.: Bahia ou BA" aria-describedby="deleg-status" data-deleg-busca>
+          </div>
+          <p class="deleg__status" id="deleg-status" aria-live="polite" data-deleg-status></p>
+        </div>
+
+        <ul role="list" class="deleg__grade" data-deleg-grade hidden></ul>
+        <p class="deleg__vazio" data-deleg-vazio hidden>Nenhum estado encontrado. Tente o nome do estado ou a sigla, como “PE”.</p>
+
+        <!-- Sem JavaScript (ou se os dados não carregarem): lista simples de links -->
+        <div class="deleg__semjs" data-deleg-semjs>
+{{LISTA_SEM_JS}}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ANTES DE IR À DELEGACIA ===== -->
+    <section class="deleg-antes" aria-labelledby="antes-titulo">
+      <div class="container">
+        <div class="deleg-antes__caixa bezel" data-reveal>
+          <div class="bezel__core deleg-antes__core">
+            <span class="deleg-antes__icone" data-icon="list-checks" aria-hidden="true"></span>
+            <div class="deleg-antes__texto">
+              <h2 id="antes-titulo">Antes de ir à delegacia</h2>
+              <p>Ligue para o banco, guarde os prints e os comprovantes e não apague as conversas. Veja, passo a passo, o que fazer nos primeiros 30 minutos.</p>
+            </div>
+            <a class="btn btn--primary" href="index.html" aria-haspopup="dialog" data-urgente>
+              Ver os primeiros passos
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-right"></span></span>
+            </a>
+          </div>
+        </div>
+
+        <p class="deleg-aviso">
+          <span data-icon="triangle-alert" aria-hidden="true"></span>
+          <span>Endereços e telefones podem mudar. Confira no site oficial da Polícia Civil do seu estado antes de ir.<br><span class="mono">Última verificação: <time datetime="{{VERIFICADO_ISO}}">{{VERIFICADO}}</time></span></span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== CHAMADA FINAL ===== -->
+    <section class="section pg-cta" aria-labelledby="cta-titulo">
+      <div class="container">
+        <div class="cta bezel" data-reveal>
+          <div class="bezel__core cta__core">
+            <h2 id="cta-titulo">Quer ajuda para organizar as provas antes do BO?</h2>
+            <a class="btn btn--primary btn--lg" href="{{LINK_WHATSAPP}}" target="_blank" rel="noopener" data-montador>
+              <span class="wa-icon" data-icon="whatsapp"></span>
+              Falar no WhatsApp
+              <span class="btn__orb" aria-hidden="true"><span data-icon="arrow-up-right"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cards e busca desta página (defer: roda depois dos scripts do site) -->
+  <script src="js/delegacias.js" defer></script>

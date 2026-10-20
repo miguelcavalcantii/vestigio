@@ -1,0 +1,371 @@
+{
+  "_leia": "Delegacias por estado (página delegacias.html). Só dados tirados de sites oficiais (Polícia Civil, Secretaria de Segurança Pública, gov.br ou legislação estadual). NUNCA complete telefone, endereço ou nome por conta própria: se não estiver no site oficial, deixe null. Mudou algo? Atualize 'verificadoEm' e rode node ferramentas/gerar-paginas.js.",
+  "verificadoEm": "2026-10-20",
+  "estados": [
+    {
+      "uf": "AC",
+      "nome": "Acre",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://pc.ac.gov.br/" },
+      "policiaCivil": "https://pc.ac.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Repressão a Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": "Incluída na estrutura da Polícia Civil pelo Decreto nº 11.096/2022.",
+        "fonte": "https://www.legis.ac.gov.br/detalhar/4779-1"
+      }
+    },
+    {
+      "uf": "AL",
+      "nome": "Alagoas",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://www.pc.al.gov.br/" },
+      "policiaCivil": "https://www.pc.al.gov.br/",
+      "especializada": null
+    },
+    {
+      "uf": "AP",
+      "nome": "Amapá",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://policiacivil.portal.ap.gov.br/" },
+      "policiaCivil": "https://policiacivil.portal.ap.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Repressão aos Crimes Cibernéticos",
+        "sigla": "DR-CCIBER",
+        "endereco": "Rodovia Duca Serra, km 6, nº 1488, bairro Marabaixo, Macapá (nas dependências do CIOSP Zona Oeste)",
+        "telefone": "(96) 98436-3552",
+        "obs": null,
+        "fonte": "https://policiacivil.portal.ap.gov.br/pagina/unidades-policiais/especializadas"
+      }
+    },
+    {
+      "uf": "AM",
+      "nome": "Amazonas",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://www.policiacivil.am.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.am.gov.br/",
+      "especializada": {
+        "nome": "Delegacia Especializada em Repressão a Crimes Cibernéticos",
+        "sigla": "Dercc",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://www.policiacivil.am.gov.br/?p=6971"
+      }
+    },
+    {
+      "uf": "BA",
+      "nome": "Bahia",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://www.ba.gov.br/policiacivil/" },
+      "policiaCivil": "https://www.ba.gov.br/policiacivil/",
+      "especializada": {
+        "nome": "Delegacia de Repressão a Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": "Ligada ao Departamento Especializado de Investigações Criminais (DEIC).",
+        "fonte": "https://www.ba.gov.br/ssp/noticias/2026-04/88318/operacao-gabinete-fantasma-identifica-autor-de-perfis-falsos-contra"
+      }
+    },
+    {
+      "uf": "CE",
+      "nome": "Ceará",
+      "bo": { "nome": "Delegacia Eletrônica", "url": "https://delegaciaeletronica.pc.ce.gov.br/", "fonte": "https://www.policiacivil.ce.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.ce.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Repressão aos Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": "Avenida Oswaldo Studart, 585, Fátima, Fortaleza/CE",
+        "telefone": "(85) 3101-7586",
+        "obs": null,
+        "fonte": "https://www.policiacivil.ce.gov.br/contatos/especializadas/"
+      }
+    },
+    {
+      "uf": "DF",
+      "nome": "Distrito Federal",
+      "bo": { "nome": "Delegacia Eletrônica", "url": "https://www.pcdf.df.gov.br/servicos/delegacia-eletronica", "fonte": "https://www.pcdf.df.gov.br/servicos/delegacia-eletronica" },
+      "policiaCivil": "https://www.pcdf.df.gov.br/",
+      "especializada": {
+        "nome": "Delegacia Especial de Repressão aos Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://www.sinj.df.gov.br/sinj/Norma/a53f8e4015414714a438534b626a64aa/pcdf_res_1_2023.html"
+      }
+    },
+    {
+      "uf": "ES",
+      "nome": "Espírito Santo",
+      "bo": { "nome": "Delegacia On-line", "url": "https://delegaciaonline.sesp.es.gov.br/", "fonte": "https://pc.es.gov.br/delegacia-on-line" },
+      "policiaCivil": "https://pc.es.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Repressão aos Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://pc.es.gov.br/Noticia/delegacia-de-repressao-aos-crimes-ciberneticos-investe-na-especializacao"
+      }
+    },
+    {
+      "uf": "GO",
+      "nome": "Goiás",
+      "bo": { "nome": "Delegacia Virtual", "url": "https://dpvirtual.ssp.go.gov.br/", "fonte": "https://goias.gov.br/policiacivil/delegacia-virtual-pcgo/" },
+      "policiaCivil": "https://goias.gov.br/policiacivil/",
+      "especializada": {
+        "nome": "Delegacia Estadual de Repressão a Crimes Cibernéticos",
+        "sigla": "DERCC",
+        "endereco": "Avenida Solar, Praça Padre Romão Cícero (Praça do Violeiro), Setor Urias Magalhães, Goiânia/GO",
+        "telefone": "3201-2651 (Goiânia)",
+        "obs": null,
+        "fonte": "https://goias.gov.br/policiacivil/delegacias-especializadas/"
+      }
+    },
+    {
+      "uf": "MA",
+      "nome": "Maranhão",
+      "bo": { "nome": "Delegacia Online", "url": "https://delegaciaonline.policiacivil.ma.gov.br/", "fonte": "https://www.policiacivil.ma.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.ma.gov.br/",
+      "especializada": {
+        "nome": "Departamento de Combate a Crimes Tecnológicos",
+        "sigla": "DCCT",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://www.ssp.ma.gov.br/saiba-quais-os-principais-crimes-ciberneticos-registrados-no-maranhao-e-o-que-fazer-para-se-proteger-e-denunciar-golpes-na-internet/"
+      }
+    },
+    {
+      "uf": "MT",
+      "nome": "Mato Grosso",
+      "bo": { "nome": "Delegacia Digital", "url": "https://delegaciadigital.pjc.mt.gov.br/", "fonte": "https://www.pjc.mt.gov.br/" },
+      "policiaCivil": "https://www.pjc.mt.gov.br/",
+      "especializada": {
+        "nome": "Delegacia Especializada de Repressão a Crimes Informáticos",
+        "sigla": "DRCI",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://www.pjc.mt.gov.br/w/opera%C3%A7%C3%A3o-da-pol%C3%ADcia-civil-mira-grupos-especializados-em-fraudes-eletr%C3%B4nicas-contra-figuras-p%C3%BAblicas"
+      }
+    },
+    {
+      "uf": "MS",
+      "nome": "Mato Grosso do Sul",
+      "bo": { "nome": "Delegacia Virtual (Devir)", "url": "https://devir.pc.ms.gov.br/", "fonte": "https://www.ms.gov.br/seguranca/delegacia-virtual-devir105/" },
+      "policiaCivil": "https://www.pc.ms.gov.br/",
+      "especializada": {
+        "nome": "Delegacia Especializada em Crimes Cibernéticos",
+        "sigla": null,
+        "endereco": null,
+        "telefone": null,
+        "obs": "Criação aprovada pelo Conselho Superior da Polícia Civil. Confirme no site oficial se a unidade já está atendendo.",
+        "fonte": "https://www.pc.ms.gov.br/conselho-superior-da-policia-civil-aprova-criacao-da-delegacia-especializada-em-crimes-ciberneticos/"
+      }
+    },
+    {
+      "uf": "MG",
+      "nome": "Minas Gerais",
+      "bo": { "nome": "Delegacia Virtual", "url": "https://www.delegaciavirtual.sids.mg.gov.br/", "fonte": "https://www.policiacivil.mg.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.mg.gov.br/",
+      "especializada": {
+        "nome": "Delegacia Especializada em Investigação de Crime Cibernético",
+        "sigla": null,
+        "endereco": null,
+        "telefone": null,
+        "obs": "Prevista na Resolução PCMG nº 8.004/2018.",
+        "fonte": "https://pesquisalegislativa.mg.gov.br/LegislacaoCompleta.aspx?cod=182094"
+      }
+    },
+    {
+      "uf": "PA",
+      "nome": "Pará",
+      "bo": { "nome": "Delegacia Virtual", "url": "https://www.delegaciavirtual.pa.gov.br/", "fonte": "https://www.pc.pa.gov.br/" },
+      "policiaCivil": "https://www.pc.pa.gov.br/",
+      "especializada": {
+        "nome": "Diretoria Estadual de Combate a Crimes Cibernéticos",
+        "sigla": "DECCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": "Tem divisões separadas por tipo de crime; os contatos de cada uma estão na fonte oficial.",
+        "fonte": "https://www.pc.pa.gov.br/institucional/diretoria-estadual-de-combate-a-crimes-ciberneticos"
+      }
+    },
+    {
+      "uf": "PB",
+      "nome": "Paraíba",
+      "bo": { "nome": "Delegacia Online", "url": "https://delegaciaonline.pc.pb.gov.br/", "fonte": "https://www.policiacivil.pb.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.pb.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Crimes Cibernéticos",
+        "sigla": "DECC",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://policiacivil.pb.gov.br/noticias/decc-policia-civil-participa-de-treinamento-sobre-analise-forense-digital-e-investigacao-de-crimes-ciberneticos"
+      }
+    },
+    {
+      "uf": "PE",
+      "nome": "Pernambuco",
+      "destaque": true,
+      "bo": { "nome": "Boletim de ocorrência pela internet", "url": "https://delegaciapelainternet.pc.pe.gov.br/delegacia/", "fonte": "https://www2.pc.pe.gov.br/" },
+      "policiaCivil": "https://www2.pc.pe.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Polícia de Repressão aos Crimes Cibernéticos",
+        "sigla": "DPCRICI",
+        "endereco": null,
+        "telefone": null,
+        "obs": "Em Recife e na Região Metropolitana, atende golpes com prejuízo a partir de 40 salários mínimos; abaixo disso, o caso fica com a delegacia da área (Portaria GAB/PCPE nº 354/2022).",
+        "fonte": "https://legis.policiacivil.pe.gov.br/b/api/files/30bffd5082cf908c1b5e10517863053e.pdf"
+      }
+    },
+    {
+      "uf": "PI",
+      "nome": "Piauí",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://www.pc.pi.gov.br/" },
+      "policiaCivil": "https://www.pc.pi.gov.br/",
+      "especializada": {
+        "nome": "Departamento de Repressão aos Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": "Avenida João XXIII, 5335, Santa Isabel, Teresina/PI (Espaço Cidadania, unidade Show Automall)",
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://portal.pi.gov.br/pc/delegacias-especializadas/"
+      }
+    },
+    {
+      "uf": "PR",
+      "nome": "Paraná",
+      "bo": { "nome": "Boletim de ocorrência on-line", "url": "https://www.policiacivil.pr.gov.br/BO", "fonte": "https://www.policiacivil.pr.gov.br/BO" },
+      "policiaCivil": "https://www.policiacivil.pr.gov.br/",
+      "especializada": {
+        "nome": "Departamento de Repressão a Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": "Rua Pedro Ivo, 672, Centro, Curitiba/PR",
+        "telefone": "(41) 3304-6800",
+        "obs": "Casos de fora de Curitiba são registrados na delegacia da comarca onde aconteceram.",
+        "fonte": "https://www.policiacivil.pr.gov.br/drcc"
+      }
+    },
+    {
+      "uf": "RJ",
+      "nome": "Rio de Janeiro",
+      "bo": { "nome": "Delegacia Online", "url": "https://delegaciaonline.pcivil.rj.gov.br/", "fonte": "https://www.policiacivil.rj.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.rj.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Repressão aos Crimes de Informática",
+        "sigla": "DRCI",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://www.policiacivil.rj.gov.br/news/12131"
+      }
+    },
+    {
+      "uf": "RN",
+      "nome": "Rio Grande do Norte",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://www.policiacivil.rn.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.rn.gov.br/",
+      "especializada": {
+        "nome": "Delegacia Especializada em Repressão a Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://webdisk.diariooficial.rn.gov.br/Jornal/12025-01-08.pdf"
+      }
+    },
+    {
+      "uf": "RS",
+      "nome": "Rio Grande do Sul",
+      "bo": { "nome": "Delegacia Online", "url": "https://www.delegaciaonline.rs.gov.br/", "fonte": "https://www.pc.rs.gov.br/" },
+      "policiaCivil": "https://www.pc.rs.gov.br/",
+      "especializada": {
+        "nome": "Departamento Estadual de Repressão aos Crimes Cibernéticos",
+        "sigla": "DERCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://www.pc.rs.gov.br/operacao-manto-e-deflagrada-no-combate-a-fraudes-eletronicas"
+      }
+    },
+    {
+      "uf": "RO",
+      "nome": "Rondônia",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://www.pc.ro.gov.br/delegacia-virtual/" },
+      "policiaCivil": "https://www.pc.ro.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Repressão a Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": "Criada por lei estadual na estrutura do Departamento de Combate à Corrupção (Decco).",
+        "fonte": "https://ditel.casacivil.ro.gov.br/COTEL/Livros/Files/L6144.pdf"
+      }
+    },
+    {
+      "uf": "RR",
+      "nome": "Roraima",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://policiacivil.rr.gov.br/" },
+      "policiaCivil": "https://policiacivil.rr.gov.br/",
+      "especializada": {
+        "nome": "Delegacia Especializada de Repressão a Crimes Cibernéticos",
+        "sigla": "DERCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://policiacivil.rr.gov.br/policia-civil-deflagra-operacao-combo-criminoso-para-combater-fraudes-ciberneticas-em-boa-vista/"
+      }
+    },
+    {
+      "uf": "SC",
+      "nome": "Santa Catarina",
+      "bo": { "nome": "Delegacia Virtual", "url": "https://delegaciavirtual.sc.gov.br/", "fonte": "https://pc.sc.gov.br/" },
+      "policiaCivil": "https://pc.sc.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Repressão aos Crimes de Informática",
+        "sigla": "DRCI",
+        "endereco": null,
+        "telefone": null,
+        "obs": "Faz parte da Diretoria Estadual de Investigações Criminais (DEIC).",
+        "fonte": "https://pc.sc.gov.br/?p=41327"
+      }
+    },
+    {
+      "uf": "SP",
+      "nome": "São Paulo",
+      "bo": { "nome": "Delegacia Digital", "url": "https://delegaciadigital.policia-civil.sp.gov.br/", "fonte": "https://www.delegaciaeletronica.policiacivil.sp.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.sp.gov.br/",
+      "especializada": {
+        "nome": "Divisão de Crimes Cibernéticos",
+        "sigla": "DCCiber",
+        "endereco": null,
+        "telefone": null,
+        "obs": "Faz parte do Departamento Estadual de Investigações Criminais (Deic).",
+        "fonte": "https://www.agenciasp.sp.gov.br/policia-civil-de-sp-soluciona-quase-um-crime-por-dia-no-estado/"
+      }
+    },
+    {
+      "uf": "SE",
+      "nome": "Sergipe",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://www.policiacivil.se.gov.br/" },
+      "policiaCivil": "https://www.policiacivil.se.gov.br/",
+      "especializada": {
+        "nome": "Delegacia de Repressão a Crimes Cibernéticos",
+        "sigla": "DRCC",
+        "endereco": null,
+        "telefone": null,
+        "obs": null,
+        "fonte": "https://policiacivil.se.gov.br/departamentos-orgaos/"
+      }
+    },
+    {
+      "uf": "TO",
+      "nome": "Tocantins",
+      "bo": { "nome": "Delegacia Virtual (sistema nacional do Ministério da Justiça)", "url": "https://delegaciavirtual.sinesp.gov.br/portal/", "fonte": "https://www.to.gov.br/ssp/" },
+      "policiaCivil": "https://www.to.gov.br/ssp/",
+      "especializada": null
+    }
+  ]
+}

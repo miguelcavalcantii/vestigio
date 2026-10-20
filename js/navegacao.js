@@ -3,6 +3,7 @@
    ---------------------------------------------------------
    1. Painel de serviços do menu ("mega menu", computador)
    2. Sanfona "Serviços" no menu do celular
+   2b. Menu "Mais" (painel no computador, sanfona no celular)
    3. Botão "voltar ao topo" com anel de progresso da leitura
    4. Botão flutuante do WhatsApp com duas opções
 
@@ -332,6 +333,109 @@
   }
 
   /* =========================================================
+     2b. MENU "MAIS"
+     Computador: o botão "Mais" abre um painel pequeno com as
+     páginas extras (Alertas, Delegacias...). Abre no clique
+     (funciona no toque); fecha ao clicar fora, com Esc ou quando
+     o foco sai do painel. As setas para cima/baixo andam entre
+     os links. A setinha gira pelo CSS (aria-expanded).
+     Celular: sanfona igual à de "Serviços".
+     A animação segue a regra do site (V.podeMover()).
+     ========================================================= */
+  function prepararMenuMais() {
+    var raiz = $('[data-mais]');
+    var botao = $('[data-mais-botao]');
+    var menu = $('[data-mais-menu]');
+    if (raiz && botao && menu) {
+      var aberto = false;
+      var links = function () { return Array.prototype.slice.call(menu.querySelectorAll('a')); };
+
+      var abrir = function (focarPrimeiro) {
+        if (aberto) return;
+        aberto = true;
+        menu.hidden = false;
+        botao.setAttribute('aria-expanded', 'true');
+        if (V.podeMover()) {
+          V.animar(menu, { opacity: [0, 1], transform: ['translateY(-6px)', 'translateY(0px)'] },
+            { duration: RITMO.rapido, ease: RITMO.suave });
+        }
+        if (focarPrimeiro) links()[0].focus();
+      };
+
+      var fechar = function (voltarAoBotao) {
+        if (!aberto) return;
+        aberto = false;
+        botao.setAttribute('aria-expanded', 'false');
+        if (voltarAoBotao) botao.focus();
+        if (V.podeMover()) {
+          V.animar(menu, { opacity: [1, 0], transform: ['translateY(0px)', 'translateY(-4px)'] },
+            { duration: 0.16, ease: RITMO.acelera }).then(function () {
+            if (!aberto) menu.hidden = true;
+          });
+        } else {
+          menu.hidden = true;
+        }
+      };
+
+      botao.addEventListener('click', function () {
+        if (aberto) fechar(false);
+        else abrir(false);
+      });
+
+      botao.addEventListener('keydown', function (evento) {
+        if (evento.key === 'ArrowDown') { evento.preventDefault(); abrir(true); }
+      });
+
+      raiz.addEventListener('keydown', function (evento) {
+        if (!aberto) return;
+        if (evento.key === 'Escape') { evento.preventDefault(); fechar(true); return; }
+        var lista = links();
+        var i = lista.indexOf(document.activeElement);
+        if (i < 0) return;
+        if (evento.key === 'ArrowDown') { evento.preventDefault(); lista[(i + 1) % lista.length].focus(); }
+        if (evento.key === 'ArrowUp') { evento.preventDefault(); lista[(i - 1 + lista.length) % lista.length].focus(); }
+      });
+
+      // O foco saiu do "Mais" (Tab para o próximo item): fecha
+      raiz.addEventListener('focusout', function (evento) {
+        if (aberto && evento.relatedTarget && !raiz.contains(evento.relatedTarget)) fechar(false);
+      });
+
+      document.addEventListener('click', function (evento) {
+        if (aberto && !raiz.contains(evento.target)) fechar(false);
+      });
+
+      // Página atual dentro do "Mais" (ex.: alertas.html): o botão ganha o ponto ciano
+      if (menu.querySelector('[aria-current="page"]')) botao.classList.add('is-atual');
+
+      // Tela ficou pequena (menu do celular): fecha
+      window.matchMedia('(min-width: 1280px)').addEventListener('change', function () { fechar(false); });
+    }
+
+    // Celular: sanfona "Mais"
+    var acc = $('[data-menu-mais]');
+    var gaveta = $('[data-menu-mais-lista]');
+    if (!acc || !gaveta) return;
+    gaveta.inert = true;
+    acc.addEventListener('click', function () {
+      var abrirAgora = acc.getAttribute('aria-expanded') !== 'true';
+      acc.setAttribute('aria-expanded', String(abrirAgora));
+      gaveta.classList.toggle('is-open', abrirAgora);
+      gaveta.inert = !abrirAgora;
+    });
+    var menuCelular = $('[data-mobile-menu]');
+    if (menuCelular) {
+      new MutationObserver(function () {
+        if (menuCelular.hidden) {
+          acc.setAttribute('aria-expanded', 'false');
+          gaveta.classList.remove('is-open');
+          gaveta.inert = true;
+        }
+      }).observe(menuCelular, { attributes: true, attributeFilter: ['hidden'] });
+    }
+  }
+
+  /* =========================================================
      3. BOTÃO "VOLTAR AO TOPO"
      Aparece depois de rolar ~2 telas, fica empilhado acima do
      botão do WhatsApp e some quando a seção de contato (ou outro
@@ -503,6 +607,7 @@
   /* ---------- INICIAR ---------- */
   prepararPainelDeServicos();
   prepararSanfonaDoMenu();
+  prepararMenuMais();
   prepararVoltarAoTopo();
   prepararOpcoesDoFlutuante();
 })();

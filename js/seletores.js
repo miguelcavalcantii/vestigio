@@ -44,6 +44,11 @@
 
   function enderecoEm(idioma) {
     var link = document.querySelector('link[rel="alternate"][hreflang="' + (idioma === 'en' ? 'en' : 'pt-BR') + '"]');
+    // Página que só existe em português (ex.: delegacias.html): "English" vai
+    // para a página inicial em inglês
+    if (!link && idioma === 'en') {
+      try { return new URL(RAIZ_SITE + 'en/index.html', location.href).href; } catch (e) { return null; }
+    }
     if (!link) return null;
     try {
       var caminho = new URL(link.getAttribute('href')).pathname.replace(/^\//, '');

@@ -85,6 +85,101 @@
   .main-nav__extra { display: list-item; }
 }
 
+/* ---------- Menu "Mais" (js/navegacao.js, parte 2b) ----------
+   Painel pequeno no mesmo estilo dos seletores de idioma e tema. */
+.main-nav__mais {
+  position: relative;
+}
+
+.main-nav__trigger:focus-visible {
+  outline: 2px solid var(--accent-line);
+  outline-offset: 2px;
+}
+
+.main-nav__mais-menu {
+  position: absolute;
+  top: calc(100% + 0.85rem);
+  right: -0.5rem;
+  z-index: 2;
+  display: grid;
+  gap: 0.15rem;
+  width: max-content;
+  min-width: 16.5rem;
+  padding: 0.4rem;
+  border-radius: 18px;
+  background: var(--header-bg-solid);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: var(--highlight), var(--shadow-soft);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  transform-origin: top right;
+}
+
+.main-nav__mais-menu[hidden] { display: none; }
+
+/* Os links do painel não usam o visual dos links do menu (sem o ponto ciano) */
+.main-nav .main-nav__mais-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 0;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  color: var(--text);
+  white-space: normal;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.main-nav .main-nav__mais-link::after { display: none; }
+
+.main-nav .main-nav__mais-link:focus-visible {
+  outline: 2px solid var(--accent-line);
+  outline-offset: -2px;
+}
+
+.main-nav .main-nav__mais-link[aria-current='page'] {
+  background: rgba(var(--teal-rgb), 0.14);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .main-nav .main-nav__mais-link:hover { background: rgba(var(--ink-rgb), 0.08); }
+}
+
+.main-nav__mais-icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgba(var(--teal-rgb), 0.12);
+  border: 1px solid rgba(var(--teal-rgb), 0.25);
+  color: var(--accent-ink);
+}
+
+.main-nav__mais-icone .icon { width: 1.05rem; height: 1.05rem; }
+
+.main-nav__mais-texto {
+  display: grid;
+  gap: 0.1rem;
+  line-height: 1.3;
+}
+
+.main-nav__mais-texto strong {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.main-nav__mais-texto span {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
+
+/* Menu do celular: a lista do "Mais" com o mesmo respiro das categorias */
+.mobile-menu__mais {
+  padding: var(--space-2) 0 var(--space-3);
+}
+
 /* ---------- Botão de urgência "Caí em um golpe" ---------- */
 .urgente {
   display: none;              /* no celular ele fica no topo do menu de tela cheia */

@@ -1,0 +1,369 @@
+{
+  "_leia": "Gerado por ferramentas/gerar-paginas.js. Não edite: rode node ferramentas/gerar-og.js para criar as imagens.",
+  "paginas": [
+    {
+      "arquivo": "assets/og/e-mail-falso.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Investigação e localização",
+      "titulo": "E-mail falso",
+      "frase": "E-mails que se passam por bancos, empresas ou pessoas para enganar ou ameaçar."
+    },
+    {
+      "arquivo": "assets/og/linhas-telefonicas-e-mails-e-enderecos.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Investigação e localização",
+      "titulo": "Linhas telefônicas, e‑mails e endereços",
+      "frase": "Levantamento lícito de informações sobre números, e-mails e endereços ligados a um caso."
+    },
+    {
+      "arquivo": "assets/og/localizacao-de-pessoas.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Investigação e localização",
+      "titulo": "Localização de pessoas",
+      "frase": "Busca de paradeiro para citação judicial, cobrança, reencontro e outros fins legítimos."
+    },
+    {
+      "arquivo": "assets/og/busca-de-bens-de-devedor-judicial.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Investigação e localização",
+      "titulo": "Busca de bens de devedor judicial",
+      "frase": "Imóveis, veículos, empresas e outros bens para a execução de sentença."
+    },
+    {
+      "arquivo": "assets/og/investigacao-em-sites-falsos.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Investigação e localização",
+      "titulo": "Investigação em sites falsos",
+      "frase": "Lojas falsas, páginas que imitam bancos e empresas e links de pagamento falsos."
+    },
+    {
+      "arquivo": "assets/og/investigacao-no-instagram.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Redes sociais",
+      "titulo": "Instagram",
+      "frase": "Perfis falsos, contas invadidas, lojas falsas e ataques à sua reputação."
+    },
+    {
+      "arquivo": "assets/og/golpes-no-whatsapp.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Redes sociais",
+      "titulo": "WhatsApp",
+      "frase": "Clonagem, falso parente com número novo, extorsão e ameaças."
+    },
+    {
+      "arquivo": "assets/og/investigacao-no-facebook.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Redes sociais",
+      "titulo": "Facebook",
+      "frase": "Perfis e páginas falsas, grupos de golpe, anúncios enganosos e difamação."
+    },
+    {
+      "arquivo": "assets/og/golpe-do-amor.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Estelionato digital",
+      "titulo": "Golpe do amor",
+      "frase": "Relacionamentos virtuais criados para pedir dinheiro, presentes ou empréstimos."
+    },
+    {
+      "arquivo": "assets/og/golpe-da-olx.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Estelionato digital",
+      "titulo": "Golpe da OLX",
+      "frase": "Anúncios falsos, links de pagamento falsos e falsos compradores em sites de venda."
+    },
+    {
+      "arquivo": "assets/og/golpe-da-entrega-falsa.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Estelionato digital",
+      "titulo": "Golpe da entrega falsa",
+      "frase": "Mensagens de encomenda retida ou taxa de entrega que levam a pagamentos falsos."
+    },
+    {
+      "arquivo": "assets/og/golpe-do-falso-leilao.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Estelionato digital",
+      "titulo": "Golpe do falso leilão",
+      "frase": "Sites de leilão falsos que vendem veículos e bens que não existem."
+    },
+    {
+      "arquivo": "assets/og/golpe-do-boleto.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Estelionato digital",
+      "titulo": "Golpe do boleto",
+      "frase": "Boletos adulterados ou falsos que desviam o pagamento para outra conta."
+    },
+    {
+      "arquivo": "assets/og/golpe-do-pix-falso.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Estelionato digital",
+      "titulo": "Golpe do Pix falso",
+      "frase": "Comprovantes editados, Pix agendado e cancelado e pedidos de devolução indevida."
+    },
+    {
+      "arquivo": "assets/og/indenizacao-por-danos-morais.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Recuperação e suporte jurídico",
+      "titulo": "Indenização por danos morais",
+      "frase": "Ação para buscar reparação quando o golpe ou a exposição causou dano real a você."
+    },
+    {
+      "arquivo": "assets/og/recuperacao-de-valores-pela-via-administrativa.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Recuperação e suporte jurídico",
+      "titulo": "Recuperação de valores pela via administrativa",
+      "frase": "Pedidos a bancos, plataformas e instituições, sem precisar de processo."
+    },
+    {
+      "arquivo": "assets/og/recuperacao-de-valores-pela-via-judicial.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Recuperação e suporte jurídico",
+      "titulo": "Recuperação de valores pela via judicial",
+      "frase": "Ação na Justiça para buscar a devolução do dinheiro, com pedido de bloqueio de contas."
+    },
+    {
+      "arquivo": "assets/og/acompanhamento-em-delegacias.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Recuperação e suporte jurídico",
+      "titulo": "Acompanhamento em delegacias",
+      "frase": "Apoio no registro do boletim de ocorrência e no andamento do inquérito."
+    },
+    {
+      "arquivo": "assets/og/possivel-exclusao-de-dados-pessoais-da-internet.png",
+      "idioma": "pt",
+      "rotulo": "Serviço · Privacidade",
+      "titulo": "Possível exclusão de dados pessoais da internet",
+      "frase": "Pedidos de remoção de dados, fotos e informações sensíveis expostas, com base na LGPD."
+    },
+    {
+      "arquivo": "assets/og/alertas.png",
+      "idioma": "pt",
+      "rotulo": "Alertas de golpes",
+      "titulo": "Golpes que estão circulando agora",
+      "frase": "Como cada golpe funciona e o que fazer para se proteger."
+    },
+    {
+      "arquivo": "assets/og/golpe-do-falso-parente-numero-novo.png",
+      "idioma": "pt",
+      "rotulo": "Alerta de golpe · Redes sociais",
+      "titulo": "Golpe do falso parente: “mãe, troquei de número”",
+      "frase": "Alguém se passa por filho, neto ou outro parente, diz que trocou de número e logo pede um Pix com urgência."
+    },
+    {
+      "arquivo": "assets/og/falso-leilao-de-veiculos.png",
+      "idioma": "pt",
+      "rotulo": "Alerta de golpe · Estelionato digital",
+      "titulo": "Falso leilão de veículos: o carro barato que nunca chega",
+      "frase": "Sites que imitam leiloeiros oficiais anunciam carros e motos abaixo do preço e pedem pagamento rápido depois do lance."
+    },
+    {
+      "arquivo": "assets/og/pix-agendado-e-cancelado.png",
+      "idioma": "pt",
+      "rotulo": "Alerta de golpe · Estelionato digital",
+      "titulo": "Pix agendado e cancelado: o comprovante que não vale nada",
+      "frase": "O comprador mostra um comprovante de Pix verdadeiro, mas o pagamento era só um agendamento, cancelado depois da entrega."
+    },
+    {
+      "arquivo": "assets/og/privacidade.png",
+      "idioma": "pt",
+      "rotulo": "Seus dados",
+      "titulo": "Política de Privacidade",
+      "frase": "Como tratamos os seus dados pessoais, conforme a LGPD."
+    },
+    {
+      "arquivo": "assets/og/en/fake-email.png",
+      "idioma": "en",
+      "rotulo": "Service · Investigation and location",
+      "titulo": "Fake email",
+      "frase": "Emails that pose as banks, companies or people to deceive or threaten you."
+    },
+    {
+      "arquivo": "assets/og/en/phone-numbers-emails-and-addresses.png",
+      "idioma": "en",
+      "rotulo": "Service · Investigation and location",
+      "titulo": "Phone numbers, emails and addresses",
+      "frase": "Lawful research on phone numbers, emails and addresses linked to a case."
+    },
+    {
+      "arquivo": "assets/og/en/locating-people.png",
+      "idioma": "en",
+      "rotulo": "Service · Investigation and location",
+      "titulo": "Locating people",
+      "frase": "Finding someone’s whereabouts for service of process, debt collection, reunions and other legitimate purposes."
+    },
+    {
+      "arquivo": "assets/og/en/judgment-debtor-asset-search.png",
+      "idioma": "en",
+      "rotulo": "Service · Investigation and location",
+      "titulo": "Asset search for judgment debtors",
+      "frase": "Real estate, vehicles, companies and other assets to enforce a court judgment."
+    },
+    {
+      "arquivo": "assets/og/en/fake-website-investigation.png",
+      "idioma": "en",
+      "rotulo": "Service · Investigation and location",
+      "titulo": "Fake website investigation",
+      "frase": "Fake stores, pages that imitate banks and companies, and fake payment links."
+    },
+    {
+      "arquivo": "assets/og/en/instagram-investigation.png",
+      "idioma": "en",
+      "rotulo": "Service · Social media",
+      "titulo": "Instagram",
+      "frase": "Fake profiles, hacked accounts, fake stores and attacks on your reputation."
+    },
+    {
+      "arquivo": "assets/og/en/whatsapp-scams.png",
+      "idioma": "en",
+      "rotulo": "Service · Social media",
+      "titulo": "WhatsApp",
+      "frase": "Account cloning, fake relatives with a “new number”, extortion and threats."
+    },
+    {
+      "arquivo": "assets/og/en/facebook-investigation.png",
+      "idioma": "en",
+      "rotulo": "Service · Social media",
+      "titulo": "Facebook",
+      "frase": "Fake profiles and pages, scam groups, misleading ads and defamation."
+    },
+    {
+      "arquivo": "assets/og/en/romance-scam.png",
+      "idioma": "en",
+      "rotulo": "Service · Online fraud",
+      "titulo": "Romance scam",
+      "frase": "Online relationships created to ask for money, gifts or loans."
+    },
+    {
+      "arquivo": "assets/og/en/olx-scam.png",
+      "idioma": "en",
+      "rotulo": "Service · Online fraud",
+      "titulo": "OLX scam",
+      "frase": "Fake ads, fake payment links and fake buyers on online marketplaces."
+    },
+    {
+      "arquivo": "assets/og/en/fake-delivery-scam.png",
+      "idioma": "en",
+      "rotulo": "Service · Online fraud",
+      "titulo": "Fake delivery scam",
+      "frase": "Messages about a held package or delivery fee that lead to fake payments."
+    },
+    {
+      "arquivo": "assets/og/en/fake-auction-scam.png",
+      "idioma": "en",
+      "rotulo": "Service · Online fraud",
+      "titulo": "Fake auction scam",
+      "frase": "Fake auction websites that sell vehicles and goods that do not exist."
+    },
+    {
+      "arquivo": "assets/og/en/boleto-scam.png",
+      "idioma": "en",
+      "rotulo": "Service · Online fraud",
+      "titulo": "Boleto scam",
+      "frase": "Tampered or fake boletos (Brazilian payment slips) that divert your payment to another account."
+    },
+    {
+      "arquivo": "assets/og/en/fake-pix-scam.png",
+      "idioma": "en",
+      "rotulo": "Service · Online fraud",
+      "titulo": "Fake Pix scam",
+      "frase": "Edited receipts, scheduled-then-cancelled Pix payments and fraudulent refund requests."
+    },
+    {
+      "arquivo": "assets/og/en/moral-damages-compensation.png",
+      "idioma": "en",
+      "rotulo": "Service · Recovery and legal support",
+      "titulo": "Compensation for moral damages",
+      "frase": "A lawsuit to seek compensation when the scam or exposure caused you real harm."
+    },
+    {
+      "arquivo": "assets/og/en/administrative-fund-recovery.png",
+      "idioma": "en",
+      "rotulo": "Service · Recovery and legal support",
+      "titulo": "Recovering money through administrative channels",
+      "frase": "Requests to banks, platforms and institutions, without going to court."
+    },
+    {
+      "arquivo": "assets/og/en/court-fund-recovery.png",
+      "idioma": "en",
+      "rotulo": "Service · Recovery and legal support",
+      "titulo": "Recovering money through the courts",
+      "frase": "A lawsuit to seek the return of your money, with a request to freeze accounts."
+    },
+    {
+      "arquivo": "assets/og/en/police-station-support.png",
+      "idioma": "en",
+      "rotulo": "Service · Recovery and legal support",
+      "titulo": "Police station support",
+      "frase": "Help filing the boletim de ocorrência (police report) and following the police investigation."
+    },
+    {
+      "arquivo": "assets/og/en/personal-data-removal.png",
+      "idioma": "en",
+      "rotulo": "Service · Privacy",
+      "titulo": "Possible removal of personal data from the internet",
+      "frase": "Requests to remove exposed data, photos and sensitive information, based on the LGPD (Brazil’s General Data Protection Law)."
+    },
+    {
+      "arquivo": "assets/og/en/alerts.png",
+      "idioma": "en",
+      "rotulo": "Scam alerts",
+      "titulo": "Scams going around right now",
+      "frase": "How each scam works and what to do to protect yourself."
+    },
+    {
+      "arquivo": "assets/og/en/fake-relative-new-number-scam.png",
+      "idioma": "en",
+      "rotulo": "Scam alert · Social media",
+      "titulo": "The fake relative scam: “Mom, I changed my number”",
+      "frase": "Someone pretends to be a child, grandchild or other relative, says they changed their number and soon asks for an urgent Pix payment."
+    },
+    {
+      "arquivo": "assets/og/en/fake-vehicle-auction.png",
+      "idioma": "en",
+      "rotulo": "Scam alert · Online fraud",
+      "titulo": "Fake vehicle auctions: the cheap car that never arrives",
+      "frase": "Sites that imitate official auctioneers advertise cars and motorcycles below market price and ask for quick payment after the bid."
+    },
+    {
+      "arquivo": "assets/og/en/scheduled-and-cancelled-pix.png",
+      "idioma": "en",
+      "rotulo": "Scam alert · Online fraud",
+      "titulo": "Scheduled and cancelled Pix: the receipt that is worth nothing",
+      "frase": "The buyer shows a genuine Pix receipt, but the payment was only scheduled and was cancelled after delivery."
+    },
+    {
+      "arquivo": "assets/og/en/privacy.png",
+      "idioma": "en",
+      "rotulo": "Your data",
+      "titulo": "Privacy Policy",
+      "frase": "How we handle your personal data, under the LGPD (Brazil’s data protection law)."
+    },
+    {
+      "arquivo": "assets/og/delegacias.png",
+      "idioma": "pt",
+      "rotulo": "Delegacias por estado",
+      "titulo": "Onde registrar o boletim de ocorrência",
+      "frase": "BO online e delegacia de crimes cibernéticos de cada estado."
+    },
+    {
+      "arquivo": "assets/og/inicio.png",
+      "idioma": "pt",
+      "rotulo": "Investigação digital",
+      "titulo": "Todo golpe digital deixa rastro.",
+      "frase": "Investigamos golpes, localizamos pessoas e bens e organizamos as provas, com sigilo."
+    },
+    {
+      "arquivo": "assets/og/en/home.png",
+      "idioma": "en",
+      "rotulo": "Digital investigation",
+      "titulo": "Every online scam leaves a trail.",
+      "frase": "We investigate scams, locate people and assets and organize the evidence, confidentially."
+    },
+    {
+      "arquivo": "assets/og/termos.png",
+      "idioma": "pt",
+      "rotulo": "Transparência",
+      "titulo": "Termos de uso",
+      "frase": "O que fazemos, o que não fazemos e os nossos canais oficiais."
+    }
+  ]
+}

@@ -16,8 +16,8 @@
 
 module.exports = {
   /* ---------- Cabeça da página inicial ---------- */
-  'Vestígio | Investigação Digital e Detetive Particular em Recife': 'Vestígio | Digital Investigation and Private Detective in Recife, Brazil',
-  'Investigação digital e detetive particular em Recife: golpes digitais, localização de pessoas e bens e apoio na recuperação de valores. Atendimento sigiloso pelo WhatsApp, em todo o Brasil.': 'Digital investigation and private detective services in Recife, Brazil: online scams, locating people and assets, and support in recovering money. Confidential service on WhatsApp, across Brazil.',
+  'Vestígio | Investigação Digital e Detetive Particular em Recife': 'Vestígio | Digital Investigation & Private Detective, Brazil',
+  'Detetive particular e investigação digital em Recife: golpes, localização de pessoas e bens e recuperação de valores. Atendimento sigiloso em todo o Brasil.': 'Private detective and digital investigation in Recife, Brazil: scams, locating people and assets, and recovering money. Confidential service nationwide.',
   'Vestígio | Investigação Digital': 'Vestígio | Digital Investigation',
   'Todo golpe digital deixa rastro. Investigamos, organizamos as provas e acompanhamos o seu caso, com sigilo.': 'Every online scam leaves a trail. We investigate, organize the evidence and follow your case, confidentially.',
 
@@ -525,5 +525,27 @@ module.exports = {
   'Outro assunto': 'Something else',
   'Conte resumidamente o que aconteceu.': 'Briefly tell us what happened.',
   'Não envie senhas, códigos ou documentos por aqui. Depois do primeiro contato, combinamos um canal seguro.': 'Do not send passwords, codes or documents here. After the first contact, we’ll agree on a secure channel.',
-  'Enviar outra mensagem': 'Send another message'
+  'Enviar outra mensagem': 'Send another message',
+
+  /* ---------- Menu "Mais" ---------- */
+  'Mais': 'More',
+  'Golpes que estão circulando': 'Scams going around right now',
+
+  /* ---------- Painel de acessibilidade ---------- */
+  'Acessibilidade': 'Accessibility',
+  'Tamanho do texto': 'Text size',
+  'Diminuir o texto': 'Decrease text size',
+  'Texto no tamanho normal': 'Reset text size',
+  'Aumentar o texto': 'Increase text size',
+  'Alto contraste': 'High contrast',
+
+  /* ---------- Imagens de compartilhamento (Open Graph) ---------- */
+  'Vestígio: Todo golpe digital deixa rastro.': 'Vestígio: Every online scam leaves a trail.',
+  'Todo golpe digital deixa rastro.': 'Every online scam leaves a trail.',
+  'Investigamos golpes, localizamos pessoas e bens e organizamos as provas, com sigilo.': 'We investigate scams, locate people and assets and organize the evidence, confidentially.',
+  'Golpes que estão circulando agora': 'Scams going around right now',
+  'Como cada golpe funciona e o que fazer para se proteger.': 'How each scam works and what to do to protect yourself.',
+  'Alerta de golpe': 'Scam alert',
+  'Seus dados': 'Your data',
+  'Como tratamos os seus dados pessoais, conforme a LGPD.': 'How we handle your personal data, under the LGPD (Brazil’s data protection law).'
 };
