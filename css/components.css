@@ -1785,5 +1785,36 @@ html.respeitar-movimento [data-spot]::before { display: none; }
     content: 'Close';
     content: 'Close' / '';
   }
+
+  /* Menu aberto: letras menores e espaços mais curtos, para caber
+     na tela sem precisar rolar */
+  .mobile-menu {
+    padding: calc(var(--header-h) + var(--space-4)) var(--gutter) var(--space-4);
+    justify-content: flex-start;
+    gap: var(--space-4);
+  }
+  .mobile-menu__top { margin-bottom: 0; }
+  .mobile-menu .urgente--menu { min-height: 3rem; font-size: 0.9375rem; border-radius: 14px; }
+  .mobile-menu__list > li { border-bottom: 1px solid var(--hairline); }
+  .mobile-menu .mobile-menu__list > li > a,
+  .mobile-menu .mobile-menu__acc {
+    padding: 0.5rem 0;
+    font-size: 1.3125rem;
+    letter-spacing: -0.02em;
+  }
+  .mobile-menu .mobile-menu__acc-icon { width: 2rem; height: 2rem; }
+  .mobile-menu__footer { gap: var(--space-2); padding-top: var(--space-2); margin-top: auto; }
+  .mobile-menu__footer .btn { min-height: 3rem; }
+  .mobile-menu__note { font-size: 0.8125rem; }
+  .mobile-menu .mobile-menu__theme { padding-top: var(--space-2); font-size: 0.875rem; }
+  .mobile-menu .mobile-menu__theme .seletor__botao,
+  .mobile-menu .mobile-menu__theme .a11y-texto__botao { min-height: 2.25rem; height: 2.25rem; }
 }
 
+/* Celulares de tela baixa: o menu tira as linhas de apoio para caber sem rolar */
+@media (max-width: 767px) and (max-height: 760px) {
+  .mobile-menu .mobile-menu__note,
+  .mobile-menu .mobile-menu__footer .status { display: none; }
+  .mobile-menu .mobile-menu__list > li > a,
+  .mobile-menu .mobile-menu__acc { padding: 0.4rem 0; font-size: 1.1875rem; }
+}
