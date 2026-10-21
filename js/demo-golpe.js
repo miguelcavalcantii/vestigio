@@ -7,7 +7,8 @@
    No fim, fica parado alguns segundos e recomeça (loop).
 
    - Computador (1024px ou mais): os dois celulares lado a lado.
-   - Celular e tablet: UM aparelho que "vira" entre as etapas.
+   - Celular (até 767px): os dois juntos, menores (css/celular.css).
+   - Tablet: UM aparelho que "vira" entre as etapas.
    - A história só anda com a seção na tela (economiza bateria).
    - Com "reduzir movimento": tudo já aparece no estado final.
 
@@ -81,7 +82,10 @@ var TEMPOS_DEMO = {
   var comAnimacao = typeof Motion !== 'undefined' && !reduzirMovimento() &&
     document.documentElement.classList.contains('motion-ok');
 
-  var umAparelhoSo = window.matchMedia('(max-width: 1023px)');
+  // Um aparelho só: apenas no tablet. No celular (até 767px) e no
+  // computador, os dois aparelhos aparecem juntos (css/celular.css).
+  var umAparelhoSo = window.matchMedia('(min-width: 768px) and (max-width: 1023px)');
+  var celularPequeno = window.matchMedia('(max-width: 767px)');
   var mouseFino = window.matchMedia('(hover: hover) and (pointer: fine)');
   var EASE_OUT = RITMO.suave;
 
@@ -465,7 +469,7 @@ var TEMPOS_DEMO = {
   // quando o aparelho aparece: a versão presa à rolagem podia ficar pela
   // metade no Safari do iPhone e nos navegadores do WhatsApp e Instagram.
   function entrarComARolagem() {
-    if (umAparelhoSo.matches) {
+    if (umAparelhoSo.matches || celularPequeno.matches) {
       if (typeof Motion === 'undefined' || !Motion.inView) return;
       $$('[data-demo-enter]', secao).forEach(function (el) {
         el.style.opacity = '0';

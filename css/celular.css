@@ -17,12 +17,16 @@
 @media (max-width: 767px) {
 
   /* ---------- 1. Tamanhos e espaços ---------- */
+  /* Base do texto: 15px em vez de 16px. Como o site usa "rem",
+     tudo diminui junto (o painel Acessibilidade continua aumentando). */
+  html { font-size: calc(93.75% * var(--escala-texto, 1)); }
+
   :root {
-    --section-y: 3.25rem;                 /* era ~88px em cima e embaixo */
-    --fs-2xl: 2.25rem;                    /* título principal: 36px */
-    --fs-xl: 1.75rem;                     /* títulos de seção: 28px */
-    --fs-lg: 1.125rem;
-    --fs-md: 1rem;
+    --section-y: 2.75rem;                 /* era ~88px em cima e embaixo */
+    --fs-2xl: 2.3rem;                     /* título principal */
+    --fs-xl: 1.625rem;                    /* títulos de seção */
+    --fs-lg: 1.0625rem;
+    --fs-md: 0.9375rem;
   }
 
   .section-head { margin-bottom: var(--space-5); gap: var(--space-2); }
@@ -47,7 +51,7 @@
   .hero__copy { gap: var(--space-4); }
   .hero__pill { padding-block: 0.3rem; }
   .hero__pill .mono { font-size: 0.625rem; }
-  .hero__title { font-size: var(--fs-2xl); line-height: 1.02; }
+  .hero__title { font-size: var(--fs-2xl); line-height: 1.04; }
   .hero__lead { font-size: 0.9375rem; line-height: 1.55; margin: 0; }
   .hero__actions { gap: var(--space-2); }
 
@@ -78,7 +82,7 @@
     justify-content: space-between;
     gap: var(--space-2);
     height: 100%;
-    min-height: 6.25rem;
+    min-height: 5.75rem;
     padding: 0.75rem;
     position: relative;
   }
@@ -110,8 +114,15 @@
 
   /* ---------- 4. Seções compactas ---------- */
 
-  /* "Golpe pela internet é crime": fica só o bloco principal, sem o texto longo */
-  .problem .bento > .bento__cell:not(.bento__cell--lead) { display: none; }
+  /* "Golpe pela internet é crime": fica o bloco principal (sem o texto longo)
+     e o caminho "Você → Vestígio → Polícia e Justiça", mais curto */
+  .problem .bento > .bento__cell:not(.bento__cell--lead):not(.bento__cell--wide) { display: none; }
+  .problem .bento { gap: var(--space-3); }
+  .relay__title { font-size: 1.0625rem; }
+  .relay__lanes { gap: var(--space-4); }
+  .relay__lane p { display: none; }               /* fica só quem é quem */
+  .relay__lane { row-gap: var(--space-1); }
+  .relay__tasks { gap: var(--space-1); font-size: 0.8125rem; }
   .problem .tile__lead { display: none; }
   .problem .tile { padding: var(--space-5); gap: var(--space-4); }
   .problem h2 { font-size: 1.5rem; }
@@ -120,11 +131,36 @@
   .demo__lead,
   .demo__copy .btn { display: none; }
   .demo__copy { gap: var(--space-2); }
-  .demo__stage {
-    --phone-w: min(13.5rem, 62vw);
-    padding-block: var(--space-3) 0;
-  }
   .demo { padding-bottom: var(--section-y); }
+  .demo__indicator { display: none; }
+  .demo__stage {
+    --phone-w: min(12.5rem, 47vw);
+    display: block;
+    height: calc(var(--phone-w) * 2.11 + 2.75rem);
+    padding: 0;
+    margin-top: var(--space-2);
+  }
+  .demo__stage .demo__phone,
+  .demo__stage[data-tela] .demo__phone {
+    position: absolute;
+    left: 50%;
+    visibility: visible;
+  }
+  /* O golpe: atrás, mais alto, inclinado para a direita */
+  .demo__stage .demo__phone--golpe {
+    top: 0;
+    z-index: 1;
+    transform: translateX(-92%) rotate(4deg);
+  }
+  /* A investigação: na frente, mais baixo, inclinado para a esquerda */
+  .demo__stage .demo__phone--investigacao {
+    top: 2.75rem;
+    z-index: 2;
+    transform: translateX(-4%) rotate(-3deg);
+  }
+  /* Texto dentro das telas um pouco maior, para dar para ler */
+  .demo .phone__screen { font-size: 5.3cqi; }
+  .demo__note { padding-inline: 0; margin-top: var(--space-3); }
 
   /* Como funciona: etapas mais baixas, sem botão repetido */
   .process__inner { gap: var(--space-5); }

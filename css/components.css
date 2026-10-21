@@ -1744,3 +1744,46 @@ html.respeitar-movimento [data-spot]::before { display: none; }
 .mobile-menu__footer .status { justify-content: center; }
 .mega__aside .status { padding: 0.15rem var(--space-3) 0; }
 .site-footer__contato .status__link { color: var(--accent-ink); }
+
+/* =========================================================
+   CELULAR (até 767px): botão do menu com a palavra "Menu"
+   e barra do topo sempre bem visível. O computador não muda.
+   ========================================================= */
+@media (max-width: 767px) {
+  .site-header .island {
+    background: var(--header-bg-solid);
+    border-color: var(--hairline-strong);
+    box-shadow: var(--highlight), var(--shadow-soft);
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: auto;
+    height: 2.5rem;
+    padding: 0 0.875rem 0 1rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 600;
+    font-size: 0.875rem;
+    font-stretch: 106%;
+  }
+
+  /* A palavra fica no CSS para valer em todas as páginas sem mexer no HTML.
+     O "/ ''" evita que leitores de tela leiam duas vezes (já existe "Abrir menu"). */
+  .menu-toggle::before {
+    content: 'Menu';
+    content: 'Menu' / '';
+  }
+  .menu-toggle[aria-expanded='true']::before {
+    content: 'Fechar';
+    content: 'Fechar' / '';
+  }
+  html[lang^='en'] .menu-toggle[aria-expanded='true']::before {
+    content: 'Close';
+    content: 'Close' / '';
+  }
+}
+
