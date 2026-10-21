@@ -5,6 +5,8 @@
    1. Serviços: mostra 8 e um botão "Ver todos os serviços"
    2. "Caí em um golpe": cada item abre e fecha ao tocar
    3. Rodapé: as listas de links abrem e fecham ao tocar
+   4. Animações extras (só no celular): o que ainda aparecia parado
+      passa a entrar com a rolagem, no mesmo estilo do resto do site
    ========================================================= */
 (function () {
   var celular = window.matchMedia('(max-width: 767px)');
@@ -114,4 +116,69 @@
   }
   if (celular.addEventListener) celular.addEventListener('change', aplicar); else celular.addListener(aplicar);
   aplicar();
+
+  /* ---------- 4. Animações extras (só no celular) ----------
+     Mesmo jeito do resto do site: presas à rolagem (descendo, entram;
+     subindo, voltam). Só com as animações ligadas (classe motion-ok). */
+  var html = document.documentElement;
+  if (!celular.matches || typeof Motion === 'undefined' || !html.classList.contains('motion-ok')) return;
+  var EASE = (window.RITMO && RITMO.suave) || [0.23, 1, 0.32, 1];
+  var ELASTICO = [0.34, 1.56, 0.64, 1];   // passa um pouco do ponto e volta
+
+  // Entra subindo e aparecendo enquanto a pessoa rola
+  function entrar(el, de, inicio, fim) {
+    if (!el) return;
+    de = de || {};
+    var x = de.x || 0, y = de.y === undefined ? 24 : de.y, esc = de.escala || 1;
+    Motion.scroll(Motion.animate(el, {
+      opacity: [de.opacidade || 0, 1],
+      transform: ['translate3d(' + x + 'px,' + y + 'px,0) scale(' + esc + ')', 'translate3d(0,0,0) scale(1)']
+    }, { ease: EASE }), {
+      target: el,
+      offset: ['start ' + (inicio || 'end'), 'start ' + (fim || '80%')]
+    });
+  }
+  function todos(seletor) { return Array.prototype.slice.call(document.querySelectorAll(seletor)); }
+
+  // Atalhos "O que aconteceu com você?": estouram em sequência logo depois do título
+  var atalhos = todos('.quick__list > li');
+  if (atalhos.length) {
+    atalhos.forEach(function (li) { li.style.opacity = '0'; });
+    Motion.animate(atalhos, { opacity: [0, 1], transform: ['translateY(10px) scale(0.92)', 'translateY(0) scale(1)'] },
+      { duration: 0.5, ease: ELASTICO, delay: Motion.stagger(0.05, { startDelay: 0.9 }) });
+  }
+
+  // Botão "Ver todos os serviços" e legenda da simulação
+  entrar(document.querySelector('.servicos-mais'), { y: 16, escala: 0.96 }, 'end', '88%');
+  entrar(document.querySelector('.demo__note'), { y: 12 }, 'end', '90%');
+
+  // "Caí em um golpe": os itens chegam um depois do outro
+  todos('.guide__list').forEach(function (lista) {
+    Array.prototype.forEach.call(lista.children, function (li, i) {
+      entrar(li, { x: -16, y: 8 }, 'end', (88 - i * 3) + '%');
+    });
+  });
+
+  // Sobre: o ícone de cada princípio "estoura" quando ele aparece
+  todos('.principle__icon').forEach(function (icone) {
+    icone.style.opacity = '0';
+    Motion.inView(icone, function () {
+      Motion.animate(icone, { opacity: [0, 1], transform: ['scale(0.5) rotate(-12deg)', 'scale(1) rotate(0deg)'] },
+        { duration: 0.6, ease: ELASTICO, delay: 0.15 });
+    }, { amount: 0.6 });
+  });
+
+  // Números das etapas do "Como funciona": crescem ao chegar
+  todos('.step__num').forEach(function (num) {
+    entrar(num, { y: 0, escala: 0.6, opacidade: 0.2 }, 'end', '78%');
+  });
+
+  // Rodapé: logo, frase, texto, botão e cada bloco entram em sequência
+  var marca = document.querySelector('.site-footer__marca');
+  if (marca) Array.prototype.forEach.call(marca.children, function (filho, i) {
+    entrar(filho, { y: 20 }, 'end', (90 - i * 4) + '%');
+  });
+  todos('.site-footer__col, .site-footer__base').forEach(function (bloco) {
+    entrar(bloco, { y: 20 }, 'end', '86%');
+  });
 })();
