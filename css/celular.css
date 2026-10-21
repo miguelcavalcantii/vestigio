@@ -1,0 +1,205 @@
+/* =========================================================
+   VERSÃO CELULAR DA PÁGINA INICIAL (só telas até 767px)
+   ---------------------------------------------------------
+   Tudo aqui fica dentro de @media (max-width: 767px), então
+   o computador e o tablet NÃO mudam. Este arquivo é carregado
+   por último, para valer por cima dos outros.
+
+   O que muda no celular:
+   1. Tamanhos e espaços menores (títulos, respiro entre seções)
+   2. Topo em uma tela: sai o dossiê, os selos e a faixa "Atuamos em"
+   3. Serviços sobem para logo depois do topo, em grade de 2 colunas
+      (8 aparecem, o botão "Ver todos" mostra o resto: js/celular.js)
+   4. Seções longas ficam compactas
+   5. Rodapé com listas que abrem e fecham (js/celular.js)
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  /* ---------- 1. Tamanhos e espaços ---------- */
+  :root {
+    --section-y: 3.25rem;                 /* era ~88px em cima e embaixo */
+    --fs-2xl: 2.25rem;                    /* título principal: 36px */
+    --fs-xl: 1.75rem;                     /* títulos de seção: 28px */
+    --fs-lg: 1.125rem;
+    --fs-md: 1rem;
+  }
+
+  .section-head { margin-bottom: var(--space-5); gap: var(--space-2); }
+  .section-head p { font-size: var(--fs-sm); line-height: 1.55; }
+
+  /* Botões grandes um pouco mais baixos (continuam fáceis de tocar) */
+  .btn--lg { min-height: 3.125rem; font-size: 0.9375rem; }
+  .btn--lg .btn__orb { width: 2.125rem; height: 2.125rem; }
+
+  /* ---------- Ordem das seções no celular ----------
+     Topo → Serviços → o resto na ordem normal */
+  main#conteudo { display: flex; flex-direction: column; }
+  main#conteudo > .hero { order: -2; }
+  main#conteudo > .services { order: -1; }
+
+  /* ---------- 2. Topo (hero) em uma tela ---------- */
+  .hero {
+    padding-top: calc(var(--header-h) + 1.5rem);
+    padding-bottom: var(--space-5);
+  }
+  .hero__inner { gap: 0; }
+  .hero__copy { gap: var(--space-4); }
+  .hero__pill { padding-block: 0.3rem; }
+  .hero__pill .mono { font-size: 0.625rem; }
+  .hero__title { font-size: var(--fs-2xl); line-height: 1.02; }
+  .hero__lead { font-size: 0.9375rem; line-height: 1.55; margin: 0; }
+  .hero__actions { gap: var(--space-2); }
+
+  .quick { gap: var(--space-2); margin-top: var(--space-1); padding-top: var(--space-4); }
+  .quick__label { font-size: 0.8125rem; }
+  .quick__list { gap: 0.375rem; }
+  .quick .chip { min-height: 2.125rem; font-size: 0.8125rem; padding-inline: 0.625rem 0.75rem; }
+
+  /* Saem do celular (continuam no computador) */
+  .hero .dossier,
+  .hero .seals,
+  .atuamos { display: none !important; }
+
+  /* ---------- 3. Serviços: grade compacta de 2 colunas ---------- */
+  .services .section-head p { display: none; }
+  .busca { margin-bottom: var(--space-3); }
+  .tabs { margin-bottom: var(--space-4); }
+
+  .services__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+  .service-card { --bezel: 3px; --radius-shell: 20px; }
+  .service-card .bezel__core {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+    height: 100%;
+    min-height: 6.25rem;
+    padding: 0.75rem;
+    position: relative;
+  }
+  .service-card__top { width: 100%; }
+  .service-card__icon { width: 2.125rem; height: 2.125rem; }
+  .service-card h3 {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  /* a setinha vai para o canto de cima */
+  .service-card__more {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+  .service-card__more .btn__orb { width: 1.75rem; height: 1.75rem; }
+
+  /* Só os 8 primeiros até tocar em "Ver todos" (classe posta por js/celular.js) */
+  .services__grid.is-recolhido > .service-card:nth-child(n + 9) { display: none; }
+  .servicos-mais {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-4);
+  }
+  .servicos-mais[hidden] { display: none; }
+  .servicos-mais .btn { width: 100%; justify-content: center; }
+
+  /* ---------- 4. Seções compactas ---------- */
+
+  /* "Golpe pela internet é crime": fica só o bloco principal, sem o texto longo */
+  .problem .bento > .bento__cell:not(.bento__cell--lead) { display: none; }
+  .problem .tile__lead { display: none; }
+  .problem .tile { padding: var(--space-5); gap: var(--space-4); }
+  .problem h2 { font-size: 1.5rem; }
+
+  /* "Como o golpe acontece": aparelho menor e sem o texto longo */
+  .demo__lead,
+  .demo__copy .btn { display: none; }
+  .demo__copy { gap: var(--space-2); }
+  .demo__stage {
+    --phone-w: min(13.5rem, 62vw);
+    padding-block: var(--space-3) 0;
+  }
+  .demo { padding-bottom: var(--section-y); }
+
+  /* Como funciona: etapas mais baixas, sem botão repetido */
+  .process__inner { gap: var(--space-5); }
+  .process__aside { gap: var(--space-2); }
+  .process__aside p { font-size: var(--fs-sm); }
+  .process__aside .btn { display: none; }
+  .steps { gap: var(--space-2); }
+  .step__body { padding: var(--space-3) var(--space-4); }
+  .step__body h3 { font-size: 1rem; }
+  .step__body p { font-size: 0.8125rem; line-height: 1.5; }
+
+  /* Sobre: princípios em 2 colunas, só ícone e nome */
+  .about__intro p { font-size: var(--fs-sm); }
+  .principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+  .principle {
+    padding: var(--space-4);
+    gap: var(--space-2);
+  }
+  .principle p { display: none; }
+  .principle h3 { font-size: 0.9375rem; }
+  .principle--feature { grid-column: 1 / -1; }
+  .principle__icon { width: 2.25rem; height: 2.25rem; }
+
+  /* "Caí em um golpe": cada item mostra só o título; toque para ler (js/celular.js) */
+  .guide__grid { gap: var(--space-3); }
+  .guide__core { padding: var(--space-5) var(--space-4); }
+  .guide__list { gap: var(--space-2); }
+  .guide.is-compacto .guide__desc { display: none; }
+  .guide.is-compacto .guide__list > li.is-aberto .guide__desc { display: block; margin-top: var(--space-1); }
+  .guide.is-compacto .guide__list > li { cursor: pointer; }
+  .guide.is-compacto .guide__list > li > strong { display: flex; justify-content: space-between; gap: var(--space-3); }
+  .guide.is-compacto .guide__list > li > strong::after {
+    content: '+';
+    flex: none;
+    font-weight: 500;
+    color: var(--accent-ink);
+  }
+  .guide.is-compacto .guide__list > li.is-aberto > strong::after { content: '–'; }
+
+  /* Isso é golpe?: menos texto ao lado */
+  .verif__inner { gap: var(--space-5); }
+  .verif__lead { font-size: var(--fs-sm); }
+  .verif__garantias { display: none; }
+
+  /* Contato: chamada menor */
+  .cta__core h2,
+  .cta__core .cta__title { font-size: 1.625rem; }
+  .contact__grid { gap: var(--space-3); }
+  .contact__info { gap: var(--space-2); }
+  .contact__item { padding: var(--space-3) var(--space-4); gap: var(--space-1); }
+  .contact__item dd { font-size: 0.9375rem; }
+
+  /* ---------- 5. Rodapé: listas recolhidas (js/celular.js) ---------- */
+  .site-footer__topo { gap: var(--space-5); }
+  .site-footer.is-compacto nav.site-footer__col .site-footer__titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-block: var(--space-3);
+    margin: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .site-footer.is-compacto nav.site-footer__col .site-footer__titulo::after {
+    content: '+';
+    font-size: 1rem;
+    color: var(--accent-ink);
+  }
+  .site-footer.is-compacto nav.site-footer__col.is-aberto .site-footer__titulo::after { content: '–'; }
+  .site-footer.is-compacto nav.site-footer__col:not(.is-aberto) .site-footer__links,
+  .site-footer.is-compacto nav.site-footer__col:not(.is-aberto) .site-footer__mais { display: none; }
+  .site-footer.is-compacto .site-footer__colunas { grid-template-columns: 1fr; gap: 0; }
+  .site-footer__col--contato .urgencia--compacta { display: none; }
+  .site-footer.is-compacto .site-footer__col--contato { margin-top: var(--space-6); }
+}
