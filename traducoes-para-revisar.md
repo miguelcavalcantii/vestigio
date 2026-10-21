@@ -13,7 +13,7 @@ Total: 942 frases.
 | Olá! Vim pelo site da Vestígio e gostaria de atendimento. | Hi! I found you on the Vestígio website and I would like some help. |
 | Olá! Vim pelo site da Vestígio e gostaria de atendimento sobre: {servico}. | Hi! I found you on the Vestígio website and I would like help with: {servico}. |
 | Olá! Vim pelo site da Vestígio. Tenho um caso urgente e preciso de atendimento fora do horário. | Hi! I found you on the Vestígio website. I have an urgent case and need help outside business hours. |
-| Segunda a sexta, das 9h às 18h | Monday to Friday, 9 a.m. to 6 p.m. (Brasília time) |
+| Segunda a sexta, das 8h às 23h30. Sábado e domingo, das 8h às 18h | Monday to Friday, 8 a.m. to 11:30 p.m. Saturday and Sunday, 8 a.m. to 6 p.m. (Brasília time) |
 | Sede em Recife/PE. Atendimento online em todo o Brasil. | Based in Recife, Brazil. Online service across Brazil. |
 | Investigação e localização | Investigation and location |
 | Redes sociais | Social media |

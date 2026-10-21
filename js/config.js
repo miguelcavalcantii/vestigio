@@ -81,11 +81,10 @@ var PASTAS = IDIOMA === 'en'
 
 var CONFIG = {
   // Número do WhatsApp: só números, com 55 (Brasil) + DDD.
-  // (Número de teste. Trocar pelo número oficial.)
-  whatsapp: '5581992183600',
+  whatsapp: '5581991195082',
 
   // Como o número aparece escrito na tela.
-  whatsappFormatado: '(81) 99218-3600',
+  whatsappFormatado: '(81) 99119-5082',
 
   // Mensagem padrão dos botões gerais de WhatsApp.
   mensagemPadrao: T('Olá! Vim pelo site da Vestígio e gostaria de atendimento.'),
@@ -100,8 +99,9 @@ var CONFIG = {
   // E-mail de contato (aparece no contato, no rodapé e na política de privacidade).
   email: 'contato@vestigio.app.br',
 
-  // Horário de atendimento (definitivo).
-  horario: T('Segunda a sexta, das 9h às 18h'),
+  // Horário de atendimento (o texto que aparece na tela).
+  // Mudou o horário? Mude também HORARIO em js/atendimento.js.
+  horario: T('Segunda a sexta, das 8h às 23h30. Sábado e domingo, das 8h às 18h'),
   local: T('Sede em Recife/PE. Atendimento online em todo o Brasil.'),
 
   // Instagram (só o nome do perfil, sem o @).

@@ -7,7 +7,9 @@
      link "Urgente? Chame no WhatsApp" (CONFIG.mensagemUrgente)
 
    O horário é sempre o de Recife (fuso America/Recife), não o
-   de quem está acessando: segunda a sexta, das 9h às 18h.
+   de quem está acessando:
+   - segunda a sexta, das 8h às 23h30
+   - sábado e domingo, das 8h às 18h
    Mudou o horário? Mude HORARIO abaixo e CONFIG.horario
    (js/config.js), que é o texto que aparece na tela.
 
@@ -19,11 +21,20 @@
 (function () {
   'use strict';
 
+  // Horário de cada dia da semana, em minutos (8h = 8 * 60).
+  // A posição na lista é o dia: 0 = domingo, 1 = segunda ... 6 = sábado.
+  // No horário de fechar já conta como fechado (às 23h30 já está fechado).
   var HORARIO = {
     fuso: 'America/Recife',
-    dias: [1, 2, 3, 4, 5],   // 0 = domingo ... 6 = sábado
-    abre: 9 * 60,            // 9h, em minutos
-    fecha: 18 * 60           // 18h (às 18h00 já está fechado)
+    dias: [
+      { abre: 8 * 60, fecha: 18 * 60 },        // domingo: 8h às 18h
+      { abre: 8 * 60, fecha: 23 * 60 + 30 },   // segunda: 8h às 23h30
+      { abre: 8 * 60, fecha: 23 * 60 + 30 },   // terça
+      { abre: 8 * 60, fecha: 23 * 60 + 30 },   // quarta
+      { abre: 8 * 60, fecha: 23 * 60 + 30 },   // quinta
+      { abre: 8 * 60, fecha: 23 * 60 + 30 },   // sexta
+      { abre: 8 * 60, fecha: 18 * 60 }         // sábado: 8h às 18h
+    ]
   };
 
   var temMotion = typeof Motion !== 'undefined';
@@ -53,7 +64,8 @@
 
   function estaAberto() {
     var a = agoraEmRecife();
-    return HORARIO.dias.indexOf(a.dia) >= 0 && a.minutos >= HORARIO.abre && a.minutos < HORARIO.fecha;
+    var hoje = HORARIO.dias[a.dia];
+    return !!hoje && a.minutos >= hoje.abre && a.minutos < hoje.fecha;
   }
 
   function htmlDoStatus(aberto) {

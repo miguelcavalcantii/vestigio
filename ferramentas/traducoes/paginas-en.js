@@ -274,7 +274,7 @@ module.exports = {
   'contato@': 'contato@',
   'vestigio.app.br': 'vestigio.app.br',
   'Horário': 'Hours',
-  'Segunda a sexta, das 9h às 18h': 'Monday to Friday, 9 a.m. to 6 p.m. (Brasília time)',
+  'Segunda a sexta, das 8h às 23h30. Sábado e domingo, das 8h às 18h': 'Monday to Friday, 8 a.m. to 11:30 p.m. Saturday and Sunday, 8 a.m. to 6 p.m. (Brasília time)',
   'Onde atendemos': 'Where we work',
   'Sede em Recife/PE. Atendimento online em todo o Brasil.': 'Based in Recife, Brazil. Online service across Brazil.',
   'Casos urgentes: atendimento fora do horário': 'Urgent cases: after-hours help',
